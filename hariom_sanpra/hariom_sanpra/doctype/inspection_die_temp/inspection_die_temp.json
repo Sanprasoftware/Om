@@ -1,0 +1,237 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-02-21 17:16:23.797157",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "job_card",
+  "column_break_njlb",
+  "date",
+  "column_break_ktwf",
+  "time",
+  "section_break_icnw",
+  "t1",
+  "t2",
+  "t3",
+  "t4",
+  "t5",
+  "column_break_fboi",
+  "t6",
+  "t7",
+  "t8",
+  "t9",
+  "t10",
+  "column_break_mpdg",
+  "t11",
+  "t12",
+  "t13",
+  "t14",
+  "t15",
+  "column_break_lzht",
+  "t16",
+  "t17",
+  "t18",
+  "t19",
+  "t20"
+ ],
+ "fields": [
+  {
+   "fieldname": "job_card",
+   "fieldtype": "Link",
+   "label": "Job card",
+   "options": "Job Card"
+  },
+  {
+   "fieldname": "column_break_njlb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "column_break_ktwf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "time",
+   "fieldtype": "Time",
+   "label": "Time"
+  },
+  {
+   "fieldname": "section_break_icnw",
+   "fieldtype": "Section Break",
+   "label": "LINCE C  -- DIE TEMP"
+  },
+  {
+   "fieldname": "t1",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "T1",
+   "precision": "2"
+  },
+  {
+   "fieldname": "t2",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "T2",
+   "precision": "2"
+  },
+  {
+   "fieldname": "t3",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "T3",
+   "precision": "2"
+  },
+  {
+   "fieldname": "t4",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "T4",
+   "precision": "2"
+  },
+  {
+   "fieldname": "t5",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "T5",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_fboi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "t6",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "T6",
+   "precision": "2"
+  },
+  {
+   "fieldname": "t7",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "T7",
+   "precision": "2"
+  },
+  {
+   "fieldname": "t8",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "T8",
+   "precision": "2"
+  },
+  {
+   "fieldname": "t9",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "T9",
+   "precision": "2"
+  },
+  {
+   "fieldname": "t10",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "T10",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_mpdg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "t11",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "T11",
+   "precision": "2"
+  },
+  {
+   "fieldname": "t12",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "T12",
+   "precision": "2"
+  },
+  {
+   "fieldname": "t13",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "T13",
+   "precision": "2"
+  },
+  {
+   "fieldname": "t14",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "T14",
+   "precision": "2"
+  },
+  {
+   "fieldname": "t15",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "T15",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_lzht",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "t16",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "T16",
+   "precision": "2"
+  },
+  {
+   "fieldname": "t17",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "T17",
+   "precision": "2"
+  },
+  {
+   "fieldname": "t18",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "T18",
+   "precision": "2"
+  },
+  {
+   "fieldname": "t19",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "T19",
+   "precision": "2"
+  },
+  {
+   "fieldname": "t20",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "T20",
+   "precision": "2"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-02-21 17:50:14.560722",
+ "modified_by": "Administrator",
+ "module": "Hariom Sanpra",
+ "name": "Inspection DIE TEMP",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

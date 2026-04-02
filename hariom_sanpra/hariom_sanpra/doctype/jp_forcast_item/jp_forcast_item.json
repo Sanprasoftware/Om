@@ -1,0 +1,120 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-03-29 16:19:16.523416",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_ieff",
+  "item_code",
+  "column_break_ytqx",
+  "item_name",
+  "section_break_ejit",
+  "column_break_skzw",
+  "fg_output_ton",
+  "column_break_otug",
+  "work_days",
+  "column_break_ozno",
+  "program_complete",
+  "column_break_lcwj",
+  "program_pending",
+  "section_break_ekzm",
+  "remark"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_ieff",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Code",
+   "options": "Item"
+  },
+  {
+   "fieldname": "column_break_ytqx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "item_code.item_name",
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Item Name"
+  },
+  {
+   "fieldname": "section_break_ejit",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_skzw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "fg_output_ton",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "FG Output TON"
+  },
+  {
+   "fieldname": "column_break_otug",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "work_days",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Work Days"
+  },
+  {
+   "fieldname": "column_break_ozno",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "program_complete",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Program Complete",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_lcwj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "program_pending",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Program Pending",
+   "precision": "2"
+  },
+  {
+   "fieldname": "section_break_ekzm",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "remark",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Remark"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-03-29 16:19:16.523416",
+ "modified_by": "Administrator",
+ "module": "Hariom Sanpra",
+ "name": "JP Forcast Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

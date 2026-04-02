@@ -1,0 +1,91 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-03-18 12:47:19.141881",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "stock_entry",
+  "column_break_xsts",
+  "column_break_pvpl",
+  "batch_no",
+  "column_break_iapp",
+  "date",
+  "shift",
+  "section_break_xvdm",
+  "table_ivmb"
+ ],
+ "fields": [
+  {
+   "fieldname": "stock_entry",
+   "fieldtype": "Link",
+   "label": "Stock Entry",
+   "options": "Stock Entry"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "batch_no",
+   "fieldtype": "Data",
+   "label": "Batch No"
+  },
+  {
+   "fieldname": "shift",
+   "fieldtype": "Select",
+   "label": "Shift",
+   "options": "\nFirst\nSecond\nThird\nGenral"
+  },
+  {
+   "fieldname": "column_break_xsts",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_pvpl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_iapp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_xvdm",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "table_ivmb",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "ONLINE PROCESS REPORT"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-03-18 18:00:40.111392",
+ "modified_by": "saifa@sanpra.co.in",
+ "module": "Hariom Sanpra",
+ "name": "Online Process Printing",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

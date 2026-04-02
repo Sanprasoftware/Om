@@ -1,0 +1,168 @@
+// Custom behavior: when FG qty changes, update scrap items only and keep raw materials unchanged.
+
+frappe.provide("hariom_sanpra.stock_entry");
+
+hariom_sanpra.stock_entry.update_scrap_items = frappe.utils.debounce(function (frm) {
+	if (!frm || !frm.doc) return;
+	if (!frm.doc.bom_no || !frm.doc.fg_completed_qty) return;
+	if (!["Manufacture", "Repack"].includes(frm.doc.purpose)) return;
+
+	return frappe.call({
+		method: "hariom_sanpra.stock_entry.get_scrap_items_for_qty",
+		args: {
+			bom_no: frm.doc.bom_no,
+			company: frm.doc.company,
+			qty: frm.doc.fg_completed_qty,
+			work_order: frm.doc.work_order,
+			job_card: frm.doc.job_card,
+		},
+		callback: function (r) {
+			const items = r.message || [];
+			if (!items.length) return;
+
+			const by_code = {};
+			items.forEach((item) => {
+				if (item && item.item_code) by_code[item.item_code] = item;
+			});
+
+			const existing_scrap = (frm.doc.items || []).filter((d) => d.is_scrap_item);
+
+			existing_scrap.forEach((row) => {
+				const item = by_code[row.item_code];
+				if (!item) return;
+
+				frappe.model.set_value(row.doctype, row.name, "qty", item.qty);
+				frappe.model.set_value(
+					row.doctype,
+					row.name,
+					"conversion_factor",
+					item.conversion_factor || row.conversion_factor || 1
+				);
+				frappe.model.set_value(
+					row.doctype,
+					row.name,
+					"transfer_qty",
+					flt(item.qty) * flt(item.conversion_factor || row.conversion_factor || 1)
+				);
+
+				if (item.uom) frappe.model.set_value(row.doctype, row.name, "uom", item.uom);
+				if (item.stock_uom)
+					frappe.model.set_value(row.doctype, row.name, "stock_uom", item.stock_uom);
+				if (item.description)
+					frappe.model.set_value(row.doctype, row.name, "description", item.description);
+				if (item.item_name)
+					frappe.model.set_value(row.doctype, row.name, "item_name", item.item_name);
+				if (item.to_warehouse)
+					frappe.model.set_value(row.doctype, row.name, "t_warehouse", item.to_warehouse);
+				if (item.from_warehouse)
+					frappe.model.set_value(row.doctype, row.name, "s_warehouse", item.from_warehouse);
+			});
+
+			Object.keys(by_code).forEach((code) => {
+				const item = by_code[code];
+				if (!existing_scrap.find((r) => r.item_code === code)) {
+					let d = frm.add_child("items");
+					d.item_code = code;
+					d.is_scrap_item = 1;
+					d.uom = item.uom || item.stock_uom;
+					d.stock_uom = item.stock_uom || item.uom;
+					d.conversion_factor = item.conversion_factor || 1;
+					d.qty = item.qty;
+					d.transfer_qty = flt(d.qty) * flt(d.conversion_factor);
+					d.description = item.description;
+					d.item_name = item.item_name;
+					d.allow_zero_valuation_rate = 1;
+					d.t_warehouse = item.to_warehouse || d.t_warehouse;
+					d.s_warehouse = item.from_warehouse || d.s_warehouse;
+				}
+			});
+
+			frm.refresh_field("items");
+		},
+	});
+}, 300);
+
+hariom_sanpra.stock_entry.add_stock_ledger_button = function (frm) {
+	if (!frm || !frm.doc || frm.doc.docstatus !== 1) return;
+
+	frm.add_custom_button(
+		__("Stock Ledger"),
+		function () {
+			frappe.route_options = {
+				company: frm.doc.company,
+				voucher_no: frm.doc.name,
+				from_date: frm.doc.posting_date,
+				to_date: frm.doc.posting_date,
+				work_order: frm.doc.work_order || undefined,
+			};
+			frappe.set_route("query-report", "Stock Ledger Hariom");
+		},
+		__("View")
+	);
+};
+
+function override_fg_completed_qty(frm) {
+	if (!frm || frm.__hariom_sanpra_fg_override) return;
+	frm.__hariom_sanpra_fg_override = true;
+
+	if (cur_frm && cur_frm.cscript) {
+		cur_frm.cscript.fg_completed_qty = function () {
+			// Only update scrap items; keep raw material quantities unchanged
+			hariom_sanpra.stock_entry.update_scrap_items(frm);
+		};
+	}
+}
+
+frappe.ui.form.on("Stock Entry", {
+	onload(frm) {
+		override_fg_completed_qty(frm);
+	},
+	refresh(frm) {
+		override_fg_completed_qty(frm);
+		hariom_sanpra.stock_entry.add_stock_ledger_button(frm);
+
+		frm.set_query("custom_raw_batch", function () {
+			return {
+				filters: {
+					item: frm.doc.custom_raw_item   // or use item_code if needed
+				}
+			};
+		});
+		frm.set_query("batch", "custom_raw_items", function (_doc, cdt, cdn) {
+			const row = locals[cdt][cdn];
+			return {
+				filters: {
+					item: row.item,
+				},
+			};
+		});
+		frm.set_query("custom_batch", function () {
+			return {
+				filters: {
+					item: frm.doc.custom_item_code   // or use item_code if needed
+				}
+			};
+		});
+		frm.set_query("custom_wastage_batch", function () {
+			return {
+				filters: {
+					item: frm.doc.custom_wastage_item   // or use item_code if needed
+				}
+			};
+		});
+	},
+	custom_add_data(frm) {
+		frm.call({
+			method: "hariom_sanpra.public.py.stock_entry.add_items",
+			args: {
+				doc: frm.doc
+			},
+			callback: function(r){
+				if (r.message && r.message.items) {
+					frm.doc.items = r.message.items;
+				}
+				frm.refresh_field("items");
+			}
+		})
+	}
+});

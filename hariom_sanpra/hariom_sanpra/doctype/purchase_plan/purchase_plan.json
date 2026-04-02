@@ -1,0 +1,111 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-03-29 17:11:20.636828",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "column_break_gdxv",
+  "date",
+  "section_break_oisv",
+  "marketing_order",
+  "section_break_hyad",
+  "column_break_cgev",
+  "column_break_ertt",
+  "check_material",
+  "column_break_isni",
+  "section_break_bsyz",
+  "purchase_plan_item"
+ ],
+ "fields": [
+  {
+   "fieldname": "purchase_plan_item",
+   "fieldtype": "Table",
+   "label": "Purchase Plan item",
+   "options": "Purchase Plan item"
+  },
+  {
+   "fieldname": "marketing_order",
+   "fieldtype": "Table",
+   "label": "Marketing Order",
+   "options": "Marketing Order"
+  },
+  {
+   "fieldname": "section_break_bsyz",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_hyad",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_cgev",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_ertt",
+   "fieldtype": "Column Break",
+   "label": " "
+  },
+  {
+   "fieldname": "check_material",
+   "fieldtype": "Button",
+   "label": "CHECK MATERIAL"
+  },
+  {
+   "fieldname": "column_break_isni",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "PP/26/.###"
+  },
+  {
+   "fieldname": "column_break_gdxv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "section_break_oisv",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "hide_toolbar": 1,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-03-29 17:21:52.773418",
+ "modified_by": "Administrator",
+ "module": "Hariom Sanpra",
+ "name": "Purchase Plan",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

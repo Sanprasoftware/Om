@@ -44,6 +44,12 @@ app_license = "mit"
 
 # include js in doctype views
 # doctype_js = {"doctype" : "public/js/doctype.js"}
+doctype_js = {
+	"Stock Entry": "public/js/stock_entry.js",
+	"Work Order": "public/js/work_order.js",
+	"Delivery Note": "public/js/delivery_note.js",
+	"Item": "public/js/item.js",
+}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
@@ -140,6 +146,22 @@ app_license = "mit"
 # 	}
 # }
 
+doc_events = {
+	"Item": {
+		"before_save": "hariom_sanpra.public.py.item.create_new_item"
+	},
+	"Delivery Note": {
+		"on_submit": "hariom_sanpra.public.py.delivery_note.create_stock_entry"
+	},
+	"Stock Entry": {
+		"before_save": "hariom_sanpra.public.py.stock_entry.calculation",
+		"before_insert": "hariom_sanpra.public.py.stock_entry.set_batch"
+	},
+	"BOM": {
+		"on_update_after_submit": "hariom_sanpra.public.py.bom.set_bom"
+	}
+}
+
 # Scheduled Tasks
 # ---------------
 
@@ -170,9 +192,9 @@ app_license = "mit"
 # ------------------------------
 #
 # Specify custom mixins to extend the standard doctype controller.
-# extend_doctype_class = {
-# 	"Task": "hariom_sanpra.custom.task.CustomTaskMixin"
-# }
+extend_doctype_class = {
+	"Work Order": "hariom_sanpra.overrides.work_order.WorkOrderTimeLogMixin"
+}
 
 # Overriding Methods
 # ------------------------------
@@ -249,4 +271,3 @@ app_license = "mit"
 # ------------
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
-
