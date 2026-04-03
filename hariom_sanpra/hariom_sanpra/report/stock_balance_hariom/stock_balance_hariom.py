@@ -5,7 +5,7 @@
 import json
 from operator import itemgetter
 from typing import Any, TypedDict
-
+ 
 import frappe
 from frappe import _
 from frappe.query_builder.functions import Coalesce
@@ -449,7 +449,7 @@ class StockBalanceReport:
 				{
 					"label": _("Opening Qty"),
 					"fieldname": "opening_qty",
-					"fieldtype": "Float",
+					"fieldtype": "Int",
 					"width": 120,
 					"convertible": "qty",
 					"precision":2,
@@ -457,7 +457,7 @@ class StockBalanceReport:
 				{
 					"label": _("In Qty"),
 					"fieldname": "in_qty",
-					"fieldtype": "Float",
+					"fieldtype": "Int",
 					"width": 120,
 					"convertible": "qty",
 					"precision":2,
@@ -471,7 +471,7 @@ class StockBalanceReport:
 				{
 					"label": _("Out Qty"),
 					"fieldname": "out_qty",
-					"fieldtype": "Float",
+					"fieldtype": "Int",
 					"width": 120,
 					"convertible": "qty",
 					"precision":2,
@@ -479,7 +479,7 @@ class StockBalanceReport:
 								{
 					"label": _("Balance Qty"),
 					"fieldname": "bal_qty",
-					"fieldtype": "Float",
+					"fieldtype": "Int",
 					"width": 120,
 					"convertible": "qty",
 					"precision":2,
@@ -500,7 +500,7 @@ class StockBalanceReport:
 				{
 					"label": _("Closing Qty"),
 					"fieldname": "closing_balance_qty",
-					"fieldtype": "Float",
+					"fieldtype": "Int",
 					"width": 120,
 					"convertible": "qty",
 					"precision":2,

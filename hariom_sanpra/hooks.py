@@ -147,9 +147,9 @@ doctype_js = {
 # }
 
 doc_events = {
-	"Item": {
-		"before_save": "hariom_sanpra.public.py.item.create_new_item"
-	},
+	# "Item": {
+	# 	"before_save": "hariom_sanpra.public.py.item.create_new_item"
+	# },
 	"Delivery Note": {
 		"on_submit": "hariom_sanpra.public.py.delivery_note.create_stock_entry"
 	},

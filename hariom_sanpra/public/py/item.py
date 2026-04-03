@@ -14,23 +14,23 @@
 #             new_doc.save()
             
 
-import frappe
+# import frappe
 
-def create_new_item(doc, method=None):
+# def create_new_item(doc, method=None):
 
-    if " - " in doc.item_code:
-        return
+#     if " - " in doc.item_code:
+#         return
 
-    if doc.custom_item_process:
-        for row in doc.custom_item_process:
-            item_code = doc.item_code
-            item_name = row.operation
+#     if doc.custom_item_process:
+#         for row in doc.custom_item_process:
+#             item_code = doc.item_code
+#             item_name = row.operation
 
-            new_item_code = item_code + " - " + item_name
+#             new_item_code = item_code + " - " + item_name
 
-            new_doc = frappe.copy_doc(doc)
+#             new_doc = frappe.copy_doc(doc)
 
-            new_doc.item_code = new_item_code
-            new_doc.item_name = new_item_code
+#             new_doc.item_code = new_item_code
+#             new_doc.item_name = new_item_code
 
-            new_doc.insert(ignore_permissions=True)
+#             new_doc.insert(ignore_permissions=True)
