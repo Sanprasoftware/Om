@@ -52,6 +52,45 @@ def _get_raw_rows(doc):
     return list(grouped_rows.values())
 
 
+def _get_small_item_rows(doc):
+    rows = []
+
+    for row in doc.get("custom_rk__small_items") or []:
+        warehouse = row.get("warehouse")
+        item_code = row.get("item")
+        qty = flt(row.get("qty"))
+        qty_count = cint(qty)
+
+        if not (warehouse or item_code or qty):
+            continue
+
+        if not warehouse:
+            frappe.throw("Please fill Warehouse in all RK - Small Items rows")
+
+        if not item_code:
+            frappe.throw("Please fill Item in all RK - Small Items rows")
+
+        if qty <= 0:
+            frappe.throw("Qty must be greater than 0 in all RK - Small Items rows")
+
+        if qty != qty_count:
+            frappe.throw("Qty in RK - Small Items must be a whole number")
+
+        rows.append(
+            {
+                "warehouse": warehouse,
+                "item_code": item_code,
+                "qty": qty_count,
+                "batch": row.get("batch"),
+                "meter_length": flt(row.get("meter_length")),
+                "line_meter": row.get("line_meter"),
+                "trimkg": flt(row.get("trimkg")),
+            }
+        )
+
+    return rows
+
+
 @frappe.whitelist()
 def add_items(doc):
     if isinstance(doc, str):
@@ -147,6 +186,95 @@ def add_items(doc):
                 "t_warehouse": wastage_warehouse,
                 "batch_no": wastage_batch,
                 "uom": wastage_uom,
+                "is_finished_item": 0,
+                "is_scrap_item": 1,
+                "set_basic_rate_manually": 1,
+            },
+        )
+
+    return doc
+
+
+@frappe.whitelist()
+def add_rk_items(doc):
+    if isinstance(doc, str):
+        doc = json.loads(doc)
+
+    doc = frappe.get_doc(doc)
+
+    if doc.purpose != "Repack":
+        return doc
+
+    raw_rows = _get_raw_rows(doc)
+    small_item_rows = _get_small_item_rows(doc)
+
+    wastage_warehouse = doc.custom_wastage_warehouse
+    wastage_item = doc.custom_wastage_item
+    wastage_qty = flt(doc.custom_wastage_qty)
+    wastage_batch = doc.custom_wastage_batch
+
+    if not raw_rows:
+        frappe.throw("Please add at least one row in Custom Raw Items with Warehouse, Item and Qty")
+
+    if not small_item_rows:
+        frappe.throw("Please add at least one row in RK - Small Items with Warehouse, Item and Qty")
+
+    if wastage_qty < 0:
+        frappe.throw("Custom Wastage Qty cannot be negative")
+
+    doc.set("items", [])
+
+    for raw_row in raw_rows:
+        doc.append(
+            "items",
+            {
+                "item_code": raw_row["item_code"],
+                "qty": flt(raw_row["qty"]),
+                "s_warehouse": raw_row["warehouse"],
+                "batch_no": raw_row["batch"],
+                "uom": _get_stock_uom(raw_row["item_code"]),
+                "is_finished_item": 0,
+                "is_scrap_item": 0,
+                "custom_size_1": flt(raw_row["size_1"]),
+                "custom_size_2": flt(raw_row["size_2"]),
+            },
+        )
+
+    for row in small_item_rows:
+        fg_uom = _get_stock_uom(row["item_code"])
+
+        for _ in range(row["qty"]):
+            doc.append(
+                "items",
+                {
+                    "item_code": row["item_code"],
+                    "qty": 1,
+                    "t_warehouse": row["warehouse"],
+                    "batch_no": row["batch"],
+                    "uom": fg_uom,
+                    "is_finished_item": 1,
+                    "is_scrap_item": 0,
+                    "custom_meter_length": row["meter_length"],
+                    "custom_line_meter": row["line_meter"],
+                    "custom_trimkg": row["trimkg"],
+                    "set_basic_rate_manually": 1,
+                },
+            )
+
+    if wastage_qty > 0:
+        if not (wastage_warehouse and wastage_item):
+            frappe.throw(
+                "Please fill Custom Wastage Warehouse and Custom Wastage Item when Custom Wastage Qty is set"
+            )
+
+        doc.append(
+            "items",
+            {
+                "item_code": wastage_item,
+                "qty": wastage_qty,
+                "t_warehouse": wastage_warehouse,
+                "batch_no": wastage_batch,
+                "uom": _get_stock_uom(wastage_item),
                 "is_finished_item": 0,
                 "is_scrap_item": 1,
                 "set_basic_rate_manually": 1,

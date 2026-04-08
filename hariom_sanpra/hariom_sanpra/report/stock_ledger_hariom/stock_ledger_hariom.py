@@ -11,7 +11,7 @@
 # 	is_reposting_item_valuation_in_progress,
 # 	update_included_uom_in_report,
 # )
-
+ 
 
 # def execute(filters=None):
 # 	is_reposting_item_valuation_in_progress()
@@ -289,9 +289,11 @@ def execute(filters=None):
 
 	available_serial_nos = {}
 
-	inventory_dimension_filters_applied = base_stock_ledger.check_inventory_dimension_filters_applied(
-		filters
-	)
+	# inventory_dimension_filters_applied = base_stock_ledger.check_inventory_dimension_filters_applied(
+	# 	filters
+	# )
+
+	inventory_dimension_filters_applied = False
 
 	batch_balance_dict = frappe._dict({})
 
