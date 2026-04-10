@@ -1,22 +1,51 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "naming_series:",
  "creation": "2026-03-18 12:45:55.461855",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "stock_entry",
-  "column_break_garo",
   "date",
+  "naming_series",
+  "column_break_egdd",
+  "shift",
+  "column_break_qsfp",
+  "mc",
+  "column_break_bzfw",
+  "stock_entry",
+  "section_break_fltp",
   "column_break_ykqm",
+  "spot_gsm_type",
+  "column_break_lntg",
+  "lot_no",
+  "column_break_ylar",
+  "optr",
+  "column_break_wlaj",
+  "sup",
+  "section_break_pvrp",
+  "job_name",
+  "spot_gsm",
+  "column_break_ryna",
+  "batch_no",
+  "column_break_jraf",
   "type",
+  "column_break_faxg",
+  "grade",
   "section_break_ubnp",
-  "spot_gsm_item"
+  "spot_gsm_item",
+  "section_break_igfv",
+  "remark",
+  "section_break_uakz",
+  "checked_by",
+  "column_break_wuec",
+  "approved_by"
  ],
  "fields": [
   {
    "fieldname": "stock_entry",
    "fieldtype": "Link",
+   "in_standard_filter": 1,
    "label": "Stock Entry",
    "options": "Stock Entry"
   },
@@ -31,10 +60,6 @@
    "options": "SPOT GSM Item"
   },
   {
-   "fieldname": "column_break_garo",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "date",
    "fieldtype": "Date",
    "label": "Date"
@@ -44,21 +69,156 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "type",
+   "fieldname": "shift",
+   "fieldtype": "Link",
+   "label": "Shift",
+   "options": "Shift"
+  },
+  {
+   "fieldname": "mc",
+   "fieldtype": "Link",
+   "label": "M/C",
+   "options": "Machine Name"
+  },
+  {
+   "fieldname": "column_break_lntg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "lot_no",
+   "fieldtype": "Int",
+   "label": "LOT No"
+  },
+  {
+   "fieldname": "column_break_ylar",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "optr",
+   "fieldtype": "Link",
+   "label": "OPTR",
+   "options": "Operator Name"
+  },
+  {
+   "fieldname": "column_break_wlaj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sup",
+   "fieldtype": "Data",
+   "label": "SUP"
+  },
+  {
+   "fieldname": "section_break_fltp",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_egdd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_qsfp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_bzfw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "spot_gsm_type",
    "fieldtype": "Select",
    "in_list_view": 1,
-   "label": "Type",
+   "label": "Spot GSM Type",
    "options": "\nPROCESS\nFABRIC",
    "reqd": 1
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Data",
+   "label": "Type"
+  },
+  {
+   "fieldname": "section_break_pvrp",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "job_name",
+   "fieldtype": "Link",
+   "label": "Job Name",
+   "options": "Item"
+  },
+  {
+   "fieldname": "column_break_ryna",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "batch_no",
+   "fieldtype": "Link",
+   "label": "Batch No",
+   "options": "Batch No"
+  },
+  {
+   "fieldname": "column_break_jraf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Naming Series"
+  },
+  {
+   "fieldname": "section_break_igfv",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "remark",
+   "fieldtype": "Small Text",
+   "label": "Remark"
+  },
+  {
+   "fieldname": "section_break_uakz",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "approved_by",
+   "fieldtype": "Link",
+   "label": "APPROVED BY",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "checked_by",
+   "fieldtype": "Link",
+   "label": "CHECKED BY",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "column_break_wuec",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "spot_gsm",
+   "fieldtype": "Data",
+   "label": "Spot GSM"
+  },
+  {
+   "fieldname": "column_break_faxg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "grade",
+   "fieldtype": "Data",
+   "label": "Grade"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-03-18 14:05:28.104340",
+ "modified": "2026-04-10 13:51:46.910250",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Spot GSM",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {

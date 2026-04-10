@@ -1,0 +1,283 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-04-08 16:48:39.983971",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "date",
+  "naming_series",
+  "column_break_vqkh",
+  "shift",
+  "column_break_gjny",
+  "batch_no",
+  "section_break_riev",
+  "job_name",
+  "structure",
+  "column_break_fjke",
+  "bond",
+  "shade",
+  "column_break_liez",
+  "ref_doc",
+  "dimension",
+  "section_break_hxju",
+  "extruder",
+  "section_break_qgdf",
+  "a_total_qty",
+  "column_break_eqsm",
+  "a_total_",
+  "column_break_njmi",
+  "b_total_qty",
+  "column_break_zszx",
+  "b_toal_",
+  "section_break_qxbf",
+  "std_gsm",
+  "actual",
+  "column_break_zjcl",
+  "min_std_gsm",
+  "laminated_quality",
+  "column_break_tpsk",
+  "max_std_gsm",
+  "variation",
+  "section_break_ooir",
+  "remark",
+  "section_break_hsqc",
+  "approved_by_qa",
+  "column_break_tcut",
+  "prod_dept"
+ ],
+ "fields": [
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Rev Date"
+  },
+  {
+   "fieldname": "column_break_liez",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Naming Series",
+   "read_only": 1
+  },
+  {
+   "fieldname": "job_name",
+   "fieldtype": "Link",
+   "label": "Job Name",
+   "options": "Item"
+  },
+  {
+   "fieldname": "ref_doc",
+   "fieldtype": "Link",
+   "label": "Ref. Doc.",
+   "options": "Stock Entry"
+  },
+  {
+   "fieldname": "structure",
+   "fieldtype": "Data",
+   "label": "Structure"
+  },
+  {
+   "fieldname": "bond",
+   "fieldtype": "Data",
+   "label": "Bond"
+  },
+  {
+   "fieldname": "shade",
+   "fieldtype": "Data",
+   "label": "Shade"
+  },
+  {
+   "fieldname": "column_break_vqkh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_riev",
+   "fieldtype": "Section Break",
+   "label": "Extrusion Lamination"
+  },
+  {
+   "fieldname": "dimension",
+   "fieldtype": "Data",
+   "label": "Dimension"
+  },
+  {
+   "fieldname": "section_break_qxbf",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "std_gsm",
+   "fieldtype": "Float",
+   "label": "STD GSM",
+   "precision": "2"
+  },
+  {
+   "fieldname": "actual",
+   "fieldtype": "Float",
+   "label": "Actual",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_tpsk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "laminated_quality",
+   "fieldtype": "Data",
+   "label": "Laminated Quality"
+  },
+  {
+   "fieldname": "variation",
+   "fieldtype": "Float",
+   "label": "Variation",
+   "precision": "2"
+  },
+  {
+   "fieldname": "section_break_ooir",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "remark",
+   "fieldtype": "Small Text",
+   "label": "Remark"
+  },
+  {
+   "fieldname": "shift",
+   "fieldtype": "Link",
+   "label": "Shift",
+   "options": "Shift"
+  },
+  {
+   "fieldname": "section_break_hxju",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_hsqc",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "approved_by_qa",
+   "fieldtype": "Link",
+   "label": "Approved By Q.A",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "column_break_tcut",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "prod_dept",
+   "fieldtype": "Link",
+   "label": "Prod. Dept",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "section_break_qgdf",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_eqsm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_njmi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_zszx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "b_toal_",
+   "fieldtype": "Float",
+   "label": "B Total %",
+   "precision": "2"
+  },
+  {
+   "fieldname": "batch_no",
+   "fieldtype": "Link",
+   "label": "batch No",
+   "options": "Batch No"
+  },
+  {
+   "fieldname": "a_total_qty",
+   "fieldtype": "Float",
+   "label": "A Total Qty",
+   "precision": "2"
+  },
+  {
+   "fieldname": "a_total_",
+   "fieldtype": "Float",
+   "label": "A Total %",
+   "precision": "2"
+  },
+  {
+   "fieldname": "b_total_qty",
+   "fieldtype": "Float",
+   "label": "B Total Qty",
+   "precision": "2"
+  },
+  {
+   "fieldname": "extruder",
+   "fieldtype": "Table",
+   "label": "Extruder",
+   "options": "Extruder"
+  },
+  {
+   "fieldname": "column_break_zjcl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "min_std_gsm",
+   "fieldtype": "Float",
+   "label": "Min STD GSM",
+   "precision": "2"
+  },
+  {
+   "fieldname": "max_std_gsm",
+   "fieldtype": "Float",
+   "label": "Max STD GSM",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_gjny",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_fjke",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-04-09 14:01:54.797758",
+ "modified_by": "rutuja@sanpra.co.in",
+ "module": "Hariom Sanpra",
+ "name": "First Sheet Approval",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}
