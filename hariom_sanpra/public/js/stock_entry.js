@@ -298,16 +298,13 @@ frappe.ui.form.on("Stock Entry Detail", {
 
 frappe.ui.form.on("Raw Item", {
     item(frm, cdt, cdn) {
-        let row = locals[cdt][cdn];
 
-        if (frm.doc.stock_entry_type) {
-            frappe.model.set_value( 
-                cdt,
-                cdn,
-                "stock_entry_type",
-                frm.doc.stock_entry_type
-            );
+        frappe.model.set_value(cdt, cdn, "stock_entry_type", frm.doc.stock_entry_type);
+
+        if (frm.doc.stock_entry_type === "GD REWINDING") {
+            frappe.model.set_value(cdt, cdn, "gsm", frm.doc.custom_gsm);
         }
+
     }
 });
 

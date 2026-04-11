@@ -15,7 +15,12 @@
   "line_meter",
   "trimkg",
   "one_total_wt",
-  "total_weight"
+  "total_weight",
+  "length",
+  "width",
+  "pcs",
+  "temp",
+  "machine_speed"
  ],
  "fields": [
   {
@@ -79,13 +84,41 @@
    "fieldname": "total_weight",
    "fieldtype": "Float",
    "label": "TOTAL WEIGHT"
+  },
+  {
+   "fieldname": "length",
+   "fieldtype": "Float",
+   "label": "Length",
+   "precision": "2"
+  },
+  {
+   "fieldname": "width",
+   "fieldtype": "Float",
+   "label": "Width",
+   "precision": "2"
+  },
+  {
+   "fieldname": "pcs",
+   "fieldtype": "Int",
+   "label": "PCS"
+  },
+  {
+   "fieldname": "temp",
+   "fieldtype": "Data",
+   "label": "Temp"
+  },
+  {
+   "fieldname": "machine_speed",
+   "fieldtype": "Float",
+   "label": "Machine Speed",
+   "precision": "2"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-04-08 12:46:07.290612",
+ "modified": "2026-04-11 17:00:53.042851",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "RK - Small Items",

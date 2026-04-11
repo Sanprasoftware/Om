@@ -22,7 +22,8 @@
   "column_break_kujf",
   "total_fg",
   "column_break_vvac",
-  "total_working_days"
+  "total_working_days",
+  "amended_from"
  ],
  "fields": [
   {
@@ -109,13 +110,23 @@
    "fieldname": "get_stock",
    "fieldtype": "Button",
    "label": "Get Stock"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Forcast",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "grid_page_length": 50,
- "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2026-03-29 17:22:12.839122",
+ "modified": "2026-04-10 18:03:45.487457",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Forcast",

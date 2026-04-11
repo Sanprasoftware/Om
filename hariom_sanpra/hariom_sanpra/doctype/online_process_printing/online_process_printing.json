@@ -1,19 +1,32 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "naming_series:",
  "creation": "2026-03-18 12:47:19.141881",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "stock_entry",
-  "column_break_xsts",
-  "column_break_pvpl",
-  "batch_no",
-  "column_break_iapp",
   "date",
+  "job_name",
+  "std_ink_gsm",
+  "column_break_xsts",
   "shift",
+  "topbot_shade",
+  "min_ink_gsm",
+  "naming_series",
+  "column_break_pvpl",
+  "stock_entry",
+  "batch_no",
+  "max_ink_gsm",
+  "mc_name",
   "section_break_xvdm",
-  "table_ivmb"
+  "items",
+  "section_break_wvnv",
+  "remark",
+  "section_break_gyfj",
+  "checked_by",
+  "column_break_pbge",
+  "approved_by"
  ],
  "fields": [
   {
@@ -47,15 +60,84 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "column_break_iapp",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "section_break_xvdm",
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "table_ivmb",
+   "fieldname": "section_break_wvnv",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "remark",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Remark"
+  },
+  {
+   "fieldname": "section_break_gyfj",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "checked_by",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Checked BY",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "column_break_pbge",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "approved_by",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Approved By",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "job_name",
+   "fieldtype": "Link",
+   "label": "Job Name",
+   "options": "Item"
+  },
+  {
+   "fieldname": "topbot_shade",
+   "fieldtype": "Data",
+   "label": "Top/Bot Shade"
+  },
+  {
+   "fieldname": "std_ink_gsm",
+   "fieldtype": "Float",
+   "label": "STD Ink GSM",
+   "precision": "2"
+  },
+  {
+   "fieldname": "max_ink_gsm",
+   "fieldtype": "Float",
+   "label": "Max Ink GSM",
+   "precision": "2"
+  },
+  {
+   "fieldname": "min_ink_gsm",
+   "fieldtype": "Float",
+   "label": "Min Ink GSM",
+   "precision": "2"
+  },
+  {
+   "fieldname": "mc_name",
+   "fieldtype": "Link",
+   "label": "M/C Name",
+   "options": "Machine Name"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Naming Series"
+  },
+  {
+   "fieldname": "items",
    "fieldtype": "Table",
    "label": "Items",
    "options": "ONLINE PROCESS REPORT"
@@ -64,10 +146,11 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-03-18 18:00:40.111392",
- "modified_by": "saifa@sanpra.co.in",
+ "modified": "2026-04-10 17:22:55.733739",
+ "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Online Process Printing",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {
