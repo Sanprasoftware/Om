@@ -156,6 +156,25 @@ frappe.query_reports["Stock Balance Hariom"] = {
 		},
 	],
 
+	get_datatable_options(options) {
+		const existing_on_sort = options.events?.onSortColumn;
+
+		return {
+			...options,
+			serialNoColumn: false,
+			events: {
+				...(options.events || {}),
+				onSortColumn(column) {
+					if (existing_on_sort) {
+						existing_on_sort.call(this, column);
+					}
+
+					update_serial_numbers(this);
+				},
+			},
+		};
+	},
+
 	formatter: function (value, row, column, data, default_formatter) {
 		value = default_formatter(value, row, column, data);
 
@@ -177,3 +196,25 @@ frappe.query_reports["Stock Balance Hariom"] = {
 };
 
 erpnext.utils.add_inventory_dimensions("Stock Balance Hariom", 8);
+
+function update_serial_numbers(datatable) {
+	if (!datatable?.datamanager?.hasColumnById("sr_no")) {
+		return;
+	}
+
+	const sr_no_col_index = datatable.datamanager.getColumnIndexById("sr_no");
+
+	datatable.datamanager.rowViewOrder.forEach((row_index, view_index) => {
+		const row = datatable.datamanager.getRow(row_index);
+		const sr_no = String(view_index + 1);
+		if (row?.[sr_no_col_index]) {
+			row[sr_no_col_index].content = sr_no;
+			row[sr_no_col_index].html = sr_no;
+		}
+		if (datatable.datamanager.data?.[row_index]) {
+			datatable.datamanager.data[row_index].sr_no = view_index + 1;
+		}
+	});
+
+	datatable.rowmanager.refreshRows();
+}

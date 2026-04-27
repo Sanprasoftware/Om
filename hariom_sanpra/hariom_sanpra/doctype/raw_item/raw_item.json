@@ -48,7 +48,6 @@
    "options": "Batch"
   },
   {
-   "depends_on": "eval: doc.stock_entry_type == \"JOINT M/C\"",
    "fieldname": "size_1",
    "fieldtype": "Float",
    "in_list_view": 1,
@@ -104,7 +103,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-04-10 12:55:38.878826",
+ "modified": "2026-04-11 18:37:33.020755",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Raw Item",

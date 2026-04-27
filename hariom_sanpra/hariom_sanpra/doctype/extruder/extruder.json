@@ -1,0 +1,115 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-04-08 17:22:11.432153",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "a_extruder_column",
+  "a_company",
+  "a_item",
+  "a_grade",
+  "a_qty",
+  "a_percent",
+  "column_break_vhtu",
+  "b_company",
+  "b_item",
+  "b_grade",
+  "b_qty",
+  "b_percent"
+ ],
+ "fields": [
+  {
+   "fieldname": "a_extruder_column",
+   "fieldtype": "Column Break",
+   "label": "A Extruder"
+  },
+  {
+   "fieldname": "a_company",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "A Company"
+  },
+  {
+   "fieldname": "a_item",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "A Item",
+   "options": "Item"
+  },
+  {
+   "fieldname": "a_grade",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "A Grade"
+  },
+  {
+   "fieldname": "a_qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "A Qty",
+   "precision": "2"
+  },
+  {
+   "fieldname": "a_percent",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "A %",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_vhtu",
+   "fieldtype": "Column Break",
+   "label": "B Extruder"
+  },
+  {
+   "fieldname": "b_company",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "B Company"
+  },
+  {
+   "fieldname": "b_item",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "B Item",
+   "options": "Item"
+  },
+  {
+   "fieldname": "b_grade",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "B Grade"
+  },
+  {
+   "fieldname": "b_qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "B Qty",
+   "precision": "2"
+  },
+  {
+   "fieldname": "b_percent",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "B %",
+   "precision": "2"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-04-21 17:48:38.949575",
+ "modified_by": "Administrator",
+ "module": "Hariom Sanpra",
+ "name": "Extruder",
+ "owner": "saifa@sanpra.co.in",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,144 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-04-22 12:14:16.829519",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "pipe_jambo_items_section",
+  "source_warehouse",
+  "column_break_kkpd",
+  "target_warehouse",
+  "column_break_zcih",
+  "item_code",
+  "section_break_uqjg",
+  "use_serial_no__batch_fields",
+  "serial_and_batch_bundle",
+  "batch",
+  "column_break_nygq",
+  "is_scrap_item",
+  "is_finished_item",
+  "section_break_qqhm",
+  "qty",
+  "column_break_apzi",
+  "uom"
+ ],
+ "fields": [
+  {
+   "fieldname": "pipe_jambo_items_section",
+   "fieldtype": "Section Break",
+   "label": "Pipe Jambo Items"
+  },
+  {
+   "fieldname": "source_warehouse",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Source Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "column_break_kkpd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "target_warehouse",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Target Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "column_break_zcih",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Code",
+   "options": "Item"
+  },
+  {
+   "fieldname": "section_break_uqjg",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "use_serial_no__batch_fields",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": " Use Serial No / Batch Fields"
+  },
+  {
+   "depends_on": "eval:doc.use_serial_no__batch_fields ==\"0\"",
+   "fieldname": "serial_and_batch_bundle",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Serial and Batch Bundle",
+   "options": "Serial and Batch Bundle"
+  },
+  {
+   "depends_on": "eval:doc.use_serial_no__batch_fields ==\"1\"",
+   "fieldname": "batch",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Batch",
+   "options": "Batch"
+  },
+  {
+   "fieldname": "column_break_nygq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_scrap_item",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": " Is Scrap Item"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_finished_item",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": " Is Finished Item"
+  },
+  {
+   "fieldname": "section_break_qqhm",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Qty"
+  },
+  {
+   "fieldname": "column_break_apzi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "uom",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Uom",
+   "options": "UOM"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-04-23 15:48:22.765065",
+ "modified_by": "Administrator",
+ "module": "Hariom Sanpra",
+ "name": "Pipe Jambo Items",
+ "owner": "rutuja@sanpra.co.in",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

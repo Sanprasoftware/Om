@@ -1,0 +1,142 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-04-22 10:40:56.903182",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "pp_export_jambo_section",
+  "source_warehouse",
+  "column_break_dmvr",
+  "target_warehouse",
+  "column_break_wdnq",
+  "item_code",
+  "section_break_ucud",
+  "use_serial_no__batch_fields",
+  "serial_and_batch_bundle",
+  "batch",
+  "column_break_zmdw",
+  "is_scrap_item",
+  "is_finished_item",
+  "section_break_wedl",
+  "qty",
+  "column_break_gyxi",
+  "uom"
+ ],
+ "fields": [
+  {
+   "fieldname": "pp_export_jambo_section",
+   "fieldtype": "Section Break",
+   "label": "PP Export Jambo "
+  },
+  {
+   "fieldname": "source_warehouse",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Source Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "column_break_dmvr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "target_warehouse",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Target Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "column_break_wdnq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Code",
+   "options": "Item"
+  },
+  {
+   "fieldname": "section_break_ucud",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "use_serial_no__batch_fields",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Use Serial No / Batch Fields"
+  },
+  {
+   "fieldname": "serial_and_batch_bundle",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Serial and Batch Bundle",
+   "options": "Serial and Batch Bundle"
+  },
+  {
+   "fieldname": "batch",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Batch",
+   "options": "Batch"
+  },
+  {
+   "fieldname": "column_break_zmdw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_scrap_item",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": " Is Scrap Item"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_finished_item",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Finished Item"
+  },
+  {
+   "fieldname": "section_break_wedl",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Qty"
+  },
+  {
+   "fieldname": "column_break_gyxi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "uom",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "UOM",
+   "options": "UOM"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-04-22 12:41:48.073797",
+ "modified_by": "Administrator",
+ "module": "Hariom Sanpra",
+ "name": "PP Export Jambo Items",
+ "owner": "rutuja@sanpra.co.in",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

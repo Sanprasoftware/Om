@@ -34,7 +34,31 @@
   "t17",
   "t18",
   "t19",
-  "t20"
+  "t20",
+  "lince_c_die_temp_actual_section",
+  "a1",
+  "a2",
+  "a3",
+  "a_4",
+  "a_5",
+  "column_break_zalu",
+  "a_6",
+  "a_7",
+  "a_8",
+  "a_9",
+  "a_10",
+  "column_break_fzgn",
+  "a_11",
+  "a_12",
+  "a_13",
+  "a_14",
+  "a_15",
+  "column_break_ipzl",
+  "a_16",
+  "a_17",
+  "a_18",
+  "a_19",
+  "a_20"
  ],
  "fields": [
   {
@@ -64,7 +88,7 @@
   {
    "fieldname": "section_break_icnw",
    "fieldtype": "Section Break",
-   "label": "LINCE C  -- DIE TEMP"
+   "label": "LINCE CDIE TEMP Target"
   },
   {
    "fieldname": "t1",
@@ -217,13 +241,150 @@
    "in_list_view": 1,
    "label": "T20",
    "precision": "2"
+  },
+  {
+   "fieldname": "lince_c_die_temp_actual_section",
+   "fieldtype": "Section Break",
+   "label": "LINCE C DIE TEMP Actual"
+  },
+  {
+   "fieldname": "a1",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "A1"
+  },
+  {
+   "fieldname": "a2",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "A2"
+  },
+  {
+   "fieldname": "a3",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "A3"
+  },
+  {
+   "fieldname": "a_4",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "A 4"
+  },
+  {
+   "fieldname": "a_5",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "A 5"
+  },
+  {
+   "fieldname": "column_break_zalu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "a_6",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "A 6"
+  },
+  {
+   "fieldname": "a_7",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "A 7"
+  },
+  {
+   "fieldname": "a_8",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "A 8"
+  },
+  {
+   "fieldname": "a_9",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "A 9"
+  },
+  {
+   "fieldname": "a_10",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "A 10"
+  },
+  {
+   "fieldname": "column_break_fzgn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "a_11",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "A 11"
+  },
+  {
+   "fieldname": "a_12",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "A 12"
+  },
+  {
+   "fieldname": "a_13",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "A 13"
+  },
+  {
+   "fieldname": "a_14",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "A 14"
+  },
+  {
+   "fieldname": "a_15",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "A 15"
+  },
+  {
+   "fieldname": "column_break_ipzl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "a_16",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "A 16"
+  },
+  {
+   "fieldname": "a_17",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "A 17"
+  },
+  {
+   "fieldname": "a_18",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "A 18"
+  },
+  {
+   "fieldname": "a_19",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "A 19"
+  },
+  {
+   "fieldname": "a_20",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "A 20"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-02-21 17:50:14.560722",
+ "modified": "2026-04-15 17:09:51.216387",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Inspection DIE TEMP",

@@ -1,0 +1,186 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-04-21 10:50:06.671444",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "date",
+  "operator_name",
+  "machine_name",
+  "stock_entry_type",
+  "column_break_kwyk",
+  "shift",
+  "tag_in",
+  "tag_out",
+  "target_prod_per_shift_rolls",
+  "column_break_riio",
+  "man_power",
+  "batch",
+  "machine_no",
+  "target_wastage__per_shift",
+  "naming_series",
+  "raw_items_section",
+  "raw_items",
+  "fg_items",
+  "wastage_items",
+  "add_data",
+  "items"
+ ],
+ "fields": [
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date"
+  },
+  {
+   "fieldname": "operator_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Operator Name",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "machine_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Machine Name",
+   "options": "Machine Name"
+  },
+  {
+   "fieldname": "column_break_kwyk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "shift",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Shift",
+   "options": "Shift"
+  },
+  {
+   "fieldname": "tag_in",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Tag In"
+  },
+  {
+   "fieldname": "tag_out",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Tag Out"
+  },
+  {
+   "fieldname": "target_prod_per_shift_rolls",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Target Prod. Per Shift Rolls"
+  },
+  {
+   "fieldname": "column_break_riio",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "man_power",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Man Power"
+  },
+  {
+   "fieldname": "batch",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Batch",
+   "options": "Batch No"
+  },
+  {
+   "fieldname": "machine_no",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Machine No."
+  },
+  {
+   "fieldname": "target_wastage__per_shift",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Target Wastage % Per Shift"
+  },
+  {
+   "fieldname": "raw_items_section",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "fg_items",
+   "fieldtype": "Table",
+   "label": "FG Items",
+   "options": "navrang rewinding FG"
+  },
+  {
+   "fieldname": "wastage_items",
+   "fieldtype": "Table",
+   "label": "Wastage Items",
+   "options": "navrange rewinding wastage"
+  },
+  {
+   "fieldname": "add_data",
+   "fieldtype": "Button",
+   "label": "Add Data"
+  },
+  {
+   "default": "NAVRANG-REWINDING M/C",
+   "fieldname": "stock_entry_type",
+   "fieldtype": "Select",
+   "label": "Stock Entry Type",
+   "options": "NAVRANG-REWINDING M/C"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Naming Series"
+  },
+  {
+   "fieldname": "raw_items",
+   "fieldtype": "Table",
+   "label": "Raw Items",
+   "options": "Navrang rewinding Raw"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "navrang rewinding items"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-04-21 18:04:14.859180",
+ "modified_by": "Administrator",
+ "module": "Hariom Sanpra",
+ "name": "Navrang Rewinding Machine",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "rutuja@sanpra.co.in",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

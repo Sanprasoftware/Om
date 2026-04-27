@@ -1,0 +1,28 @@
+{
+ "add_total_row": 1,
+ "add_translate_data": 0,
+ "columns": [],
+ "creation": "2026-04-25 15:47:32.922871",
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": null,
+ "modified": "2026-04-25 15:47:32.922871",
+ "modified_by": "Administrator",
+ "module": "Hariom Sanpra",
+ "name": "Maintenance History Card Report",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "Maintenance History Card",
+ "report_name": "Maintenance History Card Report",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ],
+ "timeout": 0
+}

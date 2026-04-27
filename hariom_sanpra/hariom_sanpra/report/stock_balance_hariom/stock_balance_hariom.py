@@ -264,6 +264,7 @@ class StockBalanceReport:
 			):
 				continue
 
+			report_data.sr_no = len(self.data) + 1
 			self.data.append(report_data)
 
 	def get_sre_reserved_qty_details(self) -> dict:
@@ -397,6 +398,13 @@ class StockBalanceReport:
 
 	def get_columns(self):
 		columns = [
+			{
+				"label": _("Sr No"),
+				"fieldname": "sr_no",
+				"fieldtype": "Int",
+				"width": 70,
+				"sortable": False,
+			},
 			{
 				"label": _("Item"),
 				"fieldname": "item_code",

@@ -1,0 +1,193 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-04-20 17:40:40.822738",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "date",
+  "operator_name",
+  "machine_name",
+  "machine_speed",
+  "roll_slitting_width_mm",
+  "column_break_lveh",
+  "shift",
+  "tag_in",
+  "tag_out",
+  "no_of_coils_ups",
+  "roll_slitting_width_gp",
+  "column_break_hrmb",
+  "man_power",
+  "batch",
+  "machine_no",
+  "trim_wastage_mm",
+  "naming_series",
+  "stock_entry_type",
+  "section_break_xdqt",
+  "raw_items",
+  "fg_item",
+  "wastage_items",
+  "add_data",
+  "items"
+ ],
+ "fields": [
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "operator_name",
+   "fieldtype": "Link",
+   "label": "Operator Name",
+   "options": "Operator Name"
+  },
+  {
+   "fieldname": "machine_name",
+   "fieldtype": "Link",
+   "label": "Machine Name",
+   "options": "Machine Name"
+  },
+  {
+   "fieldname": "column_break_lveh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "shift",
+   "fieldtype": "Link",
+   "label": "Shift",
+   "options": "Shift"
+  },
+  {
+   "fieldname": "tag_in",
+   "fieldtype": "Int",
+   "label": "Tag In"
+  },
+  {
+   "fieldname": "tag_out",
+   "fieldtype": "Int",
+   "label": "Tag Out"
+  },
+  {
+   "fieldname": "column_break_hrmb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "man_power",
+   "fieldtype": "Int",
+   "label": "Man Power"
+  },
+  {
+   "fieldname": "batch",
+   "fieldtype": "Link",
+   "label": "Batch",
+   "options": "Batch No"
+  },
+  {
+   "fieldname": "machine_no",
+   "fieldtype": "Int",
+   "label": "Machine No"
+  },
+  {
+   "fieldname": "machine_speed",
+   "fieldtype": "Float",
+   "label": "Machine Speed"
+  },
+  {
+   "fieldname": "roll_slitting_width_mm",
+   "fieldtype": "Data",
+   "label": "Roll Slitting Width (MM)"
+  },
+  {
+   "fieldname": "no_of_coils_ups",
+   "fieldtype": "Int",
+   "label": "No. of Coils (UPS)"
+  },
+  {
+   "fieldname": "roll_slitting_width_gp",
+   "fieldtype": "Data",
+   "label": "Roll Slitting Width (GP)"
+  },
+  {
+   "fieldname": "trim_wastage_mm",
+   "fieldtype": "Int",
+   "label": "Trim Wastage (mm)"
+  },
+  {
+   "fieldname": "section_break_xdqt",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "raw_items",
+   "fieldtype": "Table",
+   "label": "Raw Items",
+   "options": "RK Slitting Machine Raw"
+  },
+  {
+   "fieldname": "fg_item",
+   "fieldtype": "Table",
+   "label": "FG Item",
+   "options": "RK Slitting Machine FG"
+  },
+  {
+   "fieldname": "wastage_items",
+   "fieldtype": "Table",
+   "label": "Wastage Items",
+   "options": "RK Slitting Machine Wastage"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "items",
+   "options": "RK Slitting Machine Items"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Naming Series"
+  },
+  {
+   "default": "RK - PIPE",
+   "fieldname": "stock_entry_type",
+   "fieldtype": "Select",
+   "label": "Stock Entry Type",
+   "options": "RK - PIPE",
+   "read_only": 1
+  },
+  {
+   "fieldname": "add_data",
+   "fieldtype": "Button",
+   "label": "Add Data"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-04-23 15:18:03.120865",
+ "modified_by": "Administrator",
+ "module": "Hariom Sanpra",
+ "name": "RK Slitting Machine",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

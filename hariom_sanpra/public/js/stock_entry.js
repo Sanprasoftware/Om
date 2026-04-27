@@ -234,17 +234,32 @@ function calc(frm) {
 	let mtr = flt(frm.doc.custom_mtr);
 	let dtime = flt(frm.doc.custom_dtime);
 	let ld = flt(frm.doc.custom_ld);
-	let tiv = flt(frm.doc.total_incoming_value);
+	// let tiv = flt(frm.doc.total_incoming_value);
 	let trim = flt(frm.doc.custom_trim);
 	let otr = flt(frm.doc.custom_other);
 	let rpm = flt(frm.doc.custom_rpm);
 	let mpm = flt(frm.doc.custom_mpm);
+	let cl = flt(frm.doc.custom_ld);
+	let ct = flt(frm.doc.custom_trim);
+	let co = flt(frm.doc.custom_other);
+	
+	let finished_qty = 0;
 
-
+	if (frm.doc.items && frm.doc.items.length) {
+		frm.doc.items.forEach(row => {
+			if (row.is_finished_item == 1) {
+				finished_qty += flt(row.qty);
+			}
+		});
+	}
+		
     // copy mtr -> actmtr
 	if (mtr) {
 		frm.set_value("custom_actmtr", mtr);
-		act = mtr; // update local variable
+		act = mtr; 
+
+		let ag = (finished_qty / mtr * 39.37 / 144 * 1000)
+		frm.set_value("custom_act_gsm",ag);
 	}
 
 	// PROD %
@@ -258,16 +273,16 @@ function calc(frm) {
 		frm.set_value("custom_dtime_",dt); 
 	}
 	// LD
-	if(ld){
-		let ld_cal = (ld / tiv) * 100;
-		frm.set_value("custom_ld_",ld_cal) 
+	if (ld && finished_qty) {
+		let ld_cal = (ld / finished_qty) * 100;
+		frm.set_value("custom_ld_", ld_cal);
 	}
 	if(trim){
-		let trim_cal = (trim / 24181) * 100;
+		let trim_cal = (trim / finished_qty) * 100;
 		frm.set_value("custom_trim_",trim_cal);
 	}
 	if(otr){
-		let other_cal = (otr / tiv) * 100;
+		let other_cal = (otr / finished_qty) * 100;
 		frm.set_value("custom_other_",other_cal);
 	}
 	if(rpm && mpm){
@@ -275,6 +290,12 @@ function calc(frm) {
 		frm.set_value("custom_gram",gram);
 		let gsm = (gram * 39.37) / 120;
 		frm.set_value("custom_gsm1",gsm);
+		let gr = (rpm * 75 / mpm);
+		frm.set_value("custom_gram",gr);
+	}
+	if(cl && ct && co){
+		let tw = (cl + ct + co);
+		frm.set_value("custom_total_wastage",tw);
 	}
 
 	

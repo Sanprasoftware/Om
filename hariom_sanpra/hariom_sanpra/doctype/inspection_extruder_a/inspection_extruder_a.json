@@ -12,22 +12,22 @@
   "column_break_nwmi",
   "time",
   "section_break_rypg",
-  "column_break_hqld",
-  "a1_target",
-  "a2_target",
-  "a3_target",
-  "a4_target",
-  "a5_target",
-  "a6_target",
-  "a7_target",
-  "column_break_ylji",
-  "a1",
-  "a2",
-  "a3",
-  "a4",
-  "a5",
-  "a6",
-  "a7",
+  "barrel_temp_target_column",
+  "bar_target_1",
+  "bar_target_2",
+  "bar_target_3",
+  "bar_target_4",
+  "bar_target_5",
+  "bar_target_6",
+  "bar_target_7",
+  "barrel_temp_column",
+  "bar_temp_1",
+  "bar_temp_2",
+  "bar_temp_3",
+  "bar_temp_4",
+  "bar_temp_5",
+  "bar_temp_6",
+  "bar_temp_7",
   "column_break_crew",
   "target_adpt_1",
   "target_adpt_2",
@@ -40,6 +40,15 @@
   "adpt_3",
   "adpt_4",
   "adpt_5",
+  "section_break_znru",
+  "target_column",
+  "scchanger_target",
+  "melt_temp_target",
+  "flow_body_target",
+  "column_break_zctw",
+  "scchanger_actual",
+  "melt_temp_actual",
+  "flow_body_actual",
   "pre_heat_temprature_section",
   "pri_heat_1",
   "column_break_ebvy",
@@ -50,12 +59,13 @@
   "pri_heat_4",
   "section_break_kvcl",
   "laminator",
+  "scchanger",
   "column_break_rgza",
   "nip_pressur",
   "column_break_yoga",
   "water_temp",
   "column_break_szjd",
-  "truder_r",
+  "extruder_rpm",
   "column_break_phhw",
   "master"
  ],
@@ -87,114 +97,6 @@
   {
    "fieldname": "section_break_rypg",
    "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "a1",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "A1",
-   "precision": "2"
-  },
-  {
-   "fieldname": "a2",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "A2",
-   "precision": "2"
-  },
-  {
-   "fieldname": "a3",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "A3",
-   "precision": "2"
-  },
-  {
-   "fieldname": "a4",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "A4",
-   "precision": "2"
-  },
-  {
-   "fieldname": "a5",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "A5",
-   "precision": "2"
-  },
-  {
-   "fieldname": "a6",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "A6",
-   "precision": "2"
-  },
-  {
-   "fieldname": "a7",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "A7",
-   "precision": "2"
-  },
-  {
-   "fieldname": "column_break_hqld",
-   "fieldtype": "Column Break",
-   "label": "Target"
-  },
-  {
-   "fieldname": "a1_target",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "A1 Target",
-   "precision": "2"
-  },
-  {
-   "fieldname": "a2_target",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "A2 Target",
-   "precision": "2"
-  },
-  {
-   "fieldname": "a3_target",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "A3 Target",
-   "precision": "2"
-  },
-  {
-   "fieldname": "a4_target",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "A4 Target",
-   "precision": "2"
-  },
-  {
-   "fieldname": "a5_target",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "A5 Target",
-   "precision": "2"
-  },
-  {
-   "fieldname": "a6_target",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "A6 Target",
-   "precision": "2"
-  },
-  {
-   "fieldname": "a7_target",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "A7 Target",
-   "precision": "2"
-  },
-  {
-   "fieldname": "column_break_ylji",
-   "fieldtype": "Column Break",
-   "label": "Actual"
   },
   {
    "fieldname": "column_break_crew",
@@ -307,7 +209,7 @@
   {
    "fieldname": "pre_heat_temprature_section",
    "fieldtype": "Section Break",
-   "label": "PRE HEAt TEMPRATURE"
+   "label": "PRE HEAT TEMPRATURE"
   },
   {
    "fieldname": "column_break_ebvy",
@@ -353,11 +255,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "truder_r",
-   "fieldtype": "Float",
-   "label": "TRUDER R"
-  },
-  {
    "fieldname": "master",
    "fieldtype": "Float",
    "label": "MASTER"
@@ -365,13 +262,167 @@
   {
    "fieldname": "column_break_phhw",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "barrel_temp_column",
+   "fieldtype": "Column Break",
+   "label": "Barrel Temp Actual"
+  },
+  {
+   "fieldname": "bar_temp_1",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Bar Temp 1"
+  },
+  {
+   "fieldname": "bar_temp_2",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Bar Temp 2"
+  },
+  {
+   "fieldname": "bar_temp_3",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Bar Temp 3"
+  },
+  {
+   "fieldname": "bar_temp_4",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Bar Temp 4"
+  },
+  {
+   "fieldname": "bar_temp_5",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Bar Temp 5"
+  },
+  {
+   "fieldname": "bar_temp_6",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Bar Temp 6"
+  },
+  {
+   "fieldname": "bar_temp_7",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Bar Temp 7"
+  },
+  {
+   "fieldname": "barrel_temp_target_column",
+   "fieldtype": "Column Break",
+   "label": "Barrel Temp Target"
+  },
+  {
+   "fieldname": "bar_target_1",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Bar Target 1"
+  },
+  {
+   "fieldname": "bar_target_2",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Bar Target 2"
+  },
+  {
+   "fieldname": "bar_target_3",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Bar Target 3"
+  },
+  {
+   "fieldname": "bar_target_4",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Bar Target 4"
+  },
+  {
+   "fieldname": "bar_target_5",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Bar Target 5"
+  },
+  {
+   "fieldname": "bar_target_6",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Bar Target 6"
+  },
+  {
+   "fieldname": "bar_target_7",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Bar Target 7"
+  },
+  {
+   "fieldname": "extruder_rpm",
+   "fieldtype": "Float",
+   "label": "EXTRUDER RPM"
+  },
+  {
+   "fieldname": "section_break_znru",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "melt_temp_target",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "MELT TEMP. Target"
+  },
+  {
+   "fieldname": "scchanger_target",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "SC.Changer Target"
+  },
+  {
+   "fieldname": "flow_body_target",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Flow Body Target"
+  },
+  {
+   "fieldname": "column_break_zctw",
+   "fieldtype": "Column Break",
+   "label": "Actual"
+  },
+  {
+   "fieldname": "melt_temp_actual",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "MELT TEMP. Actual"
+  },
+  {
+   "fieldname": "scchanger_actual",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "SC.Changer Actual"
+  },
+  {
+   "fieldname": "flow_body_actual",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Flow Body Actual"
+  },
+  {
+   "fieldname": "scchanger",
+   "fieldtype": "Data",
+   "label": "SC.CHANGER"
+  },
+  {
+   "fieldname": "target_column",
+   "fieldtype": "Column Break",
+   "label": "Target"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-02-23 15:34:07.744707",
+ "modified": "2026-04-15 15:54:24.462751",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Inspection Extruder A",

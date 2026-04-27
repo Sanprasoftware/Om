@@ -1,0 +1,182 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-04-24 15:36:09.264798",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "date",
+  "time",
+  "shift",
+  "received_by",
+  "nature_of_works",
+  "column_break_kmwn",
+  "dep_name",
+  "mc_return_to_prod",
+  "naming_series",
+  "emp_name",
+  "ref_doc",
+  "column_break_zxwy",
+  "machine_name",
+  "machine_code",
+  "total_down_time",
+  "attended_by",
+  "section_break_inwr",
+  "details_of_repair_work",
+  "section_break_ykzq",
+  "maintenance_ic",
+  "column_break_jqgj",
+  "production_dept"
+ ],
+ "fields": [
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date"
+  },
+  {
+   "fieldname": "time",
+   "fieldtype": "Time",
+   "in_list_view": 1,
+   "label": "Time"
+  },
+  {
+   "fieldname": "shift",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Shift",
+   "options": "Shift"
+  },
+  {
+   "fieldname": "received_by",
+   "fieldtype": "Link",
+   "label": "Received By",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "column_break_kmwn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "dep_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Dept. Name ",
+   "options": "Department"
+  },
+  {
+   "fieldname": "mc_return_to_prod",
+   "fieldtype": "Datetime",
+   "label": "M/c Return to Production"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Naming Series"
+  },
+  {
+   "fieldname": "emp_name",
+   "fieldtype": "Link",
+   "label": "Name",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "column_break_zxwy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "machine_name",
+   "fieldtype": "Link",
+   "label": "Machine Name",
+   "options": "Machine Name"
+  },
+  {
+   "fieldname": "machine_code",
+   "fieldtype": "Data",
+   "label": "Machine Code"
+  },
+  {
+   "fieldname": "total_down_time",
+   "fieldtype": "Float",
+   "label": "Total Down Time"
+  },
+  {
+   "fieldname": "attended_by",
+   "fieldtype": "Link",
+   "label": "Attended By",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "section_break_inwr",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "details_of_repair_work",
+   "fieldtype": "Small Text",
+   "label": "Details of Repair work"
+  },
+  {
+   "fieldname": "section_break_ykzq",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "maintenance_ic",
+   "fieldtype": "Link",
+   "label": "Maintenance I/C",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "column_break_jqgj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "production_dept",
+   "fieldtype": "Link",
+   "label": "Production Dept.",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "nature_of_works",
+   "fieldtype": "Select",
+   "label": "Nature Of Work",
+   "options": "\nMechanical\nElectrical\nPneumatic\nOther"
+  },
+  {
+   "fieldname": "ref_doc",
+   "fieldtype": "Link",
+   "label": "Ref Doc",
+   "options": "Maintenance"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-04-27 12:16:43.197590",
+ "modified_by": "Administrator",
+ "module": "Hariom Sanpra",
+ "name": "Maintenance Breakdown Intimation Slip",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "rutuja@sanpra.co.in",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

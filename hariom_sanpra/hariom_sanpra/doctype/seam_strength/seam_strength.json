@@ -1,0 +1,131 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-04-18 12:45:31.053435",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "date",
+  "shift",
+  "doctype_hariom",
+  "column_break_sqtb",
+  "overlap_req",
+  "operator_name",
+  "machine_name",
+  "column_break_cffr",
+  "seam_strength_type",
+  "batch",
+  "naming_series",
+  "ref_doc",
+  "section_break_txzp",
+  "seam_strength_reading"
+ ],
+ "fields": [
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "column_break_sqtb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "overlap_req",
+   "fieldtype": "Data",
+   "label": "Overlap REQ",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_cffr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "seam_strength_type",
+   "fieldtype": "Select",
+   "label": "Seam Strength Type",
+   "options": "\nJoint M/C\nPipe"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Naming Series"
+  },
+  {
+   "fieldname": "section_break_txzp",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "seam_strength_reading",
+   "fieldtype": "Table",
+   "label": "Seam Strength Reading",
+   "options": "Seam Strength Child"
+  },
+  {
+   "fieldname": "shift",
+   "fieldtype": "Link",
+   "label": "Shift",
+   "options": "Shift"
+  },
+  {
+   "fieldname": "operator_name",
+   "fieldtype": "Link",
+   "label": "Operator Name",
+   "options": "Operator Name"
+  },
+  {
+   "fieldname": "batch",
+   "fieldtype": "Link",
+   "label": "Batch",
+   "options": "Batch No"
+  },
+  {
+   "fieldname": "machine_name",
+   "fieldtype": "Link",
+   "label": "Machine Name",
+   "options": "Machine Name"
+  },
+  {
+   "fieldname": "doctype_hariom",
+   "fieldtype": "Link",
+   "label": "Doctype",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "ref_doc",
+   "fieldtype": "Dynamic Link",
+   "label": "Ref Doc",
+   "options": "doctype_hariom"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-04-24 14:51:56.388474",
+ "modified_by": "Administrator",
+ "module": "Hariom Sanpra",
+ "name": "Seam Strength",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

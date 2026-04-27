@@ -1,0 +1,272 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-04-18 13:01:30.443538",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "operator_name",
+  "time",
+  "sample_target_strength_req",
+  "seam_strength_type",
+  "column_break_hkea",
+  "mc_name",
+  "speed",
+  "batch",
+  "column_break_omzb",
+  "jm_brand_type",
+  "pipe_brand_type",
+  "temp",
+  "section_break_hzpf",
+  "pressure",
+  "supervisor",
+  "column_break_hlub",
+  "size",
+  "hidrostatic",
+  "column_break_ddvy",
+  "taping",
+  "column_break_ssin",
+  "mc_no",
+  "plate_tube",
+  "section_break_cmqh",
+  "sample_overlap_req_1",
+  "sample_overlap_req_2",
+  "sample_overlap_req_3",
+  "sample_overlap_req_avg",
+  "column_break_mfol",
+  "sample_strength_req_1",
+  "sample_strength_req_2",
+  "sample_strength_req_3",
+  "sample_strength_req_avg",
+  "section_break_vlgr",
+  "checked_by",
+  "column_break_ylzh",
+  "approved_by"
+ ],
+ "fields": [
+  {
+   "fieldname": "operator_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Operator Name",
+   "options": "Operator Name"
+  },
+  {
+   "fieldname": "column_break_hkea",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "mc_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "M/C Name",
+   "options": "Machine Name"
+  },
+  {
+   "fieldname": "column_break_omzb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "time",
+   "fieldtype": "Time",
+   "in_list_view": 1,
+   "label": "Time"
+  },
+  {
+   "fieldname": "speed",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Speed"
+  },
+  {
+   "fieldname": "temp",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "TEMP"
+  },
+  {
+   "fieldname": "batch",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Batch",
+   "options": "Batch No"
+  },
+  {
+   "fieldname": "section_break_cmqh",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "sample_overlap_req_avg",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Sample Overlap REQ Avg",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_mfol",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sample_target_strength_req",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Sample Target Strength REQ",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sample_strength_req_avg",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Sample Strength REQ Avg",
+   "precision": "2"
+  },
+  {
+   "fieldname": "seam_strength_type",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Seam Strength Type",
+   "options": "\nJoint M/C\nPipe"
+  },
+  {
+   "depends_on": "eval:doc.seam_strength_type == \"Joint M/C\"",
+   "fieldname": "jm_brand_type",
+   "fieldtype": "Select",
+   "label": "Brand / GSM Type",
+   "options": "\n300 MIC\n400 MIC\n500 MIC\n750 MIC\n1000 MIC"
+  },
+  {
+   "depends_on": "eval:doc.seam_strength_type == \"Pipe\"",
+   "fieldname": "pipe_brand_type",
+   "fieldtype": "Select",
+   "label": "Brand / GSM Type",
+   "options": "\n220 GSM\n250 GSM\n190 GSM\n170 GSM\n105 GSM\n400 GSM"
+  },
+  {
+   "fieldname": "sample_overlap_req_1",
+   "fieldtype": "Float",
+   "label": "Sample Overlap REQ 1",
+   "precision": "2"
+  },
+  {
+   "fieldname": "sample_overlap_req_2",
+   "fieldtype": "Float",
+   "label": "Sample Overlap REQ 2",
+   "precision": "2"
+  },
+  {
+   "fieldname": "sample_overlap_req_3",
+   "fieldtype": "Float",
+   "label": "Sample Overlap REQ 3",
+   "precision": "2"
+  },
+  {
+   "fieldname": "sample_strength_req_1",
+   "fieldtype": "Float",
+   "label": "Sample Strength REQ 1",
+   "precision": "2"
+  },
+  {
+   "fieldname": "sample_strength_req_2",
+   "fieldtype": "Float",
+   "label": "Sample Strength REQ 2",
+   "precision": "2"
+  },
+  {
+   "fieldname": "sample_strength_req_3",
+   "fieldtype": "Float",
+   "label": "Sample Strength REQ 3",
+   "precision": "2"
+  },
+  {
+   "depends_on": "eval:doc.seam_strength_type == \"Pipe\"",
+   "fieldname": "section_break_hzpf",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "pressure",
+   "fieldtype": "Float",
+   "label": "Pressure"
+  },
+  {
+   "fieldname": "supervisor",
+   "fieldtype": "Link",
+   "label": "Supervisor",
+   "options": "Operator Name"
+  },
+  {
+   "fieldname": "column_break_hlub",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "size",
+   "fieldtype": "Float",
+   "label": "Size"
+  },
+  {
+   "fieldname": "hidrostatic",
+   "fieldtype": "Float",
+   "label": "Hidrostatic",
+   "precision": "1",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_ddvy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "taping",
+   "fieldtype": "Data",
+   "label": "Taping"
+  },
+  {
+   "fieldname": "column_break_ssin",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "mc_no",
+   "fieldtype": "Int",
+   "label": "M/C No"
+  },
+  {
+   "fieldname": "plate_tube",
+   "fieldtype": "Data",
+   "label": "Plate Tube"
+  },
+  {
+   "fieldname": "section_break_vlgr",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "checked_by",
+   "fieldtype": "Link",
+   "label": "Checked By",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "column_break_ylzh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "approved_by",
+   "fieldtype": "Link",
+   "label": "Approved By",
+   "options": "Employee"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-04-20 15:57:53.336492",
+ "modified_by": "saifa@sanpra.co.in",
+ "module": "Hariom Sanpra",
+ "name": "Seam Strength Child",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}
