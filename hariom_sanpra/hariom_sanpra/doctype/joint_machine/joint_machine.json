@@ -1,0 +1,179 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-04-16 16:01:13.187725",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "date",
+  "shift",
+  "man_power",
+  "stock_entry_type",
+  "column_break_gvjh",
+  "operator_name",
+  "batch",
+  "machine_name",
+  "column_break_nuct",
+  "tag_in",
+  "tag_out",
+  "machine_no",
+  "column_break_mthl",
+  "thermocouple_change",
+  "heater_changes",
+  "naming_series",
+  "section_break_crus",
+  "raw_item",
+  "fg_item",
+  "wastage_item",
+  "add_data",
+  "items"
+ ],
+ "fields": [
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "shift",
+   "fieldtype": "Link",
+   "label": "Shift",
+   "options": "Shift"
+  },
+  {
+   "fieldname": "man_power",
+   "fieldtype": "Int",
+   "label": "Man Power"
+  },
+  {
+   "fieldname": "column_break_gvjh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "operator_name",
+   "fieldtype": "Link",
+   "label": "Operator Name",
+   "options": "Operator Name"
+  },
+  {
+   "fieldname": "batch",
+   "fieldtype": "Link",
+   "label": "Batch",
+   "options": "Batch No"
+  },
+  {
+   "fieldname": "heater_changes",
+   "fieldtype": "Data",
+   "label": "Heater Changes"
+  },
+  {
+   "fieldname": "column_break_mthl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "thermocouple_change",
+   "fieldtype": "Data",
+   "label": "Thermocouple Change"
+  },
+  {
+   "fieldname": "tag_in",
+   "fieldtype": "Int",
+   "label": "Tag In"
+  },
+  {
+   "fieldname": "tag_out",
+   "fieldtype": "Int",
+   "label": "Tag Out"
+  },
+  {
+   "fieldname": "section_break_crus",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "raw_item",
+   "fieldtype": "Table",
+   "label": "Raw Item",
+   "options": "Joint Machine Raw Item"
+  },
+  {
+   "fieldname": "fg_item",
+   "fieldtype": "Table",
+   "label": "FG Item",
+   "options": "Joint Machine FG"
+  },
+  {
+   "fieldname": "wastage_item",
+   "fieldtype": "Table",
+   "label": "Wastage Item",
+   "options": "Joint Machine Wastage"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "Joint Machine Items"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Naming Series"
+  },
+  {
+   "fieldname": "column_break_nuct",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "add_data",
+   "fieldtype": "Button",
+   "label": "Add Data"
+  },
+  {
+   "fieldname": "machine_name",
+   "fieldtype": "Link",
+   "label": "Machine Name",
+   "options": "Machine Name"
+  },
+  {
+   "fieldname": "machine_no",
+   "fieldtype": "Int",
+   "label": "Machine No"
+  },
+  {
+   "default": "JOINT M/C",
+   "fieldname": "stock_entry_type",
+   "fieldtype": "Select",
+   "label": "Stock Entry Type",
+   "options": "JOINT M/C"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-04-22 15:54:24.110018",
+ "modified_by": "Administrator",
+ "module": "Hariom Sanpra",
+ "name": "Joint Machine",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

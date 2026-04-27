@@ -28,8 +28,7 @@ def get_columns() -> list[dict]:
 		{
 			"label": _("Operator Name"),
 			"fieldname": "operator_name",
-			"fieldtype": "Link",
-			"options": "Operator Name",
+			"fieldtype": "Data",
 			"width": 150,
 		},
 		{
@@ -163,10 +162,6 @@ def get_columns() -> list[dict]:
 			"precision": 2,
 			"width": 150,
 		},
-		
-		
-		
-
 	]
 
 
@@ -212,7 +207,7 @@ def get_data(filters: frappe._dict) -> list[dict]:
 		select
 			se.posting_date,
 			se.name as stock_entry_id,
-			se.custom_operator_name as operator_name,
+			ifnull(emp.employee_name, se.custom_operator_name) as operator_name,
 			se.custom_machine_name as machine_name,
 			se.custom_tag_in,
 			se.custom_tag_out,
@@ -244,7 +239,7 @@ def get_data(filters: frappe._dict) -> list[dict]:
 			end as item_type
 		from `tabStock Entry` se
 		inner join `tabStock Entry Detail` sed on sed.parent = se.name
-		left join `tabOperator Name` op on op.name = se.custom_operator_name
+		left join `tabEmployee` emp on emp.name = se.custom_operator_name
 		where {" and ".join(conditions)}
 		order by
 			se.posting_date desc,

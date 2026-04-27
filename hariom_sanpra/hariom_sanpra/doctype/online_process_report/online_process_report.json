@@ -1,0 +1,354 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-03-18 17:51:20.220309",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "online_process_type",
+  "column_break_jnwl",
+  "std_ink_gsm",
+  "column_break_czet",
+  "miss_print_vis",
+  "printing_section",
+  "shade_vis_top",
+  "shade_vis_bot",
+  "vis_as_jpeg",
+  "column_break_ncbb",
+  "wid_mm_1220_2",
+  "rpt_len_mm_1220",
+  "roll_len_mtr_440",
+  "column_break_vmmb",
+  "roll_wgt_gsm",
+  "ink_pick_gsm_05",
+  "ink_clr_code",
+  "printablity_section",
+  "spreading_vis",
+  "unwind_dir_read",
+  "column_break_gafa",
+  "motting_vis",
+  "scumghost_vis",
+  "column_break_wknr",
+  "rub_mark_vis",
+  "lines_vis",
+  "rewinding_section",
+  "shade_clr_top_side",
+  "shade_clr_bottom_side",
+  "txt_matter_per_jpeg",
+  "sliting_width_mm",
+  "column_break_zwgu",
+  "roll_od_ift",
+  "laminate_gsm",
+  "roll_length",
+  "column_break_msgd",
+  "bond_strength_bottom",
+  "bond_strength_top",
+  "unwinding_direction",
+  "printability_rewinding_section",
+  "celll_filling_vis",
+  "line_vis",
+  "remark_wastage_topbottom",
+  "column_break_brii",
+  "ink_spots_vis",
+  "curling_vis",
+  "surface_vis",
+  "remark_wastage_surplus_coil",
+  "section_break_emsz",
+  "remark"
+ ],
+ "fields": [
+  {
+   "fieldname": "std_ink_gsm",
+   "fieldtype": "Data",
+   "label": "STD INK GSM"
+  },
+  {
+   "fieldname": "column_break_jnwl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_czet",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "miss_print_vis",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Miss Print VIS",
+   "options": "\nYes\nNo"
+  },
+  {
+   "fieldname": "online_process_type",
+   "fieldtype": "Select",
+   "label": "Online Process Type",
+   "options": "\nPrinting\nRewinding"
+  },
+  {
+   "depends_on": "eval:doc.online_process_type == \"Printing\"",
+   "fieldname": "printing_section",
+   "fieldtype": "Section Break",
+   "label": "Printing"
+  },
+  {
+   "fieldname": "shade_vis_top",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Shade VIS Top"
+  },
+  {
+   "fieldname": "shade_vis_bot",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Shade VIS Bot"
+  },
+  {
+   "fieldname": "vis_as_jpeg",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "VIS AS JPEG"
+  },
+  {
+   "fieldname": "column_break_ncbb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "wid_mm_1220_2",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "WID MM 1220\u00b12",
+   "precision": "2"
+  },
+  {
+   "fieldname": "rpt_len_mm_1220",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "RPT LEN MM 1220",
+   "precision": "2"
+  },
+  {
+   "fieldname": "roll_len_mtr_440",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Roll LEN MTR 440",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_vmmb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "roll_wgt_gsm",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Roll Wgt GSM",
+   "precision": "2"
+  },
+  {
+   "fieldname": "ink_pick_gsm_05",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "INK PICK (GSM) 0.5",
+   "precision": "2"
+  },
+  {
+   "fieldname": "ink_clr_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "INK CLR Code"
+  },
+  {
+   "depends_on": "eval:doc.online_process_type == \"Printing\"",
+   "fieldname": "printablity_section",
+   "fieldtype": "Section Break",
+   "label": "Printablity Printing"
+  },
+  {
+   "fieldname": "spreading_vis",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "SPREADING VIS",
+   "options": "\nYes\nNo"
+  },
+  {
+   "fieldname": "unwind_dir_read",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "UNWIND DIR READ"
+  },
+  {
+   "fieldname": "column_break_gafa",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "motting_vis",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Motting VIS",
+   "options": "\nYes\nNo"
+  },
+  {
+   "fieldname": "scumghost_vis",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "SCUM/GHOST VIS",
+   "options": "\nYes\nNo"
+  },
+  {
+   "fieldname": "column_break_wknr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "rub_mark_vis",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "RUB Mark VIS",
+   "options": "\nYes\nNo"
+  },
+  {
+   "fieldname": "lines_vis",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Lines VIS",
+   "options": "\nYes\nNo"
+  },
+  {
+   "depends_on": "eval:doc.online_process_type == \"Rewinding\"",
+   "fieldname": "rewinding_section",
+   "fieldtype": "Section Break",
+   "label": "Rewinding"
+  },
+  {
+   "fieldname": "shade_clr_top_side",
+   "fieldtype": "Data",
+   "label": "Shade CLR Top Side"
+  },
+  {
+   "fieldname": "shade_clr_bottom_side",
+   "fieldtype": "Data",
+   "label": "Shade CLR Bottom Side"
+  },
+  {
+   "fieldname": "txt_matter_per_jpeg",
+   "fieldtype": "Data",
+   "label": "Txt Matter Per JPEG"
+  },
+  {
+   "fieldname": "sliting_width_mm",
+   "fieldtype": "Float",
+   "label": "Sliting Width MM"
+  },
+  {
+   "fieldname": "column_break_zwgu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "roll_od_ift",
+   "fieldtype": "Int",
+   "label": "Roll OD IFT"
+  },
+  {
+   "fieldname": "laminate_gsm",
+   "fieldtype": "Int",
+   "label": "Laminate GSM"
+  },
+  {
+   "fieldname": "roll_length",
+   "fieldtype": "Float",
+   "label": "Roll Length"
+  },
+  {
+   "fieldname": "column_break_msgd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "bond_strength_bottom",
+   "fieldtype": "Data",
+   "label": "Bond Strength Bottom"
+  },
+  {
+   "fieldname": "bond_strength_top",
+   "fieldtype": "Data",
+   "label": "Bond Strength Top"
+  },
+  {
+   "fieldname": "unwinding_direction",
+   "fieldtype": "Data",
+   "label": "Unwinding Direction"
+  },
+  {
+   "depends_on": "eval:doc.online_process_type == \"Rewinding\"",
+   "fieldname": "printability_rewinding_section",
+   "fieldtype": "Section Break",
+   "label": "Printability Rewinding"
+  },
+  {
+   "fieldname": "celll_filling_vis",
+   "fieldtype": "Select",
+   "label": "Celll Filling VIS",
+   "options": "\nYes\nNo"
+  },
+  {
+   "fieldname": "line_vis",
+   "fieldtype": "Select",
+   "label": "Line VIS",
+   "options": "\nYes\nNo"
+  },
+  {
+   "fieldname": "remark_wastage_topbottom",
+   "fieldtype": "Data",
+   "label": "Remark Wastage Top/Bottom"
+  },
+  {
+   "fieldname": "column_break_brii",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ink_spots_vis",
+   "fieldtype": "Select",
+   "label": "Ink Spots VIS",
+   "options": "\nYes\nNo"
+  },
+  {
+   "fieldname": "curling_vis",
+   "fieldtype": "Select",
+   "label": "Curling VIS",
+   "options": "\nYes\nNo"
+  },
+  {
+   "fieldname": "surface_vis",
+   "fieldtype": "Select",
+   "label": "Surface VIS",
+   "options": "\nPass\nFail"
+  },
+  {
+   "fieldname": "remark_wastage_surplus_coil",
+   "fieldtype": "Data",
+   "label": "Remark Wastage Surplus Coil"
+  },
+  {
+   "fieldname": "section_break_emsz",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "remark",
+   "fieldtype": "Small Text",
+   "label": "Remark"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-04-24 14:56:26.771571",
+ "modified_by": "Administrator",
+ "module": "Hariom Sanpra",
+ "name": "ONLINE PROCESS REPORT",
+ "owner": "saifa@sanpra.co.in",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,217 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-04-21 12:17:29.077834",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "date",
+  "operator_name",
+  "machine_name",
+  "shift",
+  "roll_size",
+  "column_break_hapf",
+  "stock_entry_type",
+  "tag_in",
+  "tag_out",
+  "thermocouple_chanages",
+  "heater_change",
+  "column_break_ngju",
+  "man_power",
+  "machine_no",
+  "batch",
+  "machine_speed",
+  "temperature",
+  "naming_series",
+  "section_break_dlul",
+  "raw_items",
+  "fg_items",
+  "wastage_items",
+  "add_data",
+  "items",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "operator_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Operator Name",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "machine_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Machine Name",
+   "options": "Machine Name"
+  },
+  {
+   "fieldname": "shift",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Shift",
+   "options": "Shift"
+  },
+  {
+   "fieldname": "roll_size",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Roll Size"
+  },
+  {
+   "fieldname": "column_break_hapf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "SMALL PIPE M/C",
+   "fieldname": "stock_entry_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Stock Entry Type",
+   "options": "Stock Entry Type",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tag_in",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Tag In"
+  },
+  {
+   "fieldname": "tag_out",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Tag Out"
+  },
+  {
+   "fieldname": "thermocouple_chanages",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Thermocouple Chanages"
+  },
+  {
+   "fieldname": "heater_change",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Heater Change"
+  },
+  {
+   "fieldname": "column_break_ngju",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "man_power",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Man Power"
+  },
+  {
+   "fieldname": "machine_no",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Machine No"
+  },
+  {
+   "fieldname": "batch",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Batch",
+   "options": "Batch No"
+  },
+  {
+   "fieldname": "machine_speed",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Machine Speed"
+  },
+  {
+   "fieldname": "temperature",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Temperature"
+  },
+  {
+   "fieldname": "section_break_dlul",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "raw_items",
+   "fieldtype": "Table",
+   "label": "Raw Items",
+   "options": "small pipe Raw"
+  },
+  {
+   "fieldname": "fg_items",
+   "fieldtype": "Table",
+   "label": "FG Items",
+   "options": "Small Pipe FG"
+  },
+  {
+   "fieldname": "wastage_items",
+   "fieldtype": "Table",
+   "label": "Wastage Items",
+   "options": "Small Pipe FG"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "Small Pipe Items"
+  },
+  {
+   "fieldname": "add_data",
+   "fieldtype": "Button",
+   "label": "Add Data"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Small Pipe mc",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "label": "Naming Series"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-04-23 14:40:29.960644",
+ "modified_by": "Administrator",
+ "module": "Hariom Sanpra",
+ "name": "Small Pipe mc",
+ "owner": "rutuja@sanpra.co.in",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

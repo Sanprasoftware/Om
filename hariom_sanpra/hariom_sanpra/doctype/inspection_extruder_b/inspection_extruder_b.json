@@ -12,44 +12,55 @@
   "column_break_nwmi",
   "time",
   "section_break_rypg",
-  "column_break_hqld",
-  "a1_target",
-  "a2_target",
-  "a3_target",
-  "a4_target",
-  "a5_target",
-  "a6_target",
-  "a7_target",
-  "column_break_ylji",
-  "a1",
-  "a2",
-  "a3",
-  "a4",
-  "a5",
-  "a6",
-  "a7",
+  "barrel_temp_target_column",
+  "bar_target_1b",
+  "bar_target_2b",
+  "bar_target_3b",
+  "bar_target_4b",
+  "barrel_temp_actual_column",
+  "bar_temp_1b",
+  "bar_temp_2b",
+  "bar_temp_3b",
+  "bar_temp_4b",
   "column_break_crew",
-  "target_adpt_1",
-  "target_adpt_2",
-  "target_adpt_3",
-  "target_adpt_4",
-  "target_adpt_5",
+  "target_adpt_1b",
+  "target_adpt_2b",
+  "target_adpt_3b",
+  "target_adpt_4b",
+  "target_adpt_5b",
   "column_break_mtvv",
-  "adpt_1",
-  "adpt_2",
-  "adpt_3",
-  "adpt_4",
-  "adpt_5",
+  "adpt_1b",
+  "adpt_2b",
+  "adpt_3b",
+  "adpt_4b",
+  "adpt_5b",
+  "section_break_mkyf",
+  "target_column",
+  "scchanger_targetb",
+  "melt_temp_targetb",
+  "flow_body_targetb",
+  "column_break_kojk",
+  "scchanger_actualb",
+  "melt_temp_actualb",
+  "flow_body_actualb",
+  "pre_heat_temprature_section",
+  "preheat_1_b",
+  "column_break_ceze",
+  "preheat_2_b",
+  "column_break_ftqf",
+  "preheat_3_b",
+  "column_break_otxy",
+  "preheat_4_b",
   "section_break_lofb",
-  "laminator",
+  "laminator_b",
   "column_break_iwva",
-  "np_pressure",
+  "np_pressure_b",
   "column_break_mzza",
-  "water_temp",
+  "water_temp_b",
   "column_break_fbyx",
-  "turder_r",
+  "exturder_rpm_b",
   "column_break_lewf",
-  "master"
+  "master_b"
  ],
  "fields": [
   {
@@ -81,152 +92,9 @@
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "column_break_hqld",
-   "fieldtype": "Column Break",
-   "label": "Target"
-  },
-  {
-   "fieldname": "a1_target",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "B1 Target",
-   "precision": "2"
-  },
-  {
-   "fieldname": "a2_target",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "B2 Target",
-   "precision": "2"
-  },
-  {
-   "fieldname": "a3_target",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "B3 Target",
-   "precision": "2"
-  },
-  {
-   "fieldname": "a4_target",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "B4 Target",
-   "precision": "2"
-  },
-  {
-   "fieldname": "a5_target",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "B5 Target",
-   "precision": "2"
-  },
-  {
-   "fieldname": "a6_target",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "B6 Target",
-   "precision": "2"
-  },
-  {
-   "fieldname": "a7_target",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "B7 Target",
-   "precision": "2"
-  },
-  {
-   "fieldname": "column_break_ylji",
-   "fieldtype": "Column Break",
-   "label": "Actual"
-  },
-  {
-   "fieldname": "a1",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "B1",
-   "precision": "2"
-  },
-  {
-   "fieldname": "a2",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "B2",
-   "precision": "2"
-  },
-  {
-   "fieldname": "a3",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "B3",
-   "precision": "2"
-  },
-  {
-   "fieldname": "a4",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "B4",
-   "precision": "2"
-  },
-  {
-   "fieldname": "a5",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "B5",
-   "precision": "2"
-  },
-  {
-   "fieldname": "a6",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "B6",
-   "precision": "2"
-  },
-  {
-   "fieldname": "a7",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "B7",
-   "precision": "2"
-  },
-  {
    "fieldname": "column_break_crew",
    "fieldtype": "Column Break",
    "label": "Target"
-  },
-  {
-   "fieldname": "target_adpt_1",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "Target ADPT 1",
-   "precision": "2"
-  },
-  {
-   "fieldname": "target_adpt_2",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "Target ADPT 2",
-   "precision": "2"
-  },
-  {
-   "fieldname": "target_adpt_3",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "Target ADPT 3",
-   "precision": "2"
-  },
-  {
-   "fieldname": "target_adpt_4",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "Target ADPT 4",
-   "precision": "2"
-  },
-  {
-   "fieldname": "target_adpt_5",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "Target ADPT 5",
-   "precision": "2"
   },
   {
    "fieldname": "column_break_mtvv",
@@ -234,97 +102,281 @@
    "label": "Actual"
   },
   {
-   "fieldname": "adpt_1",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "ADPT 1",
-   "precision": "2"
-  },
-  {
-   "fieldname": "adpt_2",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "ADPT 2",
-   "precision": "2"
-  },
-  {
-   "fieldname": "adpt_3",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "ADPT 3",
-   "precision": "2"
-  },
-  {
-   "fieldname": "adpt_4",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "ADPT 4",
-   "precision": "2"
-  },
-  {
-   "fieldname": "adpt_5",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "ADPT 5",
-   "precision": "2"
-  },
-  {
    "fieldname": "section_break_lofb",
    "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "laminator",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "LAMINATOR",
-   "precision": "2"
   },
   {
    "fieldname": "column_break_iwva",
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "np_pressure",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "NP PRESSURE",
-   "precision": "2"
-  },
-  {
    "fieldname": "column_break_mzza",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "water_temp",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "WATER TEMP",
-   "precision": "2"
   },
   {
    "fieldname": "column_break_fbyx",
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "turder_r",
-   "fieldtype": "Float",
-   "label": "TURDER R"
-  },
-  {
    "fieldname": "column_break_lewf",
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "master",
+   "fieldname": "barrel_temp_target_column",
+   "fieldtype": "Column Break",
+   "label": "Barrel Temp Target"
+  },
+  {
+   "fieldname": "barrel_temp_actual_column",
+   "fieldtype": "Column Break",
+   "label": "Barrel Temp Actual"
+  },
+  {
+   "fieldname": "section_break_mkyf",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_kojk",
+   "fieldtype": "Column Break",
+   "label": "Actual"
+  },
+  {
+   "fieldname": "target_column",
+   "fieldtype": "Column Break",
+   "label": "Target"
+  },
+  {
+   "fieldname": "bar_target_1b",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Bar Target 1"
+  },
+  {
+   "fieldname": "bar_target_2b",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Bar Target 2"
+  },
+  {
+   "fieldname": "bar_target_3b",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Bar Target 3"
+  },
+  {
+   "fieldname": "bar_target_4b",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Bar Target 4"
+  },
+  {
+   "fieldname": "bar_temp_1b",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Bar Temp 1"
+  },
+  {
+   "fieldname": "bar_temp_2b",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Bar Temp 2"
+  },
+  {
+   "fieldname": "bar_temp_3b",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Bar Temp 3"
+  },
+  {
+   "fieldname": "bar_temp_4b",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Bar Temp 4"
+  },
+  {
+   "fieldname": "target_adpt_1b",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Target ADPT 1",
+   "precision": "2"
+  },
+  {
+   "fieldname": "target_adpt_2b",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Target ADPT 2",
+   "precision": "2"
+  },
+  {
+   "fieldname": "target_adpt_3b",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Target ADPT 3",
+   "precision": "2"
+  },
+  {
+   "fieldname": "target_adpt_4b",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Target ADPT 4",
+   "precision": "2"
+  },
+  {
+   "fieldname": "target_adpt_5b",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Target ADPT 5",
+   "precision": "2"
+  },
+  {
+   "fieldname": "adpt_1b",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "ADPT 1",
+   "precision": "2"
+  },
+  {
+   "fieldname": "adpt_2b",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "ADPT 2",
+   "precision": "2"
+  },
+  {
+   "fieldname": "adpt_3b",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "ADPT 3",
+   "precision": "2"
+  },
+  {
+   "fieldname": "adpt_4b",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "ADPT 4",
+   "precision": "2"
+  },
+  {
+   "fieldname": "adpt_5b",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "ADPT 5",
+   "precision": "2"
+  },
+  {
+   "fieldname": "scchanger_targetb",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "SC.Changer Target"
+  },
+  {
+   "fieldname": "melt_temp_targetb",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "MELT TEMP. Target"
+  },
+  {
+   "fieldname": "flow_body_targetb",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Flow Body Target"
+  },
+  {
+   "fieldname": "scchanger_actualb",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "SC.Changer Actual"
+  },
+  {
+   "fieldname": "melt_temp_actualb",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "MELT TEMP. Actual"
+  },
+  {
+   "fieldname": "flow_body_actualb",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Flow Body Actual"
+  },
+  {
+   "fieldname": "laminator_b",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "LAMINATOR",
+   "precision": "2"
+  },
+  {
+   "fieldname": "np_pressure_b",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "NP PRESSURE",
+   "precision": "2"
+  },
+  {
+   "fieldname": "water_temp_b",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "WATER TEMP",
+   "precision": "2"
+  },
+  {
+   "fieldname": "exturder_rpm_b",
+   "fieldtype": "Float",
+   "label": "EXTURDER RPM"
+  },
+  {
+   "fieldname": "master_b",
    "fieldtype": "Float",
    "label": "Master"
+  },
+  {
+   "fieldname": "pre_heat_temprature_section",
+   "fieldtype": "Section Break",
+   "label": "PRE HEAT TEMPRATURE"
+  },
+  {
+   "fieldname": "column_break_ceze",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_ftqf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_otxy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "preheat_1_b",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "PREHEAT 1"
+  },
+  {
+   "fieldname": "preheat_2_b",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "PREHEAT 2"
+  },
+  {
+   "fieldname": "preheat_3_b",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "PREHEAT 3"
+  },
+  {
+   "fieldname": "preheat_4_b",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "PREHEAT 4"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-02-23 15:33:16.834840",
+ "modified": "2026-04-15 16:25:51.285271",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Inspection Extruder B",

@@ -1,0 +1,244 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-04-20 16:10:36.212537",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "date",
+  "shift",
+  "job_name",
+  "column_break_qzxs",
+  "structure",
+  "text_matter",
+  "shade",
+  "machine_name",
+  "column_break_xrhm",
+  "ccrr_no",
+  "fl_no",
+  "naming_series",
+  "batch",
+  "ink_colour_info_section",
+  "ink_colour_1",
+  "ink_colour_2",
+  "ink_colour_3",
+  "noof_ups",
+  "column_break_nnfu",
+  "company_1",
+  "company_2",
+  "company_3",
+  "width_in_mm",
+  "column_break_yykk",
+  "code_1",
+  "code_2",
+  "code_3",
+  "printability",
+  "section_break_scuq",
+  "remark",
+  "section_break_mowt",
+  "checked_by",
+  "column_break_fspn",
+  "approved_by"
+ ],
+ "fields": [
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "shift",
+   "fieldtype": "Link",
+   "label": "Shift",
+   "options": "Shift"
+  },
+  {
+   "fieldname": "job_name",
+   "fieldtype": "Link",
+   "label": "Job Name",
+   "options": "Item"
+  },
+  {
+   "fieldname": "structure",
+   "fieldtype": "Data",
+   "label": "Structure"
+  },
+  {
+   "fieldname": "column_break_xrhm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "text_matter",
+   "fieldtype": "Data",
+   "label": "Text Matter"
+  },
+  {
+   "fieldname": "ccrr_no",
+   "fieldtype": "Data",
+   "label": "CCRR No."
+  },
+  {
+   "fieldname": "fl_no",
+   "fieldtype": "Data",
+   "label": "FL NO"
+  },
+  {
+   "fieldname": "shade",
+   "fieldtype": "Data",
+   "label": "Shade"
+  },
+  {
+   "fieldname": "ink_colour_info_section",
+   "fieldtype": "Section Break",
+   "label": "INK Colour Info"
+  },
+  {
+   "fieldname": "ink_colour_1",
+   "fieldtype": "Data",
+   "label": "INK Colour 1"
+  },
+  {
+   "fieldname": "ink_colour_2",
+   "fieldtype": "Data",
+   "label": "INK Colour 2"
+  },
+  {
+   "fieldname": "ink_colour_3",
+   "fieldtype": "Data",
+   "label": "INK Colour 3"
+  },
+  {
+   "fieldname": "noof_ups",
+   "fieldtype": "Int",
+   "label": "NO.OF UPS"
+  },
+  {
+   "fieldname": "column_break_nnfu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "company_1",
+   "fieldtype": "Data",
+   "label": "Company 1"
+  },
+  {
+   "fieldname": "company_2",
+   "fieldtype": "Data",
+   "label": "Company 2"
+  },
+  {
+   "fieldname": "company_3",
+   "fieldtype": "Data",
+   "label": "Company 3"
+  },
+  {
+   "fieldname": "width_in_mm",
+   "fieldtype": "Int",
+   "label": "WIDTH IN MM"
+  },
+  {
+   "fieldname": "column_break_yykk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "code_1",
+   "fieldtype": "Data",
+   "label": "Code 1"
+  },
+  {
+   "fieldname": "code_2",
+   "fieldtype": "Data",
+   "label": "Code 2"
+  },
+  {
+   "fieldname": "code_3",
+   "fieldtype": "Data",
+   "label": "Code 3"
+  },
+  {
+   "fieldname": "printability",
+   "fieldtype": "Data",
+   "label": "Printability"
+  },
+  {
+   "fieldname": "section_break_scuq",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "remark",
+   "fieldtype": "Small Text",
+   "label": "Remark"
+  },
+  {
+   "fieldname": "section_break_mowt",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "checked_by",
+   "fieldtype": "Link",
+   "label": "Checked By ",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "column_break_fspn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "approved_by",
+   "fieldtype": "Link",
+   "label": "Approved By",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Naming Series"
+  },
+  {
+   "fieldname": "column_break_qzxs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "batch",
+   "fieldtype": "Link",
+   "label": "Batch",
+   "options": "Batch No"
+  },
+  {
+   "fieldname": "machine_name",
+   "fieldtype": "Link",
+   "label": "Machine Name",
+   "options": "Machine Name"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-04-22 16:24:55.702774",
+ "modified_by": "Administrator",
+ "module": "Hariom Sanpra",
+ "name": "First Sheet Approver - PP Export",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "rutuja@sanpra.co.in",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

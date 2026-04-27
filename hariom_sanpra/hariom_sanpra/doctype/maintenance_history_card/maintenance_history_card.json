@@ -1,0 +1,144 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-04-24 14:38:10.304651",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "date",
+  "machine_name",
+  "maintenance_person_name",
+  "column_break_cbri",
+  "doctype_hariom",
+  "ref_doc",
+  "details_of_spare_items_used",
+  "column_break_dlxw",
+  "mc_off_time",
+  "mc_on_time",
+  "spare_item_cost",
+  "naming_series",
+  "section_break_ajaj",
+  "nature_of_problem",
+  "details_of_maintenance_work_done",
+  "corrective_action_plan_to_avoid"
+ ],
+ "fields": [
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "machine_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Machine Name",
+   "options": "Machine Name"
+  },
+  {
+   "fieldname": "maintenance_person_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Maintenance Person Name",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Naming Series"
+  },
+  {
+   "fieldname": "column_break_dlxw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "mc_off_time",
+   "fieldtype": "Time",
+   "label": "M/C Off Time"
+  },
+  {
+   "fieldname": "mc_on_time",
+   "fieldtype": "Time",
+   "label": "M/C On Time"
+  },
+  {
+   "fieldname": "details_of_spare_items_used",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Details of Spare Items Used",
+   "options": "Item"
+  },
+  {
+   "fieldname": "spare_item_cost",
+   "fieldtype": "Float",
+   "label": "Spare Item Cost"
+  },
+  {
+   "fieldname": "section_break_ajaj",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "nature_of_problem",
+   "fieldtype": "Small Text",
+   "label": "Nature Of Problem"
+  },
+  {
+   "fieldname": "details_of_maintenance_work_done",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Details of Maintenance Work Done"
+  },
+  {
+   "fieldname": "corrective_action_plan_to_avoid",
+   "fieldtype": "Small Text",
+   "label": "Corrective Action Plan to Avoid"
+  },
+  {
+   "fieldname": "doctype_hariom",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Doctype Hariom",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "ref_doc",
+   "fieldtype": "Dynamic Link",
+   "label": "Ref Doc",
+   "options": "doctype_hariom"
+  },
+  {
+   "fieldname": "column_break_cbri",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-04-25 13:49:10.480751",
+ "modified_by": "Administrator",
+ "module": "Hariom Sanpra",
+ "name": "Maintenance History Card",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "rutuja@sanpra.co.in",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

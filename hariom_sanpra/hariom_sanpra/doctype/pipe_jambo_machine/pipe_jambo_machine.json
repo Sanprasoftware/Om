@@ -1,0 +1,173 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-04-22 11:29:29.423369",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "date",
+  "operator_name",
+  "machine_name",
+  "column_break_dcrg",
+  "shift",
+  "stock_entry_type",
+  "tag_in",
+  "tag_out",
+  "column_break_lqaq",
+  "machine_no",
+  "batch",
+  "man_power",
+  "naming_series",
+  "section_break_onnp",
+  "raw_items",
+  "fg_items",
+  "wastage_items",
+  "add_data",
+  "items"
+ ],
+ "fields": [
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date"
+  },
+  {
+   "fieldname": "operator_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Operator Name",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "machine_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Machine Name",
+   "options": "Machine Name"
+  },
+  {
+   "fieldname": "column_break_dcrg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "shift",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Shift",
+   "options": "Shift"
+  },
+  {
+   "default": "JP-JAMBO PIPE",
+   "fieldname": "stock_entry_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Stock Entry Type",
+   "options": "Stock Entry Type",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tag_in",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Tag In"
+  },
+  {
+   "fieldname": "tag_out",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Tag Out"
+  },
+  {
+   "fieldname": "column_break_lqaq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "machine_no",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Machine No"
+  },
+  {
+   "fieldname": "batch",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Batch",
+   "options": "Batch No"
+  },
+  {
+   "fieldname": "man_power",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Man Power"
+  },
+  {
+   "fieldname": "section_break_onnp",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "raw_items",
+   "fieldtype": "Table",
+   "label": "Raw Items",
+   "options": "Pipe jambo Raw"
+  },
+  {
+   "fieldname": "fg_items",
+   "fieldtype": "Table",
+   "label": "FG Items",
+   "options": "Pipe Jambo FG"
+  },
+  {
+   "fieldname": "wastage_items",
+   "fieldtype": "Table",
+   "label": "Wastage Items",
+   "options": "Pipe Jambo Wastage"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "Pipe Jambo Items"
+  },
+  {
+   "fieldname": "add_data",
+   "fieldtype": "Button",
+   "label": "Add Data"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Naming Series"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-04-22 18:14:54.526007",
+ "modified_by": "Administrator",
+ "module": "Hariom Sanpra",
+ "name": "Pipe Jambo Machine",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "rutuja@sanpra.co.in",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

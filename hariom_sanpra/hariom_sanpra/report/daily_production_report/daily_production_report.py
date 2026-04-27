@@ -6,168 +6,248 @@ from frappe import _
 
 def execute(filters: dict | None = None):
 	columns = get_columns()
-	data = get_data()
+	data = get_data(filters)
 	return columns, data  
 
 def get_columns() -> list[dict]:
 	return [
 		{
+			"label": _("Date"),
+			"fieldname": "date",
+			"fieldtype": "Date",
+			"width": 110
+		},
+		{
+			"label": _("Id"),
+			"fieldname": "id",
+			"fieldtype": "Link",
+			"options": "Stock Entry",
+			"width": 140
+		},
+		{
 			"label": _("Job Name"),
 			"fieldname": "job_name",
 			"fieldtype": "Link",
 			"options": "Item",
-			"width": 200
+			"width": 300
+		},
+		{
+			"label": _("OPTR Name"),
+			"fieldname": "optr_name",
+			"fieldtype": "Link",
+			"options": "Employee",
+			"width": 100
+		},
+		{
+			"label": _("M/C Name"),
+			"fieldname": "mc_name",
+			"fieldtype": "Link",
+			"options": "Machine Name",
+			"width": 160
+		},
+		{
+			"label": _("Batch"),
+			"fieldname": "batch",
+			"fieldtype": "Link",
+			"options": "Batch No",
+			"width": 125
+		},
+		{
+			"label": _("Shift"),
+			"fieldname": "shift",
+			"fieldtype": "Link",
+			"options": "Shift",
+			"width": 95
+		},
+		{
+			"label": _("Man Power"),
+			"fieldname": "man_power",
+			"fieldtype": "Int",
+			"width": 50
 		},
 		{
 			"label": _("M/C Run"),
 			"fieldname": "mc_run",
 			"fieldtype": "Data",
-			"width": 150
+			"width": 50
 		},
 		{
 			"label": _("D.Time"),
 			"fieldname": "d_time",
 			"fieldtype": "Data",
-			"width": 150
+			"width": 50
 		},
 		{
 			"label": _("Target MTR"),
 			"fieldname": "target_mtr",
 			"fieldtype": "Data",
-			"width": 150
+			"width": 50
 		},
 		{
 			"label": _("ACT MTR"),
 			"fieldname": "act_mtr",
 			"fieldtype": "Data",
-			"width": 150
+			"width": 75
 		},
 		{
 			"label": _("Prod %"),
 			"fieldname": "prod",
 			"fieldtype": "Data",
-			"width": 150
-		},
-		{
-			"label": _("Wastage"),
-			"fieldname": "wastage",
-			"fieldtype": "Data",
-			"width": 150
+			"width": 75
 		},
 		{
 			"label": _("MTR"),
 			"fieldname": "mtr",
 			"fieldtype": "Data",
-			"width": 150
+			"wifiltersdth": 75
 		},
 		{
 			"label": _("NWT"),
 			"fieldname": "nwt",
 			"fieldtype": "Data",
-			"width": 150
+			"width": 75
 		},
 		{
 			"label": _("LD"),
 			"fieldname": "ld",
 			"fieldtype": "Data",
-			"width": 150
+			"width": 75
 		},
 		{
 			"label": _("LD %"),
 			"fieldname": "ld_",
 			"fieldtype": "Data",
-			"width": 150
+			"width": 75
 		},
 		{
 			"label": _("TRIM"),
 			"fieldname": "trim",
 			"fieldtype": "Data",
-			"width": 150
+			"width": 75
 		},
 		{
 			"label": _("TRIM %"),
 			"fieldname": "trim_",
 			"fieldtype": "Data",
-			"width": 150
+			"width": 75
 		},
 		{
 			"label": _("Other"),
 			"fieldname": "other",
 			"fieldtype": "Data",
-			"width": 150
+			"width": 75
 		},
 		{
 			"label": _("Other %"),
 			"fieldname": "other_",
 			"fieldtype": "Data",
-			"width": 150
+			"width": 75
 		},
 		{
 			"label": _("STD GSM"),
 			"fieldname": "std_gsm",
 			"fieldtype": "Data",
-			"width": 150
+			"width": 75
 		},
 		{
 			"label": _("ACT GSM"),
 			"fieldname": "act_gsm",
 			"fieldtype": "Data",
-			"width": 150
+			"width": 75
 		},
 		{
 			"label": _("Gain/Loss"),
 			"fieldname": "gain_loss",
 			"fieldtype": "Data",
-			"width": 150
+			"width": 75
 		},
 		{
 			"label": _("RPM"),
 			"fieldname": "rpm",
 			"fieldtype": "Data",
-			"width": 150
+			"width": 75
 		},
 		{
 			"label": _("MPM"),
 			"fieldname": "mpm",
 			"fieldtype": "Data",
-			"width": 150
+			"width": 75
 		},
 		{
 			"label": _("GRAM"),
 			"fieldname": "gram",
 			"fieldtype": "Data",
-			"width": 150
+			"width": 75
 		},
 		{
 			"label": _("GSM"),
 			"fieldname": "gsm",
 			"fieldtype": "Data",
-			"width": 150
+			"width": 75
 		},
 		{
 			"label": _("Flow %"),
 			"fieldname": "flow",
 			"fieldtype": "Data",
-			"width": 150
+			"width": 75
 		},
 	]
 
-def get_data():
+def get_data(filters):
 	data = []
-	stock_entries = frappe.get_all("Stock Entry",filters={"docstatus": 0},fields=["name"])
+	filters_dict = {"docstatus": ["in", [0, 1]]}
+
+	# ✅ Date filter fix
+	if filters.get("from_date") and filters.get("to_date"):
+		filters_dict["posting_date"] = ["between", [filters.get("from_date"), filters.get("to_date")]]
+
+	elif filters.get("from_date"):
+		filters_dict["posting_date"] = [">=", filters.get("from_date")]
+
+	elif filters.get("to_date"):
+		filters_dict["posting_date"] = ["<=", filters.get("to_date")]
+
+	if filters.get("id"):
+		filters_dict["name"] = filters.get("id")
+
+	if filters.get("operator_name"):
+		filters_dict["custom_operator_name"] = filters.get("operator_name")
+
+	if filters.get("mc_name"):
+		filters_dict["custom_machine_name"] = filters.get("mc_name")
+
+	if filters.get("custom_shift"):
+		filters_dict["custom_shift"] = filters.get("custom_shift")
+
+	if filters.get("batch_no"):
+		filters_dict["custom_batch_no"] = filters.get("batch_no")
+
+	stock_entries = frappe.get_all(
+		"Stock Entry",
+		filters=filters_dict,
+		fields=["name"]
+	)
+	
 	for se in stock_entries:
 		doc = frappe.get_doc("Stock Entry", se.name)
+		employee_name = frappe.db.get_value("Employee",doc.custom_operator_name,"employee_name")
 		for item in doc.items:
 			# frappe.msgprint(str(item))
 			if item.is_finished_item:
 				data.append({
+					"date" : doc.posting_date,
+					"id": doc.name,
 					"job_name": item.item_code,
+					"optr_name": employee_name,
+					"mc_name" : doc.custom_machine_name,
+					"batch" : doc.custom_batch_no,
+					"shift" : doc.custom_shift,
+					"man_power" : doc.custom_manpower,
 					"mc_run" : doc.custom_mc_run,
 					"d_time" : doc.custom_dtime,
 					"target_mtr" : doc.custom_target_mtr,
 					"act_mtr" : doc.custom_actmtr,
 					"prod" : doc.custom_prod_,
-					"wastage" : doc.custom_wastage,
 					"mtr" : doc.custom_mtr,
 					"nwt" : item.qty,
 					"ld" : doc.custom_ld,

@@ -1,0 +1,121 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2026-04-23 12:33:30.107313",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "maintains_section",
+  "issue_date",
+  "person_name",
+  "stock_entry_type",
+  "column_break_nchs",
+  "machine_name",
+  "maintains_oper",
+  "naming_series",
+  "section_break_vccl",
+  "items",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "maintains_section",
+   "fieldtype": "Section Break",
+   "label": "Maintenance"
+  },
+  {
+   "fieldname": "issue_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": " Issue Date"
+  },
+  {
+   "default": "Maintenance",
+   "fieldname": "stock_entry_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Stock Entry Type",
+   "options": "Maintenance"
+  },
+  {
+   "fieldname": "column_break_nchs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "machine_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Machine Name",
+   "options": "Machine Name"
+  },
+  {
+   "fieldname": "maintains_oper",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Maintenance Oper.",
+   "options": "\nGeneral Maintains\nPreventive Maintains\nR&D\nBreakdown\nKCR\nOther"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Naming Series"
+  },
+  {
+   "fieldname": "section_break_vccl",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "Maintenance Item"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Maintenance",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "person_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Operator Name",
+   "options": "Employee"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-04-27 11:31:07.352696",
+ "modified_by": "Administrator",
+ "module": "Hariom Sanpra",
+ "name": "Maintenance",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "rutuja@sanpra.co.in",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

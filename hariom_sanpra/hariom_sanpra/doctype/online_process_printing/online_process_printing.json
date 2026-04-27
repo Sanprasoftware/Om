@@ -8,14 +8,14 @@
  "field_order": [
   "date",
   "job_name",
-  "std_ink_gsm",
-  "column_break_xsts",
   "shift",
+  "doctype_hariom",
+  "column_break_xsts",
   "topbot_shade",
   "min_ink_gsm",
   "naming_series",
+  "ref_doc",
   "column_break_pvpl",
-  "stock_entry",
   "batch_no",
   "max_ink_gsm",
   "mc_name",
@@ -30,12 +30,6 @@
  ],
  "fields": [
   {
-   "fieldname": "stock_entry",
-   "fieldtype": "Link",
-   "label": "Stock Entry",
-   "options": "Stock Entry"
-  },
-  {
    "fieldname": "date",
    "fieldtype": "Date",
    "label": "Date"
@@ -47,9 +41,9 @@
   },
   {
    "fieldname": "shift",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "label": "Shift",
-   "options": "\nFirst\nSecond\nThird\nGenral"
+   "options": "Shift"
   },
   {
    "fieldname": "column_break_xsts",
@@ -107,12 +101,6 @@
    "label": "Top/Bot Shade"
   },
   {
-   "fieldname": "std_ink_gsm",
-   "fieldtype": "Float",
-   "label": "STD Ink GSM",
-   "precision": "2"
-  },
-  {
    "fieldname": "max_ink_gsm",
    "fieldtype": "Float",
    "label": "Max Ink GSM",
@@ -141,12 +129,24 @@
    "fieldtype": "Table",
    "label": "Items",
    "options": "ONLINE PROCESS REPORT"
+  },
+  {
+   "fieldname": "doctype_hariom",
+   "fieldtype": "Link",
+   "label": "Doctype",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "ref_doc",
+   "fieldtype": "Dynamic Link",
+   "label": "Ref Doc",
+   "options": "doctype_hariom"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-04-10 17:22:55.733739",
+ "modified": "2026-04-24 14:59:01.195262",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Online Process Printing",

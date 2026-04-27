@@ -23,7 +23,7 @@ frappe.query_reports["GD Rewinding Report"] = {
 			fieldname: "operator_name",
 			label: __("Operator Name"),
 			fieldtype: "Link",
-			options: "Operator Name",
+			options: "Employee",
 		},
 		{
 			fieldname: "custom_shift",
