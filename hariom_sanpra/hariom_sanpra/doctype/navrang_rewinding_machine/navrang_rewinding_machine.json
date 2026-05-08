@@ -15,6 +15,8 @@
   "tag_in",
   "tag_out",
   "target_prod_per_shift_rolls",
+  "mc_start",
+  "mc_end",
   "column_break_riio",
   "man_power",
   "batch",
@@ -26,7 +28,8 @@
   "fg_items",
   "wastage_items",
   "add_data",
-  "items"
+  "items",
+  "amended_from"
  ],
  "fields": [
   {
@@ -153,12 +156,33 @@
    "fieldtype": "Table",
    "label": "Items",
    "options": "navrang rewinding items"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Navrang Rewinding Machine",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "mc_start",
+   "fieldtype": "Time",
+   "label": "M/C Start"
+  },
+  {
+   "fieldname": "mc_end",
+   "fieldtype": "Time",
+   "label": "M/C End"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2026-04-21 18:04:14.859180",
+ "modified": "2026-05-05 17:53:42.528697",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Navrang Rewinding Machine",

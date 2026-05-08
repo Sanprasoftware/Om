@@ -12,8 +12,8 @@
   "machine_name",
   "column_break_wrjt",
   "shift",
-  "tag_in",
-  "tag_out",
+  "machine_start",
+  "machine_end",
   "column_break_mpum",
   "manpower",
   "batch",
@@ -46,11 +46,6 @@
    "options": "Machine Name"
   },
   {
-   "fieldname": "tag_in",
-   "fieldtype": "Int",
-   "label": "Tag In"
-  },
-  {
    "fieldname": "column_break_wrjt",
    "fieldtype": "Column Break"
   },
@@ -70,11 +65,6 @@
    "fieldtype": "Link",
    "label": "Batch",
    "options": "Batch No"
-  },
-  {
-   "fieldname": "tag_out",
-   "fieldtype": "Int",
-   "label": "Tag Out"
   },
   {
    "fieldname": "section_break_slex",
@@ -139,17 +129,30 @@
    "fieldname": "naming_series",
    "fieldtype": "Data",
    "hidden": 1,
+   "in_list_view": 1,
    "label": "Naming Series"
+  },
+  {
+   "fieldname": "machine_start",
+   "fieldtype": "Time",
+   "in_list_view": 1,
+   "label": "Machine Start"
+  },
+  {
+   "fieldname": "machine_end",
+   "fieldtype": "Time",
+   "label": "Machine End"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-04-23 17:42:21.172773",
+ "modified": "2026-05-05 14:49:39.799124",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "GD Rewinding",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {

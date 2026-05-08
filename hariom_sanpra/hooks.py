@@ -153,15 +153,18 @@ doc_events = {
 	"Delivery Note": {
 		"on_submit": "hariom_sanpra.public.py.delivery_note.create_stock_entry"
 	},
-	"Stock Entry": {
-		"before_save": "hariom_sanpra.public.py.stock_entry.calculation",
-		"before_insert": "hariom_sanpra.public.py.stock_entry.set_batch"
-	},
+	# "Stock Entry": {
+	# 	"before_save": "hariom_sanpra.public.py.stock_entry.calculation",
+	# 	"before_insert": "hariom_sanpra.public.py.stock_entry.set_batch"
+	# },
+	# "Navrang Rewinding Machine": {
+	# 	"on_submit": "hariom_sanpra.hariom_sanpra.doctype.navrang_rewinding_machine.navrang_rewinding_machine.create_stock_entry"
+	# },
 	"BOM": {
 		"on_update_after_submit": "hariom_sanpra.public.py.bom.set_bom"
 	}
 }
-
+# /home/hariom/bench-uat/apps/hariom_sanpra/hariom_sanpra/hariom_sanpra.doctype.navrang_rewinding_machine.navrang_rewinding_machine.py
 # Scheduled Tasks
 # ---------------
 

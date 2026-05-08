@@ -165,7 +165,23 @@ def calculation(doc, Method=None):
                 row.custom_roll_actual_gsm = 0
         
         if doc.stock_entry_type == "JOINT M/C":
-            row.custom_output_weight = (flt(row.custom_size_1) * flt(row.custom_size_2) * ((doc.custom_gsm / 1000)/ 10.758))
+
+            # 👉 GSM from custom_raw_items table
+            gsm = 0
+            if doc.custom_raw_items:
+                for d in doc.custom_raw_items:
+                    if flt(d.gsm):
+                        gsm = flt(d.gsm)
+                        break   # first valid gsm
+
+            # 👉 formula same (only gsm source changed)
+            row.custom_output_weight = (
+                flt(row.custom_size_1) *
+                flt(row.custom_size_2) *
+                ((gsm / 1000) / 10.758)
+            )
+
+            # 👉 qty update only for FG
             if row.is_finished_item == 1:
                 row.qty = row.custom_output_weight
 

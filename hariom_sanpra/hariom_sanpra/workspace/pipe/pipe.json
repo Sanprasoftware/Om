@@ -1,0 +1,143 @@
+{
+ "app": "hariom_sanpra",
+ "charts": [],
+ "content": "[{\"id\":\"Xe2GVLOq8J\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Reports &amp; Masters</b></span>\",\"col\":12}},{\"id\":\"KaRR91W3qw\",\"type\":\"card\",\"data\":{\"card_name\":\"Pipe\",\"col\":4}},{\"id\":\"K_KWMy9Vc7\",\"type\":\"card\",\"data\":{\"card_name\":\"Quality Inspection\",\"col\":4}},{\"id\":\"J46Yb9HYn6\",\"type\":\"card\",\"data\":{\"card_name\":\"Reports\",\"col\":4}}]",
+ "creation": "2026-04-29 17:45:59.045066",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "aperture",
+ "idx": 0,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "label": "Pipe",
+ "link_type": "DocType",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Pipe",
+   "link_count": 3,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Pipe Jambo Machine",
+   "link_count": 0,
+   "link_to": "Pipe Jambo Machine",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "RK Slitting Machine",
+   "link_count": 0,
+   "link_to": "RK Slitting Machine",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Small Pipe mc",
+   "link_count": 0,
+   "link_to": "Small Pipe mc",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Reports",
+   "link_count": 3,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Pipe Jambo Machine Report",
+   "link_count": 0,
+   "link_to": "Pipe Jambo Machine Report",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "RK Slitting Machine Report",
+   "link_count": 0,
+   "link_to": "RK Slitting Machine Report",
+   "link_type": "Report",
+   "onboard": 0,
+   "report_ref_doctype": "RK Slitting Machine",
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Small Pipe mc Report",
+   "link_count": 0,
+   "link_to": "Small Pipe mc Report",
+   "link_type": "Report",
+   "onboard": 0,
+   "report_ref_doctype": "Small Pipe mc",
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Quality Inspection",
+   "link_count": 1,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Seam Strength",
+   "link_count": 0,
+   "link_to": "Seam Strength",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-04-30 17:27:03.050698",
+ "modified_by": "Administrator",
+ "module": "Hariom Sanpra",
+ "name": "Pipe",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "restrict_to_domain": "",
+ "roles": [
+  {
+   "role": "Purchase User"
+  },
+  {
+   "role": "Purchase Manager"
+  },
+  {
+   "role": "Purchase Master Manager"
+  }
+ ],
+ "sequence_id": 0.0,
+ "shortcuts": [],
+ "title": "Pipe",
+ "type": "Workspace"
+}

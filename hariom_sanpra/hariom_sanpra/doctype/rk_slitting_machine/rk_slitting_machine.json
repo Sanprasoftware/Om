@@ -13,10 +13,10 @@
   "roll_slitting_width_mm",
   "column_break_lveh",
   "shift",
-  "tag_in",
-  "tag_out",
   "no_of_coils_ups",
   "roll_slitting_width_gp",
+  "mc_start",
+  "mc_end",
   "column_break_hrmb",
   "man_power",
   "batch",
@@ -29,7 +29,8 @@
   "fg_item",
   "wastage_items",
   "add_data",
-  "items"
+  "items",
+  "amended_from"
  ],
  "fields": [
   {
@@ -41,7 +42,7 @@
    "fieldname": "operator_name",
    "fieldtype": "Link",
    "label": "Operator Name",
-   "options": "Operator Name"
+   "options": "Employee"
   },
   {
    "fieldname": "machine_name",
@@ -58,16 +59,6 @@
    "fieldtype": "Link",
    "label": "Shift",
    "options": "Shift"
-  },
-  {
-   "fieldname": "tag_in",
-   "fieldtype": "Int",
-   "label": "Tag In"
-  },
-  {
-   "fieldname": "tag_out",
-   "fieldtype": "Int",
-   "label": "Tag Out"
   },
   {
    "fieldname": "column_break_hrmb",
@@ -160,12 +151,33 @@
    "fieldname": "add_data",
    "fieldtype": "Button",
    "label": "Add Data"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "RK Slitting Machine",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "mc_start",
+   "fieldtype": "Time",
+   "label": "M/C Start"
+  },
+  {
+   "fieldname": "mc_end",
+   "fieldtype": "Time",
+   "label": "M/C End"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2026-04-23 15:18:03.120865",
+ "modified": "2026-05-05 17:51:52.370562",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "RK Slitting Machine",

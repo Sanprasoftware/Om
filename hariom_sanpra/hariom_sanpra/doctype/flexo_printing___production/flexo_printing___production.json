@@ -16,18 +16,23 @@
   "tag_in",
   "tag_out",
   "target_prod_per_shift_kgs",
+  "mc_start",
+  "mc_end",
   "column_break_aasi",
   "man_power",
   "batch",
   "machine_no",
   "actual_wastage_",
   "naming_series",
+  "down_time_min",
+  "down_time_",
   "section_break_vtad",
   "raw_items",
   "fg_items",
   "wastage_items",
   "add_data",
-  "items"
+  "items",
+  "amended_from"
  ],
  "fields": [
   {
@@ -147,12 +152,43 @@
    "fieldtype": "Table",
    "label": "Items",
    "options": "Flexo PP Item"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Flexo Printing - Production",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "mc_start",
+   "fieldtype": "Time",
+   "label": "M/C Start"
+  },
+  {
+   "fieldname": "mc_end",
+   "fieldtype": "Time",
+   "label": "M/C End"
+  },
+  {
+   "fieldname": "down_time_min",
+   "fieldtype": "Float",
+   "label": "Down Time Min"
+  },
+  {
+   "fieldname": "down_time_",
+   "fieldtype": "Float",
+   "label": "Down Time %"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2026-04-22 16:04:16.595874",
+ "modified": "2026-05-05 17:54:36.323660",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Flexo Printing - Production",

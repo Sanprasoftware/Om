@@ -1,0 +1,153 @@
+{
+ "app": "hariom_sanpra",
+ "charts": [],
+ "content": "[{\"id\":\"Xe2GVLOq8J\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Reports &amp; Masters</b></span>\",\"col\":12}},{\"id\":\"QNK8RFleHs\",\"type\":\"card\",\"data\":{\"card_name\":\"Masters\",\"col\":4}},{\"id\":\"p59anEOnGP\",\"type\":\"card\",\"data\":{\"card_name\":\"Quality Inspection\",\"col\":4}},{\"id\":\"6_QwcbJVeg\",\"type\":\"card\",\"data\":{\"card_name\":\"Reports\",\"col\":4}}]",
+ "creation": "2026-04-29 17:46:14.068069",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "aperture",
+ "idx": 0,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "label": "PP Export",
+ "link_type": "DocType",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Masters",
+   "link_count": 3,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "PP EXport Jambo Roll",
+   "link_count": 0,
+   "link_to": "PP EXport Jambo Roll",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Flexo Printing - Production",
+   "link_count": 0,
+   "link_to": "Flexo Printing - Production",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Navrang Rewinding Machine",
+   "link_count": 0,
+   "link_to": "Navrang Rewinding Machine",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Quality Inspection",
+   "link_count": 2,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "First Sheet Approver - PP Export",
+   "link_count": 0,
+   "link_to": "First Sheet Approver - PP Export",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Online Process Printing",
+   "link_count": 0,
+   "link_to": "Online Process Printing",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Reports",
+   "link_count": 3,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "PP EXport Jambo Roll Report",
+   "link_count": 0,
+   "link_to": "PP EXport Jambo Roll Report",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Flexo Printing - Production Report",
+   "link_count": 0,
+   "link_to": "Flexo Printing - Production Report",
+   "link_type": "Report",
+   "onboard": 0,
+   "report_ref_doctype": "Flexo Printing - Production",
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Navrang Rewinding Machine Report",
+   "link_count": 0,
+   "link_to": "Navrang Rewinding Machine Report",
+   "link_type": "Report",
+   "onboard": 0,
+   "report_ref_doctype": "Navrang Rewinding Machine",
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-04-30 17:26:56.423268",
+ "modified_by": "Administrator",
+ "module": "Hariom Sanpra",
+ "name": "PP Export",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "restrict_to_domain": "",
+ "roles": [
+  {
+   "role": "Purchase User"
+  },
+  {
+   "role": "Purchase Manager"
+  },
+  {
+   "role": "Purchase Master Manager"
+  }
+ ],
+ "sequence_id": 0.0,
+ "shortcuts": [],
+ "title": "PP Export",
+ "type": "Workspace"
+}

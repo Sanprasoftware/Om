@@ -68,129 +68,186 @@ def get_columns() -> list[dict]:
 		{
 			"label": _("M/C Run"),
 			"fieldname": "mc_run",
-			"fieldtype": "Data",
-			"width": 50
+			"fieldtype": "Float",
+			"width": 50,
+			"precision":2
 		},
 		{
 			"label": _("D.Time"),
 			"fieldname": "d_time",
-			"fieldtype": "Data",
-			"width": 50
+			"fieldtype": "Float",
+			"width": 50,
+			"precision":2
 		},
 		{
 			"label": _("Target MTR"),
 			"fieldname": "target_mtr",
-			"fieldtype": "Data",
-			"width": 50
+			"fieldtype": "Float",
+			"width": 50,
+			"precision":2
 		},
 		{
 			"label": _("ACT MTR"),
 			"fieldname": "act_mtr",
-			"fieldtype": "Data",
-			"width": 75
+			"fieldtype": "Float",
+			"width": 75,
+			"precision":2
 		},
 		{
 			"label": _("Prod %"),
 			"fieldname": "prod",
-			"fieldtype": "Data",
-			"width": 75
+			"fieldtype": "Float",
+			"width": 75,
+			"precision":2
 		},
 		{
 			"label": _("MTR"),
 			"fieldname": "mtr",
-			"fieldtype": "Data",
-			"wifiltersdth": 75
+			"fieldtype": "Float",
+			"width": 75,
+			"precision":2
 		},
 		{
 			"label": _("NWT"),
 			"fieldname": "nwt",
-			"fieldtype": "Data",
-			"width": 75
+			"fieldtype": "Float",
+			"width": 75,
+			"precision":2
 		},
 		{
 			"label": _("LD"),
 			"fieldname": "ld",
-			"fieldtype": "Data",
-			"width": 75
+			"fieldtype": "Float",
+			"width": 75,
+			"precision":2
 		},
 		{
 			"label": _("LD %"),
 			"fieldname": "ld_",
-			"fieldtype": "Data",
-			"width": 75
+			"fieldtype": "Float",
+			"width": 75,
+			"precision":2
 		},
 		{
 			"label": _("TRIM"),
 			"fieldname": "trim",
-			"fieldtype": "Data",
-			"width": 75
+			"fieldtype": "Float",
+			"width": 75,
+			"precision":2
 		},
 		{
 			"label": _("TRIM %"),
 			"fieldname": "trim_",
-			"fieldtype": "Data",
-			"width": 75
+			"fieldtype": "Float",
+			"width": 75,
+			"precision":2
 		},
 		{
 			"label": _("Other"),
 			"fieldname": "other",
-			"fieldtype": "Data",
-			"width": 75
+			"fieldtype": "Float",
+			"width": 75,
+			"precision":2
 		},
 		{
 			"label": _("Other %"),
 			"fieldname": "other_",
-			"fieldtype": "Data",
-			"width": 75
+			"fieldtype": "Float",
+			"width": 75,
+			"precision":2
 		},
 		{
 			"label": _("STD GSM"),
 			"fieldname": "std_gsm",
-			"fieldtype": "Data",
-			"width": 75
+			"fieldtype": "Float",
+			"width": 75,
+			"precision":2
 		},
 		{
 			"label": _("ACT GSM"),
 			"fieldname": "act_gsm",
-			"fieldtype": "Data",
-			"width": 75
+			"fieldtype": "Float",
+			"width": 75,
+			"precision":2
 		},
 		{
 			"label": _("Gain/Loss"),
 			"fieldname": "gain_loss",
-			"fieldtype": "Data",
-			"width": 75
+			"fieldtype": "Float",
+			"width": 75,
+			"precision":2
 		},
 		{
 			"label": _("RPM"),
 			"fieldname": "rpm",
-			"fieldtype": "Data",
-			"width": 75
+			"fieldtype": "Float",
+			"width": 75,
+			"precision":2
 		},
 		{
 			"label": _("MPM"),
 			"fieldname": "mpm",
-			"fieldtype": "Data",
-			"width": 75
+			"fieldtype": "Float",
+			"width": 75,
+			"precision":2
 		},
 		{
 			"label": _("GRAM"),
 			"fieldname": "gram",
-			"fieldtype": "Data",
-			"width": 75
+			"fieldtype": "Float",
+			"width": 75,
+			"precision":2
 		},
 		{
 			"label": _("GSM"),
 			"fieldname": "gsm",
-			"fieldtype": "Data",
-			"width": 75
+			"fieldtype": "Float",
+			"width": 75,
+			"precision":2
 		},
 		{
 			"label": _("Flow %"),
 			"fieldname": "flow",
-			"fieldtype": "Data",
-			"width": 75
+			"fieldtype": "Float",
+			"width": 75,
+			"precision":2
 		},
+		{
+			"label": _("Wastage"),
+			"fieldname": "wastage",
+			"fieldtype": "Float",
+			"width": 75,
+			"precision":2
+		},
+		{
+			"label": _("Wastage Difference"),
+			"fieldname": "wastage_difference",
+			"fieldtype": "Float",
+			"width": 75,
+			"precision":2
+		},
+		{
+			"label": _("Weight Bridge Wastage"),
+			"fieldname": "weight_bridge_wastage",
+			"fieldtype": "Float",
+			"width": 75,
+			"precision":2
+		},
+		{
+			"label": _("GRAMAGE"),
+			"fieldname": "gramage",
+			"fieldtype": "Float",
+			"width": 75,
+			"precision":2
+		},
+		{
+			"label": _("Current GSM"),
+			"fieldname": "current_gsm",
+			"fieldtype": "Float",
+			"width": 75,
+			"precision":2
+		},
+
 	]
 
 def get_data(filters):
@@ -264,5 +321,13 @@ def get_data(filters):
 					"gram" : doc.custom_gram,
 					"gsm" : doc.custom_gsm1,
 					"flow" : doc.custom_flow_,
+					"wastage" : doc.custom_wastage,
+					"wastage_difference": doc.custom_wastage_difference,
+					"weight_bridge_wastage": doc.custom_weight_bridge_wastage,
+					"gramage":doc.custom_gramage,
+					"current_gsm":doc.custom_current_gsm
+
+
+
 				})
 	return data

@@ -12,8 +12,8 @@
   "column_break_dcrg",
   "shift",
   "stock_entry_type",
-  "tag_in",
-  "tag_out",
+  "machine_start",
+  "machine_end",
   "column_break_lqaq",
   "machine_no",
   "batch",
@@ -24,7 +24,8 @@
   "fg_items",
   "wastage_items",
   "add_data",
-  "items"
+  "items",
+  "amended_from"
  ],
  "fields": [
   {
@@ -66,18 +67,6 @@
    "label": "Stock Entry Type",
    "options": "Stock Entry Type",
    "read_only": 1
-  },
-  {
-   "fieldname": "tag_in",
-   "fieldtype": "Int",
-   "in_list_view": 1,
-   "label": "Tag In"
-  },
-  {
-   "fieldname": "tag_out",
-   "fieldtype": "Int",
-   "in_list_view": 1,
-   "label": "Tag Out"
   },
   {
    "fieldname": "column_break_lqaq",
@@ -140,12 +129,35 @@
    "fieldtype": "Data",
    "hidden": 1,
    "label": "Naming Series"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Pipe Jambo Machine",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "machine_start",
+   "fieldtype": "Time",
+   "in_list_view": 1,
+   "label": "Machine Start "
+  },
+  {
+   "fieldname": "machine_end",
+   "fieldtype": "Time",
+   "in_list_view": 1,
+   "label": "Machine End"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2026-04-22 18:14:54.526007",
+ "modified": "2026-05-05 15:50:22.408051",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Pipe Jambo Machine",

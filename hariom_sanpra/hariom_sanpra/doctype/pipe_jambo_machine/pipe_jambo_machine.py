@@ -71,3 +71,49 @@ class PipeJamboMachine(Document):
 
 		return self
 
+#************************************************************************		
+	def on_submit(self):
+		self.create_stock_entry()
+
+	def on_cancel(self):
+		self.cancel_stock_entry()
+
+
+	def create_stock_entry(self):
+		se = frappe.new_doc("Stock Entry")
+		se.stock_entry_type = "JP-JAMBO PIPE"
+		se.custom_operator_name = self.operator_name
+		se.custom_machine_name = self.machine_name
+		se.custom_shift = self.shift
+		se.custom_batch_no = self.batch
+		se.custom_tag_in = self.tag_in
+		se.custom_tag_out = self.tag_out
+		for row in self.items:
+			se.append("items", {
+				"item_code": row.item_code,
+				"qty": row.qty,
+				"s_warehouse": row.source_warehouse,
+				"t_warehouse": row.target_warehouse,
+				"uom": row.uom,
+				"batch_no": row.batch,
+			})
+
+		se.insert(ignore_permissions=True)
+		se.submit()
+
+	def cancel_stock_entry(self):
+		stock_entries = frappe.get_all(
+			"Stock Entry",
+			filters={
+				"stock_entry_type": "JP-JAMBO PIPE",
+				"docstatus": 1
+			},
+			pluck="name"
+		)
+
+		for name in stock_entries:
+			frappe.get_doc("Stock Entry", name).cancel()
+
+
+
+

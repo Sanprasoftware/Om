@@ -7,7 +7,7 @@
  "field_order": [
   "maintains_section",
   "issue_date",
-  "person_name",
+  "operator_name",
   "stock_entry_type",
   "column_break_nchs",
   "machine_name",
@@ -15,7 +15,11 @@
   "naming_series",
   "section_break_vccl",
   "items",
-  "amended_from"
+  "amended_from",
+  "section_break_mgjb",
+  "total_qty",
+  "column_break_dsbi",
+  "total_amount"
  ],
  "fields": [
   {
@@ -66,12 +70,6 @@
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "items",
-   "fieldtype": "Table",
-   "label": "Items",
-   "options": "Maintenance Item"
-  },
-  {
    "fieldname": "amended_from",
    "fieldtype": "Link",
    "label": "Amended From",
@@ -82,18 +80,44 @@
    "search_index": 1
   },
   {
-   "fieldname": "person_name",
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "Maintenance Items"
+  },
+  {
+   "fieldname": "operator_name",
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Operator Name",
    "options": "Employee"
+  },
+  {
+   "fieldname": "section_break_mgjb",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "total_qty",
+   "fieldtype": "Float",
+   "label": "Total Qty",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_dsbi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_amount",
+   "fieldtype": "Float",
+   "label": "Total Amount",
+   "precision": "2"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-04-27 11:31:07.352696",
+ "modified": "2026-05-02 12:54:45.217691",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Maintenance",

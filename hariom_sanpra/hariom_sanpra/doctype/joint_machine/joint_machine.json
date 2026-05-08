@@ -15,9 +15,9 @@
   "batch",
   "machine_name",
   "column_break_nuct",
-  "tag_in",
-  "tag_out",
   "machine_no",
+  "machine_start",
+  "machine_end",
   "column_break_mthl",
   "thermocouple_change",
   "heater_changes",
@@ -27,7 +27,8 @@
   "fg_item",
   "wastage_item",
   "add_data",
-  "items"
+  "items",
+  "amended_from"
  ],
  "fields": [
   {
@@ -54,7 +55,7 @@
    "fieldname": "operator_name",
    "fieldtype": "Link",
    "label": "Operator Name",
-   "options": "Operator Name"
+   "options": "Employee"
   },
   {
    "fieldname": "batch",
@@ -75,16 +76,6 @@
    "fieldname": "thermocouple_change",
    "fieldtype": "Data",
    "label": "Thermocouple Change"
-  },
-  {
-   "fieldname": "tag_in",
-   "fieldtype": "Int",
-   "label": "Tag In"
-  },
-  {
-   "fieldname": "tag_out",
-   "fieldtype": "Int",
-   "label": "Tag Out"
   },
   {
    "fieldname": "section_break_crus",
@@ -146,12 +137,35 @@
    "fieldtype": "Select",
    "label": "Stock Entry Type",
    "options": "JOINT M/C"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Joint Machine",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "machine_start",
+   "fieldtype": "Time",
+   "in_list_view": 1,
+   "label": "Machine Start"
+  },
+  {
+   "fieldname": "machine_end",
+   "fieldtype": "Time",
+   "in_list_view": 1,
+   "label": "Machine End"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2026-04-22 15:54:24.110018",
+ "modified": "2026-05-05 15:04:40.699606",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Joint Machine",

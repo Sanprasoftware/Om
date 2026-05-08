@@ -1,0 +1,52 @@
+{
+ "app": "hariom_sanpra",
+ "creation": "2026-04-29 17:35:26.344517",
+ "docstatus": 0,
+ "doctype": "Workspace Sidebar",
+ "idx": 0,
+ "items": [
+  {
+   "child": 0,
+   "collapsible": 1,
+   "icon": "badge-cent",
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "Pondline",
+   "link_to": "Pondline",
+   "link_type": "Workspace",
+   "show_arrow": 0,
+   "type": "Link"
+  },
+  {
+   "child": 0,
+   "collapsible": 1,
+   "icon": "aperture",
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "Pipe",
+   "link_to": "Pipe",
+   "link_type": "Workspace",
+   "show_arrow": 0,
+   "type": "Link"
+  },
+  {
+   "child": 0,
+   "collapsible": 1,
+   "icon": "list",
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "PP Export",
+   "link_to": "PP Export",
+   "link_type": "Workspace",
+   "show_arrow": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-04-30 17:29:44.541292",
+ "modified_by": "Administrator",
+ "module": "Hariom Sanpra",
+ "name": "Hariom_Production",
+ "owner": "Administrator",
+ "standard": 1,
+ "title": "Hariom_Production"
+}

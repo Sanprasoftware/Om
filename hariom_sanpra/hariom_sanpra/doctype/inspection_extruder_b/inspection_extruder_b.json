@@ -28,12 +28,14 @@
   "target_adpt_3b",
   "target_adpt_4b",
   "target_adpt_5b",
+  "target_adpt_6",
   "column_break_mtvv",
   "adpt_1b",
   "adpt_2b",
   "adpt_3b",
   "adpt_4b",
   "adpt_5b",
+  "adpt_6",
   "section_break_mkyf",
   "target_column",
   "scchanger_targetb",
@@ -370,13 +372,23 @@
    "fieldtype": "Float",
    "in_list_view": 1,
    "label": "PREHEAT 4"
+  },
+  {
+   "fieldname": "target_adpt_6",
+   "fieldtype": "Float",
+   "label": "Target ADPT 6"
+  },
+  {
+   "fieldname": "adpt_6",
+   "fieldtype": "Float",
+   "label": "ADPT 6"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-04-15 16:25:51.285271",
+ "modified": "2026-05-05 18:01:13.921257",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Inspection Extruder B",

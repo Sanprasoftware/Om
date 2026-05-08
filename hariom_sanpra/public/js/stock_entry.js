@@ -123,6 +123,8 @@ frappe.ui.form.on("Stock Entry", {
 	custom_other:calc,
 	custom_rpm:calc,
 	custom_mpm:calc,
+	custom_gramage:calc,
+	custom_current_gsm:calc,
 	stock_entry_type(frm) {
         if (!frm.doc.stock_entry_type) return;
 
@@ -242,7 +244,8 @@ function calc(frm) {
 	let cl = flt(frm.doc.custom_ld);
 	let ct = flt(frm.doc.custom_trim);
 	let co = flt(frm.doc.custom_other);
-	
+	let cg = flt(frm.doc.custom_gramage);
+	let ccg = flt(frm.doc.custom_current_gsm);
 	let finished_qty = 0;
 
 	if (frm.doc.items && frm.doc.items.length) {
@@ -285,13 +288,16 @@ function calc(frm) {
 		let other_cal = (otr / finished_qty) * 100;
 		frm.set_value("custom_other_",other_cal);
 	}
-	if(rpm && mpm){
-		let gram = (rpm * 75 ) / mpm;
+	if(rpm && mpm && cg){
+		let gram = (rpm * cg ) / mpm;
 		frm.set_value("custom_gram",gram);
-		let gsm = (gram * 39.37) / 120;
+	}
+	let gram = flt(frm.doc.custom_gram);
+	if(gram && ccg){
+		let gsm = (gram * 39.37) / ccg;
 		frm.set_value("custom_gsm1",gsm);
-		let gr = (rpm * 75 / mpm);
-		frm.set_value("custom_gram",gr);
+		// let gr = (rpm * 75 / mpm);
+		// frm.set_value("custom_gram",gr);
 	}
 	if(cl && ct && co){
 		let tw = (cl + ct + co);

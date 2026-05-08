@@ -26,7 +26,7 @@ frappe.ui.form.on("Small Pipe mc", {
 
 			return {
 				filters: {
-					item: row.item_code
+					item: row.item
 				}
 			};
 		};
@@ -35,7 +35,7 @@ frappe.ui.form.on("Small Pipe mc", {
 
 			return {
 				filters: {
-					item: row.item_code
+					item: row.item
 				}
 			};
 		};
@@ -44,7 +44,7 @@ frappe.ui.form.on("Small Pipe mc", {
 
 			return {
 				filters: {
-					item: row.item_code
+					item: row.item
 				}
 			};
 		};

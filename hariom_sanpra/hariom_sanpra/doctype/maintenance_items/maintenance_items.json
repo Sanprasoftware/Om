@@ -1,33 +1,31 @@
 {
  "actions": [],
  "allow_rename": 1,
- "creation": "2026-04-21 15:31:53.981727",
+ "creation": "2026-04-28 12:14:19.253122",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "source_warehouse",
-  "one_roll_total_wt",
-  "column_break_scrc",
+  "column_break_xhyq",
   "target_warehouse",
-  "total_wt",
-  "column_break_mduu",
-  "item_code",
-  "column_break_gpnu",
-  "gsm",
-  "column_break_ommt",
-  "meter",
-  "section_break_pmug",
+  "column_break_zwhp",
+  "item",
+  "section_break_ktlq",
   "use_serial_no__batch_fields",
+  "batch_no",
   "serial_and_batch_bundle",
-  "batch",
-  "column_break_khfe",
+  "column_break_kwvv",
   "is_scrap_item",
   "is_finished_item",
-  "section_break_lrti",
+  "quantity_section",
   "qty",
-  "column_break_vpta",
-  "uom"
+  "column_break_bclw",
+  "uom",
+  "rates_section",
+  "basic_rate",
+  "column_break_ncud",
+  "basic_amount"
  ],
  "fields": [
   {
@@ -38,10 +36,6 @@
    "options": "Warehouse"
   },
   {
-   "fieldname": "column_break_scrc",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "target_warehouse",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -49,38 +43,22 @@
    "options": "Warehouse"
   },
   {
-   "fieldname": "column_break_mduu",
+   "fieldname": "column_break_xhyq",
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "item_code",
+   "fieldname": "column_break_zwhp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "item",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Item Code",
+   "label": "Item",
    "options": "Item"
   },
   {
-   "fieldname": "column_break_gpnu",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "gsm",
-   "fieldtype": "Int",
-   "in_list_view": 1,
-   "label": "GSM"
-  },
-  {
-   "fieldname": "column_break_ommt",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "meter",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "Meter"
-  },
-  {
-   "fieldname": "section_break_pmug",
+   "fieldname": "section_break_ktlq",
    "fieldtype": "Section Break"
   },
   {
@@ -91,6 +69,15 @@
    "label": " Use Serial No / Batch Fields"
   },
   {
+   "depends_on": "eval:doc.use_serial_no__batch_fields == \"1\"",
+   "fieldname": "batch_no",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Batch No",
+   "options": "Batch"
+  },
+  {
+   "depends_on": "eval:doc.use_serial_no__batch_fields == \"0\"",
    "fieldname": "serial_and_batch_bundle",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -98,33 +85,25 @@
    "options": "Serial and Batch Bundle"
   },
   {
-   "fieldname": "batch",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Batch",
-   "options": "Batch"
-  },
-  {
-   "fieldname": "column_break_khfe",
+   "fieldname": "column_break_kwvv",
    "fieldtype": "Column Break"
   },
   {
    "default": "0",
    "fieldname": "is_scrap_item",
    "fieldtype": "Check",
-   "in_list_view": 1,
    "label": " Is Scrap Item"
   },
   {
    "default": "0",
    "fieldname": "is_finished_item",
    "fieldtype": "Check",
-   "in_list_view": 1,
-   "label": " Is Finished Item"
+   "label": "Is Finished Item"
   },
   {
-   "fieldname": "section_break_lrti",
-   "fieldtype": "Section Break"
+   "fieldname": "quantity_section",
+   "fieldtype": "Section Break",
+   "label": "Quantity"
   },
   {
    "fieldname": "qty",
@@ -133,39 +112,44 @@
    "label": "Qty"
   },
   {
-   "fieldname": "column_break_vpta",
+   "fieldname": "column_break_bclw",
    "fieldtype": "Column Break"
   },
   {
    "fieldname": "uom",
    "fieldtype": "Link",
-   "in_list_view": 1,
    "label": "UOM",
    "options": "UOM"
   },
   {
-   "fieldname": "one_roll_total_wt",
-   "fieldtype": "Int",
-   "in_list_view": 1,
-   "label": "One Roll Total WT"
+   "fieldname": "rates_section",
+   "fieldtype": "Section Break",
+   "label": "Rates"
   },
   {
-   "fieldname": "total_wt",
+   "fieldname": "column_break_ncud",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "basic_amount",
    "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "Total WT",
-   "precision": "2"
+   "label": "Basic Amount"
+  },
+  {
+   "fieldname": "basic_rate",
+   "fieldtype": "Float",
+   "label": "Basic Rate (as per Stock UOM)"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-05-05 18:00:07.085514",
+ "modified": "2026-04-28 12:22:57.776613",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
- "name": "Small Pipe Items",
- "owner": "rutuja@sanpra.co.in",
+ "name": "Maintenance Items",
+ "owner": "Administrator",
  "permissions": [],
  "row_format": "Dynamic",
  "rows_threshold_for_grid_search": 20,

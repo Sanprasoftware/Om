@@ -13,10 +13,10 @@
   "roll_size",
   "column_break_hapf",
   "stock_entry_type",
-  "tag_in",
-  "tag_out",
   "thermocouple_chanages",
   "heater_change",
+  "mc_start",
+  "mc_end",
   "column_break_ngju",
   "man_power",
   "machine_no",
@@ -77,18 +77,6 @@
    "label": "Stock Entry Type",
    "options": "Stock Entry Type",
    "read_only": 1
-  },
-  {
-   "fieldname": "tag_in",
-   "fieldtype": "Int",
-   "in_list_view": 1,
-   "label": "Tag In"
-  },
-  {
-   "fieldname": "tag_out",
-   "fieldtype": "Int",
-   "in_list_view": 1,
-   "label": "Tag Out"
   },
   {
    "fieldname": "thermocouple_chanages",
@@ -184,16 +172,27 @@
    "fieldname": "naming_series",
    "fieldtype": "Data",
    "label": "Naming Series"
+  },
+  {
+   "fieldname": "mc_start",
+   "fieldtype": "Time",
+   "label": "M/C Start"
+  },
+  {
+   "fieldname": "mc_end",
+   "fieldtype": "Time",
+   "label": "M/C End"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-04-23 14:40:29.960644",
+ "modified": "2026-05-05 17:53:00.730297",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Small Pipe mc",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "rutuja@sanpra.co.in",
  "permissions": [
   {
