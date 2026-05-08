@@ -1,6 +1,5 @@
 {
  "actions": [],
- "allow_rename": 1,
  "autoname": "naming_series:",
  "creation": "2026-04-24 15:36:09.264798",
  "doctype": "DocType",
@@ -154,8 +153,8 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-04-27 12:16:43.197590",
- "modified_by": "Administrator",
+ "modified": "2026-04-28 14:53:08.010459",
+ "modified_by": "rutuja@sanpra.co.in",
  "module": "Hariom Sanpra",
  "name": "Maintenance Breakdown Intimation Slip",
  "naming_rule": "By \"Naming Series\" field",

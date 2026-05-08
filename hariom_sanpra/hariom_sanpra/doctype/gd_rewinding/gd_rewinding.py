@@ -84,3 +84,4 @@ class GDRewinding(Document):
 				row.roll_actual_gsm = (row.net_weight / row.roll_sqr_meter) * 1000
 			else:
 				row.roll_actual_gsm = 0
+	

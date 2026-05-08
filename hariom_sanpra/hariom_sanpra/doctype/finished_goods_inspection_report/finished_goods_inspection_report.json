@@ -1,0 +1,139 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-04-08 18:01:20.731163",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "date",
+  "job_name",
+  "column_break_mfax",
+  "ref_doc",
+  "batch_no",
+  "column_break_taha",
+  "shift",
+  "naming_series",
+  "section_break_ruld",
+  "finished_goods_inspection",
+  "section_break_vfaw",
+  "remark",
+  "section_break_surd",
+  "prepared_by",
+  "column_break_vxug",
+  "approved_by"
+ ],
+ "fields": [
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "job_name",
+   "fieldtype": "Link",
+   "label": "Job Name",
+   "options": "Item"
+  },
+  {
+   "fieldname": "column_break_mfax",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ref_doc",
+   "fieldtype": "Link",
+   "label": "Ref. Doc.",
+   "options": "Stock Entry"
+  },
+  {
+   "fieldname": "batch_no",
+   "fieldtype": "Link",
+   "label": "Batch No",
+   "options": "Batch No"
+  },
+  {
+   "fieldname": "column_break_taha",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "shift",
+   "fieldtype": "Link",
+   "label": "Shift",
+   "options": "Shift"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Naming Series",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_ruld",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "finished_goods_inspection",
+   "fieldtype": "Table",
+   "label": "Finished Goods Inspection",
+   "options": "Finished Goods Inspection"
+  },
+  {
+   "fieldname": "section_break_vfaw",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "remark",
+   "fieldtype": "Small Text",
+   "label": "Remark"
+  },
+  {
+   "fieldname": "section_break_surd",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "prepared_by",
+   "fieldtype": "Link",
+   "label": "Prepared By",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "column_break_vxug",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "approved_by",
+   "fieldtype": "Link",
+   "label": "Approved BY",
+   "options": "Employee"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-04-27 13:40:02.395416",
+ "modified_by": "Administrator",
+ "module": "Hariom Sanpra",
+ "name": "Finished Goods Inspection Report",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "saifa@sanpra.co.in",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

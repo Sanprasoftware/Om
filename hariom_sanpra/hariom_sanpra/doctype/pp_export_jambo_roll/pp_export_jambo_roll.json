@@ -24,7 +24,8 @@
   "fg_items",
   "wastage",
   "add_data",
-  "items"
+  "items",
+  "amended_from"
  ],
  "fields": [
   {
@@ -137,13 +138,24 @@
    "fieldtype": "Table",
    "label": "Raw Items",
    "options": "PP export jambo raw"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "PP EXport Jambo Roll",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2026-04-22 17:28:14.515424",
- "modified_by": "Administrator",
+ "modified": "2026-04-28 14:46:09.481351",
+ "modified_by": "rutuja@sanpra.co.in",
  "module": "Hariom Sanpra",
  "name": "PP EXport Jambo Roll",
  "naming_rule": "By \"Naming Series\" field",

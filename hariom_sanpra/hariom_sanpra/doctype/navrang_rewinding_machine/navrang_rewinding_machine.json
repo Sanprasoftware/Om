@@ -26,7 +26,8 @@
   "fg_items",
   "wastage_items",
   "add_data",
-  "items"
+  "items",
+  "amended_from"
  ],
  "fields": [
   {
@@ -153,13 +154,24 @@
    "fieldtype": "Table",
    "label": "Items",
    "options": "navrang rewinding items"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Navrang Rewinding Machine",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2026-04-21 18:04:14.859180",
- "modified_by": "Administrator",
+ "modified": "2026-04-28 14:47:52.458608",
+ "modified_by": "rutuja@sanpra.co.in",
  "module": "Hariom Sanpra",
  "name": "Navrang Rewinding Machine",
  "naming_rule": "By \"Naming Series\" field",

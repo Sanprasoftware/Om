@@ -27,7 +27,8 @@
   "fg_item",
   "wastage_item",
   "add_data",
-  "items"
+  "items",
+  "amended_from"
  ],
  "fields": [
   {
@@ -146,13 +147,24 @@
    "fieldtype": "Select",
    "label": "Stock Entry Type",
    "options": "JOINT M/C"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Joint Machine",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2026-04-22 15:54:24.110018",
- "modified_by": "Administrator",
+ "modified": "2026-04-28 14:40:32.928586",
+ "modified_by": "rutuja@sanpra.co.in",
  "module": "Hariom Sanpra",
  "name": "Joint Machine",
  "naming_rule": "By \"Naming Series\" field",

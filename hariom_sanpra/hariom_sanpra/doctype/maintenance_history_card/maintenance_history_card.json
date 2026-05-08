@@ -1,6 +1,5 @@
 {
  "actions": [],
- "allow_rename": 1,
  "autoname": "naming_series:",
  "creation": "2026-04-24 14:38:10.304651",
  "doctype": "DocType",
@@ -116,8 +115,8 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-04-25 13:49:10.480751",
- "modified_by": "Administrator",
+ "modified": "2026-04-28 14:54:07.516145",
+ "modified_by": "rutuja@sanpra.co.in",
  "module": "Hariom Sanpra",
  "name": "Maintenance History Card",
  "naming_rule": "By \"Naming Series\" field",
