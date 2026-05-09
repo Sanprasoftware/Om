@@ -87,10 +87,9 @@
   },
   {
    "fieldname": "operator_name",
-   "fieldtype": "Link",
-   "in_list_view": 1,
+   "fieldtype": "Table MultiSelect",
    "label": "Operator Name",
-   "options": "Employee"
+   "options": "Operator Name Items"
   },
   {
    "fieldname": "section_break_mgjb",
@@ -117,7 +116,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-05-02 12:54:45.217691",
+ "modified": "2026-05-08 15:45:21.937010",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Maintenance",

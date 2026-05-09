@@ -1,6 +1,5 @@
 {
  "actions": [],
- "allow_rename": 1,
  "autoname": "naming_series:",
  "creation": "2026-04-16 16:01:13.187725",
  "doctype": "DocType",
@@ -53,9 +52,9 @@
   },
   {
    "fieldname": "operator_name",
-   "fieldtype": "Link",
+   "fieldtype": "Table MultiSelect",
    "label": "Operator Name",
-   "options": "Employee"
+   "options": "Operator Name Items"
   },
   {
    "fieldname": "batch",
@@ -165,8 +164,8 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-05-05 15:04:40.699606",
- "modified_by": "Administrator",
+ "modified": "2026-05-08 18:07:23.912987",
+ "modified_by": "rutuja@sanpra.co.in",
  "module": "Hariom Sanpra",
  "name": "Joint Machine",
  "naming_rule": "By \"Naming Series\" field",

@@ -105,7 +105,17 @@ def get_data(filters: frappe._dict) -> list[dict]:
 			se.posting_date,
 			se.name as stock_entry_id,
 			se.stock_entry_type,
-			se.custom_operator_name as operator_name,
+			(
+				select group_concat(
+					ifnull(emp.employee_name, operator_item.operator_name)
+					order by operator_item.idx
+					separator ', '
+				)
+				from `tabOperator Name Items` operator_item
+				left join `tabEmployee` emp on emp.name = operator_item.operator_name
+				where operator_item.parent = se.name
+					and operator_item.parentfield = 'custom_operator_name'
+			) as operator_name,
 			se.custom_machine_name as machine_name,
 			sed.item_code,
 			sed.item_name,

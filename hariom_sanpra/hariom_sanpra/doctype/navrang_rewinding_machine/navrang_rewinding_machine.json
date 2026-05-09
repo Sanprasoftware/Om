@@ -1,6 +1,5 @@
 {
  "actions": [],
- "allow_rename": 1,
  "autoname": "naming_series:",
  "creation": "2026-04-21 10:50:06.671444",
  "doctype": "DocType",
@@ -40,10 +39,9 @@
   },
   {
    "fieldname": "operator_name",
-   "fieldtype": "Link",
-   "in_list_view": 1,
+   "fieldtype": "Table MultiSelect",
    "label": "Operator Name",
-   "options": "Employee"
+   "options": "Operator Name Items"
   },
   {
    "fieldname": "machine_name",
@@ -182,8 +180,8 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-05-05 17:53:42.528697",
- "modified_by": "Administrator",
+ "modified": "2026-05-08 18:09:07.894321",
+ "modified_by": "rutuja@sanpra.co.in",
  "module": "Hariom Sanpra",
  "name": "Navrang Rewinding Machine",
  "naming_rule": "By \"Naming Series\" field",

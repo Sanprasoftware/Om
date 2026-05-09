@@ -33,8 +33,7 @@ def get_columns() -> list[dict]:
 		{
 			"label": _("Maintenance Person Name"),
 			"fieldname": "maintenance_person_name",
-			"fieldtype": "Link",
-			"options" : "Employee"
+			"fieldtype": "Data",
 		},
 		{
 			"label": _("Details of Spare Items Used"),
@@ -102,7 +101,6 @@ def get_data(filters: frappe._dict) -> list[dict]:
             "date",
             "name as id",
             "machine_name",
-            "maintenance_person_name",
             "details_of_spare_items_used",
             "mc_on_time",
             "mc_off_time",
@@ -114,4 +112,22 @@ def get_data(filters: frappe._dict) -> list[dict]:
         filters=filter_dict
     )
 
+    for row in data:
+        doc = frappe.get_doc("Maintenance History Card", row.id)
+        row["maintenance_person_name"] = get_operator_names(doc.get("maintenance_person_name") or [])
+
     return data
+
+
+def get_operator_names(rows: list) -> str:
+    operator_names = []
+
+    for row in rows:
+        operator_name = row.get("operator_name")
+        if not operator_name:
+            continue
+        operator_names.append(
+            frappe.db.get_value("Employee", operator_name, "employee_name") or operator_name
+        )
+
+    return ", ".join(operator_names)

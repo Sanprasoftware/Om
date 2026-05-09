@@ -39,7 +39,8 @@
   "section_break_mowt",
   "checked_by",
   "column_break_fspn",
-  "approved_by"
+  "approved_by",
+  "amended_from"
  ],
  "fields": [
   {
@@ -211,13 +212,24 @@
    "fieldtype": "Link",
    "label": "Machine Name",
    "options": "Machine Name"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "First Sheet Approver - PP Export",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2026-04-22 16:24:55.702774",
- "modified_by": "Administrator",
+ "modified": "2026-05-08 16:47:47.236862",
+ "modified_by": "rutuja@sanpra.co.in",
  "module": "Hariom Sanpra",
  "name": "First Sheet Approver - PP Export",
  "naming_rule": "By \"Naming Series\" field",

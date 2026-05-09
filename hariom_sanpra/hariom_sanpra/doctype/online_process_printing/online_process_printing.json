@@ -1,6 +1,5 @@
 {
  "actions": [],
- "allow_rename": 1,
  "autoname": "naming_series:",
  "creation": "2026-03-18 12:47:19.141881",
  "doctype": "DocType",
@@ -26,7 +25,8 @@
   "section_break_gyfj",
   "checked_by",
   "column_break_pbge",
-  "approved_by"
+  "approved_by",
+  "amended_from"
  ],
  "fields": [
   {
@@ -141,13 +141,24 @@
    "fieldtype": "Dynamic Link",
    "label": "Ref Doc",
    "options": "doctype_hariom"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Online Process Printing",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2026-04-24 14:59:01.195262",
- "modified_by": "Administrator",
+ "modified": "2026-05-08 16:56:39.920396",
+ "modified_by": "rutuja@sanpra.co.in",
  "module": "Hariom Sanpra",
  "name": "Online Process Printing",
  "naming_rule": "By \"Naming Series\" field",

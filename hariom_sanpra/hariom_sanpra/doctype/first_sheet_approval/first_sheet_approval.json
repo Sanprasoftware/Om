@@ -1,6 +1,5 @@
 {
  "actions": [],
- "allow_rename": 1,
  "autoname": "naming_series:",
  "creation": "2026-04-08 16:48:39.983971",
  "doctype": "DocType",
@@ -45,7 +44,8 @@
   "section_break_hsqc",
   "approved_by_qa",
   "column_break_tcut",
-  "prod_dept"
+  "prod_dept",
+  "amended_from"
  ],
  "fields": [
   {
@@ -234,12 +234,14 @@
   {
    "fieldname": "min_std_gsm",
    "fieldtype": "Float",
+   "hidden": 1,
    "label": "Min STD GSM",
    "precision": "2"
   },
   {
    "fieldname": "max_std_gsm",
    "fieldtype": "Float",
+   "hidden": 1,
    "label": "Max STD GSM",
    "precision": "2"
   },
@@ -250,12 +252,23 @@
   {
    "fieldname": "column_break_fjke",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "First Sheet Approval",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2026-04-09 14:01:54.797758",
+ "modified": "2026-05-08 16:55:18.955456",
  "modified_by": "rutuja@sanpra.co.in",
  "module": "Hariom Sanpra",
  "name": "First Sheet Approval",

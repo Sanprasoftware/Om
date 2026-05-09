@@ -1,6 +1,5 @@
 {
  "actions": [],
- "allow_rename": 1,
  "autoname": "naming_series:",
  "creation": "2026-02-21 16:27:08.663126",
  "doctype": "DocType",
@@ -25,7 +24,8 @@
   "column_break_wubt",
   "column_break_jooh",
   "column_break_qhnx",
-  "approved_by"
+  "approved_by",
+  "amended_from"
  ],
  "fields": [
   {
@@ -129,13 +129,24 @@
    "fieldtype": "Link",
    "label": "Batch No",
    "options": "Batch No"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Process Parameter",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2026-04-15 18:25:34.061236",
- "modified_by": "Administrator",
+ "modified": "2026-05-08 16:57:54.632645",
+ "modified_by": "rutuja@sanpra.co.in",
  "module": "Hariom Sanpra",
  "name": "Process Parameter",
  "naming_rule": "By \"Naming Series\" field",

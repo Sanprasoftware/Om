@@ -51,6 +51,17 @@ def get_columns() -> list[dict]:
 			)
 			continue
 
+		if df.fieldtype == "Table MultiSelect":
+			columns.append(
+				{
+					"label": _(df.label or frappe.unscrub(df.fieldname)),
+					"fieldname": df.fieldname,
+					"fieldtype": "Data",
+					"width": 220,
+				}
+			)
+			continue
+
 		columns.append(
 			{
 				"label": _(df.label or frappe.unscrub(df.fieldname)),
@@ -68,6 +79,7 @@ def get_data(filters: dict) -> list[dict]:
 	meta = frappe.get_meta(DOCTYPE)
 	direct_fields = ["name"]
 	table_fields = []
+	table_multiselect_fields = []
 
 	for df in meta.fields:
 		if df.fieldtype in NON_DATA_FIELD_TYPES or not df.fieldname or df.fieldname in EXCLUDED_FIELDS:
@@ -75,6 +87,10 @@ def get_data(filters: dict) -> list[dict]:
 
 		if df.fieldtype == "Table":
 			table_fields.append(df)
+			continue
+
+		if df.fieldtype == "Table MultiSelect":
+			table_multiselect_fields.append(df)
 			continue
 
 		direct_fields.append(df.fieldname)
@@ -86,13 +102,15 @@ def get_data(filters: dict) -> list[dict]:
 		order_by="issue_date desc, creation desc",
 	)
 
-	if not table_fields or not data:
+	if not (table_fields or table_multiselect_fields) or not data:
 		return data
 
 	for row in data:
 		doc = frappe.get_doc(DOCTYPE, row["name"])
 		for df in table_fields:
 			row[f"{df.fieldname}_summary"] = format_child_table(doc.get(df.fieldname) or [])
+		for df in table_multiselect_fields:
+			row[df.fieldname] = format_operator_names(doc.get(df.fieldname) or [])
 
 	return data
 
@@ -119,9 +137,36 @@ def get_conditions(filters: dict) -> dict:
 		conditions["machine_name"] = filters["machine_name"]
 
 	if filters.get("operator_name"):
-		conditions["person_name"] = filters["operator_name"]
+		maintenance_names = frappe.get_all(
+			"Operator Name Items",
+			filters={
+				"parenttype": DOCTYPE,
+				"parentfield": "operator_name",
+				"operator_name": filters["operator_name"],
+			},
+			pluck="parent",
+		)
+		if filters.get("id"):
+			if filters["id"] not in maintenance_names:
+				conditions["name"] = ["in", [""]]
+		else:
+			conditions["name"] = ["in", maintenance_names or [""]]
 
 	return conditions
+
+
+def format_operator_names(rows: list) -> str:
+	operator_names = []
+
+	for row in rows:
+		operator_name = row.get("operator_name")
+		if not operator_name:
+			continue
+		operator_names.append(
+			frappe.db.get_value("Employee", operator_name, "employee_name") or operator_name
+		)
+
+	return ", ".join(operator_names)
 
 
 def format_child_table(rows: list) -> str:

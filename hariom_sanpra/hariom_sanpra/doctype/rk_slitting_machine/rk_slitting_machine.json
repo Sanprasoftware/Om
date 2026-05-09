@@ -1,6 +1,5 @@
 {
  "actions": [],
- "allow_rename": 1,
  "autoname": "naming_series:",
  "creation": "2026-04-20 17:40:40.822738",
  "doctype": "DocType",
@@ -40,9 +39,9 @@
   },
   {
    "fieldname": "operator_name",
-   "fieldtype": "Link",
+   "fieldtype": "Table MultiSelect",
    "label": "Operator Name",
-   "options": "Employee"
+   "options": "Operator Name Items"
   },
   {
    "fieldname": "machine_name",
@@ -177,8 +176,8 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-05-05 17:51:52.370562",
- "modified_by": "Administrator",
+ "modified": "2026-05-08 18:07:42.738137",
+ "modified_by": "rutuja@sanpra.co.in",
  "module": "Hariom Sanpra",
  "name": "RK Slitting Machine",
  "naming_rule": "By \"Naming Series\" field",

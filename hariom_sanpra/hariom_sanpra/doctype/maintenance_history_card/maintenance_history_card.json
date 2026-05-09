@@ -1,6 +1,5 @@
 {
  "actions": [],
- "allow_rename": 1,
  "autoname": "naming_series:",
  "creation": "2026-04-24 14:38:10.304651",
  "doctype": "DocType",
@@ -21,7 +20,8 @@
   "section_break_ajaj",
   "nature_of_problem",
   "details_of_maintenance_work_done",
-  "corrective_action_plan_to_avoid"
+  "corrective_action_plan_to_avoid",
+  "amended_from"
  ],
  "fields": [
   {
@@ -38,10 +38,9 @@
   },
   {
    "fieldname": "maintenance_person_name",
-   "fieldtype": "Link",
-   "in_list_view": 1,
+   "fieldtype": "Table MultiSelect",
    "label": "Maintenance Person Name",
-   "options": "Employee"
+   "options": "Operator Name Items"
   },
   {
    "fieldname": "naming_series",
@@ -62,13 +61,6 @@
    "fieldname": "mc_on_time",
    "fieldtype": "Time",
    "label": "M/C On Time"
-  },
-  {
-   "fieldname": "details_of_spare_items_used",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Details of Spare Items Used",
-   "options": "Item"
   },
   {
    "fieldname": "spare_item_cost",
@@ -111,12 +103,29 @@
   {
    "fieldname": "column_break_cbri",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Maintenance History Card",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "details_of_spare_items_used",
+   "fieldtype": "Table MultiSelect",
+   "label": "Details of Spare Items Used",
+   "options": "Details of Spare Items"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2026-04-25 13:49:10.480751",
+ "modified": "2026-05-08 18:39:09.308223",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Maintenance History Card",

@@ -140,7 +140,17 @@ def get_data(filters: frappe._dict) -> list[dict]:
 		sql_filters["id"] = filters.id
 
 	if filters.get("operator_name"):
-		conditions.append("se.operator_name = %(operator_name)s")
+		conditions.append(
+			"""
+			exists (
+				select 1
+				from `tabOperator Name Items` operator_filter
+				where operator_filter.parent = se.name
+					and operator_filter.parentfield = 'operator_name'
+					and operator_filter.operator_name = %(operator_name)s
+			)
+			"""
+		)
 		sql_filters["operator_name"] = filters.operator_name
 
 	if filters.get("machine_name"):
@@ -165,7 +175,17 @@ def get_data(filters: frappe._dict) -> list[dict]:
 			se.date,
 			se.man_power,
 			se.name as pp_export_jambo_roll_id,
-			ifnull(emp.employee_name, se.operator_name) as operator_name,
+			(
+				select group_concat(
+					ifnull(emp.employee_name, operator_item.operator_name)
+					order by operator_item.idx
+					separator ', '
+				)
+				from `tabOperator Name Items` operator_item
+				left join `tabEmployee` emp on emp.name = operator_item.operator_name
+				where operator_item.parent = se.name
+					and operator_item.parentfield = 'operator_name'
+			) as operator_name,
 			se.machine_name as machine_name,
 			se.tag_in,
 			se.tag_out,
@@ -189,7 +209,6 @@ def get_data(filters: frappe._dict) -> list[dict]:
 			end as item_type
 		from `tabPP EXport Jambo Roll` se
 		inner join `tabPP Export Jambo Items` sed on sed.parent = se.name
-		left join `tabEmployee` emp on emp.name = se.operator_name
 		left join `tabItem` it on it.name = sed.item_code
 		
 		where {" and ".join(conditions)}
