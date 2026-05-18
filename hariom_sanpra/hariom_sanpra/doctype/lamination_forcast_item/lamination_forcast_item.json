@@ -21,6 +21,8 @@
   "program_pending",
   "column_break_ckiu",
   "pending_days",
+  "column_break_ysks",
+  "program_complete_days",
   "section_break_ekzm",
   "remark"
  ],
@@ -112,14 +114,24 @@
    "fieldtype": "Float",
    "in_list_view": 1,
    "label": "Pending Days"
+  },
+  {
+   "fieldname": "column_break_ysks",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "program_complete_days",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Program Complete Days"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-04-10 18:41:47.436776",
- "modified_by": "rutuja@sanpra.co.in",
+ "modified": "2026-05-18 11:06:10.679882",
+ "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Lamination Forcast Item",
  "owner": "Administrator",

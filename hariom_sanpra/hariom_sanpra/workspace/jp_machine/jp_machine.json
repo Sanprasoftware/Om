@@ -1,0 +1,210 @@
+{
+ "app": "hariom_sanpra",
+ "charts": [],
+ "content": "[{\"id\":\"ME3TyXkY17\",\"type\":\"paragraph\",\"data\":{\"text\":\"<span class=\\\"h3\\\"><b>JP Machine</b></span>\",\"col\":12}},{\"id\":\"LCIplhe_v9\",\"type\":\"card\",\"data\":{\"card_name\":\"Masters\",\"col\":4}},{\"id\":\"H4kBEQFREe\",\"type\":\"card\",\"data\":{\"card_name\":\"Quality Inspection\",\"col\":4}},{\"id\":\"8qr4qR4QtX\",\"type\":\"card\",\"data\":{\"card_name\":\"Others\",\"col\":4}},{\"id\":\"ezeBCIF4F7\",\"type\":\"card\",\"data\":{\"card_name\":\"Reports\",\"col\":4}}]",
+ "creation": "2026-05-12 15:38:19.696979",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "align-start-vertical",
+ "idx": 0,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "label": "JP Machine",
+ "link_type": "DocType",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Others",
+   "link_count": 3,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Purchase Plan",
+   "link_count": 0,
+   "link_to": "Purchase Plan",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Forcast",
+   "link_count": 0,
+   "link_to": "Forcast",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "default-bom-item-list",
+   "link_count": 0,
+   "link_to": "default-bom-item-list",
+   "link_type": "Page",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Quality Inspection",
+   "link_count": 4,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Process Parameter",
+   "link_count": 0,
+   "link_to": "Process Parameter",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Spot GSM",
+   "link_count": 0,
+   "link_to": "Spot GSM",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "First Sheet Approval",
+   "link_count": 0,
+   "link_to": "First Sheet Approval",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Finished Goods Inspection Report",
+   "link_count": 0,
+   "link_to": "Finished Goods Inspection Report",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Masters",
+   "link_count": 1,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Stock Entry",
+   "link_count": 0,
+   "link_to": "Stock Entry",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Reports",
+   "link_count": 6,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Stock Balance",
+   "link_count": 0,
+   "link_to": "Stock Balance",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Stock Balance Hariom",
+   "link_count": 0,
+   "link_to": "Stock Balance Hariom",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Stock Ledger",
+   "link_count": 0,
+   "link_to": "Stock Ledger",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Stock Ledger Hariom",
+   "link_count": 0,
+   "link_to": "Stock Ledger Hariom",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Batch Wise Balance Hariom",
+   "link_count": 0,
+   "link_to": "Batch Wise Balance Hariom",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Daily-Cumulative Production Report",
+   "link_count": 0,
+   "link_to": "Daily-Cumulative Production Report",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-05-13 11:19:19.646747",
+ "modified_by": "rutuja@sanpra.co.in",
+ "module": "Hariom Sanpra",
+ "name": "JP Machine",
+ "number_cards": [],
+ "owner": "yogesh@sanpra.co.in",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "restrict_to_domain": "",
+ "roles": [],
+ "sequence_id": 0.0,
+ "shortcuts": [],
+ "title": "JP Machine",
+ "type": "Workspace"
+}

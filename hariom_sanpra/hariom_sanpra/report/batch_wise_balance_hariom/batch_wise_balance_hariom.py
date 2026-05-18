@@ -5,6 +5,7 @@
 import frappe
 from frappe import _ 
 from frappe.utils import add_to_date, cint, flt, get_datetime, get_table_name, getdate
+from frappe.utils.nestedset import get_descendants_of
 from pypika import functions as fn
 
 from erpnext.deprecation_dumpster import deprecated
@@ -23,10 +24,11 @@ def execute(filters=None):
 	if (
 		sle_count > SLE_COUNT_LIMIT
 		and not filters.get("item_code")
+		and not filters.get("item_group")
 		and not filters.get("warehouse")
 	):
 		frappe.throw(
-			_("Please select either the Item or Warehouse filter to generate the report.")
+			_("Please select Item, Item Group, or Warehouse filter to generate the report.")
 		)
 
 	if filters.from_date > filters.to_date:
@@ -48,6 +50,7 @@ def execute(filters=None):
 						data.append(
 							[
 								item,
+								item_map[item]["item_group"],
 								# item_map[item]["item_name"],
 								wh,
 								batch,
@@ -68,6 +71,7 @@ def get_columns(filters):
 
 	columns = [
 		_("Item") + ":Link/Item:400",
+		_("Item Group") + ":Link/Item Group:180",
 		# _("Item Name") + "::120",
 		_("Warehouse") + ":Link/Warehouse:120",
 		_("Batch") + ":Link/Batch:120",
@@ -101,6 +105,16 @@ def get_stock_closing_balance(stk_cl_obj, filters):
 	for field in ["item_code", "warehouse", "company", "batch_no"]:
 		if filters.get(field):
 			query_filters[field] = filters.get(field)
+
+	if filters.get("item_group"):
+		item_codes = get_item_codes_for_item_group(filters.get("item_group"))
+		if not item_codes:
+			return []
+		if filters.get("item_code"):
+			if filters.get("item_code") not in item_codes:
+				return []
+		else:
+			query_filters["item_code"] = ["in", item_codes]
 
 	return stk_cl_obj.get_stock_closing_balance(query_filters, for_batch=True)
 
@@ -139,6 +153,12 @@ def get_stock_ledger_entries_for_batch_no(filters):
 	for field in ["item_code", "batch_no", "company"]:
 		if filters.get(field):
 			query = query.where(sle[field] == filters.get(field))
+
+	if filters.get("item_group"):
+		item_codes = get_item_codes_for_item_group(filters.get("item_group"))
+		if not item_codes:
+			return []
+		query = query.where(sle.item_code.isin(item_codes))
 
 	if filters.start_from:
 		query = query.where(sle.posting_datetime > get_datetime(filters.start_from))
@@ -182,6 +202,12 @@ def get_stock_ledger_entries_for_batch_bundle(filters):
 			else:
 				query = query.where(sle[field] == filters.get(field))
 
+	if filters.get("item_group"):
+		item_codes = get_item_codes_for_item_group(filters.get("item_group"))
+		if not item_codes:
+			return []
+		query = query.where(sle.item_code.isin(item_codes))
+
 	if filters.start_from:
 		query = query.where(sle.posting_date > getdate(filters.start_from))
 
@@ -223,7 +249,12 @@ def get_item_warehouse_batch_map(filters, float_precision):
 
 def get_item_details(filters):
 	item_map = {}
-	for d in (frappe.qb.from_("Item").select("name", "item_name", "stock_uom")).run(as_dict=1):
+	for d in (frappe.qb.from_("Item").select("name", "item_name", "item_group", "stock_uom")).run(as_dict=1):
 		item_map.setdefault(d.name, d)
 
 	return item_map
+
+
+def get_item_codes_for_item_group(item_group):
+	item_groups = [item_group, *get_descendants_of("Item Group", item_group, ignore_permissions=True)]
+	return frappe.get_all("Item", filters={"item_group": ["in", item_groups]}, pluck="name")

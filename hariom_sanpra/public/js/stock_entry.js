@@ -113,6 +113,21 @@ function override_fg_completed_qty(frm) {
 	}
 }
 
+function set_orange_fields(frm) {
+	["custom_target_mtr","custom_actmtr","custom_prod_","custom_dtime_",
+	 "custom_gramage","custom_gramage_b","custom_wastage_difference",
+	 "custom_gsm1","custom_gsm_b","custom_flow_","custom_flow__b",
+	 "custom_total_gsm"
+	].forEach((fieldname) => {
+		const field = frm.get_field(fieldname);
+		if (!field) return;
+
+		field.$wrapper.find(".control-input, .control-value, input").css({
+			"background-color": "#D6EBF5",
+		});
+	});
+}
+
 frappe.ui.form.on("Stock Entry", {
 	custom_mc_run : calc,
 	custom_actmtr: calc,
@@ -123,8 +138,14 @@ frappe.ui.form.on("Stock Entry", {
 	custom_other:calc,
 	custom_rpm:calc,
 	custom_mpm:calc,
+	custom_mc_output:calc,
+	custom_rpm_b:calc,
+	custom_mc_output_b:calc,
+	custom_size1 :calc,
 	custom_gramage:calc,
-	custom_current_gsm:calc,
+	custom_gramage_b : calc,
+	custom_wastage : calc,
+	custom_weight_bridge_wastage : calc,
 	stock_entry_type(frm) {
         if (!frm.doc.stock_entry_type) return;
 
@@ -149,9 +170,11 @@ frappe.ui.form.on("Stock Entry", {
     },
 	onload(frm) {
 		override_fg_completed_qty(frm);
+		set_orange_fields(frm);
 	},
 	refresh(frm) {
 		override_fg_completed_qty(frm);
+		set_orange_fields(frm);
 		hariom_sanpra.stock_entry.add_stock_ledger_button(frm);
 
 		frm.set_query("custom_raw_batch", function () {
@@ -226,10 +249,6 @@ frappe.ui.form.on("Stock Entry", {
 // ***************************************************************************
 function calc(frm) {
 	let M = flt(frm.doc.custom_mc_run);
-	if(M){
-		let target = (M * 45);
-		frm.set_value("custom_target_mtr",target);
-	}
 	// PROD % calculation
     let act = flt(frm.doc.custom_actmtr);
     let tgt = flt(frm.doc.custom_target_mtr);
@@ -245,9 +264,57 @@ function calc(frm) {
 	let ct = flt(frm.doc.custom_trim);
 	let co = flt(frm.doc.custom_other);
 	let cg = flt(frm.doc.custom_gramage);
-	let ccg = flt(frm.doc.custom_current_gsm);
+	let cmo = flt(frm.doc.custom_mc_output);
+	let cg1 = flt(frm.doc.custom_gramage_b);
+	let rpm1 = flt(frm.doc.custom_rpm_b);
+	let cmo1 = flt(frm.doc.custom_mc_output_b);
+	let cs = flt(frm.doc.custom_size1);
+	let gsm_a = flt(frm.doc.custom_gsm1);
+	let gsm_b = flt(frm.doc.custom_gsm_b);
+	let total = flt(frm.doc.custom_total_gsm);
+	let cw = flt(frm.doc.custom_wastage);
+	let cwbw = flt(frm.doc.custom_weight_bridge_wastage);
 	let finished_qty = 0;
+	if(cw && cwbw){
+		let wd = (cw - cwbw);
+		frm.set_value("custom_wastage_difference",wd)
+	}
+	if(M && mpm){
+		let target = (M * mpm);
+		frm.set_value("custom_target_mtr",target);
+	}
 
+	if(rpm && cmo && mpm){
+		let cg = (rpm * cmo) / mpm;
+		frm.set_value("custom_gramage", cg);
+		
+	}
+	if(rpm1 && cmo1 && mpm){
+		cg1 = (rpm1 * cmo1) / mpm;
+		frm.set_value("custom_gramage_b", cg1);
+
+	}
+	if(cg && cs){
+		gsm_a = ((cg * 39.37) / cs);
+		frm.set_value("custom_gsm1",gsm_a)
+	}
+	if(cg1 && cs){
+		gsm_b = ((cg1 * 39.37) / cs);
+		frm.set_value("custom_gsm_b",gsm_b)
+	}
+	if(gsm_a && gsm_b){
+		total = gsm_a + gsm_b;
+		frm.set_value("custom_total_gsm",total)
+	}
+	// Flow % calculation
+    if (gsm_a && total) {
+        let flow_a = (gsm_a / total) * 100;
+        frm.set_value("custom_flow_", flow_a);
+    }
+	if (gsm_b && total) {
+        let flow_b = (gsm_b / total) * 100;
+        frm.set_value("custom_flow__b", flow_b);
+    }
 	if (frm.doc.items && frm.doc.items.length) {
 		frm.doc.items.forEach(row => {
 			if (row.is_finished_item == 1) {
@@ -255,7 +322,6 @@ function calc(frm) {
 			}
 		});
 	}
-		
     // copy mtr -> actmtr
 	if (mtr) {
 		frm.set_value("custom_actmtr", mtr);
@@ -276,29 +342,18 @@ function calc(frm) {
 		frm.set_value("custom_dtime_",dt); 
 	}
 	// LD
-	if (ld && finished_qty) {
-		let ld_cal = (ld / finished_qty) * 100;
-		frm.set_value("custom_ld_", ld_cal);
-	}
-	if(trim){
-		let trim_cal = (trim / finished_qty) * 100;
-		frm.set_value("custom_trim_",trim_cal);
-	}
-	if(otr){
-		let other_cal = (otr / finished_qty) * 100;
-		frm.set_value("custom_other_",other_cal);
-	}
-	if(rpm && mpm && cg){
-		let gram = (rpm * cg ) / mpm;
-		frm.set_value("custom_gram",gram);
-	}
-	let gram = flt(frm.doc.custom_gram);
-	if(gram && ccg){
-		let gsm = (gram * 39.37) / ccg;
-		frm.set_value("custom_gsm1",gsm);
-		// let gr = (rpm * 75 / mpm);
-		// frm.set_value("custom_gram",gr);
-	}
+	// if (ld && finished_qty) {
+	// 	let ld_cal = (ld / finished_qty) * 100;
+	// 	frm.set_value("custom_ld_", ld_cal);
+	// }
+	// if(trim){
+	// 	let trim_cal = (trim / finished_qty) * 100;
+	// 	frm.set_value("custom_trim_",trim_cal);
+	// }
+	// if(otr){
+	// 	let other_cal = (otr / finished_qty) * 100;
+	// 	frm.set_value("custom_other_",other_cal);
+	// }
 	if(cl && ct && co){
 		let tw = (cl + ct + co);
 		frm.set_value("custom_total_wastage",tw);

@@ -17,6 +17,8 @@
   "work_days",
   "column_break_ozno",
   "program_complete",
+  "column_break_wsvp",
+  "program_complete_days",
   "column_break_lcwj",
   "program_pending",
   "column_break_wgnk",
@@ -112,14 +114,24 @@
    "fieldtype": "Float",
    "in_list_view": 1,
    "label": "Pending Days"
+  },
+  {
+   "fieldname": "column_break_wsvp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "program_complete_days",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Program Complete Days"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-04-10 18:39:01.814347",
- "modified_by": "rutuja@sanpra.co.in",
+ "modified": "2026-05-18 11:00:20.398865",
+ "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "JP Forcast Item",
  "owner": "Administrator",

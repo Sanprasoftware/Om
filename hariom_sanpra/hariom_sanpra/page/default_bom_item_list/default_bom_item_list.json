@@ -1,0 +1,29 @@
+{
+ "content": null,
+ "creation": "2026-05-09 00:00:00.000000",
+ "docstatus": 0,
+ "doctype": "Page",
+ "idx": 0,
+ "modified": "2026-05-09 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Hariom Sanpra",
+ "name": "default-bom-item-list",
+ "owner": "Administrator",
+ "page_name": "Default BOM Item List",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "Manufacturing User"
+  },
+  {
+   "role": "Manufacturing Manager"
+  }
+ ],
+ "script": null,
+ "standard": "Yes",
+ "style": null,
+ "system_page": 0,
+ "title": "Default BOM Item List"
+}

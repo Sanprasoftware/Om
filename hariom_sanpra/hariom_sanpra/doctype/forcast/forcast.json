@@ -25,6 +25,8 @@
   "total_working_days",
   "amended_from",
   "section_break_jxkm",
+  "jp",
+  "sri",
   "kcr_items"
  ],
  "fields": [
@@ -132,13 +134,25 @@
    "fieldtype": "Table",
    "label": "KCR Items",
    "options": "KCR Items"
+  },
+  {
+   "fieldname": "jp",
+   "fieldtype": "Table",
+   "label": "JP",
+   "options": "JP Machine Items"
+  },
+  {
+   "fieldname": "sri",
+   "fieldtype": "Table",
+   "label": "SRI",
+   "options": "SRI"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-05-08 16:30:56.604688",
+ "modified": "2026-05-14 18:15:34.212606",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Forcast",

@@ -12,6 +12,7 @@
   "doctype_hariom",
   "ref_doc",
   "details_of_spare_items_used",
+  "spare_item_qty",
   "column_break_dlxw",
   "mc_off_time",
   "mc_on_time",
@@ -119,13 +120,18 @@
    "fieldtype": "Table MultiSelect",
    "label": "Details of Spare Items Used",
    "options": "Details of Spare Items"
+  },
+  {
+   "fieldname": "spare_item_qty",
+   "fieldtype": "Float",
+   "label": "Spare Item qty"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-05-08 18:39:09.308223",
+ "modified": "2026-05-12 16:10:38.751802",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Maintenance History Card",

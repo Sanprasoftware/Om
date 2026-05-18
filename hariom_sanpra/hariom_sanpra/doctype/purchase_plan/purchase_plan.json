@@ -7,6 +7,7 @@
  "engine": "InnoDB",
  "field_order": [
   "naming_series",
+  "month",
   "column_break_gdxv",
   "date",
   "section_break_oisv",
@@ -77,13 +78,18 @@
   {
    "fieldname": "section_break_oisv",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "month",
+   "fieldtype": "Select",
+   "label": "Month",
+   "options": "\nJAN\nFEB\nMAR\nAPR\nMAY\nJUN\nJUL\nAUG\nSEP\nOCT\nNOV\nDEC"
   }
  ],
  "grid_page_length": 50,
- "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-03-29 17:21:52.773418",
+ "modified": "2026-05-16 17:03:08.793095",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Purchase Plan",

@@ -433,3 +433,13 @@ def add_rk_items(doc):
 #         flt(doc.custom_other)
 #     )
 
+
+@frappe.whitelist()
+def get_finished_qty(doc, method=None):
+    total = 0.0  
+    if doc.items:
+        for row in doc.items:
+            if cint(row.is_finished_item) == 1:
+                total += flt(row.qty)
+    doc.custom_total_qty = total
+

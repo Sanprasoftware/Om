@@ -21,9 +21,14 @@ class Forcast(Document):
 		self.total_fg = self._get_rows_total(self.forcast_item, "program_complete") + self._get_rows_total(
 			self.lamination, "program_complete"
 		)
-		self.total_working_days = self._get_rows_total(
+		self.plan_working_days = self._get_rows_total(
 			self.forcast_item, "work_days"
 		) + self._get_rows_total(self.lamination, "work_days")
+		self.total_working_days = self._get_rows_total(
+			self.forcast_item, "pending_days"
+		) + self._get_rows_total(self.lamination, "pending_days")
+		
+
 
 	def _set_program_pending(self, rows):
 		for row in rows or []:
