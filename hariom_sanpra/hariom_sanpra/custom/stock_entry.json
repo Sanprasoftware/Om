@@ -2159,7 +2159,7 @@
    "name": "Stock Entry-custom_d_time_reason",
    "no_copy": 0,
    "non_negative": 0,
-   "options": "\nRM Shortage\nM/C Maintenance\nPower Cut Of\nOther",
+   "options": "\nRM Shortage\nM/C Maintenance\nPower Cut Of\nProcess Activity\nOther",
    "owner": "Administrator",
    "permlevel": 0,
    "placeholder": null,

@@ -59,7 +59,7 @@
   {
    "fieldname": "lamination",
    "fieldtype": "Table",
-   "label": "Lamination",
+   "label": "SRI",
    "options": "Lamination Forcast Item"
   },
   {
@@ -84,7 +84,7 @@
   {
    "fieldname": "plan_working_days",
    "fieldtype": "Float",
-   "label": "Plan working Days"
+   "label": "Planned working Days"
   },
   {
    "fieldname": "column_break_kujf",
@@ -97,7 +97,7 @@
   {
    "fieldname": "total_working_days",
    "fieldtype": "Float",
-   "label": "Total Working Days"
+   "label": "Total Pending Days"
   },
   {
    "fieldname": "naming_series",
@@ -152,7 +152,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-05-14 18:15:34.212606",
+ "modified": "2026-05-19 13:59:21.671835",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Forcast",
