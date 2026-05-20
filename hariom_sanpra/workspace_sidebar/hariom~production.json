@@ -1,0 +1,88 @@
+{
+ "app": "hariom_sanpra",
+ "creation": "2026-05-19 10:55:33.040184",
+ "docstatus": 0,
+ "doctype": "Workspace Sidebar",
+ "idx": 0,
+ "items": [
+  {
+   "child": 0,
+   "collapsible": 1,
+   "icon": "align-vertical-justify-center",
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "Hariom~Production",
+   "link_to": "Hariom~Production",
+   "link_type": "Workspace",
+   "show_arrow": 0,
+   "type": "Link"
+  },
+  {
+   "child": 0,
+   "collapsible": 1,
+   "icon": "air-vent",
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "JP Machine",
+   "link_to": "JP Machine",
+   "link_type": "Workspace",
+   "show_arrow": 0,
+   "type": "Link"
+  },
+  {
+   "child": 0,
+   "collapsible": 1,
+   "icon": "align-vertical-justify-end",
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "Pondline",
+   "link_to": "Pondline",
+   "link_type": "Workspace",
+   "show_arrow": 0,
+   "type": "Link"
+  },
+  {
+   "child": 0,
+   "collapsible": 1,
+   "icon": "align-vertical-justify-center",
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "Pipe",
+   "link_to": "Pipe",
+   "link_type": "Workspace",
+   "show_arrow": 0,
+   "type": "Link"
+  },
+  {
+   "child": 0,
+   "collapsible": 1,
+   "icon": "align-vertical-justify-center",
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "PP Export",
+   "link_to": "PP Export",
+   "link_type": "Workspace",
+   "show_arrow": 0,
+   "type": "Link"
+  },
+  {
+   "child": 0,
+   "collapsible": 1,
+   "icon": "align-vertical-space-around",
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "Maintenance.",
+   "link_to": "Maintenance Issue",
+   "link_type": "Workspace",
+   "show_arrow": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-05-19 12:27:22.199534",
+ "modified_by": "Administrator",
+ "module": "Hariom Sanpra",
+ "name": "Hariom~Production",
+ "owner": "Administrator",
+ "standard": 1,
+ "title": "Hariom~Production"
+}

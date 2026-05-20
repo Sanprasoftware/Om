@@ -1,0 +1,21 @@
+{
+ "app": "hariom_sanpra",
+ "bg_color": "blue",
+ "creation": "2026-05-19 10:55:33.043226",
+ "docstatus": 0,
+ "doctype": "Desktop Icon",
+ "hidden": 0,
+ "icon_type": "Link",
+ "idx": 0,
+ "label": "Hariom~Production",
+ "link_to": "Hariom~Production",
+ "link_type": "Workspace Sidebar",
+ "modified": "2026-05-19 10:59:48.570721",
+ "modified_by": "Administrator",
+ "name": "Hariom~Production",
+ "owner": "Administrator",
+ "restrict_removal": 0,
+ "roles": [],
+ "sidebar": "Hariom~Production",
+ "standard": 1
+}
