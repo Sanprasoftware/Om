@@ -6307,7 +6307,7 @@
    "insert_after": "custom_trim",
    "is_system_generated": 0,
    "is_virtual": 0,
-   "label": "Total Wastage",
+   "label": "Wastage %",
    "length": 0,
    "link_filters": null,
    "mandatory_depends_on": null,

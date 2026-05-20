@@ -117,7 +117,7 @@ function set_orange_fields(frm) {
 	["custom_target_mtr","custom_actmtr","custom_prod_","custom_dtime_",
 	 "custom_gramage","custom_gramage_b","custom_wastage_difference",
 	 "custom_gsm1","custom_gsm_b","custom_flow_","custom_flow__b",
-	 "custom_total_gsm"
+	 "custom_total_gsm","custom_total_wastage"
 	].forEach((fieldname) => {
 		const field = frm.get_field(fieldname);
 		if (!field) return;
@@ -260,9 +260,9 @@ function calc(frm) {
 	let otr = flt(frm.doc.custom_other);
 	let rpm = flt(frm.doc.custom_rpm);
 	let mpm = flt(frm.doc.custom_mpm);
-	let cl = flt(frm.doc.custom_ld);
-	let ct = flt(frm.doc.custom_trim);
-	let co = flt(frm.doc.custom_other);
+	// let cl = flt(frm.doc.custom_ld);
+	// let ct = flt(frm.doc.custom_trim);
+	// let co = flt(frm.doc.custom_other);
 	let cg = flt(frm.doc.custom_gramage);
 	let cmo = flt(frm.doc.custom_mc_output);
 	let cg1 = flt(frm.doc.custom_gramage_b);
@@ -274,6 +274,7 @@ function calc(frm) {
 	let total = flt(frm.doc.custom_total_gsm);
 	let cw = flt(frm.doc.custom_wastage);
 	let cwbw = flt(frm.doc.custom_weight_bridge_wastage);
+	let ctq = flt(frm.doc.custom_total_qty);
 	let finished_qty = 0;
 	if(cw && cwbw){
 		let wd = (cw - cwbw);
@@ -322,15 +323,6 @@ function calc(frm) {
 			}
 		});
 	}
-    // copy mtr -> actmtr
-	if (mtr) {
-		frm.set_value("custom_actmtr", mtr);
-		act = mtr; 
-
-		let ag = (finished_qty / mtr * 39.37 / 144 * 1000)
-		frm.set_value("custom_act_gsm",ag);
-	}
-
 	// PROD %
 	if (act && tgt) {
 		let prod = (act / tgt) * 100;
@@ -354,8 +346,8 @@ function calc(frm) {
 	// 	let other_cal = (otr / finished_qty) * 100;
 	// 	frm.set_value("custom_other_",other_cal);
 	// }
-	if(cl && ct && co){
-		let tw = (cl + ct + co);
+	if(cw && ctq){
+		let tw = (cw / ctq) * 100;
 		frm.set_value("custom_total_wastage",tw);
 	}
 
