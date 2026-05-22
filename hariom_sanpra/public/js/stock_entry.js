@@ -131,6 +131,7 @@ function set_orange_fields(frm) {
 frappe.ui.form.on("Stock Entry", {
 	custom_mc_run : calc,
 	custom_actmtr: calc,
+	custom_target_mtr: calc,
 	custom_mtr: calc,
 	custom_dtime: calc,
 	custom_ld:calc,
@@ -146,6 +147,7 @@ frappe.ui.form.on("Stock Entry", {
 	custom_gramage_b : calc,
 	custom_wastage : calc,
 	custom_weight_bridge_wastage : calc,
+
 	stock_entry_type(frm) {
         if (!frm.doc.stock_entry_type) return;
 
@@ -276,6 +278,10 @@ function calc(frm) {
 	let cwbw = flt(frm.doc.custom_weight_bridge_wastage);
 	let ctq = flt(frm.doc.custom_total_qty);
 	let finished_qty = 0;
+
+	if(mtr){
+		frm.set_value("custom_actmtr",mtr);
+	}
 	if(cw && cwbw){
 		let wd = (cw - cwbw);
 		frm.set_value("custom_wastage_difference",wd)

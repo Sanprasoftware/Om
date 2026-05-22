@@ -26,7 +26,7 @@ frappe.query_reports["Daily-Cumulative Production Report"] = {
 			options: "\nItem Wise\nEntry Wise",
 			default: "Item Wise",
 		},
-		{
+		{ 
 			fieldname: "id",
 			label: __("Id"),
 			fieldtype: "Link",

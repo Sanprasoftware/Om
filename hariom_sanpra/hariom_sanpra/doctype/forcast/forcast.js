@@ -14,7 +14,6 @@ function set_program_pending_in_row(row) {
 }
 function set_pending_days_in_row(cdt, cdn) {
 	const row = locals[cdt][cdn];
-	const pendingDays = flt(row.work_days) - flt(row.program_complete_days);
 	frappe.model.set_value(cdt, cdn, "pending_days", pendingDays);
 }
 
@@ -41,7 +40,18 @@ function set_parent_totals(frm) {
 	frm.set_value("total_working_days", totalWorkingDays);
 
 }
-
+function set_work_days(cdt, cdn) {
+	let row = locals[cdt][cdn];
+	if (flt(row.per_day_production) > 0) {
+		frappe.model.set_value(cdt, cdn, "work_days", flt(row.fg_output_ton) / flt(row.per_day_production));
+	}
+}
+function set_pending_days(cdt, cdn) {
+	let row = locals[cdt][cdn];
+	if (flt(row.per_day_production) > 0) {
+		frappe.model.set_value(cdt, cdn, "pending_days", flt(row.program_pending) / flt(row.per_day_production));
+	}
+}
 frappe.ui.form.on("Forcast", {
 	refresh(frm) {
 		set_parent_totals(frm);
@@ -76,19 +86,22 @@ frappe.ui.form.on("Forcast", {
 frappe.ui.form.on("JP Forcast Item", {
 	fg_output_ton(frm, cdt, cdn) {
 		set_program_pending(cdt, cdn);
+		set_work_days(cdt, cdn);
+		set_parent_totals(frm);
+		set_pending_days(cdt, cdn);   
+	},
+	per_day_production(frm, cdt, cdn) { // ← ADD KIYA
+		set_work_days(cdt, cdn);
+		set_pending_days(cdt, cdn);
 		set_parent_totals(frm);
 	},
 	program_complete(frm, cdt, cdn) {
 		set_program_pending(cdt, cdn);
+		set_pending_days(cdt, cdn);   
 		set_parent_totals(frm);
 	},
 	work_days(frm, cdt, cdn) {
 		set_pending_days_in_row(cdt, cdn);     // ← YEH LINE ADD KARI
-		set_parent_totals(frm);
-	},
-	// ADDED: program_complete_days event
-	program_complete_days(frm, cdt, cdn) {
-		set_pending_days_in_row(cdt, cdn); 
 		set_parent_totals(frm);
 	},
 	forcast_item_add(frm) {
@@ -100,19 +113,23 @@ frappe.ui.form.on("JP Forcast Item", {
 });
 frappe.ui.form.on("Lamination Forcast Item", {
 	fg_output_ton(frm, cdt, cdn) {
+		set_work_days(cdt, cdn);
 		set_program_pending(cdt, cdn);
 		set_parent_totals(frm);
+		set_pending_days(cdt, cdn); 
+	},
+	per_day_production(frm, cdt, cdn) { // ← ADD KIYA
+		set_work_days(cdt, cdn);
+		set_parent_totals(frm);
+		set_pending_days(cdt, cdn);   
 	},
 	program_complete(frm, cdt, cdn) {
 		set_program_pending(cdt, cdn);
 		set_parent_totals(frm);
+		set_pending_days(cdt, cdn);   
 	},
 	work_days(frm, cdt, cdn) {
 		set_pending_days_in_row(cdt, cdn);     // ← cdt, cdn pass karo
-		set_parent_totals(frm);
-	},
-	program_complete_days(frm, cdt, cdn) {
-		set_pending_days_in_row(cdt, cdn);   
 		set_parent_totals(frm);
 	},
 	lamination_add(frm) {

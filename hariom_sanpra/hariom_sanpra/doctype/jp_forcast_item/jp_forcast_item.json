@@ -13,15 +13,12 @@
   "section_break_ejit",
   "column_break_skzw",
   "fg_output_ton",
-  "column_break_otug",
+  "per_day_production",
+  "column_break_baoh",
   "work_days",
-  "column_break_ozno",
   "program_complete",
-  "column_break_wsvp",
-  "program_complete_days",
-  "column_break_lcwj",
+  "column_break_otug",
   "program_pending",
-  "column_break_wgnk",
   "pending_days",
   "section_break_ekzm",
   "remark"
@@ -71,11 +68,9 @@
    "fieldname": "work_days",
    "fieldtype": "Float",
    "in_list_view": 1,
-   "label": "Work Days"
-  },
-  {
-   "fieldname": "column_break_ozno",
-   "fieldtype": "Column Break"
+   "label": "Work Days",
+   "precision": "2",
+   "read_only": 1
   },
   {
    "fieldname": "program_complete",
@@ -83,10 +78,6 @@
    "in_list_view": 1,
    "label": "Program Complete",
    "precision": "2"
-  },
-  {
-   "fieldname": "column_break_lcwj",
-   "fieldtype": "Column Break"
   },
   {
    "fieldname": "program_pending",
@@ -106,31 +97,29 @@
    "label": "Remark"
   },
   {
-   "fieldname": "column_break_wgnk",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "pending_days",
    "fieldtype": "Float",
    "in_list_view": 1,
-   "label": "Pending Days"
+   "label": "Pending Days",
+   "precision": "2"
   },
   {
-   "fieldname": "column_break_wsvp",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "program_complete_days",
+   "fieldname": "per_day_production",
    "fieldtype": "Float",
    "in_list_view": 1,
-   "label": "Program Complete Days"
+   "label": "Per Day Production",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_baoh",
+   "fieldtype": "Column Break"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-05-18 11:00:20.398865",
+ "modified": "2026-05-21 11:10:04.456585",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "JP Forcast Item",

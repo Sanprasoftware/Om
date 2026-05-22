@@ -68,6 +68,9 @@ def get_report_fields() -> list[dict]:
 		field = spec.copy()
 		field["label"] = meta_field.label if meta_field else spec["label"]
 		field["fieldtype"] = meta_field.fieldtype if meta_field else "Float"
+		if meta_field and meta_field.fieldtype == "Table MultiSelect":
+			field["child_table"] = meta_field.options
+			field["child_value_field"] = get_table_multiselect_value_field(meta_field.options)
 		fields.append(field)
 
 	return fields
@@ -152,13 +155,25 @@ def get_data(filters: frappe._dict, report_fields: list[dict]) -> list[dict]:
 			conditions.append("se.name = %(id)s")
 			sql_filters["id"] = filters.id
 
+	# doc_fields = ",\n\t\t\t".join(
+	# 	f"max(ifnull(se.{field['source']}, {get_sql_default(field)})) as {field['fieldname']}"
+	# 	for field in report_fields
+	# 	if not field.get("qty_field")
+	# )
+
 	doc_fields = ",\n\t\t\t".join(
-		f"max(ifnull(se.{field['source']}, {get_sql_default(field)})) as {field['fieldname']}"
+		get_doc_field_sql(field)
 		for field in report_fields
 		if not field.get("qty_field")
 	)
 	if doc_fields:
 		doc_fields = f",\n\t\t\t{doc_fields}"
+
+	table_multiselect_joins = "\n\t\t".join(
+		get_table_multiselect_join(field)
+		for field in report_fields
+		if field.get("child_table") and field.get("child_value_field")
+	)
 
 	rows = frappe.db.sql(
 		f"""
@@ -171,6 +186,7 @@ def get_data(filters: frappe._dict, report_fields: list[dict]) -> list[dict]:
 			{doc_fields}
 		from `tabStock Entry` se
 		inner join `tabStock Entry Detail` sed on sed.parent = se.name
+		{table_multiselect_joins}
 		where {" and ".join(conditions)}
 		group by se.name, sed.item_code, sed.item_name, se.posting_date
 		""",
@@ -202,7 +218,7 @@ def get_data(filters: frappe._dict, report_fields: list[dict]) -> list[dict]:
 			elif aggregate == "text":
 				add_text_value(item["text_values"][fieldname], row.get(fieldname))
 
-	data = []
+	data = [] 
 	for item in grouped.values():
 		apply_calculations(item, report_fields)
 
@@ -336,10 +352,72 @@ def hide_repeated_entry_values(data: list[dict]) -> None:
 			last_stock_entry = stock_entry
 
 
+# def add_text_value(values: list[str], value: str | None) -> None:
+# 	value = (value or "").strip()
+# 	if value and value not in values:
+# 		values.append(value)
+
 def add_text_value(values: list[str], value: str | None) -> None:
-	value = (value or "").strip()
-	if value and value not in values:
-		values.append(value)
+	if not value:
+		return
+
+	parts = []
+
+	if isinstance(value, str):
+		# Handle comma + newline separated values
+		for row in value.split("\n"):
+			for val in row.split(","):
+				val = val.strip()
+
+				# skip empty values
+				if not val:
+					continue
+
+				# avoid duplicates
+				if val not in parts:
+					parts.append(val)
+
+	for val in parts:
+		if val not in values:
+			values.append(val)
+
+
+def get_doc_field_sql(field: dict) -> str:
+	if field.get("child_table") and field.get("child_value_field"):
+		return f"max(ifnull({field['fieldname']}_values.value, '')) as {field['fieldname']}"
+
+	if field["aggregate"] == "text":
+		return (
+			f"group_concat(distinct ifnull(se.{field['source']}, {get_sql_default(field)})) "
+			f"as {field['fieldname']}"
+		)
+
+	return f"max(ifnull(se.{field['source']}, {get_sql_default(field)})) as {field['fieldname']}"
+
+
+def get_table_multiselect_join(field: dict) -> str:
+	return f"""
+		left join (
+			select
+				parent,
+				group_concat(distinct {field['child_value_field']} order by idx separator ', ') as value
+			from `tab{field['child_table']}`
+			where parenttype = 'Stock Entry'
+				and parentfield = '{field['source']}'
+			group by parent
+		) {field['fieldname']}_values on {field['fieldname']}_values.parent = se.name"""
+
+
+def get_table_multiselect_value_field(child_table: str | None) -> str | None:
+	if not child_table:
+		return None
+
+	meta = frappe.get_meta(child_table)
+	for field in meta.fields:
+		if field.fieldtype == "Link":
+			return field.fieldname
+
+	return None
 
 
 def get_column_fieldtype(field: dict) -> str:

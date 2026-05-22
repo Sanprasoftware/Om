@@ -1,0 +1,212 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-05-21 16:27:51.537305",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "date",
+  "operator_names",
+  "downtime",
+  "stock_entry_type",
+  "column_break_tojm",
+  "shift",
+  "mc__start",
+  "downtime_reason",
+  "mesh_used",
+  "batch",
+  "column_break_lhle",
+  "manpower",
+  "mc_stop",
+  "other_abrnormality",
+  "amended_from",
+  "section_break_zmel",
+  "scrap_item",
+  "section_break_phpc",
+  "fg_item",
+  "section_break_hsle",
+  "wastage",
+  "add_data",
+  "section_break_yxyj",
+  "item"
+ ],
+ "fields": [
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date"
+  },
+  {
+   "fieldname": "downtime",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Downtime"
+  },
+  {
+   "fieldname": "stock_entry_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Stock Entry Type",
+   "options": "Stock Entry Type"
+  },
+  {
+   "fieldname": "column_break_tojm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "shift",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Shift",
+   "options": "Shift"
+  },
+  {
+   "fieldname": "mc__start",
+   "fieldtype": "Time",
+   "in_list_view": 1,
+   "label": "M/c  Start"
+  },
+  {
+   "fieldname": "downtime_reason",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Downtime Reason"
+  },
+  {
+   "fieldname": "column_break_lhle",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "manpower",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Manpower"
+  },
+  {
+   "fieldname": "mc_stop",
+   "fieldtype": "Time",
+   "in_list_view": 1,
+   "label": "M/c Stop"
+  },
+  {
+   "fieldname": "other_abrnormality",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Other Abrnormality"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Reprocess",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "section_break_zmel",
+   "fieldtype": "Section Break",
+   "hidden": 1
+  },
+  {
+   "fieldname": "scrap_item",
+   "fieldtype": "Table",
+   "label": "Scrap Item",
+   "options": "Reprocess scrap item"
+  },
+  {
+   "fieldname": "section_break_phpc",
+   "fieldtype": "Section Break",
+   "hidden": 1
+  },
+  {
+   "fieldname": "fg_item",
+   "fieldtype": "Table",
+   "label": "FG Item",
+   "options": "Reprocess FG ITEM"
+  },
+  {
+   "fieldname": "section_break_hsle",
+   "fieldtype": "Section Break",
+   "hidden": 1
+  },
+  {
+   "fieldname": "wastage",
+   "fieldtype": "Table",
+   "label": "Wastage",
+   "options": "Reprocess Wastage"
+  },
+  {
+   "fieldname": "section_break_yxyj",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "item",
+   "fieldtype": "Table",
+   "label": "Item",
+   "options": "Reprocess Item"
+  },
+  {
+   "fieldname": "add_data",
+   "fieldtype": "Button",
+   "label": "Add Data"
+  },
+  {
+   "fieldname": "mesh_used",
+   "fieldtype": "Link",
+   "label": "Mesh Used",
+   "options": "Mesh Used"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "reqd": 1
+  },
+  {
+   "fieldname": "batch",
+   "fieldtype": "Link",
+   "label": "Batch",
+   "options": "Batch No"
+  },
+  {
+   "fieldname": "operator_names",
+   "fieldtype": "Table MultiSelect",
+   "label": "Operator Name",
+   "options": "Operator Name Items"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-05-22 15:24:54.814520",
+ "modified_by": "Administrator",
+ "module": "Hariom Sanpra",
+ "name": "Reprocess",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "rutuja@sanpra.co.in",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

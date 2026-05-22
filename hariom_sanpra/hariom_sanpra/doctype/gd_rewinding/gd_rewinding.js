@@ -42,7 +42,7 @@ frappe.ui.form.on("GD Rewinding", {
 			let row = locals[cdt][cdn];
 
 			return {
-				filters: {
+				filters: { 
 					item: row.item_code
 				}
 			};
