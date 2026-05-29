@@ -13,6 +13,7 @@
   "shift",
   "machine_start",
   "machine_end",
+  "ft_type",
   "column_break_mpum",
   "manpower",
   "batch",
@@ -141,14 +142,21 @@
    "fieldname": "machine_end",
    "fieldtype": "Time",
    "label": "Machine End"
+  },
+  {
+   "fieldname": "ft_type",
+   "fieldtype": "Select",
+   "label": "FT Type",
+   "options": "\n10\n12\n6",
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-05-08 16:59:14.296526",
- "modified_by": "rutuja@sanpra.co.in",
+ "modified": "2026-05-28 11:55:03.384264",
+ "modified_by": "bhagayshri@sanpra.co.in",
  "module": "Hariom Sanpra",
  "name": "GD Rewinding",
  "naming_rule": "By \"Naming Series\" field",

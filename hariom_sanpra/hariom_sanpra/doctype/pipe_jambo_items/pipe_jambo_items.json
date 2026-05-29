@@ -119,6 +119,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "fetch_from": "item_code.stock_uom",
    "fieldname": "uom",
    "fieldtype": "Link",
    "in_standard_filter": 1,
@@ -130,8 +131,8 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-04-23 15:48:22.765065",
- "modified_by": "Administrator",
+ "modified": "2026-05-28 17:56:09.112114",
+ "modified_by": "rutuja@sanpra.co.in",
  "module": "Hariom Sanpra",
  "name": "Pipe Jambo Items",
  "owner": "rutuja@sanpra.co.in",

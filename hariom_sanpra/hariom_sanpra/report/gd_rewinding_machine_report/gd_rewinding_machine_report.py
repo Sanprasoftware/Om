@@ -38,18 +38,7 @@ def get_columns() -> list[dict]:
 			"options": "Machine Name",
 			"width": 150,
 		},
-		{
-			"label": _("TAG IN"),
-			"fieldname": "tag_in",
-			"fieldtype": "Data",
-			"width": 100,
-		},
-		{
-			"label": _("TAG OUT"),
-			"fieldname": "tag_out",
-			"fieldtype": "Data",
-			"width": 100,
-		},
+		
 		{
 			"label": _("BATCH NO"),
 			"fieldname": "batch_no",
@@ -170,6 +159,12 @@ def get_columns() -> list[dict]:
 			"precision": 2,
 			"width": 150,
 		},
+		{
+			"label": _("FT Type"),
+			"fieldname": "ft_type",
+			"fieldtype": "Select",
+			"width": 140,
+		},
 	]
 
 
@@ -219,6 +214,10 @@ def get_data(filters: frappe._dict) -> list[dict]:
 		conditions.append("sed.item_code = %(item)s")
 		sql_filters["item"] = filters.item
 
+	if filters.get("ft_type"):
+		conditions.append("se.ft_type = %(ft_type)s")
+		sql_filters["ft_type"] = filters.ft_type
+		
 	rows = frappe.db.sql(
 		f"""
 		select
@@ -236,11 +235,10 @@ def get_data(filters: frappe._dict) -> list[dict]:
 					and operator_item.parentfield = 'operator_name'
 			) as operator_name,
 			se.machine_name as machine_name,
-			se.tag_in,
-			se.tag_out,
 			se.batch as batch_no,
 			se.machine_no,
 			se.shift,
+			se.ft_type,
 			sed.grade,
 			sed.gsm,
 			sed.roll_qty,
@@ -295,12 +293,11 @@ def get_data(filters: frappe._dict) -> list[dict]:
 			row["gd_rewinding_id"] = ""
 			row["operator_name"] = ""
 			row["machine_name"] = ""
-			row["tag_in"] = ""
-			row["tag_out"] = ""
 			row["batch_no"] = ""
 			row["qty"] = ""
 			row["machine_no"] = ""
 			row["shift"] = ""
+			row["ft_type"] = ""
 		else:
 			last_gd_rewinding_id = current_gd_rewinding_id
 

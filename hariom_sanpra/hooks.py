@@ -28,6 +28,7 @@ app_license = "mit"
 # app_include_css = "/assets/hariom_sanpra/css/hariom_sanpra.css"
 # app_include_js = "/assets/hariom_sanpra/js/hariom_sanpra.js"
 
+
 # include js, css files in header of web template
 # web_include_css = "/assets/hariom_sanpra/css/hariom_sanpra.css"
 # web_include_js = "/assets/hariom_sanpra/js/hariom_sanpra.js"

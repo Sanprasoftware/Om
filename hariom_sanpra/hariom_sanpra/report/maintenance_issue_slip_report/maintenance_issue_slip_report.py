@@ -5,7 +5,7 @@ import frappe
 from frappe import _
 
 DOCTYPE = "Maintenance"
-EXCLUDED_FIELDS = {"naming_series", "amended_from"}
+EXCLUDED_FIELDS = {"naming_series", "amended_from" ,"total_amount"}
 NON_DATA_FIELD_TYPES = {
 	"Section Break",
 	"Column Break",
@@ -38,16 +38,6 @@ def get_columns() -> list[dict]:
 	for df in meta.fields:
 		if df.fieldtype in NON_DATA_FIELD_TYPES or not df.fieldname or df.fieldname in EXCLUDED_FIELDS:
 			continue
-		if df.fieldname == "total_amount":
-			columns.append(
-				{
-					"label": _("Warehouse"),
-					"fieldname": "warehouse",
-					"fieldtype": "Link",
-					"options": "Warehouse",
-					"width": 160,
-				}
-			)
 
 		if df.fieldtype == "Table":
 			columns.append(
@@ -81,6 +71,43 @@ def get_columns() -> list[dict]:
 			}
 		)
 
+		if df.fieldname == "total_qty":
+			columns.append(
+				{
+					"label": _("Basic Rate"),
+					"fieldname": "basic_rate",
+					"fieldtype": "Currency",
+					"width": 120,
+				}
+			)
+
+			columns.append(
+				{
+					"label": _("Basic Amount"),
+					"fieldname": "basic_amount",
+					"fieldtype": "Currency",
+					"width": 140,
+				}
+			)
+
+			columns.append(
+				{
+					"label": _("Total Amount"),
+					"fieldname": "total_amount",
+					"fieldtype": "Currency",
+					"width": 140,
+				}
+			)
+
+			columns.append(
+				{
+					"label": _("Warehouse"),
+					"fieldname": "warehouse",
+					"fieldtype": "Link",
+					"options": "Warehouse",
+					"width": 160,
+				}
+			)
 	return columns
 
 
@@ -103,7 +130,7 @@ def get_data(filters: dict) -> list[dict]:
 			continue
 
 		direct_fields.append(df.fieldname)
-
+	direct_fields.append("total_amount")
 	data = frappe.get_all(
 		DOCTYPE,
 		filters=get_conditions(filters),
@@ -127,10 +154,13 @@ def get_data(filters: dict) -> list[dict]:
 			for index, item_row in enumerate(item_rows):
 				report_row = row.copy()
 				report_row["total_qty"] = item_row.get("qty")
+				report_row["basic_rate"] = item_row.get("basic_rate")
+				report_row["basic_amount"] = item_row.get("basic_amount")
 				report_row["warehouse"] = item_row.get("source_warehouse")
 				if index:
 					report_row["name"] = ""
 					report_row["issue_date"] = ""
+					report_row["total_amount"] = ""
 				for df in table_fields:
 					child_rows = [item_row] if df.fieldname == "items" else (doc.get(df.fieldname) or [])
 					report_row[f"{df.fieldname}_summary"] = format_child_table(child_rows)

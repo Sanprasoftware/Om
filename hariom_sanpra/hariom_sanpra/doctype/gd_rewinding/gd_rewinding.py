@@ -99,8 +99,7 @@ class GDRewinding(Document):
 		se.custom_machine_name = self.machine_name
 		se.custom_shift = self.shift
 		se.custom_batch_no = self.batch
-		se.custom_tag_in = self.tag_in
-		se.custom_tag_out = self.tag_out
+		
 		for row in self.items:
 			se.append("items", {
 				"item_code": row.item_code,

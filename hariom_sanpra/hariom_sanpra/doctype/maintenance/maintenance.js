@@ -12,6 +12,10 @@ frappe.ui.form.on("Maintenance", {
 				}
 			};
 		}; 
+		// Fetch actual qty and rate for old records
+		if (!frm.is_new()) {
+			update_rate_qty(frm);
+		}
     },
 });
 
@@ -23,7 +27,9 @@ frappe.ui.form.on("Maintenance Items", {
 			method: "set_rate",
 			doc: frm.doc,
 			callback: function(r) {
+				console.log(frm.doc.items);
 				refresh_field("items");
+				
 			}
 		})
 	},
@@ -38,3 +44,18 @@ frappe.ui.form.on("Maintenance Items", {
 		})
 	}
 });
+
+function update_rate_qty(frm) {
+
+	frappe.call({
+		method: "set_rate",
+		doc: frm.doc,
+
+		callback: function(r) {
+
+			console.log(frm.doc.items);
+
+			frm.refresh_field("items");
+		}
+	});
+}

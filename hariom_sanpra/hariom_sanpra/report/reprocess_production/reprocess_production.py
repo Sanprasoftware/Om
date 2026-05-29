@@ -7,7 +7,7 @@ from frappe import _
 
 def execute(filters: dict | None = None):
 	columns = get_columns() 
-	data = get_data()
+	data = get_data(filters)
 
 	return columns, data
 
@@ -150,27 +150,117 @@ def get_columns() -> list[dict]:
 			"fieldtype": "Float",
 			"width": 100,
 		},
+		{
+			"label": _("Reprocess Type"),
+			"fieldname": "reprocess_type",
+			"fieldtype": "Select",
+			"width": 100,
+		},
 	]
 
 
-def get_data() -> list[list]:
+def get_data(filters) -> list[list]:
 	data = []
+	conditions = {}
 
-	all_data = frappe.get_all("Reprocess", ["name", "date", "shift", "manpower", "operator_name", "mc__start", "mc_stop", "downtime", "downtime_reason", "other_abrnormality", "stock_entry_type", "mesh_used", "batch"])
+	if filters.get("from_date"):
+		conditions["date"] = [">=", filters.get("from_date")]
 
+	if filters.get("to_date"):
+		if "date" in conditions:
+			conditions["date"] = [
+				"between",
+				[
+					filters.get("from_date"),
+					filters.get("to_date")
+				]
+			]
+		else:
+			conditions["date"] = ["<=", filters.get("to_date")]
+
+	if filters.get("shift"):
+		conditions["shift"] = filters.get("shift")
+	
+	if filters.get("reprocess_type"):
+		conditions["reprocess_type"] = filters.get("reprocess_type")
+
+	
+
+	all_data = frappe.get_all(
+		"Reprocess",
+		fields=[
+			"name",
+			"date",
+			"shift",
+			"manpower",
+			"operator_name",
+			"mc__start",
+			"mc_stop",
+			"downtime",
+			"downtime_reason",
+			"other_abrnormality",
+			"stock_entry_type",
+			"mesh_used",
+			"batch",
+			"reprocess_type"
+		],
+		filters=conditions
+	)
+
+	if filters.get("operator"):
+
+		filtered_data = []
+
+		for row in all_data:
+
+			operator_exists = frappe.db.exists(
+				"Operator Name Items",
+				{
+					"parent": row.name,
+					"operator_name": filters.get("operator")
+				}
+			)
+
+			if operator_exists:
+				filtered_data.append(row)
+
+		all_data = filtered_data
+		
 	for row in all_data:
 		# Fetch child table items where is_finished_item = 1
+		child_filters = {
+			"parent": row.name,
+			"is_finished_item": 1
+		}
+
+		if filters.get("item"):
+			child_filters["item_code"] = filters.get("item")
+
+		if filters.get("warehouse"):
+			child_filters["target_warehouse"] = filters.get("warehouse")
+
 		finished_items = frappe.get_all(
-			"Reprocess Item",  # Replace with your actual child table DocType name
-			filters={
-				"parent": row.name,
-				"is_finished_item": 1
-			},
-			fields=["item_code", "uom", "target_warehouse", "qty_bags", "mesh_use", "std_pkg", "batch_no", "qty"]
+			"Reprocess Item",
+			filters=child_filters,
+			fields=[
+				"item_code",
+				"uom",
+				"target_warehouse",
+				"qty_bags",
+				"mesh_use",
+				"std_pkg",
+				"batch_no",
+				"qty"
+			]
 		)
 
 		# If no finished items, still show parent row with empty child fields
 		if not finished_items:
+			if (
+					filters.get("item")
+					or filters.get("warehouse")
+			):
+					continue
 			data.append({
 				"name": row.name,
 				"date": row.date,
@@ -193,6 +283,7 @@ def get_data() -> list[list]:
 				"std_pkg": None,
 				"batch_no": None,
 				"qty": None,
+				"reprocess_type": row.reprocess_type,
 			})
 		else:
 			# Create a row for each finished item
@@ -222,6 +313,7 @@ def get_data() -> list[list]:
 						"std_pkg": item.std_pkg,
 						"batch_no": item.batch_no,
 						"qty": item.qty,
+						"reprocess_type": row.reprocess_type,
 					})
 				else:
 					# Subsequent rows: parent fields empty, only item fields
@@ -247,6 +339,7 @@ def get_data() -> list[list]:
 						"std_pkg": item.std_pkg,
 						"batch_no": item.batch_no,
 						"qty": item.qty,
+						"reprocess_type": None,
 					})
 
 	return data

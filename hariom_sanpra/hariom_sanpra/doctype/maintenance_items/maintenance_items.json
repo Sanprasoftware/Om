@@ -23,7 +23,9 @@
   "rates_section",
   "basic_rate",
   "column_break_ncud",
-  "basic_amount"
+  "basic_amount",
+  "section_break_wnjw",
+  "actual_qty"
  ],
  "fields": [
   {
@@ -59,7 +61,6 @@
    "depends_on": "eval:doc.use_serial_no__batch_fields == \"1\"",
    "fieldname": "batch_no",
    "fieldtype": "Link",
-   "in_list_view": 1,
    "label": "Batch No",
    "options": "Batch"
   },
@@ -67,7 +68,6 @@
    "depends_on": "eval:doc.use_serial_no__batch_fields == \"0\"",
    "fieldname": "serial_and_batch_bundle",
    "fieldtype": "Link",
-   "in_list_view": 1,
    "label": "Serial and Batch Bundle",
    "options": "Serial and Batch Bundle"
   },
@@ -103,6 +103,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "fetch_from": "item.stock_uom",
    "fieldname": "uom",
    "fieldtype": "Link",
    "label": "UOM",
@@ -126,13 +127,25 @@
    "fieldname": "basic_rate",
    "fieldtype": "Float",
    "label": "Basic Rate (as per Stock UOM)"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_wnjw",
+   "fieldtype": "Section Break",
+   "label": "More Information"
+  },
+  {
+   "fieldname": "actual_qty",
+   "fieldtype": "Float",
+   "label": "Actual Qty (at source/target)",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-05-15 16:51:58.606235",
+ "modified": "2026-05-28 17:39:15.867229",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Maintenance Items",

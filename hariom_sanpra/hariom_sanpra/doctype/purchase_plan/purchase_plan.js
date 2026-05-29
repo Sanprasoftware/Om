@@ -9,7 +9,7 @@ frappe.ui.form.on("Purchase Plan", {
                     default_bom: ["!=", ""]  // Only items where default_bom is not empty
                 }
             };
-        });
+        }); 
     },
 	check_material(frm) {
 		frappe.call({

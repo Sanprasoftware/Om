@@ -1,0 +1,192 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-05-26 13:30:06.568021",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "date",
+  "party_name",
+  "party_address",
+  "employee_name",
+  "stock_entry_type",
+  "naming_series",
+  "column_break_agle",
+  "time",
+  "delivery_type",
+  "ref_doc",
+  "type",
+  "status",
+  "supplier_challan_no",
+  "section_break_trsv",
+  "items",
+  "section_break_iqga",
+  "description",
+  "amended_from",
+  "section_break_nsvg",
+  "prepared_by",
+  "column_break_ttrk",
+  "approved_by"
+ ],
+ "fields": [
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "party_name",
+   "fieldtype": "Data",
+   "label": "Party Name"
+  },
+  {
+   "fieldname": "employee_name",
+   "fieldtype": "Table MultiSelect",
+   "label": "Employee Name",
+   "options": "Operator Name Items"
+  },
+  {
+   "fieldname": "column_break_agle",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "time",
+   "fieldtype": "Time",
+   "label": "Time"
+  },
+  {
+   "fieldname": "delivery_type",
+   "fieldtype": "Select",
+   "label": "delivery Type",
+   "options": "\nOther\nJob Work\nInstallation"
+  },
+  {
+   "default": "Material Transfer",
+   "fieldname": "stock_entry_type",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Stock Entry Type",
+   "options": "Stock Entry Type"
+  },
+  {
+   "fieldname": "section_break_iqga",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "section_break_trsv",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "delivery challan Items"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Naming Series",
+   "options": "DCIN./.FY./.####\nDCOUT./.FY./.####"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "delivery challan",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "ref_doc",
+   "fieldtype": "Link",
+   "label": "Ref Doc",
+   "options": "delivery challan",
+   "read_only": 1
+  },
+  {
+   "default": "OUT",
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "label": "Type",
+   "options": "IN\nOUT",
+   "read_only": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Status",
+   "options": "\nPending\nPartially\nCompleted"
+  },
+  {
+   "depends_on": "eval: doc.type == \"OUT\"",
+   "fieldname": "section_break_nsvg",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "prepared_by",
+   "fieldtype": "Link",
+   "label": "Prepared By",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "column_break_ttrk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "approved_by",
+   "fieldtype": "Link",
+   "label": "Approved By",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "party_address",
+   "fieldtype": "Small Text",
+   "label": "Party Address"
+  },
+  {
+   "depends_on": "eval:doc.type == \"IN\"",
+   "fieldname": "supplier_challan_no",
+   "fieldtype": "Data",
+   "label": "Supplier Challan No"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-05-28 16:53:27.375410",
+ "modified_by": "Administrator",
+ "module": "Hariom Sanpra",
+ "name": "delivery challan",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

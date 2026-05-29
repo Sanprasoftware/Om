@@ -22,6 +22,8 @@
   "mc_stop",
   "other_abrnormality",
   "amended_from",
+  "wastage_type",
+  "reprocess_type",
   "section_break_zmel",
   "scrap_item",
   "section_break_phpc",
@@ -71,9 +73,9 @@
   },
   {
    "fieldname": "downtime_reason",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Downtime Reason"
+   "fieldtype": "Table MultiSelect",
+   "label": "Downtime Reason",
+   "options": "Down Time Reason Items"
   },
   {
    "fieldname": "column_break_lhle",
@@ -178,14 +180,27 @@
    "fieldtype": "Table MultiSelect",
    "label": "Operator Name",
    "options": "Operator Name Items"
+  },
+  {
+   "fieldname": "wastage_type",
+   "fieldtype": "Select",
+   "label": "Wastage Type",
+   "options": "\nPONDLINE\nPIPE\nPP EXPORT"
+  },
+  {
+   "fieldname": "reprocess_type",
+   "fieldtype": "Select",
+   "label": "Reprocess Type",
+   "options": "\nPONDLINE\nPIPE\nPP EXPORT",
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-05-22 15:24:54.814520",
- "modified_by": "Administrator",
+ "modified": "2026-05-28 13:05:58.673936",
+ "modified_by": "bhagayshri@sanpra.co.in",
  "module": "Hariom Sanpra",
  "name": "Reprocess",
  "naming_rule": "By \"Naming Series\" field",

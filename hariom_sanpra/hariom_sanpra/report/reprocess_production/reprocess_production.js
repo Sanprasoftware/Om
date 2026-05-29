@@ -1,13 +1,52 @@
-// Copyright (c) 2026, Sanpra Software Solution and contributors
-// For license information, please see license.txt
-
 frappe.query_reports["Reprocess Production"] = {
 	filters: [
-		// {
-		// 	"fieldname": "my_filter",
-		// 	"label": __("My Filter"),
-		// 	"fieldtype": "Data",
-		// 	"reqd": 1,
-		// },
+
+		{
+			fieldname: "from_date",
+			label: __("From Date"),
+			fieldtype: "Date",
+		},
+
+		{
+			fieldname: "to_date",
+			label: __("To Date"),
+			fieldtype: "Date",
+		},
+
+		{
+			fieldname: "shift",
+			label: __("Shift"),
+			fieldtype: "Link",
+			options: "Shift",
+		},
+
+		{
+			fieldname: "item",
+			label: __("Item"),
+			fieldtype: "Link",
+			options: "Item",
+		},
+
+		{
+			fieldname: "warehouse",
+			label: __("Warehouse"),
+			fieldtype: "Link",
+			options: "Warehouse",
+		},
+
+		{
+			fieldname: "operator",
+			label: __("Operator"),
+			fieldtype: "Link",
+			options: "Employee",
+		},
+
+		{
+			fieldname: "reprocess_type",
+			label: __("Reprocess Type"),
+			fieldtype: "Select",
+			options: "\nPONDLINE\nPIPE\nPP EXPORT",
+		},
+
 	],
-}; 
+};

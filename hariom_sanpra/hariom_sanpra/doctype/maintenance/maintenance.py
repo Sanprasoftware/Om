@@ -32,7 +32,7 @@ class Maintenance(Document):
 				"allow_zero_valuation_rate": 1,
 				"qty": row.qty,
 				"s_warehouse": row.source_warehouse,
-				"t_warehouse": row.target_warehouse,
+				# "t_warehouse": row.target_warehouse,
 				"uom": row.uom,
 				"batch_no": row.batch_no,
 				"basic_rate": row.basic_rate,
@@ -94,8 +94,19 @@ class Maintenance(Document):
 	
 	@frappe.whitelist()
 	def set_rate(self):
+
 		for row in self.items:
+
 			if row.item and row.source_warehouse:
-				rate = frappe.db.get_value("Bin", {"item_code": row.item, "warehouse": row.source_warehouse}, "valuation_rate")
-				# frappe.throw(str(rate))
+
+				rate, act_qty = frappe.db.get_value(
+					"Bin",
+					{
+						"item_code": row.item,
+						"warehouse": row.source_warehouse
+					},
+					["valuation_rate", "actual_qty"]
+				) or (0, 0)
+
 				row.basic_rate = rate or 0
+				row.actual_qty = act_qty or 0

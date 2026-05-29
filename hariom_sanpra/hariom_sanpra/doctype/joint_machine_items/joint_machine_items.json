@@ -134,6 +134,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "fetch_from": "item_code.stock_uom",
    "fieldname": "uom",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -183,8 +184,8 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-04-18 11:08:34.221420",
- "modified_by": "Administrator",
+ "modified": "2026-05-28 18:02:03.109960",
+ "modified_by": "rutuja@sanpra.co.in",
  "module": "Hariom Sanpra",
  "name": "Joint Machine Items",
  "owner": "Administrator",

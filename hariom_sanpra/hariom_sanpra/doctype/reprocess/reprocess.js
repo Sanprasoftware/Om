@@ -62,6 +62,20 @@ frappe.ui.form.on("Reprocess", {
                 ]
             };
         });
+    },
+
+    onload(frm) {
+      frm.set_query("batch_no", "item", function(doc, cdt, cdn) {
+        const row = locals[cdt][cdn];
+        if (!row.item_code) {
+          return { filters: { name: "" } }; // no item selected
+        }
+        return {
+          filters: {
+            item: row.item_code
+          }
+        };
+      }); 
     }
 });
 

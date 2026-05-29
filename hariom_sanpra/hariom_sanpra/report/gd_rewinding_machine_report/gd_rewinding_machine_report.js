@@ -26,7 +26,7 @@ frappe.query_reports["GD Rewinding Machine Report"] = {
 			options: "Employee",
 		},
 		{
-			fieldname: "custom_shift",
+			fieldname: "shift",
 			label: __("Shift"),
 			fieldtype: "Link",
 			options: "Shift",
@@ -42,6 +42,12 @@ frappe.query_reports["GD Rewinding Machine Report"] = {
 			label: __("Item"),
 			fieldtype: "Link",
 			options: "Item",
+		},
+		{
+			fieldname: "ft_type",
+			label: __("FT Type"),
+			fieldtype: "Select",
+			options: "\n10\n12\n6",
 		},
 	],
 	formatter(value, row, column, data, default_formatter) {

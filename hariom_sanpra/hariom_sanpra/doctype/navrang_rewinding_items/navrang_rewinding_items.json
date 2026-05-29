@@ -134,6 +134,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "fetch_from": "item_code.stock_uom",
    "fieldname": "uom",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -165,8 +166,8 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-04-21 17:46:32.322140",
- "modified_by": "Administrator",
+ "modified": "2026-05-28 17:59:18.594773",
+ "modified_by": "rutuja@sanpra.co.in",
  "module": "Hariom Sanpra",
  "name": "navrang rewinding items",
  "owner": "rutuja@sanpra.co.in",

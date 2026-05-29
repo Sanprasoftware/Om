@@ -10,6 +10,7 @@ class Reprocess(Document):
 
 	def on_submit(self):
 		self.create_stock_entry()
+		self.validate_is_finish_item()
 	
 	def on_cancel(self):
 		self.cancel_stock_entry()
@@ -18,6 +19,10 @@ class Reprocess(Document):
 		if not item_code:
 			return None
 		return frappe.db.get_value("Item", item_code, "stock_uom")
+
+	def validate_is_finish_item(self):
+		if not any(row.is_finished_item for row in self.item):
+			frappe.throw("Please mark at least one item as Finished Item in the Item table")
 
 	@frappe.whitelist()
 	def add_item_data(self):
@@ -85,16 +90,36 @@ class Reprocess(Document):
 				row.basic_amount = 0
 	
 
+
 	def create_stock_entry(self):
+
 		se = frappe.new_doc("Stock Entry")
+
 		se.stock_entry_type = self.stock_entry_type
-		se.custom_operator_name = self.operator_name
-		se.custom_machine_name = self.machine_name
 		se.custom_shift = self.shift
-		# se.custom_batch_no = self.batch
-		# se.custom_tag_in = self.tag_in
-		# se.custom_tag_out = self.tag_out
-		for row in self.items:
+
+		# OPTIONAL:
+		# If custom_operator_names is a Text/Data field
+		# then convert operators into comma-separated string
+
+		operator_list = []
+
+		for op in self.operator_names:
+			operator_name = frappe.db.get_value(
+				"Employee",
+				op.operator_name,
+				"employee_name"
+			) or op.operator_name
+
+			operator_list.append(operator_name)
+
+		se.custom_operator_names = ", ".join(operator_list)
+
+		# LINK REPROCESS DOC
+		se.custom_reprocess_reference = self.name
+
+		for row in self.item:
+
 			se.append("items", {
 				"item_code": row.item_code,
 				"qty": row.qty,
@@ -102,21 +127,27 @@ class Reprocess(Document):
 				"t_warehouse": row.target_warehouse,
 				"uom": row.uom,
 				"batch_no": row.batch_no,
-				"basic_rate":row.basic_rate_as_per_stock_uom
+				"basic_rate": row.basic_rate_as_per_stock_uom
 			})
 
 		se.insert(ignore_permissions=True)
 		se.submit()
-	
+
+
 	def cancel_stock_entry(self):
+
 		stock_entries = frappe.get_all(
 			"Stock Entry",
 			filters={
-				"stock_entry_type": self.stock_entry_type,
+				"custom_reprocess_reference": self.name,
 				"docstatus": 1
 			},
 			pluck="name"
 		)
 
 		for name in stock_entries:
-			frappe.get_doc("Stock Entry", name).cancel()
+
+			se = frappe.get_doc("Stock Entry", name)
+
+			if se.docstatus == 1:
+				se.cancel()
