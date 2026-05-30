@@ -410,6 +410,7 @@
   {
    "fieldname": "scchanger",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "SC.CHANGER"
   },
   {
@@ -422,7 +423,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-04-15 15:54:24.462751",
+ "modified": "2026-05-30 12:42:49.866807",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Inspection Extruder A",

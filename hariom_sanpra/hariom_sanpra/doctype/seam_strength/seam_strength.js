@@ -2,6 +2,15 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on("Seam Strength", {
+    setup(frm) {
+        frm.set_query("doctype_hariom", function () {
+			return {
+				filters: {
+					name: ["in", ["Joint Machine", "Small Pipe MC"]],
+				},
+			};
+		});
+    },
     seam_strength_type: function(frm) {
         if (frm.doc.seam_strength_type === "Joint M/C") {
             frm.set_value("overlap_req", "50 MM");

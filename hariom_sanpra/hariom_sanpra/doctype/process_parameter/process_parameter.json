@@ -105,7 +105,7 @@
   {
    "fieldname": "stock_entry",
    "fieldtype": "Link",
-   "label": "Stock Entry",
+   "label": "Ref Doc",
    "options": "Stock Entry"
   },
   {
@@ -145,8 +145,8 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-05-08 16:57:54.632645",
- "modified_by": "rutuja@sanpra.co.in",
+ "modified": "2026-05-30 12:47:05.863185",
+ "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Process Parameter",
  "naming_rule": "By \"Naming Series\" field",

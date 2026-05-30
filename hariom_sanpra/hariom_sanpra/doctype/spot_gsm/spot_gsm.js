@@ -2,6 +2,15 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on("Spot GSM", {
+    setup(frm) {
+        frm.set_query("doctype_hariom", function () {
+			return {
+				filters: {
+					name: ["in", ["Stock Entry", "GD Rewinding"]],
+				},
+			};
+		});
+    },
     spot_gsm_type(frm) {
         if (!frm.doc.spot_gsm_item) return;
 

@@ -5,7 +5,7 @@ function set_program_pending(cdt, cdn) {
 	const row = locals[cdt][cdn];
 	const fgOutputTon = flt(row.fg_output_ton);
 	const programComplete = flt(row.program_complete);
-
+ 
 	frappe.model.set_value(cdt, cdn, "program_pending", fgOutputTon - programComplete);
 }
 
@@ -24,21 +24,28 @@ function set_parent_totals(frm) {
 	const totalPlanFg =
 		get_table_total(frm.doc.forcast_item, "fg_output_ton") +
 		get_table_total(frm.doc.lamination, "fg_output_ton");
+
 	const totalFg =
 		get_table_total(frm.doc.forcast_item, "program_complete") +
 		get_table_total(frm.doc.lamination, "program_complete");
+
+	const totalProgramPending =
+		get_table_total(frm.doc.forcast_item, "program_pending") +
+		get_table_total(frm.doc.lamination, "program_pending");
+
 	const planworkingdays =
 		get_table_total(frm.doc.forcast_item, "work_days") +
 		get_table_total(frm.doc.lamination, "work_days");
+
 	const totalWorkingDays =
 		get_table_total(frm.doc.forcast_item, "pending_days") +
 		get_table_total(frm.doc.lamination, "pending_days");
-	
+
 	frm.set_value("total_plan_fg", totalPlanFg);
 	frm.set_value("total_fg", totalFg);
+	frm.set_value("total_program_pending_ton", totalProgramPending);
 	frm.set_value("plan_working_days", planworkingdays);
 	frm.set_value("total_working_days", totalWorkingDays);
-
 }
 function set_work_days(cdt, cdn) {
 	let row = locals[cdt][cdn];
@@ -100,6 +107,7 @@ frappe.ui.form.on("JP Forcast Item", {
 		set_pending_days(cdt, cdn);   
 		set_parent_totals(frm);
 	},
+	
 	work_days(frm, cdt, cdn) {
 		set_pending_days_in_row(cdt, cdn);     // ← YEH LINE ADD KARI
 		set_parent_totals(frm);

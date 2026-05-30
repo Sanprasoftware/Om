@@ -26,6 +26,7 @@
   "hidrostatic",
   "column_break_ddvy",
   "taping",
+  "sample_overlap_target",
   "column_break_ssin",
   "mc_no",
   "plate_tube",
@@ -206,7 +207,7 @@
   {
    "fieldname": "hidrostatic",
    "fieldtype": "Float",
-   "label": "Hidrostatic",
+   "label": "Hydrostatic",
    "precision": "1",
    "read_only": 1
   },
@@ -252,14 +253,21 @@
    "fieldtype": "Link",
    "label": "Approved By",
    "options": "Employee"
+  },
+  {
+   "default": "50",
+   "fieldname": "sample_overlap_target",
+   "fieldtype": "Int",
+   "label": "Sample Overlap Target",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-04-20 15:57:53.336492",
- "modified_by": "saifa@sanpra.co.in",
+ "modified": "2026-05-30 13:30:58.007112",
+ "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Seam Strength Child",
  "owner": "Administrator",

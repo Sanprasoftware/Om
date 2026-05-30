@@ -41,6 +41,7 @@
   {
    "fieldname": "a_grade",
    "fieldtype": "Data",
+   "hidden": 1,
    "in_list_view": 1,
    "label": "A Grade"
   },
@@ -79,6 +80,7 @@
   {
    "fieldname": "b_grade",
    "fieldtype": "Data",
+   "hidden": 1,
    "in_list_view": 1,
    "label": "B Grade"
   },
@@ -101,7 +103,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-04-21 17:48:38.949575",
+ "modified": "2026-05-30 13:36:28.064871",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Extruder",

@@ -1,15 +1,18 @@
 {
  "actions": [],
  "allow_rename": 1,
- "creation": "2026-05-14 18:09:39.603392",
+ "creation": "2026-05-29 16:33:25.466216",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "item_code",
   "item_name",
-  "last_72_hrs_productionton",
-  "live_mc_status"
+  "stock_kg",
+  "required_stock",
+  "shortage_qty",
+  "purchase",
+  "target_date"
  ],
  "fields": [
   {
@@ -26,27 +29,47 @@
    "label": "Item Name"
   },
   {
-   "fieldname": "last_72_hrs_productionton",
+   "fieldname": "stock_kg",
    "fieldtype": "Float",
    "in_list_view": 1,
-   "label": "Last 72 HRS Production(Ton)",
+   "label": "Stock KG",
    "precision": "2"
   },
   {
-   "fieldname": "live_mc_status",
-   "fieldtype": "Data",
+   "fieldname": "required_stock",
+   "fieldtype": "Float",
    "in_list_view": 1,
-   "label": "Live MC Status"
+   "label": "Required Stock",
+   "precision": "2"
+  },
+  {
+   "fieldname": "shortage_qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Shortage Qty"
+  },
+  {
+   "fieldname": "purchase",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Purchase",
+   "options": "\nYES\nNO"
+  },
+  {
+   "fieldname": "target_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Target Date"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-05-30 12:40:09.944233",
+ "modified": "2026-05-29 17:01:52.353428",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
- "name": "JP Machine Items",
+ "name": "Purchase Plan Sub item",
  "owner": "Administrator",
  "permissions": [],
  "row_format": "Dynamic",

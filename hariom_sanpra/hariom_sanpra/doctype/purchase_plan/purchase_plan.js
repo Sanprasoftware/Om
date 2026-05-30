@@ -25,8 +25,9 @@ frappe.ui.form.on("Purchase Plan", {
 				}
 
 				frm.clear_table("purchase_plan_item");
+				frm.clear_table("purchase_plan_sub_item");
 
-				(message || []).forEach((item) => {
+				(message.items || []).forEach((item) => {
 					const row = frm.add_child("purchase_plan_item");
 					row.item_code = item.item_code;
 					row.stock_kg = flt(item.stock_kg);
@@ -35,7 +36,18 @@ frappe.ui.form.on("Purchase Plan", {
 					row.purchase = item.purchase;
 				});
 
+				(message.sub_items || []).forEach((item) => {
+					const row = frm.add_child("purchase_plan_sub_item");
+					row.item_code = item.item_code;
+					row.item_name = item.item_name;
+					row.stock_kg = flt(item.stock_kg);
+					row.required_stock = flt(item.required_stock);
+					row.shortage_qty = flt(item.shortage_qty);
+					row.purchase = item.purchase;
+				});
+
 				frm.refresh_field("purchase_plan_item");
+				frm.refresh_field("purchase_plan_sub_item");
 			},
 		});
 	},

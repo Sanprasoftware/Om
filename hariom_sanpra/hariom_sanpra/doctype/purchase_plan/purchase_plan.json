@@ -18,7 +18,9 @@
   "check_material",
   "column_break_isni",
   "section_break_bsyz",
-  "purchase_plan_item"
+  "purchase_plan_item",
+  "section_break_kakw",
+  "purchase_plan_sub_item"
  ],
  "fields": [
   {
@@ -84,12 +86,22 @@
    "fieldtype": "Select",
    "label": "Month",
    "options": "\nJAN\nFEB\nMAR\nAPR\nMAY\nJUN\nJUL\nAUG\nSEP\nOCT\nNOV\nDEC"
+  },
+  {
+   "fieldname": "section_break_kakw",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "purchase_plan_sub_item",
+   "fieldtype": "Table",
+   "label": "Purchase Plan Sub item",
+   "options": "Purchase Plan Sub item"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-05-16 17:03:08.793095",
+ "modified": "2026-05-29 16:38:05.585653",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Purchase Plan",

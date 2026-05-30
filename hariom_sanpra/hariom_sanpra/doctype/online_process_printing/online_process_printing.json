@@ -14,6 +14,7 @@
   "min_ink_gsm",
   "naming_series",
   "ref_doc",
+  "type",
   "column_break_pvpl",
   "batch_no",
   "max_ink_gsm",
@@ -131,8 +132,10 @@
    "options": "ONLINE PROCESS REPORT"
   },
   {
+   "default": "Flexo Printing - Production",
    "fieldname": "doctype_hariom",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Doctype",
    "options": "DocType"
   },
@@ -151,14 +154,20 @@
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "label": "Type",
+   "options": "\nRaw Material\nFG"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-05-08 16:56:39.920396",
- "modified_by": "rutuja@sanpra.co.in",
+ "modified": "2026-05-30 13:00:35.067517",
+ "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Online Process Printing",
  "naming_rule": "By \"Naming Series\" field",
