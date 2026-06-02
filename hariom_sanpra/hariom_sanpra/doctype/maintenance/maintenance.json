@@ -19,7 +19,11 @@
   "section_break_mgjb",
   "total_qty",
   "column_break_dsbi",
-  "total_amount"
+  "total_amount",
+  "section_break_ygfh",
+  "req_given_by",
+  "column_break_rpzs",
+  "issued_by"
  ],
  "fields": [
   {
@@ -56,7 +60,7 @@
    "fieldname": "maintains_oper",
    "fieldtype": "Select",
    "in_list_view": 1,
-   "label": "Maintenance Oper.",
+   "label": "Maintenance Operation",
    "options": "\nGeneral Maintenance\nPreventive Maintenance\nR&D\nBreakdown\nKCR\nOther"
   },
   {
@@ -110,13 +114,33 @@
    "fieldtype": "Float",
    "label": "Total Amount",
    "precision": "2"
+  },
+  {
+   "fieldname": "section_break_ygfh",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "req_given_by",
+   "fieldtype": "Link",
+   "label": "Req. Given By",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "column_break_rpzs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "issued_by",
+   "fieldtype": "Link",
+   "label": "Issued By",
+   "options": "Employee"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-05-15 16:47:24.000630",
+ "modified": "2026-06-01 16:31:53.712282",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Maintenance",

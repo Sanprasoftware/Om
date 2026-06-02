@@ -448,13 +448,6 @@ class StockBalanceReport:
 		columns.extend(
 			[
 				{
-					"label": _("UOM"),
-					"fieldname": "stock_uom",
-					"fieldtype": "Link",
-					"options": "UOM",
-					"width": 65,
-				},
-				{
 					"label": _("Opening Qty"),
 					"fieldname": "opening_qty",
 					"fieldtype": "Int",
@@ -545,6 +538,13 @@ class StockBalanceReport:
 				# 	"options": "Company",
 				# 	"width": 100,
 				# },
+				{
+					"label": _("UOM"),
+					"fieldname": "stock_uom",
+					"fieldtype": "Link",
+					"options": "UOM",
+					"width": 65,
+				},
 			]
 		)
 

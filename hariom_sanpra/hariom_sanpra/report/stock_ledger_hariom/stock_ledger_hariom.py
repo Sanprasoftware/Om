@@ -368,9 +368,10 @@ def execute(filters=None):
 		row["in_qty"] = round_qty(row.get("in_qty", 0))
 		row["out_qty"] = round_qty(row.get("out_qty", 0))
 		row["qty_after_transaction"] = round_qty(row.get("qty_after_transaction", 0))
+		row["stock_uom"] = item_details.get(row.get("item_code"), {}).get("stock_uom", "")
 
 	update_included_uom_in_report(columns, data, include_uom, conversion_factors)
-
+	columns = add_stock_uom_column(columns)
 	return columns, data
 
 
@@ -390,6 +391,7 @@ def remove_unwanted_columns(columns):
 		"item_group",
 		"brand",
 		"batch_no",
+		"stock_uom",
 	}
 
 	filtered_columns = []
@@ -423,6 +425,15 @@ def add_opening_qty_column(columns):
 
 	return columns + [opening_qty_column]
 
+def add_stock_uom_column(columns):
+	stock_uom_column = {
+		"label": _("Stock UOM"),
+		"fieldname": "stock_uom",
+		"fieldtype": "Link",
+		"options": "UOM",
+		"width": 100,
+	}
+	return columns + [stock_uom_column]
 
 def get_stock_ledger_entries(filters, items):
 	from_date = get_datetime(filters.from_date + " 00:00:00")
@@ -451,6 +462,7 @@ def get_stock_ledger_entries(filters, items):
 			sle.batch_no,
 			sle.serial_no,
 			sle.project,
+			
 		)
 		.where((sle.docstatus < 2) & (sle.is_cancelled == 0) & (sle.posting_datetime[from_date:to_date]))
 		.orderby(sle.posting_datetime)

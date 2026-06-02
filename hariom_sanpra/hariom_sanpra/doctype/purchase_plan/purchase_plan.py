@@ -9,7 +9,7 @@ from frappe.model.document import Document
 from frappe.utils import flt
 
 
-class PurchasePlan(Document): 
+class PurchasePlan(Document):
 	pass
 
 
@@ -75,20 +75,24 @@ def get_purchase_plan_materials(doc):
 	}
 
 
+@frappe.whitelist()
+def get_purchase_plan_item_stock(item_code):
+	if not item_code:
+		return 0
+
+	return get_actual_stock([item_code]).get(item_code, 0)
+
+
 def get_purchase_plan_sub_items(items):
 	required_map = {}
 
 	for item in items:
 		item_code = item.get("item_code")
-		required_qty = flt(item.get("shortage_qty"))
+		required_qty = flt(item.get("required_stock"))
 		if not item_code:
 			continue
 
-		default_bom = get_default_bom(item_code)
-		if default_bom:
-			add_bom_sub_items(required_map, default_bom, required_qty)
-		else:
-			add_sub_item(required_map, item_code, required_qty)
+		add_exploded_sub_item(required_map, item_code, required_qty)
 
 	stock_map = get_actual_stock(required_map.keys())
 
@@ -105,7 +109,19 @@ def get_purchase_plan_sub_items(items):
 	]
 
 
-def add_bom_sub_items(required_map, bom, required_qty):
+def add_exploded_sub_item(required_map, item_code, required_qty, visited=None):
+	visited = visited or set()
+	default_bom = get_default_bom(item_code)
+	if not default_bom or default_bom in visited:
+		add_sub_item(required_map, item_code, required_qty)
+		return
+
+	visited.add(default_bom)
+	add_bom_sub_items(required_map, default_bom, required_qty, visited)
+	visited.remove(default_bom)
+
+
+def add_bom_sub_items(required_map, bom, required_qty, visited=None):
 	bom_qty = flt(frappe.db.get_value("BOM", bom, "quantity"))
 	if not bom_qty:
 		return
@@ -120,7 +136,7 @@ def add_bom_sub_items(required_map, bom, required_qty):
 			continue
 
 		bom_item_qty = flt(bom_item.stock_qty) or flt(bom_item.qty)
-		add_sub_item(required_map, bom_item.item_code, bom_item_qty * required_qty / bom_qty)
+		add_exploded_sub_item(required_map, bom_item.item_code, bom_item_qty * required_qty / bom_qty, visited)
 
 
 def add_sub_item(required_map, item_code, required_qty):
