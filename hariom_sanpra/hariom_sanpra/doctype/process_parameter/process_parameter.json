@@ -18,6 +18,18 @@
   "extruder_a",
   "extruder_b",
   "inspection_die_temp",
+  "section_break_ctug",
+  "screw_barell_temperature",
+  "section_break_yhkl",
+  "jali",
+  "rpm",
+  "mpm",
+  "coating",
+  "column_break_qoha",
+  "nip_p",
+  "total_roll_sand",
+  "total_roll_ssc",
+  "chil_temp",
   "section_break_ohtd",
   "jali_a",
   "column_break_yybs",
@@ -47,6 +59,7 @@
    "fieldtype": "Section Break"
   },
   {
+   "depends_on": "eval:doc.mc_type == \"JP\"",
    "fieldname": "extruder_a",
    "fieldtype": "Table",
    "label": "Extruder A",
@@ -60,12 +73,14 @@
    "options": "Inspection Extruder B"
   },
   {
+   "depends_on": "eval:doc.mc_type == \"JP\"",
    "fieldname": "inspection_die_temp",
    "fieldtype": "Table",
    "label": "Inspection DIE TEMP",
    "options": "Inspection DIE TEMP"
   },
   {
+   "depends_on": "eval:doc.mc_type == \"JP\"",
    "fieldname": "section_break_tepq",
    "fieldtype": "Section Break"
   },
@@ -81,6 +96,7 @@
    "options": "HFI/QC/F/.##"
   },
   {
+   "depends_on": "eval:doc.mc_type == \"JP\"",
    "fieldname": "section_break_foza",
    "fieldtype": "Section Break"
   },
@@ -153,6 +169,7 @@
    "options": "\nJP\nSRI"
   },
   {
+   "depends_on": "eval:doc.mc_type == \"JP\"",
    "fieldname": "section_break_ohtd",
    "fieldtype": "Section Break"
   },
@@ -169,13 +186,73 @@
    "fieldname": "jali_b",
    "fieldtype": "Data",
    "label": "JALI B"
+  },
+  {
+   "depends_on": "eval:doc.mc_type == \"SRI\"",
+   "fieldname": "section_break_ctug",
+   "fieldtype": "Section Break"
+  },
+  {
+   "depends_on": "eval:doc.mc_type == \"SRI\"",
+   "fieldname": "section_break_yhkl",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "jali",
+   "fieldtype": "Data",
+   "label": "JALI"
+  },
+  {
+   "fieldname": "rpm",
+   "fieldtype": "Data",
+   "label": "RPM"
+  },
+  {
+   "fieldname": "mpm",
+   "fieldtype": "Data",
+   "label": "MPM"
+  },
+  {
+   "fieldname": "coating",
+   "fieldtype": "Data",
+   "label": "Coating"
+  },
+  {
+   "fieldname": "column_break_qoha",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "nip_p",
+   "fieldtype": "Data",
+   "label": "NIP P."
+  },
+  {
+   "fieldname": "total_roll_sand",
+   "fieldtype": "Data",
+   "label": "Total Roll Sand"
+  },
+  {
+   "fieldname": "total_roll_ssc",
+   "fieldtype": "Data",
+   "label": "Total Roll SSC"
+  },
+  {
+   "fieldname": "chil_temp",
+   "fieldtype": "Data",
+   "label": "Chil Temp"
+  },
+  {
+   "fieldname": "screw_barell_temperature",
+   "fieldtype": "Table",
+   "label": "Screw Barell Temperature",
+   "options": "Screw Barell Temp"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-06-05 13:08:18.757901",
+ "modified": "2026-06-06 12:00:31.570407",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Process Parameter",

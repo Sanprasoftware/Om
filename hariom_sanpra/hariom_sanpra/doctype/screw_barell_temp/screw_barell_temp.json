@@ -1,0 +1,295 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-06-06 11:30:58.000532",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "screw_barell_temp_section",
+  "target_1",
+  "target_2",
+  "target_3",
+  "target_4",
+  "target_5",
+  "column_break_wntj",
+  "actual_1",
+  "actual_2",
+  "actual_3",
+  "actual_4",
+  "actual_5",
+  "a_screen_section",
+  "target_1_screen",
+  "column_break_xnlj",
+  "actual_1_screen",
+  "a_adpt_section",
+  "target_1_adpt",
+  "target_2_adpt",
+  "column_break_zlio",
+  "actual_1_adpt",
+  "actual_2_adpt",
+  "die_temp_section",
+  "target_1_die",
+  "target_2_die",
+  "target_3_die",
+  "target_4_die",
+  "target_5_die",
+  "column_break_yemr",
+  "target_6_die",
+  "target_7_die",
+  "target_8_die",
+  "target_9_die",
+  "column_break_hdar",
+  "actual_1_die",
+  "actual_2_die",
+  "actual_3_die",
+  "actual_4_die",
+  "actual_5_die",
+  "column_break_yjun",
+  "actual_6_die",
+  "actual_7_die",
+  "actual_8_die",
+  "actual_9_die"
+ ],
+ "fields": [
+  {
+   "fieldname": "screw_barell_temp_section",
+   "fieldtype": "Section Break",
+   "label": "Screw Barell Temp"
+  },
+  {
+   "fieldname": "target_1",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Target 1"
+  },
+  {
+   "fieldname": "target_2",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Target 2 "
+  },
+  {
+   "fieldname": "target_3",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Target 3"
+  },
+  {
+   "fieldname": "target_4",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Target 4"
+  },
+  {
+   "fieldname": "target_5",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Target 5"
+  },
+  {
+   "fieldname": "column_break_wntj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "actual_1",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Actual 1"
+  },
+  {
+   "fieldname": "actual_2",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Actual 2"
+  },
+  {
+   "fieldname": "actual_3",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Actual 3"
+  },
+  {
+   "fieldname": "actual_4",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Actual 4"
+  },
+  {
+   "fieldname": "actual_5",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Actual 5"
+  },
+  {
+   "fieldname": "a_screen_section",
+   "fieldtype": "Section Break",
+   "label": "A Screen"
+  },
+  {
+   "fieldname": "target_1_screen",
+   "fieldtype": "Float",
+   "label": "Target 1"
+  },
+  {
+   "fieldname": "column_break_xnlj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "actual_1_screen",
+   "fieldtype": "Float",
+   "label": "Actual 1"
+  },
+  {
+   "fieldname": "a_adpt_section",
+   "fieldtype": "Section Break",
+   "label": "A ADPT"
+  },
+  {
+   "fieldname": "target_1_adpt",
+   "fieldtype": "Float",
+   "label": "Target 1"
+  },
+  {
+   "fieldname": "target_2_adpt",
+   "fieldtype": "Float",
+   "label": "Target 2"
+  },
+  {
+   "fieldname": "column_break_zlio",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "actual_1_adpt",
+   "fieldtype": "Float",
+   "label": "Actual 1"
+  },
+  {
+   "fieldname": "actual_2_adpt",
+   "fieldtype": "Float",
+   "label": "Actual 2"
+  },
+  {
+   "fieldname": "die_temp_section",
+   "fieldtype": "Section Break",
+   "label": "DIE TEMP"
+  },
+  {
+   "fieldname": "target_1_die",
+   "fieldtype": "Float",
+   "label": "Target 1"
+  },
+  {
+   "fieldname": "target_2_die",
+   "fieldtype": "Float",
+   "label": "Target 2"
+  },
+  {
+   "fieldname": "target_3_die",
+   "fieldtype": "Float",
+   "label": "Target 3"
+  },
+  {
+   "fieldname": "target_4_die",
+   "fieldtype": "Float",
+   "label": "Target 4"
+  },
+  {
+   "fieldname": "target_5_die",
+   "fieldtype": "Float",
+   "label": "Target 5"
+  },
+  {
+   "fieldname": "target_6_die",
+   "fieldtype": "Float",
+   "label": "Target 6"
+  },
+  {
+   "fieldname": "target_7_die",
+   "fieldtype": "Float",
+   "label": "Target 7"
+  },
+  {
+   "fieldname": "target_8_die",
+   "fieldtype": "Float",
+   "label": "Target 8"
+  },
+  {
+   "fieldname": "target_9_die",
+   "fieldtype": "Data",
+   "label": "Target 9"
+  },
+  {
+   "fieldname": "column_break_hdar",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "actual_1_die",
+   "fieldtype": "Float",
+   "label": "Actual 1"
+  },
+  {
+   "fieldname": "actual_2_die",
+   "fieldtype": "Float",
+   "label": "Actual 2"
+  },
+  {
+   "fieldname": "actual_3_die",
+   "fieldtype": "Float",
+   "label": "Actual 3"
+  },
+  {
+   "fieldname": "actual_4_die",
+   "fieldtype": "Float",
+   "label": "Actual 4"
+  },
+  {
+   "fieldname": "actual_5_die",
+   "fieldtype": "Float",
+   "label": "Actual 5"
+  },
+  {
+   "fieldname": "actual_6_die",
+   "fieldtype": "Float",
+   "label": "Actual 6"
+  },
+  {
+   "fieldname": "actual_7_die",
+   "fieldtype": "Float",
+   "label": "Actual 7"
+  },
+  {
+   "fieldname": "actual_8_die",
+   "fieldtype": "Float",
+   "label": "Actual 8"
+  },
+  {
+   "fieldname": "actual_9_die",
+   "fieldtype": "Data",
+   "label": "Actual 9"
+  },
+  {
+   "fieldname": "column_break_yemr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_yjun",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-06-06 11:53:07.653115",
+ "modified_by": "Administrator",
+ "module": "Hariom Sanpra",
+ "name": "Screw Barell Temp",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}
