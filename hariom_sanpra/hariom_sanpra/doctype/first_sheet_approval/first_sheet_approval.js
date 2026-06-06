@@ -4,26 +4,52 @@
 frappe.ui.form.on("First Sheet Approval", {
     refresh(frm) {
         calculate_total(frm);
+    },
+    a_total_qty: function(frm) {
+        calculate_percent(frm);
+    },
+    b_total_qty: function(frm) {
+        calculate_percent(frm);
     }
+
 });
 frappe.ui.form.on("Extruder", {
     a_qty(frm) {
         calculate_total(frm);
+        calculate_percent(frm);
     },
     a_percent(frm) {
         calculate_total(frm);
     },
     b_qty(frm) {
         calculate_total(frm);
+        calculate_percent(frm);
     },
     b_percent(frm) {
         calculate_total(frm);
     },
-    remove(frm) {
+    extruder_remove: function(frm) {
         calculate_total(frm);
+        calculate_percent(frm);
+
+        frm.refresh_field("a_total_qty");
+        frm.refresh_field("extruder");
     }
 });
+// 8******************************************************************************
+function calculate_percent(frm) {
+    frm.doc.extruder.forEach(function(row) {
+        row.a_percent = frm.doc.a_total_qty
+            ? (flt(row.a_qty) / flt(frm.doc.a_total_qty)) * 100
+            : 0;
+        row.b_percent = frm.doc.b_total_qty
+            ? (flt(row.b_qty) / flt(frm.doc.b_total_qty)) * 100
+            : 0;
+    });
 
+    frm.refresh_field("extruder");
+}
+// 8******************************************************************************
 function calculate_total(frm) {
     let a_qty = 0,
         a_percent = 0,

@@ -13,10 +13,15 @@
   "date",
   "stock_entry",
   "batch_no",
+  "mc_type",
   "section_break_qens",
   "extruder_a",
   "extruder_b",
   "inspection_die_temp",
+  "section_break_ohtd",
+  "jali_a",
+  "column_break_yybs",
+  "jali_b",
   "section_break_tepq",
   "remark",
   "section_break_foza",
@@ -48,6 +53,7 @@
    "options": "Inspection Extruder A"
   },
   {
+   "depends_on": "eval:doc.mc_type == \"JP\"",
    "fieldname": "extruder_b",
    "fieldtype": "Table",
    "label": "Extruder B",
@@ -139,13 +145,37 @@
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "fieldname": "mc_type",
+   "fieldtype": "Select",
+   "label": "M/C Type",
+   "options": "\nJP\nSRI"
+  },
+  {
+   "fieldname": "section_break_ohtd",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "jali_a",
+   "fieldtype": "Data",
+   "label": "JALI A"
+  },
+  {
+   "fieldname": "column_break_yybs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "jali_b",
+   "fieldtype": "Data",
+   "label": "JALI B"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-05-30 12:47:05.863185",
+ "modified": "2026-06-05 13:08:18.757901",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Process Parameter",

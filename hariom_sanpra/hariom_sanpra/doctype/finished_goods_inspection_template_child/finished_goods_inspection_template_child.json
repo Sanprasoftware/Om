@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "creation": "2026-04-08 18:09:41.375065",
+ "creation": "2026-06-05 14:27:26.286208",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
@@ -95,145 +95,169 @@
    "default": "5",
    "fieldname": "layer_bis",
    "fieldtype": "Data",
-   "label": "Layer (BIS)"
+   "label": "Layer (BIS)",
+   "read_only": 1
   },
   {
    "default": "110",
    "fieldname": "fabric_no_1_bis",
    "fieldtype": "Int",
-   "label": "Fabric No 1 (BIS)"
+   "label": "Fabric No 1 (BIS)",
+   "read_only": 1
   },
   {
    "default": "110",
    "fieldname": "fabric_no_2_bis",
    "fieldtype": "Int",
-   "label": "Fabric No 2 (BIS)"
+   "label": "Fabric No 2 (BIS)",
+   "read_only": 1
   },
   {
    "default": "66",
    "fieldname": "coating_np_bis",
    "fieldtype": "Int",
-   "label": "Coating NP (BIS)"
+   "label": "Coating NP (BIS)",
+   "read_only": 1
   },
   {
    "default": "66",
    "fieldname": "coating_p_bis",
    "fieldtype": "Int",
-   "label": "Coating P (BIS)"
+   "label": "Coating P (BIS)",
+   "read_only": 1
   },
   {
    "default": "66",
    "fieldname": "final_coating_bis",
    "fieldtype": "Int",
-   "label": "Final Coating (BIS)"
+   "label": "Final Coating (BIS)",
+   "read_only": 1
   },
   {
    "default": "BOND OK",
    "fieldname": "bond_strength_bis",
    "fieldtype": "Data",
-   "label": "Bond Strength (BIS)"
+   "label": "Bond Strength (BIS)",
+   "read_only": 1
   },
   {
    "default": "MIN, 420",
    "fieldname": "gsm_test_bis",
    "fieldtype": "Data",
-   "label": "GSM Test (BIS)"
+   "label": "GSM Test (BIS)",
+   "read_only": 1
   },
   {
    "default": "WARF MIN,6600 N",
    "fieldname": "tensile_strengthwarf_bis1",
    "fieldtype": "Data",
-   "label": "Tensile Strength(WARF) (BIS)(1)"
+   "label": "Tensile Strength(WARF) (BIS)(1)",
+   "read_only": 1
   },
   {
    "default": "WEFT MIN,6000 N",
    "fieldname": "tensile_strengthwarf_bis2",
    "fieldtype": "Data",
-   "label": "Tensile Strength(WARF) (BIS)(2)"
+   "label": "Tensile Strength(WARF) (BIS)(2)",
+   "read_only": 1
   },
   {
    "default": "WARF 15-25%\n",
    "fieldname": "tensile_elongnation_bis",
    "fieldtype": "Data",
-   "label": "Tensile Elongnation (BIS)(1)"
+   "label": "Tensile Elongnation (BIS)(1)",
+   "read_only": 1
   },
   {
    "default": "WEFT 15-25%",
    "fieldname": "tensile_elongnation_bis2",
    "fieldtype": "Data",
-   "label": "Tensile Elongnation (BIS)(2)"
+   "label": "Tensile Elongnation (BIS)(2)",
+   "read_only": 1
   },
   {
    "default": "80 PERCENT OF THE ACTUAL ORIGINAL VALUE",
    "fieldname": "md_tensile_20x10cm_bsi",
    "fieldtype": "Data",
-   "label": "MD Tensile (20X10cm) After UV 1000 H (BSI)"
+   "label": "MD Tensile (20X10cm) After UV 1000 H (BSI)",
+   "read_only": 1
   },
   {
    "default": "80 PERCENT OF THE ACTUAL ORIGINAL VALUE",
    "fieldname": "cd_tensile_20x10cm_bsi",
    "fieldtype": "Data",
-   "label": "CD Tensile (20X10cm) After UV 1000 H (BSI)"
+   "label": "CD Tensile (20X10cm) After UV 1000 H (BSI)",
+   "read_only": 1
   },
   {
    "default": "WARF MIN 250 N\n",
    "fieldname": "tear_strength_bis",
    "fieldtype": "Data",
-   "label": "Tear Strength (BIS)(1)"
+   "label": "Tear Strength (BIS)(1)",
+   "read_only": 1
   },
   {
    "default": "WEFT MIN 250 N",
    "fieldname": "tear_strength_bis2",
    "fieldtype": "Data",
-   "label": "Tear Strength (BIS)(2)"
+   "label": "Tear Strength (BIS)(2)",
+   "read_only": 1
   },
   {
    "default": "MIN,15 KG/CM\u00b2",
    "fieldname": "hydrostatic_resistance_bis",
    "fieldtype": "Data",
-   "label": "Hydrostatic Resistance (BIS)"
+   "label": "Hydrostatic Resistance (BIS)",
+   "read_only": 1
   },
   {
    "default": "80 PERCENT OF THE ACTUAL ORIGINAL VALUE",
    "fieldname": "hydrostatic_resi_bis",
    "fieldtype": "Data",
-   "label": "Hydrostatic Resi. After UV 1000 h (BIS)"
+   "label": "Hydrostatic Resi. After UV 1000 h (BIS)",
+   "read_only": 1
   },
   {
    "default": "MIN, 110 KG/CM\u00b2",
    "fieldname": "ball_brust_bis",
    "fieldtype": "Data",
-   "label": "Ball Brust (BIS)"
+   "label": "Ball Brust (BIS)",
+   "read_only": 1
   },
   {
    "default": "MIN,500 N",
    "fieldname": "puncture_bis",
    "fieldtype": "Data",
-   "label": "Puncture (BIS)"
+   "label": "Puncture (BIS)",
+   "read_only": 1
   },
   {
    "default": "MIN,0.50MM",
    "fieldname": "thickness_bis",
    "fieldtype": "Data",
-   "label": "Thickness (BIS)"
+   "label": "Thickness (BIS)",
+   "read_only": 1
   },
   {
    "default": "2-3%",
    "fieldname": "cbc_bsi",
    "fieldtype": "Data",
-   "label": "CBC (BIS)"
+   "label": "CBC (BIS)",
+   "read_only": 1
   },
   {
    "default": "MAX,1%",
    "fieldname": "aish_content_bsi",
    "fieldtype": "Data",
-   "label": "AISH Content (BIS)"
+   "label": "AISH Content (BIS)",
+   "read_only": 1
   },
   {
    "default": "MIN,1840 GM",
    "fieldname": "impact_failure_load_bsi",
    "fieldtype": "Data",
-   "label": "Impact Failure Load (1524 MM Drop) (BIS)"
+   "label": "Impact Failure Load (1524 MM Drop) (BIS)",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_pktk",
@@ -249,145 +273,169 @@
    "default": "5",
    "fieldname": "layer_hfi",
    "fieldtype": "Data",
-   "label": "Layer (HFI)"
+   "label": "Layer (HFI)",
+   "read_only": 1
   },
   {
    "default": "130",
    "fieldname": "fabric_no_1__hfi",
    "fieldtype": "Int",
-   "label": "Fabric No 1  (HFI)"
+   "label": "Fabric No 1  (HFI)",
+   "read_only": 1
   },
   {
    "default": "130",
    "fieldname": "fabric_no_2_hfi",
    "fieldtype": "Int",
-   "label": "Fabric No 2 (HFI)"
+   "label": "Fabric No 2 (HFI)",
+   "read_only": 1
   },
   {
    "default": "45",
    "fieldname": "coating_np_hfi",
    "fieldtype": "Int",
-   "label": "Coating NP (HFI)"
+   "label": "Coating NP (HFI)",
+   "read_only": 1
   },
   {
    "default": "45",
    "fieldname": "coating_p_hfi",
    "fieldtype": "Int",
-   "label": "Coating P (HFI)"
+   "label": "Coating P (HFI)",
+   "read_only": 1
   },
   {
    "default": "45",
    "fieldname": "final_coating_hfi",
    "fieldtype": "Int",
-   "label": "Final Coating (HFI)"
+   "label": "Final Coating (HFI)",
+   "read_only": 1
   },
   {
    "default": "BOND OK",
    "fieldname": "bond_strength_hfi",
    "fieldtype": "Data",
-   "label": "Bond Strength (HFI)"
+   "label": "Bond Strength (HFI)",
+   "read_only": 1
   },
   {
    "default": "395 \u00b1 2 GSM",
    "fieldname": "gsm_test_hfi",
    "fieldtype": "Data",
-   "label": "GSM Test (HFI)"
+   "label": "GSM Test (HFI)",
+   "read_only": 1
   },
   {
    "default": "MIN,8400 N",
    "fieldname": "tensile_strengthwarf_hfi",
    "fieldtype": "Data",
-   "label": "Tensile Strength(WARF) (HFI)(1)"
+   "label": "Tensile Strength(WARF) (HFI)(1)",
+   "read_only": 1
   },
   {
    "default": "MIN,8400 N",
    "fieldname": "tensile_strengthwarf_hfi2",
    "fieldtype": "Data",
-   "label": "Tensile Strength(WARF) (HFI)(2)"
+   "label": "Tensile Strength(WARF) (HFI)(2)",
+   "read_only": 1
   },
   {
    "default": "WARF 15-25%\n",
    "fieldname": "tensile_elongnation_hfi",
    "fieldtype": "Data",
-   "label": "Tensile Elongnation (HFI)(1)"
+   "label": "Tensile Elongnation (HFI)(1)",
+   "read_only": 1
   },
   {
    "default": "WEFT 15-25%",
    "fieldname": "tensile_elongnation_hfi2",
    "fieldtype": "Data",
-   "label": "Tensile Elongnation (HFI)(2)"
+   "label": "Tensile Elongnation (HFI)(2)",
+   "read_only": 1
   },
   {
    "default": "80 PERCENT OF THE ACTUAL ORIGINAL VALUE",
    "fieldname": "md_tensile_20x10cm_hfi",
    "fieldtype": "Data",
-   "label": "MD Tensile (20X10cm) After UV 1000 H (HFI)"
+   "label": "MD Tensile (20X10cm) After UV 1000 H (HFI)",
+   "read_only": 1
   },
   {
    "default": "80 PERCENT OF THE ACTUAL ORIGINAL VALUE",
    "fieldname": "cd_tensile_20x10cm_hfi",
    "fieldtype": "Data",
-   "label": "CD Tensile (20X10cm) After UV 1000 H (HFI)"
+   "label": "CD Tensile (20X10cm) After UV 1000 H (HFI)",
+   "read_only": 1
   },
   {
    "default": "WARF MIN 392 N\nWEFT MIN 392 N",
    "fieldname": "tear_strength_hfi",
    "fieldtype": "Data",
-   "label": "Tear Strength (HFI)(1)"
+   "label": "Tear Strength (HFI)(1)",
+   "read_only": 1
   },
   {
    "default": "WEFT MIN 392 N",
    "fieldname": "tear_strength_hfi2",
    "fieldtype": "Data",
-   "label": "Tear Strength (HFI)(2)"
+   "label": "Tear Strength (HFI)(2)",
+   "read_only": 1
   },
   {
    "default": "MIN,15 KG/CM\u00b2",
    "fieldname": "hydrostatic_resistance_hfi",
    "fieldtype": "Data",
-   "label": "Hydrostatic Resistance (HFI)"
+   "label": "Hydrostatic Resistance (HFI)",
+   "read_only": 1
   },
   {
    "default": "80 PERCENT OF THE ACTUAL ORIGINAL VALUE",
    "fieldname": "hydrostatic_resi_hfi",
    "fieldtype": "Data",
-   "label": "Hydrostatic Resi. After UV 1000 h (HFI)"
+   "label": "Hydrostatic Resi. After UV 1000 h (HFI)",
+   "read_only": 1
   },
   {
    "default": "MIN, 110 KG/CM\u00b2",
    "fieldname": "ball_brust_hfi",
    "fieldtype": "Data",
-   "label": "Ball Brust (HFI)"
+   "label": "Ball Brust (HFI)",
+   "read_only": 1
   },
   {
    "default": "MIN,500 N",
    "fieldname": "puncture_hfi",
    "fieldtype": "Data",
-   "label": "Puncture (HFI)"
+   "label": "Puncture (HFI)",
+   "read_only": 1
   },
   {
    "default": "MIN,0.50MM",
    "fieldname": "thickness_hfi",
    "fieldtype": "Data",
-   "label": "Thickness (HFI)"
+   "label": "Thickness (HFI)",
+   "read_only": 1
   },
   {
    "default": "2-3%",
    "fieldname": "cbc_hfi",
    "fieldtype": "Data",
-   "label": "CBC (HFI)"
+   "label": "CBC (HFI)",
+   "read_only": 1
   },
   {
    "default": "-",
    "fieldname": "aish_content_hfi",
    "fieldtype": "Data",
-   "label": "AISH Content (HFI)"
+   "label": "AISH Content (HFI)",
+   "read_only": 1
   },
   {
    "default": "MIN,1840 GM",
    "fieldname": "impact_failure_load_hfi",
    "fieldtype": "Data",
-   "label": "Impact Failure Load (1524 MM Drop) (HFI)"
+   "label": "Impact Failure Load (1524 MM Drop) (HFI)",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_bdji",
@@ -547,11 +595,11 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-06-05 15:19:19.906256",
+ "modified": "2026-06-05 14:27:26.286208",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
- "name": "Finished Goods Inspection",
- "owner": "saifa@sanpra.co.in",
+ "name": "Finished Goods Inspection Template Child",
+ "owner": "Administrator",
  "permissions": [],
  "row_format": "Dynamic",
  "rows_threshold_for_grid_search": 20,

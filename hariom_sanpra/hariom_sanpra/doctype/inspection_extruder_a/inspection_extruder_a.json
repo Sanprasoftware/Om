@@ -6,11 +6,11 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "job_card",
   "column_break_xzho",
   "date",
   "column_break_nwmi",
   "time",
+  "column_break_sylr",
   "section_break_rypg",
   "barrel_temp_target_column",
   "bar_target_1",
@@ -70,12 +70,6 @@
   "master"
  ],
  "fields": [
-  {
-   "fieldname": "job_card",
-   "fieldtype": "Link",
-   "label": "Job Card",
-   "options": "Job Card"
-  },
   {
    "fieldname": "column_break_xzho",
    "fieldtype": "Column Break"
@@ -417,13 +411,17 @@
    "fieldname": "target_column",
    "fieldtype": "Column Break",
    "label": "Target"
+  },
+  {
+   "fieldname": "column_break_sylr",
+   "fieldtype": "Column Break"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-05-30 12:42:49.866807",
+ "modified": "2026-06-05 13:00:34.916645",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Inspection Extruder A",
