@@ -1,0 +1,164 @@
+Purchase Plan Live BOM Data: PP/26/001
+====================================================================================================
+Child Table: marketing_order
+Marketing Order Rows: 6
+
+Marketing Order Row 1
+----------------------------------------------------------------------------------------------------
+Parent Item: 500 MIC DOLLAR (400 GSM) - 12 FT
+Parent Item Name: 500 MIC DOLLAR (400 GSM) - 12 FT
+Parent BOM: BOM-500 MIC DOLLAR (400 GSM) - 12 FT-002
+Required Finished Qty: 22650000.0
+
+BOM BOM-500 MIC DOLLAR (400 GSM) - 12 FT-002 tree:
+- Level 0 | Finished Item | Item: 500 MIC DOLLAR (400 GSM) - 12 FT | Name: 500 MIC DOLLAR (400 GSM) - 12 FT | BOM: BOM-500 MIC DOLLAR (400 GSM) - 12 FT-002 | Parent Item: - | Parent BOM: - | Required Qty: 22650000.0
+  - Level 1 | Raw Item With BOM | Item: 500 MIC DOLLAR (400 GSM) - 12 FT - 1 SIDE NP | Name: 500 MIC DOLLAR (400 GSM) - 12 FT - 1 SIDE NP | BOM: BOM-500 MIC DOLLAR (400 GSM) - 12 FT - 1 SIDE NP-001 | Parent Item: 500 MIC DOLLAR (400 GSM) - 12 FT | Parent BOM: BOM-500 MIC DOLLAR (400 GSM) - 12 FT-002 | Required Qty: 10905512.138233935 Kg
+    BOM BOM-500 MIC DOLLAR (400 GSM) - 12 FT - 1 SIDE NP-001 raw items under parent item 500 MIC DOLLAR (400 GSM) - 12 FT - 1 SIDE NP:
+      - Level 3 | Raw Item | Item: 488 GRAM -U/L BLACK FABRIC -12 FT | Name: 488 GRAM -U/L BLACK FABRIC -12 FT | BOM: - | Parent Item: 500 MIC DOLLAR (400 GSM) - 12 FT - 1 SIDE NP | Parent BOM: BOM-500 MIC DOLLAR (400 GSM) - 12 FT - 1 SIDE NP-001 | Required Qty: 8221141.452902725 Kg
+      - Level 3 | Raw Item | Item: LD/FD0474 | Name: LD/FD0474 | BOM: - | Parent Item: 500 MIC DOLLAR (400 GSM) - 12 FT - 1 SIDE NP | Parent BOM: BOM-500 MIC DOLLAR (400 GSM) - 12 FT - 1 SIDE NP-001 | Required Qty: 832180.9499826367 Kg
+      - Level 3 | Raw Item | Item: LLD/E0725L | Name: LLDPE-E0725L | BOM: - | Parent Item: 500 MIC DOLLAR (400 GSM) - 12 FT - 1 SIDE NP | Parent BOM: BOM-500 MIC DOLLAR (400 GSM) - 12 FT - 1 SIDE NP-001 | Required Qty: 805336.3220259062 Kg
+      - Level 3 | Raw Item | Item: BKMB/2501 | Name: PP-BLCK MB-AM 2501 | BOM: - | Parent Item: 500 MIC DOLLAR (400 GSM) - 12 FT - 1 SIDE NP | Parent BOM: BOM-500 MIC DOLLAR (400 GSM) - 12 FT - 1 SIDE NP-001 | Required Qty: 214756.26865104144 Kg
+      - Level 3 | Raw Item | Item: ANTI/273 | Name: ANTIOXIDANT-273 | BOM: - | Parent Item: 500 MIC DOLLAR (400 GSM) - 12 FT - 1 SIDE NP | Parent BOM: BOM-500 MIC DOLLAR (400 GSM) - 12 FT - 1 SIDE NP-001 | Required Qty: 26844.62795673042 Kg
+      - Level 3 | Raw Item | Item: RP/120/HDBK/HFI | Name: RP-120-HD BLACK | BOM: - | Parent Item: 500 MIC DOLLAR (400 GSM) - 12 FT - 1 SIDE NP | Parent BOM: BOM-500 MIC DOLLAR (400 GSM) - 12 FT - 1 SIDE NP-001 | Required Qty: 805336.3220259062 Kg
+  - Level 1 | Raw Item With BOM | Item: 500 MIC DOLLAR (400 GSM) - 12 FT - 1 SIDE P | Name: 500 MIC DOLLAR (400 GSM) - 12 FT - 1 SIDE P | BOM: BOM-500 MIC DOLLAR (400 GSM) - 12 FT - 1 SIDE P-002 | Parent Item: 500 MIC DOLLAR (400 GSM) - 12 FT | Parent BOM: BOM-500 MIC DOLLAR (400 GSM) - 12 FT-002 | Required Qty: 10905595.691877345 Kg
+    BOM BOM-500 MIC DOLLAR (400 GSM) - 12 FT - 1 SIDE P-002 raw items under parent item 500 MIC DOLLAR (400 GSM) - 12 FT - 1 SIDE P:
+      - Level 3 | Raw Item | Item: 488 GRAM -U/L BLACK FABRIC -12 FT | Name: 488 GRAM -U/L BLACK FABRIC -12 FT | BOM: - | Parent Item: 500 MIC DOLLAR (400 GSM) - 12 FT - 1 SIDE P | Parent BOM: BOM-500 MIC DOLLAR (400 GSM) - 12 FT - 1 SIDE P-002 | Required Qty: 8221141.452902724 Kg
+      - Level 3 | Raw Item | Item: LD/FD0474 | Name: LD/FD0474 | BOM: - | Parent Item: 500 MIC DOLLAR (400 GSM) - 12 FT - 1 SIDE P | Parent BOM: BOM-500 MIC DOLLAR (400 GSM) - 12 FT - 1 SIDE P-002 | Required Qty: 805336.3220259061 Kg
+      - Level 3 | Raw Item | Item: LLD/E0725L | Name: LLDPE-E0725L | BOM: - | Parent Item: 500 MIC DOLLAR (400 GSM) - 12 FT - 1 SIDE P | Parent BOM: BOM-500 MIC DOLLAR (400 GSM) - 12 FT - 1 SIDE P-002 | Required Qty: 778491.6940691757 Kg
+      - Level 3 | Raw Item | Item: BKMB/2501 | Name: PP-BLCK MB-AM 2501 | BOM: - | Parent Item: 500 MIC DOLLAR (400 GSM) - 12 FT - 1 SIDE P | Parent BOM: BOM-500 MIC DOLLAR (400 GSM) - 12 FT - 1 SIDE P-002 | Required Qty: 214756.2686510414 Kg
+      - Level 3 | Raw Item | Item: UV/404 | Name: UV/404 | BOM: - | Parent Item: 500 MIC DOLLAR (400 GSM) - 12 FT - 1 SIDE P | Parent BOM: BOM-500 MIC DOLLAR (400 GSM) - 12 FT - 1 SIDE P-002 | Required Qty: 53689.00424586019 Kg
+      - Level 3 | Raw Item | Item: ANTI/273 | Name: ANTIOXIDANT-273 | BOM: - | Parent Item: 500 MIC DOLLAR (400 GSM) - 12 FT - 1 SIDE P | Parent BOM: BOM-500 MIC DOLLAR (400 GSM) - 12 FT - 1 SIDE P-002 | Required Qty: 26844.627956730412 Kg
+      - Level 3 | Raw Item | Item: RP/120/HDBK/HFI | Name: RP-120-HD BLACK | BOM: - | Parent Item: 500 MIC DOLLAR (400 GSM) - 12 FT - 1 SIDE P | Parent BOM: BOM-500 MIC DOLLAR (400 GSM) - 12 FT - 1 SIDE P-002 | Required Qty: 805336.3220259061 Kg
+  - Level 1 | Raw Item | Item: LD/FD0474 | Name: LDPE-FD0474 | BOM: - | Parent Item: 500 MIC DOLLAR (400 GSM) - 12 FT | Parent BOM: BOM-500 MIC DOLLAR (400 GSM) - 12 FT-002 | Required Qty: 1174448.8868436469 Kg
+  - Level 1 | Raw Item | Item: LLD/E0725L | Name: LLDPE-E0725L | BOM: - | Parent Item: 500 MIC DOLLAR (400 GSM) - 12 FT | Parent BOM: BOM-500 MIC DOLLAR (400 GSM) - 12 FT-002 | Required Qty: 1174448.8868436469 Kg
+  - Level 1 | Raw Item | Item: RP/120/HDBK/HFI | Name: RP-120-HD BLACK | BOM: - | Parent Item: 500 MIC DOLLAR (400 GSM) - 12 FT | Parent BOM: BOM-500 MIC DOLLAR (400 GSM) - 12 FT-002 | Required Qty: 1006670.4025323828 Kg
+
+Marketing Order Row 2
+----------------------------------------------------------------------------------------------------
+Parent Item: 500 MIC DOLLAR 400 GSM -10 FT
+Parent Item Name: 500 MIC DOLLAR 400 GSM -10 FT							
+Parent BOM: BOM-500 MIC DOLLAR 400 GSM -10 FT-002
+Required Finished Qty: 2550000.0
+
+BOM BOM-500 MIC DOLLAR 400 GSM -10 FT-002 tree:
+- Level 0 | Finished Item | Item: 500 MIC DOLLAR 400 GSM -10 FT | Name: 500 MIC DOLLAR 400 GSM -10 FT							 | BOM: BOM-500 MIC DOLLAR 400 GSM -10 FT-002 | Parent Item: - | Parent BOM: - | Required Qty: 2550000.0
+  - Level 1 | Raw Item With BOM | Item: 500 MIC DOLLAR 400 GSM -10 FT - 1 SIDE NP | Name: 500 MIC DOLLAR 400 GSM -10 FT	1 SIDE NP						 | BOM: BOM-500 MIC DOLLAR 400 GSM -10 FT - 1 SIDE NP-001 | Parent Item: 500 MIC DOLLAR 400 GSM -10 FT | Parent BOM: BOM-500 MIC DOLLAR 400 GSM -10 FT-002 | Required Qty: 1235939.6237326625 Kg
+    BOM BOM-500 MIC DOLLAR 400 GSM -10 FT - 1 SIDE NP-001 raw items under parent item 500 MIC DOLLAR 400 GSM -10 FT - 1 SIDE NP:
+      - Level 3 | Raw Item | Item: 396/POND/BF/10FT/130 | Name: 396 GRAM -U/L BLACK FABRIC - 10 FT(130 GSM) | BOM: - | Parent Item: 500 MIC DOLLAR 400 GSM -10 FT - 1 SIDE NP | Parent BOM: BOM-500 MIC DOLLAR 400 GSM -10 FT - 1 SIDE NP-001 | Required Qty: 921124.8369013872 Kg
+      - Level 3 | Raw Item | Item: LD/FD0474 | Name: LDPE-FD0474 | BOM: - | Parent Item: 500 MIC DOLLAR 400 GSM -10 FT - 1 SIDE NP | Parent BOM: BOM-500 MIC DOLLAR 400 GSM -10 FT - 1 SIDE NP-001 | Required Qty: 97592.58108436203 Kg
+      - Level 3 | Raw Item | Item: LLD/E0725L | Name: LLDPE-E0725L | BOM: - | Parent Item: 500 MIC DOLLAR 400 GSM -10 FT - 1 SIDE NP | Parent BOM: BOM-500 MIC DOLLAR 400 GSM -10 FT - 1 SIDE NP-001 | Required Qty: 94444.43604938261 Kg
+      - Level 3 | Raw Item | Item: BKMB/2501 | Name: PP-BLCK MB-AM 2501 | BOM: - | Parent Item: 500 MIC DOLLAR 400 GSM -10 FT - 1 SIDE NP | Parent BOM: BOM-500 MIC DOLLAR 400 GSM -10 FT - 1 SIDE NP-001 | Required Qty: 25185.18861316876 Kg
+      - Level 3 | Raw Item | Item: ANTI/273 | Name: ANTIOXIDANT-273 | BOM: - | Parent Item: 500 MIC DOLLAR 400 GSM -10 FT - 1 SIDE NP | Parent BOM: BOM-500 MIC DOLLAR 400 GSM -10 FT - 1 SIDE NP-001 | Required Qty: 3148.1450349793895 Kg
+      - Level 3 | Raw Item | Item: RP/120/HDBK/HFI | Name: RP-120-HD BLACK | BOM: - | Parent Item: 500 MIC DOLLAR 400 GSM -10 FT - 1 SIDE NP | Parent BOM: BOM-500 MIC DOLLAR 400 GSM -10 FT - 1 SIDE NP-001 | Required Qty: 94444.43604938261 Kg
+  - Level 1 | Raw Item With BOM | Item: 500 MIC DOLLAR 400 GSM -10 FT - 1 SIDE P | Name: 500 MIC DOLLAR 400 GSM -10 FT	1 SIDE P						 | BOM: BOM-500 MIC DOLLAR 400 GSM -10 FT - 1 SIDE P-001 | Parent Item: 500 MIC DOLLAR 400 GSM -10 FT | Parent BOM: BOM-500 MIC DOLLAR 400 GSM -10 FT-002 | Required Qty: 1235939.6237326625 Kg
+    BOM BOM-500 MIC DOLLAR 400 GSM -10 FT - 1 SIDE P-001 raw items under parent item 500 MIC DOLLAR 400 GSM -10 FT - 1 SIDE P:
+      - Level 3 | Raw Item | Item: 396/POND/BF/10FT/130 | Name: 396 GRAM -U/L BLACK FABRIC - 10 FT(130 GSM) | BOM: - | Parent Item: 500 MIC DOLLAR 400 GSM -10 FT - 1 SIDE P | Parent BOM: BOM-500 MIC DOLLAR 400 GSM -10 FT - 1 SIDE P-001 | Required Qty: 921124.8369013872 Kg
+      - Level 3 | Raw Item | Item: LD/FD0474 | Name: LDPE-FD0474 | BOM: - | Parent Item: 500 MIC DOLLAR 400 GSM -10 FT - 1 SIDE P | Parent BOM: BOM-500 MIC DOLLAR 400 GSM -10 FT - 1 SIDE P-001 | Required Qty: 94444.43604938261 Kg
+      - Level 3 | Raw Item | Item: LLD/E0725L | Name: LLDPE-E0725L | BOM: - | Parent Item: 500 MIC DOLLAR 400 GSM -10 FT - 1 SIDE P | Parent BOM: BOM-500 MIC DOLLAR 400 GSM -10 FT - 1 SIDE P-001 | Required Qty: 91296.29101440325 Kg
+      - Level 3 | Raw Item | Item: BKMB/2501 | Name: PP-BLCK MB-AM 2501 | BOM: - | Parent Item: 500 MIC DOLLAR 400 GSM -10 FT - 1 SIDE P | Parent BOM: BOM-500 MIC DOLLAR 400 GSM -10 FT - 1 SIDE P-001 | Required Qty: 25185.18861316876 Kg
+      - Level 3 | Raw Item | Item: UV/404 | Name: UV/404 | BOM: - | Parent Item: 500 MIC DOLLAR 400 GSM -10 FT - 1 SIDE P | Parent BOM: BOM-500 MIC DOLLAR 400 GSM -10 FT - 1 SIDE P-001 | Required Qty: 6296.290069958779 Kg
+      - Level 3 | Raw Item | Item: ANTI/273 | Name: ANTIOXIDANT-273 | BOM: - | Parent Item: 500 MIC DOLLAR 400 GSM -10 FT - 1 SIDE P | Parent BOM: BOM-500 MIC DOLLAR 400 GSM -10 FT - 1 SIDE P-001 | Required Qty: 3148.1450349793895 Kg
+      - Level 3 | Raw Item | Item: RP/120/HDBK/HFI | Name: RP-120-HD BLACK | BOM: - | Parent Item: 500 MIC DOLLAR 400 GSM -10 FT - 1 SIDE P | Parent BOM: BOM-500 MIC DOLLAR 400 GSM -10 FT - 1 SIDE P-001 | Required Qty: 94444.43604938261 Kg
+  - Level 1 | Raw Item | Item: LD/FD0474 | Name: LDPE-FD0474 | BOM: - | Parent Item: 500 MIC DOLLAR 400 GSM -10 FT | Parent BOM: BOM-500 MIC DOLLAR 400 GSM -10 FT-002 | Required Qty: 126508.92973898811 Kg
+  - Level 1 | Raw Item | Item: LLD/E0725L | Name: LLDPE-E0725L | BOM: - | Parent Item: 500 MIC DOLLAR 400 GSM -10 FT | Parent BOM: BOM-500 MIC DOLLAR 400 GSM -10 FT-002 | Required Qty: 126508.92973898811 Kg
+  - Level 1 | Raw Item | Item: RP/120/HDBK/HFI | Name: RP-120-HD BLACK | BOM: - | Parent Item: 500 MIC DOLLAR 400 GSM -10 FT | Parent BOM: BOM-500 MIC DOLLAR 400 GSM -10 FT-002 | Required Qty: 108436.20120484667 Kg
+
+Marketing Order Row 3
+----------------------------------------------------------------------------------------------------
+Parent Item: 500 MIC DOLLAR 435 GSM -12 FT
+Parent Item Name: 500 MIC DOLLAR 435 GSM -12 FT							
+Parent BOM: BOM-500 MIC DOLLAR 435 GSM -12 FT-001
+Required Finished Qty: 2550000.0
+
+BOM BOM-500 MIC DOLLAR 435 GSM -12 FT-001 tree:
+- Level 0 | Finished Item | Item: 500 MIC DOLLAR 435 GSM -12 FT | Name: 500 MIC DOLLAR 435 GSM -12 FT							 | BOM: BOM-500 MIC DOLLAR 435 GSM -12 FT-001 | Parent Item: - | Parent BOM: - | Required Qty: 2550000.0
+  - Level 1 | Raw Item With BOM | Item: 500 MIC DOLLAR 435 GSM -12 FT - 1 Side NP | Name: 500 MIC DOLLAR 435 GSM -12 FT - 1 Side NP						 | BOM: BOM-500 MIC DOLLAR 435 GSM -12 FT - 1 Side NP-002 | Parent Item: 500 MIC DOLLAR 435 GSM -12 FT | Parent BOM: BOM-500 MIC DOLLAR 435 GSM -12 FT-001 | Required Qty: 1081487.181 Kg
+    BOM BOM-500 MIC DOLLAR 435 GSM -12 FT - 1 Side NP-002 raw items under parent item 500 MIC DOLLAR 435 GSM -12 FT - 1 Side NP:
+      - Level 3 | Raw Item | Item: 507/POND/BF/12FT/135 | Name: 507 GRAM- U/L BLACK FABRIC -12 FT(135GSM) | BOM: - | Parent Item: 500 MIC DOLLAR 435 GSM -12 FT - 1 Side NP | Parent BOM: BOM-500 MIC DOLLAR 435 GSM -12 FT - 1 Side NP-002 | Required Qty: 789657.2760000001 Kg
+      - Level 3 | Raw Item | Item: LD/FD0474 | Name: LD/FD0474 | BOM: - | Parent Item: 500 MIC DOLLAR 435 GSM -12 FT - 1 Side NP | Parent BOM: BOM-500 MIC DOLLAR 435 GSM -12 FT - 1 Side NP-002 | Required Qty: 90467.26800000001 Kg
+      - Level 3 | Raw Item | Item: LLD/E0725L | Name: LLDPE-E0725L | BOM: - | Parent Item: 500 MIC DOLLAR 435 GSM -12 FT - 1 Side NP | Parent BOM: BOM-500 MIC DOLLAR 435 GSM -12 FT - 1 Side NP-002 | Required Qty: 87548.9715 Kg
+      - Level 3 | Raw Item | Item: BKMB/2501 | Name: PP-BLCK MB-AM 2501 | BOM: - | Parent Item: 500 MIC DOLLAR 435 GSM -12 FT - 1 Side NP | Parent BOM: BOM-500 MIC DOLLAR 435 GSM -12 FT - 1 Side NP-002 | Required Qty: 23346.397500000003 Kg
+      - Level 3 | Raw Item | Item: ANTI/273 | Name: ANTIOXIDANT-273 | BOM: - | Parent Item: 500 MIC DOLLAR 435 GSM -12 FT - 1 Side NP | Parent BOM: BOM-500 MIC DOLLAR 435 GSM -12 FT - 1 Side NP-002 | Required Qty: 2918.2965000000004 Kg
+      - Level 3 | Raw Item | Item: RP/120/HDBK/HFI | Name: RP-120-HD BLACK | BOM: - | Parent Item: 500 MIC DOLLAR 435 GSM -12 FT - 1 Side NP | Parent BOM: BOM-500 MIC DOLLAR 435 GSM -12 FT - 1 Side NP-002 | Required Qty: 87548.9715 Kg
+  - Level 1 | Raw Item With BOM | Item: 500 MIC DOLLAR 435 GSM -12 FT - 1 Side P | Name: 500 MIC DOLLAR 435 GSM -12 FT - 1 Side P						 | BOM: BOM-500 MIC DOLLAR 435 GSM -12 FT - 1 Side P-002 | Parent Item: 500 MIC DOLLAR 435 GSM -12 FT | Parent BOM: BOM-500 MIC DOLLAR 435 GSM -12 FT-001 | Required Qty: 1081487.1555 Kg
+    BOM BOM-500 MIC DOLLAR 435 GSM -12 FT - 1 Side P-002 raw items under parent item 500 MIC DOLLAR 435 GSM -12 FT - 1 Side P:
+      - Level 3 | Raw Item | Item: 507/POND/BF/12FT/135 | Name: 507 GRAM- U/L BLACK FABRIC -12 FT(135GSM) | BOM: - | Parent Item: 500 MIC DOLLAR 435 GSM -12 FT - 1 Side P | Parent BOM: BOM-500 MIC DOLLAR 435 GSM -12 FT - 1 Side P-002 | Required Qty: 789657.276 Kg
+      - Level 3 | Raw Item | Item: LD/FD0474 | Name: LD/FD0474 | BOM: - | Parent Item: 500 MIC DOLLAR 435 GSM -12 FT - 1 Side P | Parent BOM: BOM-500 MIC DOLLAR 435 GSM -12 FT - 1 Side P-002 | Required Qty: 87548.9715 Kg
+      - Level 3 | Raw Item | Item: LLD/E0725L | Name: LLDPE-E0725L | BOM: - | Parent Item: 500 MIC DOLLAR 435 GSM -12 FT - 1 Side P | Parent BOM: BOM-500 MIC DOLLAR 435 GSM -12 FT - 1 Side P-002 | Required Qty: 84630.6495 Kg
+      - Level 3 | Raw Item | Item: BKMB/2501 | Name: PP-BLCK MB-AM 2501 | BOM: - | Parent Item: 500 MIC DOLLAR 435 GSM -12 FT - 1 Side P | Parent BOM: BOM-500 MIC DOLLAR 435 GSM -12 FT - 1 Side P-002 | Required Qty: 23346.397500000003 Kg
+      - Level 3 | Raw Item | Item: UV/404 | Name: UV/404 | BOM: - | Parent Item: 500 MIC DOLLAR 435 GSM -12 FT - 1 Side P | Parent BOM: BOM-500 MIC DOLLAR 435 GSM -12 FT - 1 Side P-002 | Required Qty: 5836.593000000001 Kg
+      - Level 3 | Raw Item | Item: ANTI/273 | Name: ANTIOXIDANT-273 | BOM: - | Parent Item: 500 MIC DOLLAR 435 GSM -12 FT - 1 Side P | Parent BOM: BOM-500 MIC DOLLAR 435 GSM -12 FT - 1 Side P-002 | Required Qty: 2918.2965000000004 Kg
+      - Level 3 | Raw Item | Item: RP/120/HDBK/HFI | Name: RP-120-HD BLACK | BOM: - | Parent Item: 500 MIC DOLLAR 435 GSM -12 FT - 1 Side P | Parent BOM: BOM-500 MIC DOLLAR 435 GSM -12 FT - 1 Side P-002 | Required Qty: 87548.9715 Kg
+  - Level 1 | Raw Item | Item: LD/FD0474 | Name: LD/FD0474 | BOM: - | Parent Item: 500 MIC DOLLAR 435 GSM -12 FT | Parent BOM: BOM-500 MIC DOLLAR 435 GSM -12 FT-001 | Required Qty: 135459.009 Kg
+  - Level 1 | Raw Item | Item: LLD/E0725L | Name: LLDPE-E0725L | BOM: - | Parent Item: 500 MIC DOLLAR 435 GSM -12 FT | Parent BOM: BOM-500 MIC DOLLAR 435 GSM -12 FT-001 | Required Qty: 135459.009 Kg
+  - Level 1 | Raw Item | Item: RP/120/HDBK/HFI | Name: RP-120-HD BLACK | BOM: - | Parent Item: 500 MIC DOLLAR 435 GSM -12 FT | Parent BOM: BOM-500 MIC DOLLAR 435 GSM -12 FT-001 | Required Qty: 116107.722 Kg
+
+Marketing Order Row 4
+----------------------------------------------------------------------------------------------------
+Parent Item: 500 MIC SULZER 420 GSM-4L-12 FT-FINAL
+Parent Item Name: 500 MIC SULZER 420 GSM-4L-12 FT-FINAL
+Parent BOM: BOM-500 MIC SULZER 420 GSM-4L-12 FT-FINAL-001
+Required Finished Qty: 420000.0
+
+BOM BOM-500 MIC SULZER 420 GSM-4L-12 FT-FINAL-001 tree:
+- Level 0 | Finished Item | Item: 500 MIC SULZER 420 GSM-4L-12 FT-FINAL | Name: 500 MIC SULZER 420 GSM-4L-12 FT-FINAL | BOM: BOM-500 MIC SULZER 420 GSM-4L-12 FT-FINAL-001 | Parent Item: - | Parent BOM: - | Required Qty: 420000.0
+  - Level 1 | Raw Item | Item: 500 MIC SULZER 420 GSM -12 FT - 1 SIDE NP | Name: 500 MIC SULZER 420 GSM -12 FT - 1 SIDE NP | BOM: - | Parent Item: 500 MIC SULZER 420 GSM-4L-12 FT-FINAL | Parent BOM: BOM-500 MIC SULZER 420 GSM-4L-12 FT-FINAL-001 | Required Qty: 319985.0968703428 Kg
+  - Level 1 | Raw Item | Item: LD/EC7000 | Name: LDPE-EC7000 | BOM: - | Parent Item: 500 MIC SULZER 420 GSM-4L-12 FT-FINAL | Parent BOM: BOM-500 MIC SULZER 420 GSM-4L-12 FT-FINAL-001 | Required Qty: 23695.97615499255 Kg
+  - Level 1 | Raw Item | Item: LLD/E0725L | Name: LLDPE-E0725L | BOM: - | Parent Item: 500 MIC SULZER 420 GSM-4L-12 FT-FINAL | Parent BOM: BOM-500 MIC SULZER 420 GSM-4L-12 FT-FINAL-001 | Required Qty: 23695.97615499255 Kg
+  - Level 1 | Raw Item | Item: BLACK MB - SIA | Name: BLACK MB - SIA | BOM: - | Parent Item: 500 MIC SULZER 420 GSM-4L-12 FT-FINAL | Parent BOM: BOM-500 MIC SULZER 420 GSM-4L-12 FT-FINAL-001 | Required Qty: 5096.870342771982 Kg
+  - Level 1 | Raw Item | Item: UV-46330 | Name: UV-46330 | BOM: - | Parent Item: 500 MIC SULZER 420 GSM-4L-12 FT-FINAL | Parent BOM: BOM-500 MIC SULZER 420 GSM-4L-12 FT-FINAL-001 | Required Qty: 1296.5722801788377 Kg
+  - Level 1 | Raw Item | Item: ANTI/273 | Name: ANTIOXIDANT-273 | BOM: - | Parent Item: 500 MIC SULZER 420 GSM-4L-12 FT-FINAL | Parent BOM: BOM-500 MIC SULZER 420 GSM-4L-12 FT-FINAL-001 | Required Qty: 625.9314456035768 Kg
+  - Level 1 | Raw Item | Item: RP/120/HDBK/HFI | Name: RP-120 BLACK/HFI | BOM: - | Parent Item: 500 MIC SULZER 420 GSM-4L-12 FT-FINAL | Parent BOM: BOM-500 MIC SULZER 420 GSM-4L-12 FT-FINAL-001 | Required Qty: 9388.971684053651 Kg
+  - Level 1 | Raw Item | Item: 60GSM/FILM/SULZER/12FT | Name: 225 GRAM BLACK SULZER FILM -12 FT/60 GSM | BOM: - | Parent Item: 500 MIC SULZER 420 GSM-4L-12 FT-FINAL | Parent BOM: BOM-500 MIC SULZER 420 GSM-4L-12 FT-FINAL-001 | Required Qty: 63040.23845007452 Kg
+
+Marketing Order Row 5
+----------------------------------------------------------------------------------------------------
+Parent Item: 300 MIC DOLLAR 230 GSM -12 FT 3L
+Parent Item Name: 300 MIC DOLLAR 230 GSM -12 FT 3L					
+Parent BOM: BOM-300 MIC DOLLAR 230 GSM -12 FT 3L-001
+Required Finished Qty: 420000.0
+
+BOM BOM-300 MIC DOLLAR 230 GSM -12 FT 3L-001 tree:
+- Level 0 | Finished Item | Item: 300 MIC DOLLAR 230 GSM -12 FT 3L | Name: 300 MIC DOLLAR 230 GSM -12 FT 3L					 | BOM: BOM-300 MIC DOLLAR 230 GSM -12 FT 3L-001 | Parent Item: - | Parent BOM: - | Required Qty: 420000.0
+  - Level 1 | Raw Item With BOM | Item: 300 MIC DOLLAR 230 GSM -12 FT 3L - 1 SIDE NP | Name: 300 MIC DOLLAR 230 GSM -12 FT 3L 1 SIDE NP					 | BOM: BOM-300 MIC DOLLAR 230 GSM -12 FT 3L - 1 SIDE NP-001 | Parent Item: 300 MIC DOLLAR 230 GSM -12 FT 3L | Parent BOM: BOM-300 MIC DOLLAR 230 GSM -12 FT 3L-001 | Required Qty: 362849.56925115973 Kg
+    BOM BOM-300 MIC DOLLAR 230 GSM -12 FT 3L - 1 SIDE NP-001 raw items under parent item 300 MIC DOLLAR 230 GSM -12 FT 3L - 1 SIDE NP:
+      - Level 3 | Raw Item | Item: 488 GRAM -U/L BLACK FABRIC -12 FT | Name: 488 GRAM -U/L BLACK FABRIC -12 FT | BOM: - | Parent Item: 300 MIC DOLLAR 230 GSM -12 FT 3L - 1 SIDE NP | Parent BOM: BOM-300 MIC DOLLAR 230 GSM -12 FT 3L - 1 SIDE NP-001 | Required Qty: 261630.21868787275 Kg
+      - Level 3 | Raw Item | Item: LD/EC7000 | Name: LDPE-EC7000 | BOM: - | Parent Item: 300 MIC DOLLAR 230 GSM -12 FT 3L - 1 SIDE NP | Parent BOM: BOM-300 MIC DOLLAR 230 GSM -12 FT 3L - 1 SIDE NP-001 | Required Qty: 21245.858184227964 Kg
+      - Level 3 | Raw Item | Item: LLD/E0725L | Name: LLDPE-E0725L | BOM: - | Parent Item: 300 MIC DOLLAR 230 GSM -12 FT 3L - 1 SIDE NP | Parent BOM: BOM-300 MIC DOLLAR 230 GSM -12 FT 3L - 1 SIDE NP-001 | Required Qty: 20225.314777998676 Kg
+      - Level 3 | Raw Item | Item: BKMB/10128 | Name: BLACK MB-10128 | BOM: - | Parent Item: 300 MIC DOLLAR 230 GSM -12 FT 3L - 1 SIDE NP | Parent BOM: BOM-300 MIC DOLLAR 230 GSM -12 FT 3L - 1 SIDE NP-001 | Required Qty: 8117.958913187542 Kg
+      - Level 3 | Raw Item | Item: ANTI/273 | Name: ANTIOXIDANT-273 | BOM: - | Parent Item: 300 MIC DOLLAR 230 GSM -12 FT 3L - 1 SIDE NP | Parent BOM: BOM-300 MIC DOLLAR 230 GSM -12 FT 3L - 1 SIDE NP-001 | Required Qty: 1020.543406229291 Kg
+      - Level 3 | Raw Item | Item: RP/120/HDBK/HFI | Name: RP-120 BLACK/HFI | BOM: - | Parent Item: 300 MIC DOLLAR 230 GSM -12 FT 3L - 1 SIDE NP | Parent BOM: BOM-300 MIC DOLLAR 230 GSM -12 FT 3L - 1 SIDE NP-001 | Required Qty: 50609.675281643475 Kg
+  - Level 1 | Raw Item | Item: LD/EC7000 | Name: LDPE-EC7000 | BOM: - | Parent Item: 300 MIC DOLLAR 230 GSM -12 FT 3L | Parent BOM: BOM-300 MIC DOLLAR 230 GSM -12 FT 3L-001 | Required Qty: 20225.314777998676 Kg
+  - Level 1 | Raw Item | Item: LLD/E0725L | Name: LLDPE-E0725L | BOM: - | Parent Item: 300 MIC DOLLAR 230 GSM -12 FT 3L | Parent BOM: BOM-300 MIC DOLLAR 230 GSM -12 FT 3L-001 | Required Qty: 19251.15970841617 Kg
+  - Level 1 | Raw Item | Item: BKMB/10128 | Name: BLACK MB-10128 | BOM: - | Parent Item: 300 MIC DOLLAR 230 GSM -12 FT 3L | Parent BOM: BOM-300 MIC DOLLAR 230 GSM -12 FT 3L-001 | Required Qty: 8117.958913187542 Kg
+  - Level 1 | Raw Item | Item: UV-46330 | Name: UV-46330 | BOM: - | Parent Item: 300 MIC DOLLAR 230 GSM -12 FT 3L | Parent BOM: BOM-300 MIC DOLLAR 230 GSM -12 FT 3L-001 | Required Qty: 2041.0868124585822 Kg
+  - Level 1 | Raw Item | Item: ANTI/273 | Name: ANTIOXIDANT-273 | BOM: - | Parent Item: 300 MIC DOLLAR 230 GSM -12 FT 3L | Parent BOM: BOM-300 MIC DOLLAR 230 GSM -12 FT 3L-001 | Required Qty: 1020.5434062292911 Kg
+  - Level 1 | Raw Item | Item: RP/120/HDBK/HFI | Name: RP-120 BLACK/HFI | BOM: - | Parent Item: 300 MIC DOLLAR 230 GSM -12 FT 3L | Parent BOM: BOM-300 MIC DOLLAR 230 GSM -12 FT 3L-001 | Required Qty: 50563.28694499669 Kg
+  - Level 1 | Raw Item | Item: 300 MIC DOLLAR | Name: 300 MIC DOLLAR | BOM: - | Parent Item: 300 MIC DOLLAR 230 GSM -12 FT 3L | Parent BOM: BOM-300 MIC DOLLAR 230 GSM -12 FT 3L-001 | Required Qty: 2319.416832339298 Kg
+
+Marketing Order Row 6
+----------------------------------------------------------------------------------------------------
+Parent Item: MURGHAS 335 GSM  FINAL
+Parent Item Name: MURGHAS 335 GSM FINAL 
+Parent BOM: BOM-MURGHAS 335 GSM  FINAL-001
+Required Finished Qty: 2550000.0
+
+BOM BOM-MURGHAS 335 GSM  FINAL-001 tree:
+- Level 0 | Finished Item | Item: MURGHAS 335 GSM  FINAL | Name: MURGHAS 335 GSM FINAL  | BOM: BOM-MURGHAS 335 GSM  FINAL-001 | Parent Item: - | Parent BOM: - | Required Qty: 2550000.0
+  - Level 1 | Raw Item With BOM | Item: MURGHAS 335 GSM - 1 SIDE | Name: MURGHAS 335 GSM - 1 SIDE  | BOM: BOM-MURGHAS 335 GSM - 1 SIDE-002 | Parent Item: MURGHAS 335 GSM  FINAL | Parent BOM: BOM-MURGHAS 335 GSM  FINAL-001 | Required Qty: 2363435.224012359 Kg
+    BOM BOM-MURGHAS 335 GSM - 1 SIDE-002 raw items under parent item MURGHAS 335 GSM - 1 SIDE:
+      - Level 3 | Raw Item | Item: 827/MURGHAS/BF/12FT/220 | Name: 827 GRAM - U/L BLACK FABRIC -MURGHAS- 12 FT(220 GSM) | BOM: - | Parent Item: MURGHAS 335 GSM - 1 SIDE | Parent BOM: BOM-MURGHAS 335 GSM - 1 SIDE-002 | Required Qty: 1854391.9664533213 Kg
+      - Level 3 | Raw Item | Item: LD/801-YY | Name: LDPE-801-YY | BOM: - | Parent Item: MURGHAS 335 GSM - 1 SIDE | Parent BOM: BOM-MURGHAS 335 GSM - 1 SIDE-002 | Required Qty: 83574.26616640919 Kg
+      - Level 3 | Raw Item | Item: LLD/E0725L | Name: LLDPE-E0725L | BOM: - | Parent Item: MURGHAS 335 GSM - 1 SIDE | Parent BOM: BOM-MURGHAS 335 GSM - 1 SIDE-002 | Required Qty: 69223.12955197527 Kg
+      - Level 3 | Raw Item | Item: BKMB/10128 | Name: BLACK MB-10128 | BOM: - | Parent Item: MURGHAS 335 GSM - 1 SIDE | Parent BOM: BOM-MURGHAS 335 GSM - 1 SIDE-002 | Required Qty: 18572.059148090924 Kg
+      - Level 3 | Raw Item | Item: F/PLAST/WHITE | Name: FILLER PLAST WHITE | BOM: - | Parent Item: MURGHAS 335 GSM - 1 SIDE | Parent BOM: BOM-MURGHAS 335 GSM - 1 SIDE-002 | Required Qty: 101020.74597219155 Kg
+      - Level 3 | Raw Item | Item: RP/120/HDBK/HFI | Name: RP-120 BLACK/HFI | BOM: - | Parent Item: MURGHAS 335 GSM - 1 SIDE | Parent BOM: BOM-MURGHAS 335 GSM - 1 SIDE-002 | Required Qty: 226241.44780401676 Kg
+      - Level 3 | Raw Item | Item: MOIST/MAGIC | Name: MOISTURE -MAGIC PACK | BOM: - | Parent Item: MURGHAS 335 GSM - 1 SIDE | Parent BOM: BOM-MURGHAS 335 GSM - 1 SIDE-002 | Required Qty: 7034.870889428382 Kg
+      - Level 3 | Raw Item | Item: ANTI/273 | Name: ANTIOXIDANT-273 | BOM: - | Parent Item: MURGHAS 335 GSM - 1 SIDE | Parent BOM: BOM-MURGHAS 335 GSM - 1 SIDE-002 | Required Qty: 3376.7380269256228 Kg
+  - Level 1 | Raw Item | Item: LD/801-YY | Name: LDPE-801-YY | BOM: - | Parent Item: MURGHAS 335 GSM  FINAL | Parent BOM: BOM-MURGHAS 335 GSM  FINAL-001 | Required Qty: 63313.83800485544 Kg
+  - Level 1 | Raw Item | Item: LLD/E0725L | Name: LLDPE-E0725L | BOM: - | Parent Item: MURGHAS 335 GSM  FINAL | Parent BOM: BOM-MURGHAS 335 GSM  FINAL-001 | Required Qty: 48962.701390421535 Kg
+  - Level 1 | Raw Item | Item: BKMB/10128 | Name: BLACK MB-10128 | BOM: - | Parent Item: MURGHAS 335 GSM  FINAL | Parent BOM: BOM-MURGHAS 335 GSM  FINAL-001 | Required Qty: 18572.059148090928 Kg
+  - Level 1 | Raw Item | Item: F/PLAST/WHITE | Name: FILLER PLAST WHITE | BOM: - | Parent Item: MURGHAS 335 GSM  FINAL | Parent BOM: BOM-MURGHAS 335 GSM  FINAL-001 | Required Qty: 101020.74597219157 Kg
+  - Level 1 | Raw Item | Item: RP/120/HDBK/HFI | Name: RP-120 BLACK/HFI | BOM: - | Parent Item: MURGHAS 335 GSM  FINAL | Parent BOM: BOM-MURGHAS 335 GSM  FINAL-001 | Required Qty: 226241.44780401676 Kg
+  - Level 1 | Raw Item | Item: MOIST/MAGIC | Name: MOISTURE -MAGIC PACK | BOM: - | Parent Item: MURGHAS 335 GSM  FINAL | Parent BOM: BOM-MURGHAS 335 GSM  FINAL-001 | Required Qty: 6753.476053851246 Kg
+  - Level 1 | Raw Item | Item: ANTI/273 | Name: ANTIOXIDANT-273 | BOM: - | Parent Item: MURGHAS 335 GSM  FINAL | Parent BOM: BOM-MURGHAS 335 GSM  FINAL-001 | Required Qty: 3095.343191348488 Kg

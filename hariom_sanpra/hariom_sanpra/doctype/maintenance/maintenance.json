@@ -23,7 +23,10 @@
   "section_break_ygfh",
   "req_given_by",
   "column_break_rpzs",
-  "issued_by"
+  "issued_by",
+  "section_break_epgm",
+  "remark",
+  "column_break_isft"
  ],
  "fields": [
   {
@@ -134,13 +137,26 @@
    "fieldtype": "Link",
    "label": "Issued By",
    "options": "Employee"
+  },
+  {
+   "fieldname": "section_break_epgm",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "remark",
+   "fieldtype": "Small Text",
+   "label": "Remark"
+  },
+  {
+   "fieldname": "column_break_isft",
+   "fieldtype": "Column Break"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-06-01 16:31:53.712282",
+ "modified": "2026-06-24 14:51:07.327951",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Maintenance",

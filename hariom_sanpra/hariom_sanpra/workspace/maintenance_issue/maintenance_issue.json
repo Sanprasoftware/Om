@@ -370,8 +370,57 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "Masters",
+   "link_count": 4,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Maintenance Issue Slip",
+   "link_count": 0,
+   "link_to": "Maintenance",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Maintenance History Card",
+   "link_count": 0,
+   "link_to": "Maintenance History Card",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Maintenance Breakdown Intimation Slip",
+   "link_count": 0,
+   "link_to": "Maintenance Breakdown Intimation Slip",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "delivery challan",
+   "link_count": 0,
+   "link_to": "delivery challan",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Reports",
-   "link_count": 3,
+   "link_count": 6,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -408,46 +457,37 @@
   },
   {
    "hidden": 0,
-   "is_query_report": 0,
-   "label": "Masters",
-   "link_count": 3,
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Maintenance Issue Slip",
+   "is_query_report": 1,
+   "label": "Delivery Challan Report",
    "link_count": 0,
-   "link_to": "Maintenance",
-   "link_type": "DocType",
+   "link_to": "Delivery Challan",
+   "link_type": "Report",
    "onboard": 0,
    "type": "Link"
   },
   {
    "hidden": 0,
-   "is_query_report": 0,
-   "label": "Maintenance History Card",
+   "is_query_report": 1,
+   "label": "Stock Balance Hariom",
    "link_count": 0,
-   "link_to": "Maintenance History Card",
-   "link_type": "DocType",
+   "link_to": "Stock Balance Hariom",
+   "link_type": "Report",
    "onboard": 0,
    "type": "Link"
   },
   {
    "hidden": 0,
-   "is_query_report": 0,
-   "label": "Maintenance Breakdown Intimation Slip",
+   "is_query_report": 1,
+   "label": "Stock Balance",
    "link_count": 0,
-   "link_to": "Maintenance Breakdown Intimation Slip",
-   "link_type": "DocType",
+   "link_to": "Stock Balance",
+   "link_type": "Report",
    "onboard": 0,
    "type": "Link"
   }
  ],
- "modified": "2026-05-13 11:01:16.198831",
- "modified_by": "yogesh@sanpra.co.in",
+ "modified": "2026-06-12 17:06:02.247710",
+ "modified_by": "rutuja@sanpra.co.in",
  "module": "Hariom Sanpra",
  "name": "Maintenance Issue",
  "number_cards": [],
@@ -458,13 +498,10 @@
  "restrict_to_domain": "",
  "roles": [
   {
-   "role": "Purchase User"
+   "role": "Maintenance Manager"
   },
   {
-   "role": "Purchase Manager"
-  },
-  {
-   "role": "Purchase Master Manager"
+   "role": "Maintenance User"
   }
  ],
  "sequence_id": 0.0,

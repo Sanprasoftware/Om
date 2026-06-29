@@ -441,5 +441,18 @@ def get_finished_qty(doc, method=None):
         for row in doc.items:
             if cint(row.is_finished_item) == 1:
                 total += flt(row.qty)
+            if doc.purpose == "Manufacture" and row.is_finished_item == 1:
+                doc.custom_job_name = row.item_code
     doc.custom_total_qty = total
+
+#*******************************************************************************************************
+def set_job_name(doc, method=None):
+    finished_items = []
+
+    for row in doc.items:
+        if row.is_finished_item:
+            finished_items.append(row.item_code)
+
+    if finished_items:
+        doc.custom_job_name = ", ".join(finished_items)
 

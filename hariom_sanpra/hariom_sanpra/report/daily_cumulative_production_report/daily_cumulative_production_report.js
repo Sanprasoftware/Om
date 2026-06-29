@@ -20,6 +20,12 @@ frappe.query_reports["Daily-Cumulative Production Report"] = {
 			options: "Item",
 		},
 		{
+			fieldname: "machine_name",
+			label: __("Machine Name"),
+			fieldtype: "Link",
+			options: "Machine Name",
+		},
+		{
 			fieldname: "report_based_on",
 			label: __("Report Based On"),
 			fieldtype: "Select",

@@ -6,7 +6,7 @@ app_email = "sanprasoftwares@gmail.com"
 app_license = "mit"
 
 # Apps
-# ------------------
+# ------------------ 
 
 # required_apps = []
 
@@ -155,7 +155,8 @@ doc_events = {
 		"on_submit": "hariom_sanpra.public.py.delivery_note.create_stock_entry"
 	},
 	"Stock Entry": {
-		"before_save": "hariom_sanpra.public.py.stock_entry.get_finished_qty"
+		"before_save": "hariom_sanpra.public.py.stock_entry.get_finished_qty",
+        "on_submit": "hariom_sanpra.public.py.stock_entry.set_job_name"
 	# 	"before_save": "hariom_sanpra.public.py.stock_entry.calculation",
 	# 	"before_insert": "hariom_sanpra.public.py.stock_entry.set_batch"
 	},

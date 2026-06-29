@@ -115,8 +115,8 @@
    "type": "Link"
   }
  ],
- "modified": "2026-04-30 17:27:03.050698",
- "modified_by": "Administrator",
+ "modified": "2026-06-12 15:31:15.954861",
+ "modified_by": "rutuja@sanpra.co.in",
  "module": "Hariom Sanpra",
  "name": "Pipe",
  "number_cards": [],
@@ -127,13 +127,7 @@
  "restrict_to_domain": "",
  "roles": [
   {
-   "role": "Purchase User"
-  },
-  {
-   "role": "Purchase Manager"
-  },
-  {
-   "role": "Purchase Master Manager"
+   "role": "Pipe"
   }
  ],
  "sequence_id": 0.0,

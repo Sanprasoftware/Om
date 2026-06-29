@@ -161,6 +161,7 @@ def get_data(filters: dict) -> list[dict]:
 					report_row["name"] = ""
 					report_row["issue_date"] = ""
 					report_row["total_amount"] = ""
+					report_row["remark"] = ""
 				for df in table_fields:
 					child_rows = [item_row] if df.fieldname == "items" else (doc.get(df.fieldname) or [])
 					report_row[f"{df.fieldname}_summary"] = format_child_table(child_rows)
@@ -174,7 +175,7 @@ def get_data(filters: dict) -> list[dict]:
 
 
 def get_conditions(filters: dict) -> dict:
-	conditions = {}
+	conditions = {"docstatus": 1}
 
 	if filters.get("id"):
 		conditions["name"] = filters["id"]

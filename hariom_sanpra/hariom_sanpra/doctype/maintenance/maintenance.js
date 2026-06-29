@@ -21,6 +21,13 @@ frappe.ui.form.on("Maintenance", {
 
 
 frappe.ui.form.on("Maintenance Items", {
+	qty: function(frm, cdt, cdn) {
+		calculate_amount(cdt, cdn);
+	},
+
+	basic_rate: function(frm, cdt, cdn) {
+		calculate_amount(cdt, cdn);
+	},
 	item(frm, cdt, cdn) {
 		let row = locals[cdt][cdn];
 		frappe.call({
@@ -44,6 +51,10 @@ frappe.ui.form.on("Maintenance Items", {
 		})
 	}
 });
+function calculate_amount(cdt, cdn) {
+	let row = locals[cdt][cdn];
+	frappe.model.set_value(cdt,cdn,"basic_amount",flt(row.qty) * flt(row.basic_rate));
+}
 
 function update_rate_qty(frm) {
 

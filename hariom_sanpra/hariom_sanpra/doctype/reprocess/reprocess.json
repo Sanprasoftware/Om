@@ -16,13 +16,12 @@
   "mc__start",
   "downtime_reason",
   "mesh_used",
-  "batch",
+  "mesh_change",
   "column_break_lhle",
   "manpower",
   "mc_stop",
   "other_abrnormality",
   "amended_from",
-  "wastage_type",
   "reprocess_type",
   "section_break_zmel",
   "scrap_item",
@@ -170,37 +169,30 @@
    "reqd": 1
   },
   {
-   "fieldname": "batch",
-   "fieldtype": "Link",
-   "label": "Batch",
-   "options": "Batch No"
-  },
-  {
    "fieldname": "operator_names",
    "fieldtype": "Table MultiSelect",
    "label": "Operator Name",
    "options": "Operator Name Items"
   },
   {
-   "fieldname": "wastage_type",
-   "fieldtype": "Select",
-   "label": "Wastage Type",
-   "options": "\nPONDLINE\nPIPE\nPP EXPORT"
-  },
-  {
    "fieldname": "reprocess_type",
    "fieldtype": "Select",
-   "label": "Reprocess Type",
+   "label": "Wastage/Reprocess Type",
    "options": "\nPONDLINE\nPIPE\nPP EXPORT",
    "reqd": 1
+  },
+  {
+   "fieldname": "mesh_change",
+   "fieldtype": "Int",
+   "label": "Mesh Change"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-05-28 13:05:58.673936",
- "modified_by": "bhagayshri@sanpra.co.in",
+ "modified": "2026-06-20 12:17:52.195551",
+ "modified_by": "rutuja@sanpra.co.in",
  "module": "Hariom Sanpra",
  "name": "Reprocess",
  "naming_rule": "By \"Naming Series\" field",

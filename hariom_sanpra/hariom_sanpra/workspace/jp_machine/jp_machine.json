@@ -1,7 +1,7 @@
 {
  "app": "hariom_sanpra",
  "charts": [],
- "content": "[{\"id\":\"ME3TyXkY17\",\"type\":\"paragraph\",\"data\":{\"text\":\"<span class=\\\"h3\\\"><b>JP Machine</b></span>\",\"col\":12}},{\"id\":\"LCIplhe_v9\",\"type\":\"card\",\"data\":{\"card_name\":\"Masters\",\"col\":4}},{\"id\":\"H4kBEQFREe\",\"type\":\"card\",\"data\":{\"card_name\":\"Quality Inspection\",\"col\":4}},{\"id\":\"8qr4qR4QtX\",\"type\":\"card\",\"data\":{\"card_name\":\"Others\",\"col\":4}},{\"id\":\"ezeBCIF4F7\",\"type\":\"card\",\"data\":{\"card_name\":\"Reports\",\"col\":4}}]",
+ "content": "[{\"id\":\"ME3TyXkY17\",\"type\":\"paragraph\",\"data\":{\"text\":\"<span class=\\\"h3\\\"><b>JP Machine/SRI</b></span>\",\"col\":12}},{\"id\":\"LCIplhe_v9\",\"type\":\"card\",\"data\":{\"card_name\":\"Masters\",\"col\":4}},{\"id\":\"H4kBEQFREe\",\"type\":\"card\",\"data\":{\"card_name\":\"Quality Inspection\",\"col\":4}},{\"id\":\"8qr4qR4QtX\",\"type\":\"card\",\"data\":{\"card_name\":\"Others\",\"col\":4}},{\"id\":\"ezeBCIF4F7\",\"type\":\"card\",\"data\":{\"card_name\":\"Reports\",\"col\":4}}]",
  "creation": "2026-05-12 15:38:19.696979",
  "custom_blocks": [],
  "docstatus": 0,
@@ -192,7 +192,7 @@
    "type": "Link"
   }
  ],
- "modified": "2026-05-13 11:19:19.646747",
+ "modified": "2026-06-18 13:30:00.456198",
  "modified_by": "rutuja@sanpra.co.in",
  "module": "Hariom Sanpra",
  "name": "JP Machine",
@@ -202,7 +202,11 @@
  "public": 1,
  "quick_lists": [],
  "restrict_to_domain": "",
- "roles": [],
+ "roles": [
+  {
+   "role": "JP Machine"
+  }
+ ],
  "sequence_id": 0.0,
  "shortcuts": [],
  "title": "JP Machine",

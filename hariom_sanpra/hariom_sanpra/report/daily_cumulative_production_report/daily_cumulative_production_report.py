@@ -9,7 +9,7 @@ from frappe.utils import flt
 PRODUCTION_FIELD_SPECS = [
 	{"label": "Total Qty", "fieldname": "total_qty", "source": "custom_total_qty", "aggregate": "sum", "qty_field": True},
 	{"label": "M/C Run", "fieldname": "mc_run", "source": "custom_mc_run", "aggregate": "sum"},
-	{"label": "MTR", "fieldname": "mtr", "source": "custom_mtr", "aggregate": "sum"},
+	{"label": "MTR", "fieldname": "mtr", "source": "custom_mtr", "aggregate": "sum" , "hidden": 1},
 	{"label": "ACT.MTR", "fieldname": "act_mtr", "source": "custom_actmtr", "aggregate": "sum"},
 	{"label": "Target MTR", "fieldname": "target_mtr", "source": "custom_target_mtr", "aggregate": "sum"},
 	{"label": "Prod %", "fieldname": "prod_percent", "source": "custom_prod_", "aggregate": "calc"},
@@ -117,6 +117,8 @@ def get_columns(filters: frappe._dict, report_fields: list[dict]) -> list[dict]:
 	)
 
 	for field in report_fields:
+		if field.get("hidden"):
+			continue
 		column = {
 			"label": _(field["label"]),
 			"fieldname": field["fieldname"],
@@ -150,6 +152,10 @@ def get_data(filters: frappe._dict, report_fields: list[dict]) -> list[dict]:
 		conditions.append("se.custom_manufacture_type = %(manufacturing_type)s")
 		sql_filters["manufacturing_type"] = filters.manufacturing_type
 
+	if filters.get("machine_name"):
+		conditions.append("se.custom_machine_name = %(machine_name)s")
+		sql_filters["machine_name"] = filters.machine_name
+
 	if is_entry_wise(filters):
 		if filters.get("id"):
 			conditions.append("se.name = %(id)s")
@@ -175,10 +181,18 @@ def get_data(filters: frappe._dict, report_fields: list[dict]) -> list[dict]:
 		if field.get("child_table") and field.get("child_value_field")
 	)
 
+	entry_wise = is_entry_wise(filters)
+	select_detail_fields = ",\n\t\t\tsed.name as detail_name,\n\t\t\tsed.idx as detail_idx" if entry_wise else ""
+	group_by_fields = (
+		"se.name, sed.name, sed.item_code, sed.item_name, se.posting_date, sed.idx"
+		if entry_wise
+		else "se.name, sed.item_code, sed.item_name, se.posting_date"
+	)
+
 	rows = frappe.db.sql(
 		f"""
 		select
-			se.name,
+			se.name{select_detail_fields},
 			sed.item_code,
 			ifnull(sed.item_name, sed.item_code) as item_name,
 			se.posting_date as date,
@@ -188,7 +202,7 @@ def get_data(filters: frappe._dict, report_fields: list[dict]) -> list[dict]:
 		inner join `tabStock Entry Detail` sed on sed.parent = se.name
 		{table_multiselect_joins}
 		where {" and ".join(conditions)}
-		group by se.name, sed.item_code, sed.item_name, se.posting_date
+		group by {group_by_fields}
 		""",
 		sql_filters,
 		as_dict=True,
@@ -233,12 +247,10 @@ def get_data(filters: frappe._dict, report_fields: list[dict]) -> list[dict]:
 		key=lambda row: (
 			row.get("date") or "",
 			row.get("stock_entry") or "",
+			row.get("detail_idx") or 0,
 			row.get("item_name") or "",
 		),
 	)
-
-	if is_entry_wise(filters):
-		hide_repeated_entry_values(data)
 
 	return data
 
@@ -256,6 +268,7 @@ def get_empty_group(row: frappe._dict, report_fields: list[dict], filters: frapp
 
 	if is_entry_wise(filters):
 		item["stock_entry"] = row.name
+		item["detail_idx"] = row.detail_idx
 
 	for field in report_fields:
 		fieldname = field["fieldname"]
@@ -284,8 +297,8 @@ def apply_calculations(item: dict, report_fields: list[dict]) -> None:
 		elif field["aggregate"] == "text":
 			item[fieldname] = ", ".join(item["text_values"][fieldname])
 
-	if "target_mtr" in fieldnames and item.get("mc_run"):
-		item["target_mtr"] = item["mc_run"] * 45
+	# if "target_mtr" in fieldnames and item.get("mc_run"):
+	# 	item["target_mtr"] = item["mc_run"] * 45
 
 	if "prod_percent" in fieldnames:
 		item["prod_percent"] = (
@@ -317,17 +330,17 @@ def apply_calculations(item: dict, report_fields: list[dict]) -> None:
 		item["total_wastage"] = (
 			flt(item.get("ld")) + flt(item.get("trim")) + flt(item.get("other"))
 		)
-	if "act_gsm" in fieldnames:
-		item["act_gsm"] = (
-			(flt(item.get("total_qty")) / flt(item.get("mtr"))) * 39.37 / 144 * 1000
-			if flt(item.get("mtr"))
-			else 0
-		)
+	# if "act_gsm" in fieldnames:
+	# 	item["act_gsm"] = (
+	# 		(flt(item.get("total_qty")) / flt(item.get("mtr"))) * 39.37 / 144 * 1000
+	# 		if flt(item.get("mtr"))
+	# 		else 0
+	# 	)
 
 
 def get_group_key(row: frappe._dict, filters: frappe._dict) -> tuple:
 	if is_entry_wise(filters):
-		return row.date, row.name, row.item_code
+		return row.date, row.name, row.detail_name
 	if is_date_range_item_wise(filters):
 		return (row.item_code,)
 	return row.date, row.item_code

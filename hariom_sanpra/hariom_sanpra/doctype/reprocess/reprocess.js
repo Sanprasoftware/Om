@@ -8,7 +8,7 @@ frappe.ui.form.on("Reprocess", {
             doc: frm.doc,
             callback: function (r) {
                 if (r.message) {
-                    console.log(r.message);
+                    console.log(r.message); 
                     frm.refresh_field("item");
                 }
             },
@@ -58,7 +58,8 @@ frappe.ui.form.on("Reprocess", {
         frm.set_query("stock_entry_type", function () {
             return {
                 filters: [
-                    ["Stock Entry Type", "name", "in", ["Aglo M/C", "OLD RP M/C", "RR M/C"]]
+                    ["Stock Entry Type", "purpose", "=", "Repack"],
+                    ["Stock Entry Type", "name", "in", ["Old RP MC", "RR MC"]]
                 ]
             };
         });

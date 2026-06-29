@@ -125,8 +125,8 @@
    "type": "Link"
   }
  ],
- "modified": "2026-04-30 17:26:56.423268",
- "modified_by": "Administrator",
+ "modified": "2026-06-12 15:30:55.536176",
+ "modified_by": "rutuja@sanpra.co.in",
  "module": "Hariom Sanpra",
  "name": "PP Export",
  "number_cards": [],
@@ -137,13 +137,7 @@
  "restrict_to_domain": "",
  "roles": [
   {
-   "role": "Purchase User"
-  },
-  {
-   "role": "Purchase Manager"
-  },
-  {
-   "role": "Purchase Master Manager"
+   "role": "PP Export"
   }
  ],
  "sequence_id": 0.0,

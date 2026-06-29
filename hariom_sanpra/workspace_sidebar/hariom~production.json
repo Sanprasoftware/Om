@@ -23,7 +23,7 @@
    "icon": "air-vent",
    "indent": 0,
    "keep_closed": 0,
-   "label": "JP Machine",
+   "label": "JP Machine/SRI",
    "link_to": "JP Machine",
    "link_type": "Workspace",
    "show_arrow": 0,
@@ -76,10 +76,22 @@
    "link_type": "Workspace",
    "show_arrow": 0,
    "type": "Link"
+  },
+  {
+   "child": 0,
+   "collapsible": 1,
+   "icon": "amphora",
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "Reprocess'",
+   "link_to": "Reprocess'",
+   "link_type": "Workspace",
+   "show_arrow": 0,
+   "type": "Link"
   }
  ],
- "modified": "2026-05-19 12:27:22.199534",
- "modified_by": "Administrator",
+ "modified": "2026-06-18 13:29:03.083410",
+ "modified_by": "rutuja@sanpra.co.in",
  "module": "Hariom Sanpra",
  "name": "Hariom~Production",
  "owner": "Administrator",

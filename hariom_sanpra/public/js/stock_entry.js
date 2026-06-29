@@ -117,7 +117,7 @@ function set_orange_fields(frm) {
 	["custom_target_mtr","custom_actmtr","custom_prod_","custom_dtime_",
 	 "custom_gramage","custom_gramage_b","custom_wastage_difference",
 	 "custom_gsm1","custom_gsm_b","custom_flow_","custom_flow__b",
-	 "custom_total_gsm","custom_total_wastage"
+	 "custom_total_gsm","custom_total_wastage","custom_ld_","custom_trim_","custom_other_"
 	].forEach((fieldname) => {
 		const field = frm.get_field(fieldname);
 		if (!field) return;
@@ -147,6 +147,7 @@ frappe.ui.form.on("Stock Entry", {
 	custom_gramage_b : calc,
 	custom_wastage : calc,
 	custom_weight_bridge_wastage : calc,
+
 
 	stock_entry_type(frm) {
         if (!frm.doc.stock_entry_type) return;
@@ -309,10 +310,8 @@ function calc(frm) {
 		gsm_b = ((cg1 * 39.37) / cs);
 		frm.set_value("custom_gsm_b",gsm_b)
 	}
-	if(gsm_a && gsm_b){
-		total = gsm_a + gsm_b;
-		frm.set_value("custom_total_gsm",total)
-	}
+	total = flt(gsm_a) + flt(gsm_b);
+	frm.set_value("custom_total_gsm", total);
 	// Flow % calculation
     if (gsm_a && total) {
         let flow_a = (gsm_a / total) * 100;
@@ -339,7 +338,23 @@ function calc(frm) {
 		let dt = (dtime / 1440) * 100;
 		frm.set_value("custom_dtime_",dt); 
 	}
-	// LD
+	if (finished_qty > 0) {
+		frm.set_value("custom_ld_",
+			(ld / finished_qty) * 100
+		);
+
+		frm.set_value("custom_trim_",
+			(trim / finished_qty) * 100
+		);
+
+		frm.set_value("custom_other_",
+			(otr / finished_qty) * 100
+		);
+
+		frm.set_value("custom_total_wastage",
+			(cw / finished_qty) * 100
+		);
+	}
 	// if (ld && finished_qty) {
 	// 	let ld_cal = (ld / finished_qty) * 100;
 	// 	frm.set_value("custom_ld_", ld_cal);
@@ -352,10 +367,11 @@ function calc(frm) {
 	// 	let other_cal = (otr / finished_qty) * 100;
 	// 	frm.set_value("custom_other_",other_cal);
 	// }
-	if(cw && ctq){
-		let tw = (cw / ctq) * 100;
-		frm.set_value("custom_total_wastage",tw);
-	}
+	// if(cw && finished_qty){
+	// 	frappe.throw(str(finished_qty))
+	// 	let tw = (cw / finished_qty) * 100;
+	// 	frm.set_value("custom_total_wastage",tw);
+	// }
 
 	
 }
