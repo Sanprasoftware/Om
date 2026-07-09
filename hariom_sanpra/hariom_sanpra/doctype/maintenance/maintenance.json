@@ -53,6 +53,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "machine_name",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -64,7 +65,7 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Maintenance Operation",
-   "options": "\nGeneral Maintenance\nPreventive Maintenance\nR&D\nBreakdown\nKCR\nOther"
+   "options": "\nGeneral maintenance - mechanical\nGeneral maintenance - Electrical\nConsumable\nOffice expenses\nGeneral Maintenance\nPreventive Maintenance\nR&D\nBreakdown\nKCR\nOther"
   },
   {
    "fieldname": "naming_series",
@@ -156,7 +157,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-06-24 14:51:07.327951",
+ "modified": "2026-07-08 17:25:06.058800",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Maintenance",

@@ -79,6 +79,7 @@
    "label": "Qty Bags"
   },
   {
+   "default": "25",
    "fieldname": "std_pkg",
    "fieldtype": "Float",
    "in_list_view": 1,
@@ -177,7 +178,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-05-28 17:37:43.454128",
+ "modified": "2026-07-03 12:00:51.399426",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Reprocess Item",

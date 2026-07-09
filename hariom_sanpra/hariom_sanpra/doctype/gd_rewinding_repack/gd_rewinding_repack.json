@@ -1,0 +1,177 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-07-08 13:44:20.722518",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "date",
+  "stock_entry_type",
+  "operator_name",
+  "machine_name",
+  "column_break_pxfd",
+  "shift",
+  "machine_start",
+  "machine_end",
+  "ft_type",
+  "column_break_pcgh",
+  "manpower",
+  "batch",
+  "machine_no",
+  "naming_series",
+  "section_break_liii",
+  "raw_items",
+  "fg_items",
+  "wastage_items",
+  "add_data",
+  "items",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "default": "GD REWINDING",
+   "fieldname": "stock_entry_type",
+   "fieldtype": "Select",
+   "label": "Stock Entry Type",
+   "options": "GD REWINDING"
+  },
+  {
+   "fieldname": "operator_name",
+   "fieldtype": "Table MultiSelect",
+   "label": "Operator Name",
+   "options": "Operator Name Items Repack"
+  },
+  {
+   "fieldname": "machine_name",
+   "fieldtype": "Link",
+   "label": "Machine Name",
+   "options": "Machine Name"
+  },
+  {
+   "fieldname": "shift",
+   "fieldtype": "Link",
+   "label": "Shift",
+   "options": "Shift"
+  },
+  {
+   "fieldname": "column_break_pxfd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "machine_start",
+   "fieldtype": "Time",
+   "label": "Machine Start"
+  },
+  {
+   "fieldname": "machine_end",
+   "fieldtype": "Time",
+   "label": "Machine End"
+  },
+  {
+   "fieldname": "ft_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "FT Type",
+   "options": "\n10\n12\n6",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_pcgh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "manpower",
+   "fieldtype": "Int",
+   "label": "ManPower"
+  },
+  {
+   "fieldname": "batch",
+   "fieldtype": "Link",
+   "label": "Batch",
+   "options": "Batch No"
+  },
+  {
+   "fieldname": "machine_no",
+   "fieldtype": "Int",
+   "label": "Machine No"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "label": "Naming Series"
+  },
+  {
+   "fieldname": "section_break_liii",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "raw_items",
+   "fieldtype": "Table",
+   "label": "Raw Items",
+   "options": "GD Repack Raw Items"
+  },
+  {
+   "fieldname": "fg_items",
+   "fieldtype": "Table",
+   "label": "FG Items",
+   "options": "GD Repack FG Items"
+  },
+  {
+   "fieldname": "wastage_items",
+   "fieldtype": "Table",
+   "label": "Wastage Items",
+   "options": "GD Repack Wastage Items"
+  },
+  {
+   "fieldname": "add_data",
+   "fieldtype": "Button",
+   "label": "Add Data"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "GD Rewinding Repack Child"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "options": "GD Rewinding Repack"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-07-08 15:44:02.533275",
+ "modified_by": "Administrator",
+ "module": "Hariom Sanpra",
+ "name": "GD Rewinding Repack",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

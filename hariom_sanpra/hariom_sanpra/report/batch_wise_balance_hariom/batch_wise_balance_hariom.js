@@ -78,10 +78,11 @@ frappe.query_reports["Batch Wise Balance Hariom"] = {
 		},
 	],
 	formatter: function (value, row, column, data, default_formatter) {
-		if (column.fieldname == "Batch" && data && !!data["Batch"]) {
-			value = data["Batch"];
+		const batch_no = data && (data.batch_no || data["Batch"]);
+		if (["Batch", "batch_no"].includes(column.fieldname) && batch_no) {
+			value = batch_no;
 			column.link_onclick =
-				"frappe.query_reports['Batch-Wise Balance History'].set_batch_route_to_stock_ledger(" +
+				"frappe.query_reports['Batch Wise Balance Hariom'].set_batch_route_to_stock_ledger(" +
 				JSON.stringify(data) +
 				")";
 		}
@@ -101,7 +102,7 @@ frappe.query_reports["Batch Wise Balance Hariom"] = {
 	},
 	set_batch_route_to_stock_ledger: function (data) {
 		frappe.route_options = {
-			batch_no: data["Batch"],
+			batch_no: data.batch_no || data["Batch"],
 		};
 
 		frappe.set_route("query-report", "Stock Ledger");

@@ -20,7 +20,7 @@ PRODUCTION_FIELD_SPECS = [
 	{"label": "Wastage", "fieldname": "wastage", "source": "custom_wastage", "aggregate": "sum"},
 	{"label": "Weight Bridge Wastage", "fieldname": "weight_bridge_wastage", "source": "custom_weight_bridge_wastage", "aggregate": "sum"},
 	{"label": "Wastage Difference", "fieldname": "wastage_difference", "source": "custom_wastage_difference", "aggregate": "sum"},
-	{"label": "Total Wastage", "fieldname": "total_wastage", "source": "custom_total_wastage", "aggregate": "calc"},
+	{"label": "Wastage %", "fieldname": "wastage_percent", "source": "custom_total_wastage", "aggregate": "sum"},
 	{"label": "LD", "fieldname": "ld", "source": "custom_ld", "aggregate": "sum"},
 	{"label": "LD %", "fieldname": "ld_percent", "source": "custom_ld_", "aggregate": "calc"},
 	{"label": "TRIM", "fieldname": "trim", "source": "custom_trim", "aggregate": "sum"},
@@ -113,6 +113,20 @@ def get_columns(filters: frappe._dict, report_fields: list[dict]) -> list[dict]:
 				"fieldtype": "Data",
 				"width": 260,
 			},
+			{
+				"label": _("Machine Name"),
+				"fieldname": "machine_name",
+				"fieldtype": "Link",
+				"options": "Machine Name",
+				"width": 160,
+			},
+			{
+				"label": _("Warehouse"),
+				"fieldname": "warehouse",
+				"fieldtype": "Link",
+				"options": "Warehouse",
+				"width": 180,
+			},
 		]
 	)
 
@@ -156,6 +170,11 @@ def get_data(filters: frappe._dict, report_fields: list[dict]) -> list[dict]:
 		conditions.append("se.custom_machine_name = %(machine_name)s")
 		sql_filters["machine_name"] = filters.machine_name
 
+	warehouse_expression = get_warehouse_expression()
+	if filters.get("warehouse"):
+		conditions.append(f"{warehouse_expression} = %(warehouse)s")
+		sql_filters["warehouse"] = filters.warehouse
+
 	if is_entry_wise(filters):
 		if filters.get("id"):
 			conditions.append("se.name = %(id)s")
@@ -184,9 +203,9 @@ def get_data(filters: frappe._dict, report_fields: list[dict]) -> list[dict]:
 	entry_wise = is_entry_wise(filters)
 	select_detail_fields = ",\n\t\t\tsed.name as detail_name,\n\t\t\tsed.idx as detail_idx" if entry_wise else ""
 	group_by_fields = (
-		"se.name, sed.name, sed.item_code, sed.item_name, se.posting_date, sed.idx"
+		f"se.name, sed.name, sed.item_code, sed.item_name, se.posting_date, sed.idx, se.custom_machine_name, {warehouse_expression}"
 		if entry_wise
-		else "se.name, sed.item_code, sed.item_name, se.posting_date"
+		else f"se.name, sed.item_code, sed.item_name, se.posting_date, se.custom_machine_name, {warehouse_expression}"
 	)
 
 	rows = frappe.db.sql(
@@ -195,6 +214,8 @@ def get_data(filters: frappe._dict, report_fields: list[dict]) -> list[dict]:
 			se.name{select_detail_fields},
 			sed.item_code,
 			ifnull(sed.item_name, sed.item_code) as item_name,
+			se.custom_machine_name as machine_name,
+			{warehouse_expression} as warehouse,
 			se.posting_date as date,
 			sum(ifnull(sed.qty, 0)) as total_qty
 			{doc_fields}
@@ -249,6 +270,8 @@ def get_data(filters: frappe._dict, report_fields: list[dict]) -> list[dict]:
 			row.get("stock_entry") or "",
 			row.get("detail_idx") or 0,
 			row.get("item_name") or "",
+			row.get("machine_name") or "",
+			row.get("warehouse") or "",
 		),
 	)
 
@@ -260,6 +283,8 @@ def get_empty_group(row: frappe._dict, report_fields: list[dict], filters: frapp
 		"date": row.date,
 		"item_code": row.item_code,
 		"item_name": row.item_name,
+		"machine_name": row.machine_name,
+		"warehouse": row.warehouse,
 		"posting_dates": set(),
 		"average_totals": {},
 		"average_counts": {},
@@ -326,10 +351,10 @@ def apply_calculations(item: dict, report_fields: list[dict]) -> None:
 			if flt(item.get("total_qty"))
 			else 0
 		)
-	if "total_wastage" in fieldnames:
-		item["total_wastage"] = (
-			flt(item.get("ld")) + flt(item.get("trim")) + flt(item.get("other"))
-		)
+	# if "total_wastage" in fieldnames:
+	# 	item["total_wastage"] = (
+	# 		flt(item.get("ld")) + flt(item.get("trim")) + flt(item.get("other"))
+	# 	)
 	# if "act_gsm" in fieldnames:
 	# 	item["act_gsm"] = (
 	# 		(flt(item.get("total_qty")) / flt(item.get("mtr"))) * 39.37 / 144 * 1000
@@ -342,8 +367,17 @@ def get_group_key(row: frappe._dict, filters: frappe._dict) -> tuple:
 	if is_entry_wise(filters):
 		return row.date, row.name, row.detail_name
 	if is_date_range_item_wise(filters):
-		return (row.item_code,)
-	return row.date, row.item_code
+		return row.item_code, row.machine_name, row.warehouse
+	return row.date, row.item_code, row.machine_name, row.warehouse
+
+
+def get_warehouse_expression() -> str:
+	return """
+		case
+			when ifnull(sed.is_finished_item, 0) = 1 then ifnull(sed.t_warehouse, sed.s_warehouse)
+			else ifnull(sed.s_warehouse, sed.t_warehouse)
+		end
+	"""
 
 
 def is_entry_wise(filters: frappe._dict) -> bool:

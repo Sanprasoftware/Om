@@ -34,7 +34,7 @@ def execute(filters=None):
 	if filters.from_date > filters.to_date:
 		frappe.throw(_("From Date must be before To Date"))
 
-	float_precision = cint(frappe.db.get_default("float_precision")) or 3
+	float_precision = cint(frappe.db.get_default("float_precision")) or 2
 
 	columns = get_columns(filters)
 	item_map = get_item_details(filters)
@@ -70,17 +70,76 @@ def get_columns(filters):
 	"""return columns based on filters"""
 
 	columns = [
-		_("Item") + ":Link/Item:400",
-		_("Item Group") + ":Link/Item Group:180",
+		{
+			"label": _("Item"),
+			"fieldname": "item_code",
+			"fieldtype": "Link",
+			"options": "Item",
+			"width": 400,
+		},
+		{
+			"label": _("Item Group"),
+			"fieldname": "item_group",
+			"fieldtype": "Link",
+			"options": "Item Group",
+			"width": 180,
+		},
 		# _("Item Name") + "::120",
-		_("Warehouse") + ":Link/Warehouse:120",
-		_("Batch") + ":Link/Batch:120",
-		_("Opening Qty") + ":Float:120",
-		_("In Qty") + ":Float:120",
-		_("Out Qty") + ":Float:120",
-		_("Balance Qty") + ":Float:120",
-		_("Closing Qty") + ":Float:120",
-		_("UOM") + "::90",
+		{
+			"label": _("Warehouse"),
+			"fieldname": "warehouse",
+			"fieldtype": "Link",
+			"options": "Warehouse",
+			"width": 120,
+		},
+		{
+			"label": _("Batch"),
+			"fieldname": "batch_no",
+			"fieldtype": "Link",
+			"options": "Batch",
+			"width": 120,
+		},
+		{
+			"label": _("Opening Qty"),
+			"fieldname": "opening_qty",
+			"fieldtype": "Float",
+			"width": 120,
+			"precision": 2,
+		},
+		{
+			"label": _("In Qty"),
+			"fieldname": "in_qty",
+			"fieldtype": "Float",
+			"width": 120,
+			"precision": 2,
+		},
+		{
+			"label": _("Out Qty"),
+			"fieldname": "out_qty",
+			"fieldtype": "Float",
+			"width": 120,
+			"precision": 2,
+		},
+		{
+			"label": _("Balance Qty"),
+			"fieldname": "bal_qty",
+			"fieldtype": "Float",
+			"width": 120,
+			"precision": 2,
+		},
+		{
+			"label": _("Closing Qty"),
+			"fieldname": "closing_qty",
+			"fieldtype": "Float",
+			"width": 120,
+			"precision": 2,
+		},
+		{
+			"label": _("UOM"),
+			"fieldname": "stock_uom",
+			"fieldtype": "Data",
+			"width": 90,
+		},
 	]
 
 	return columns

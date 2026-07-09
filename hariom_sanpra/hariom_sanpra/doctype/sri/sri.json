@@ -29,7 +29,7 @@
    "fieldname": "last_24_hrs_productionton",
    "fieldtype": "Float",
    "in_list_view": 1,
-   "label": "Last 24 HRS Production(Ton)"
+   "label": "Last 24 HRS Production(KG)"
   },
   {
    "fieldname": "live_mc_status",
@@ -42,7 +42,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-05-14 18:15:46.894625",
+ "modified": "2026-07-09 16:13:01.535067",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "SRI",

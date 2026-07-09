@@ -116,7 +116,7 @@ class Reprocess(Document):
 		se.custom_operator_names = ", ".join(operator_list)
 
 		# LINK REPROCESS DOC
-		se.custom_reprocess_reference = self.name
+		# se.custom_reprocess_reference = self.name
 
 		for row in self.item:
 

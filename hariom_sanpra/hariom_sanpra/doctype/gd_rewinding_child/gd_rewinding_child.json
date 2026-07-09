@@ -32,8 +32,10 @@
   "is_finished_item",
   "quantity_section",
   "qty",
+  "sqmtr",
   "column_break_mswe",
   "uom",
+  "sq_uom",
   "rates_section",
   "basic_rate",
   "column_break_pzxg",
@@ -137,7 +139,7 @@
    "fieldname": "uom",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "UOM",
+   "label": "Roll UOM",
    "options": "UOM"
   },
   {
@@ -202,7 +204,7 @@
    "fieldname": "qty",
    "fieldtype": "Float",
    "in_list_view": 1,
-   "label": "Qty",
+   "label": "Roll Qty",
    "precision": "2"
   },
   {
@@ -230,13 +232,25 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Grade"
+  },
+  {
+   "fieldname": "sqmtr",
+   "fieldtype": "Float",
+   "label": "Sq.mtr",
+   "precision": "2"
+  },
+  {
+   "fieldname": "sq_uom",
+   "fieldtype": "Link",
+   "label": "Sq UOM",
+   "options": "UOM"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-05-28 17:38:50.170405",
+ "modified": "2026-07-07 15:51:48.194448",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "GD Rewinding Child",

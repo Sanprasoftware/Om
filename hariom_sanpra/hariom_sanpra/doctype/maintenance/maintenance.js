@@ -13,9 +13,9 @@ frappe.ui.form.on("Maintenance", {
 			};
 		}; 
 		// Fetch actual qty and rate for old records
-		if (!frm.is_new()) {
-			update_rate_qty(frm);
-		}
+		// if (!frm.is_new()) {
+		// 	update_rate_qty(frm);
+		// }
     },
 });
 

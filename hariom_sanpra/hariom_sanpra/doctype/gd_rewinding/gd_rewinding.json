@@ -40,10 +40,12 @@
    "options": "Operator Name Items"
   },
   {
+   "default": "GD REWINDING M/C",
    "fieldname": "machine_name",
    "fieldtype": "Link",
    "label": "Machine Name",
-   "options": "Machine Name"
+   "options": "Machine Name",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_wrjt",
@@ -155,8 +157,8 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-05-28 11:55:03.384264",
- "modified_by": "bhagayshri@sanpra.co.in",
+ "modified": "2026-07-09 10:44:54.872275",
+ "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "GD Rewinding",
  "naming_rule": "By \"Naming Series\" field",

@@ -9,7 +9,7 @@ frappe.query_reports["Daily-Cumulative Production Report"] = {
 			fieldtype: "Date",
 		},
 		{
-			fieldname: "to_date",
+			fieldname: "to_date", 
 			label: __("To Date"),
 			fieldtype: "Date",
 		},
@@ -24,6 +24,12 @@ frappe.query_reports["Daily-Cumulative Production Report"] = {
 			label: __("Machine Name"),
 			fieldtype: "Link",
 			options: "Machine Name",
+		},
+		{
+			fieldname: "warehouse",
+			label: __("Warehouse"),
+			fieldtype: "Link",
+			options: "Warehouse",
 		},
 		{
 			fieldname: "report_based_on",

@@ -50,6 +50,8 @@ doctype_js = {
 	"Work Order": "public/js/work_order.js",
 	"Delivery Note": "public/js/delivery_note.js",
 	"Item": "public/js/item.js",
+	"Purchase Order": "public/js/purchase_order.js",
+	"Quality Inspection": "public/js/quality_inspection.js",
 }
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
@@ -165,7 +167,17 @@ doc_events = {
 	# },
 	"BOM": {
 		"on_update_after_submit": "hariom_sanpra.public.py.bom.set_bom"
-	}
+	},
+    "Quality Inspection": {
+        "on_update": "hariom_sanpra.public.py.quality_inspection.update_purchase_receipt_qc_status",
+        "on_submit": "hariom_sanpra.public.py.quality_inspection.update_purchase_receipt_qc_status",
+        "on_cancel": "hariom_sanpra.public.py.quality_inspection.update_purchase_receipt_qc_status",
+        "before_save": "hariom_sanpra.public.py.quality_inspection.set_readings_status",
+    },
+    "ToDo": {
+        "after_insert": "hariom_sanpra.public.py.todo.notify_assigned_user"
+    }
+
 }
 # /home/hariom/bench-uat/apps/hariom_sanpra/hariom_sanpra/hariom_sanpra.doctype.navrang_rewinding_machine.navrang_rewinding_machine.py
 # Scheduled Tasks

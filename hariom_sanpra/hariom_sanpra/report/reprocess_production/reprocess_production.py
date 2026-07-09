@@ -6,6 +6,7 @@ from frappe import _
 
 
 def execute(filters: dict | None = None):
+	filters = frappe._dict(filters or {})
 	columns = get_columns() 
 	data = get_data(filters)
 
@@ -161,7 +162,7 @@ def get_columns() -> list[dict]:
 
 def get_data(filters) -> list[list]:
 	data = []
-	conditions = {}
+	conditions = {"docstatus": 1}
 
 	if filters.get("from_date"):
 		conditions["date"] = [">=", filters.get("from_date")]
@@ -184,7 +185,17 @@ def get_data(filters) -> list[list]:
 	if filters.get("reprocess_type"):
 		conditions["reprocess_type"] = filters.get("reprocess_type")
 
-	
+	if filters.get("operator"):
+		reprocess_names = frappe.get_all(
+			"Operator Name Items",
+			filters={
+				"parenttype": "Reprocess",
+				"parentfield": "operator_names",
+				"operator_name": filters.get("operator"),
+			},
+			pluck="parent",
+		)
+		conditions["name"] = ["in", reprocess_names or [""]]
 
 	all_data = frappe.get_all(
 		"Reprocess",
@@ -193,7 +204,6 @@ def get_data(filters) -> list[list]:
 			"date",
 			"shift",
 			"manpower",
-			"operator_name",
 			"mc__start",
 			"mc_stop",
 			"downtime",
@@ -207,26 +217,10 @@ def get_data(filters) -> list[list]:
 		filters=conditions
 	)
 
-	if filters.get("operator"):
-
-		filtered_data = []
-
-		for row in all_data:
-
-			operator_exists = frappe.db.exists(
-				"Operator Name Items",
-				{
-					"parent": row.name,
-					"operator_name": filters.get("operator")
-				}
-			)
-
-			if operator_exists:
-				filtered_data.append(row)
-
-		all_data = filtered_data
-		
 	for row in all_data:
+		operator_name = get_operator_names(row.name)
+		downtime_reason = get_downtime_reasons(row.name, row.downtime_reason)
+
 		# Fetch child table items where is_finished_item = 1
 		child_filters = {
 			"parent": row.name,
@@ -266,11 +260,11 @@ def get_data(filters) -> list[list]:
 				"date": row.date,
 				"shift": row.shift,
 				"manpower": row.manpower,
-				"operator_name": row.operator_name,
+				"operator_name": operator_name,
 				"mc__start": row.mc__start,
 				"mc_stop": row.mc_stop,
 				"downtime": row.downtime,
-				"downtime_reason": row.downtime_reason,
+				"downtime_reason": downtime_reason,
 				"other_abrnormality": row.other_abrnormality,
 				"stock_entry_type": row.stock_entry_type,
 				"mesh_used": row.mesh_used,
@@ -296,11 +290,11 @@ def get_data(filters) -> list[list]:
 						"date": row.date,
 						"shift": row.shift,
 						"manpower": row.manpower,
-						"operator_name": row.operator_name,
+						"operator_name": operator_name,
 						"mc__start": row.mc__start,
 						"mc_stop": row.mc_stop,
 						"downtime": row.downtime,
-						"downtime_reason": row.downtime_reason,
+						"downtime_reason": downtime_reason,
 						"other_abrnormality": row.other_abrnormality,
 						"stock_entry_type": row.stock_entry_type,
 						"mesh_used": row.mesh_used,
@@ -343,3 +337,46 @@ def get_data(filters) -> list[list]:
 					})
 
 	return data
+
+
+def get_operator_names(parent: str) -> str:
+	operators = frappe.get_all(
+		"Operator Name Items",
+		filters={
+			"parent": parent,
+			"parenttype": "Reprocess",
+			"parentfield": "operator_names",
+		},
+		fields=["operator_name"],
+		order_by="idx",
+	)
+
+	operator_names = []
+	for row in operators:
+		operator = row.get("operator_name")
+		if not operator:
+			continue
+		operator_names.append(
+			frappe.db.get_value("Employee", operator, "employee_name") or operator
+		)
+
+	return ", ".join(operator_names)
+
+
+def get_downtime_reasons(parent: str, fallback: str | None = None) -> str | None:
+	reasons = frappe.get_all(
+		"Down Time Reason Items",
+		filters={
+			"parent": parent,
+			"parenttype": "Reprocess",
+			"parentfield": "downtime_reason",
+		},
+		fields=["down_time_reason"],
+		order_by="idx",
+	)
+
+	formatted_reasons = [
+		row.get("down_time_reason") for row in reasons if row.get("down_time_reason")
+	]
+
+	return ", ".join(formatted_reasons) or fallback

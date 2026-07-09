@@ -23,6 +23,8 @@ class Maintenance(Document):
 		se.custom_machine_name = self.machine_name
 		se.custom_shift = ""
 		se.custom_batch_no = ""
+		se.set_posting_time = 1
+		se.posting_date = self.issue_date
 		se.remarks = f"Created from Maintenance {self.name}"
 
 		for row in self.items:

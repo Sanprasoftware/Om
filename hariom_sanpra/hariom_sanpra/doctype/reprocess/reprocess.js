@@ -16,12 +16,15 @@ frappe.ui.form.on("Reprocess", {
 	},
 
     refresh(frm) {
+		show_reprocess_entry_fields(frm);
+
 		frm.fields_dict["item"].grid.get_field("batch").get_query = function(doc, cdt, cdn) {
 			let row = locals[cdt][cdn];
 
 			return {
 				filters: {
-					item: row.item_code
+					item: row.item_code,
+                    docstatus: 1
 				}
 			};
 		};
@@ -30,7 +33,8 @@ frappe.ui.form.on("Reprocess", {
 
 			return {
 				filters: {
-					item: row.item_code
+					item: row.item_code,
+                    docstatus: 1
 				}
 			};
 		};
@@ -39,7 +43,8 @@ frappe.ui.form.on("Reprocess", {
 
 			return {
 				filters: {
-					item: row.item_code
+					item: row.item_code,
+                    docstatus: 1
 				}
 			};
 		};
@@ -48,7 +53,8 @@ frappe.ui.form.on("Reprocess", {
 
 			return {
 				filters: { 
-					item: row.item_code
+					item: row.item_code,
+                    docstatus: 1
 				}
 			};
 		};
@@ -73,58 +79,60 @@ frappe.ui.form.on("Reprocess", {
         }
         return {
           filters: {
-            item: row.item_code
+            item: row.item_code,
+            docstatus: 1
+
           }
         };
       }); 
     }
 });
 
+const reprocess_entry_fields = [
+	"operator_names",
+	"shift",
+	"mc__start",
+	"downtime_reason",
+	"mesh_used",
+	"mc_stop",
+	"other_abrnormality"
+];
+
+function show_reprocess_entry_fields(frm) {
+	reprocess_entry_fields.forEach((fieldname) => {
+		if (!frm.get_field(fieldname)) {
+			return;
+		}
+
+		frm.set_df_property(fieldname, "hidden", 0);
+		frm.set_df_property(fieldname, "read_only", frm.doc.docstatus === 1 ? 1 : 0);
+		frm.toggle_display(fieldname, true);
+	});
+}
 
 
 frappe.ui.form.on("Reprocess Item", {
-    // qty(frm, cdt, cdn) {
-    //     let row = locals[cdt][cdn];
-    //     if (row.item_code && row.qty) {
-    //         frappe.call({
-    //             method: "calculate_amount",
-    //             doc: frm.doc,
-    //             callback: function (r) {
-    //                 if (r.message) {
-    //                     console.log(r.message);
-    //                     frm.refresh_field("item");
-    //                 }
-    //             },
-    //         });
-    //     }
-    // },
-    // basic_rate_as_per_stock_uom(frm, cdt, cdn) {
-    //     let row = locals[cdt][cdn];
-    //     if (row.item_code && row.qty) {
-    //         frappe.call({
-    //             method: "calculate_amount",
-    //             doc: frm.doc,
-    //             callback: function (r) {
-    //                 if (r.message) {
-    //                     console.log(r.message);
-    //                     frm.refresh_field("item");
-    //                 }
-    //             },
-    //         });
-    //     }
-    // }, 
     qty_bags(frm, cdt, cdn) {
-        let row = locals[cdt][cdn];
-        if (row.item_code && row.qty_bags && row.std_pkg && row.is_finished_item == 1) {
-            row.qty = row.qty_bags * row.std_pkg
-            frm.refresh_field("item");
-        }
-    }, 
+        update_qty(frm, cdt, cdn);
+    },
+
     std_pkg(frm, cdt, cdn) {
-        let row = locals[cdt][cdn];
-        if (row.item_code && row.qty_bags && row.std_pkg && row.is_finished_item == 1) {
-            row.qty = row.qty_bags * row.std_pkg
-            frm.refresh_field("item");
-        }
-    }, 
+        update_qty(frm, cdt, cdn);
+    },
+
+    is_finished_item(frm, cdt, cdn) {
+        update_qty(frm, cdt, cdn);
+    },
+
+    item_code(frm, cdt, cdn) {
+        update_qty(frm, cdt, cdn);
+    }
 });
+function update_qty(frm, cdt, cdn) {
+    let row = locals[cdt][cdn];
+
+    if (row.item_code && row.qty_bags && row.std_pkg && row.is_finished_item == 1) {
+        row.qty = row.qty_bags * row.std_pkg;
+        frm.refresh_field("item");
+    }
+}
