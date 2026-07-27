@@ -2,7 +2,7 @@
 // For license information, please see license.txt
 
 // frappe.ui.form.on("Finished Goods Inspection Template", {
-// 	refresh(frm) {
+	// refresh(frm) {
 
-// 	},
+	// },
 // });

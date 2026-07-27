@@ -47,6 +47,19 @@ frappe.query_reports["Reprocess Production"] = {
 			fieldtype: "Select",
 			options: "\nPONDLINE\nPIPE\nPP EXPORT",
 		},
+		{
+			fieldname: "mc_name",
+			label: __("M/C Name"),
+			fieldtype: "Link",
+			options: "Stock Entry Type",
+			get_query: function () {
+				return {
+					filters: {
+						name: ["in", ["Old RP MC", "RR MC"]]
+					}
+				};
+			}
+		}
 
 	],
 };

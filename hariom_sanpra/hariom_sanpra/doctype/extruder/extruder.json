@@ -12,6 +12,7 @@
   "a_grade",
   "a_qty",
   "a_percent",
+  "mc_type",
   "column_break_vhtu",
   "b_company",
   "b_item",
@@ -60,6 +61,7 @@
    "precision": "2"
   },
   {
+   "depends_on": "eval:doc.mc_type ==\"JP\"",
    "fieldname": "column_break_vhtu",
    "fieldtype": "Column Break",
    "label": "B Extruder"
@@ -97,13 +99,20 @@
    "in_list_view": 1,
    "label": "B %",
    "precision": "2"
+  },
+  {
+   "fieldname": "mc_type",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "M/C Type",
+   "options": "\nJP\nSRI"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-05-30 13:36:28.064871",
+ "modified": "2026-07-10 17:32:22.704687",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Extruder",

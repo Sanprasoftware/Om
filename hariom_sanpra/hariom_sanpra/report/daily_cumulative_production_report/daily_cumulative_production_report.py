@@ -49,11 +49,40 @@ PRODUCTION_FIELD_SPECS = [
 
 NUMERIC_FIELDTYPES = {"Currency", "Float", "Int", "Percent"}
 
+TOTAL_SUM_FIELDS = {
+	"total_qty",
+	"act_mtr",
+	"target_mtr",
+	"d_time",
+	"wastage",
+	"weight_bridge_wastage",
+	"wastage_difference",
+	"ld",
+	"trim",
+	"other",
+	"size",
+}
+
+TOTAL_AVERAGE_FIELDS = {
+	"mc_run",
+	"prod_percent",
+	"d_time_percent",
+	"wastage_percent",
+	"ld_percent",
+	"trim_percent",
+	"other_percent",
+	"std_gsm",
+	"act_gsm",
+}
+
 
 def execute(filters: dict | None = None):
 	filters = frappe._dict(filters or {})
 	report_fields = get_report_fields()
-	return get_columns(filters, report_fields), get_data(filters, report_fields)
+	columns = get_columns(filters, report_fields)
+	data = get_data(filters, report_fields)
+	add_combined_total_row(data)
+	return columns, data, None, None, None, True
 
 
 def get_report_fields() -> list[dict]:
@@ -277,6 +306,21 @@ def get_data(filters: frappe._dict, report_fields: list[dict]) -> list[dict]:
 
 	return data
 
+
+
+def add_combined_total_row(data: list[dict]) -> None:
+	if not data:
+		return
+
+	total_row = {"item_code": _("Total"), "is_total_row": 1, "bold": 1}
+	for fieldname in TOTAL_SUM_FIELDS:
+		total_row[fieldname] = round(sum(flt(row.get(fieldname)) for row in data), 2)
+
+	for fieldname in TOTAL_AVERAGE_FIELDS:
+		values = [flt(row.get(fieldname)) for row in data]
+		total_row[fieldname] = round(sum(values) / len(values), 2) if values else 0
+
+	data.append(total_row)
 
 def get_empty_group(row: frappe._dict, report_fields: list[dict], filters: frappe._dict) -> dict:
 	item = {

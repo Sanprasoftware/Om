@@ -37,5 +37,11 @@ frappe.query_reports["Maintenance Issue Slip Report"] = {
 			fieldtype: "Link",
 			options: "Employee",
 		},
+		{
+			fieldname: "department",
+			label: __("Department"),
+			fieldtype: "Link",
+			options: "Department",
+		},
 	],
 };

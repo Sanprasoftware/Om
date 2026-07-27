@@ -90,10 +90,7 @@ class JointMachine(Document):
 			if not row.is_finished_item:
 				continue
 
-			row.output_weight = (
-				flt(row.length) *
-				flt(row.width) *
-				((raw_gsm / 1000) / 10.758)
+			row.output_weight = (flt(row.length) * flt(row.width) *	((raw_gsm / 1000) / 10.758)
 			)
 
 			row.qty = row.output_weight
@@ -115,7 +112,7 @@ class JointMachine(Document):
 		se.custom_shift = self.shift
 		se.custom_batch_no = self.batch
 		# se.custom_tag_in = self.tag_in
-		se.custom_tag_out = self.tag_out
+		# se.custom_tag_out = self.tag_out
 		for row in self.items:
 			se.append("items", {
 				"custom_____stock_entry_type": self.stock_entry_type,
@@ -129,6 +126,8 @@ class JointMachine(Document):
 				"t_warehouse": row.target_warehouse,
 				"custom_size_1": row.length,
 				"custom_size_2": row.width,
+				"is_finished_item": row.is_finished_item,  
+				"is_scrap_item": row.is_scrap_item,
 				
 			})
 

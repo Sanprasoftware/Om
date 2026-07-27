@@ -24,62 +24,62 @@ class Reprocess(Document):
 		if not any(row.is_finished_item for row in self.item):
 			frappe.throw("Please mark at least one item as Finished Item in the Item table")
 
-	@frappe.whitelist()
-	def add_item_data(self):
-		self.set("item", [])
+	# @frappe.whitelist()
+	# def add_item_data(self):
+	# 	self.set("item", [])
 
-		total_raw = sum(flt(row.qty) for row in self.get("scrap_item") or [])
-		total_wst = sum(flt(row.qty) for row in self.get("wastage") or [])
-		total_fg  = sum(flt(row.qty) for row in self.get("fg_item") or [])
+	# 	total_raw = sum(flt(row.qty) for row in self.get("scrap_item") or [])
+	# 	total_wst = sum(flt(row.qty) for row in self.get("wastage") or [])
+	# 	total_fg  = sum(flt(row.qty) for row in self.get("fg_item") or [])
 		
-		if total_fg <= 0:
-			frappe.throw("FG Qty must be greater than 0")
-		net_qty = total_raw - total_wst
-		if net_qty <= 0:
-			frappe.throw("Net Qty must be greater than 0")
-		per_fg_qty = net_qty / total_fg 
+	# 	if total_fg <= 0:
+	# 		frappe.throw("FG Qty must be greater than 0")
+	# 	net_qty = total_raw - total_wst
+	# 	if net_qty <= 0:
+	# 		frappe.throw("Net Qty must be greater than 0")
+	# 	per_fg_qty = net_qty / total_fg 
 
-		for row in self.get("scrap_item") or []:
-			if not (row.item_code and row.qty):
-				continue
-			self.append("item", {
-				"item_code": row.item_code,
-				"qty": flt(row.qty),
-				"source_warehouse": row.warehouse,
-				"batch_no": row.batch,
-				"uom": self._get_stock_uom(row.item_code),
-				"is_finished_item": 0,
-				"is_scrap_item": 0
-			})
+		# for row in self.get("scrap_item") or []:
+		# 	if not (row.item_code and row.qty):
+		# 		continue
+		# 	self.append("item", {
+		# 		"item_code": row.item_code,
+		# 		"qty": flt(row.qty),
+		# 		"source_warehouse": row.warehouse,
+		# 		"batch_no": row.batch,
+		# 		"uom": self._get_stock_uom(row.item_code),
+		# 		"is_finished_item": 0,
+		# 		"is_scrap_item": 0
+		# 	})
 
-		for fg in self.get("fg_item") or []:
-			if not (fg.item_code and fg.qty):
-				continue
-			for i in range(int(flt(fg.qty))):
-				self.append("item", {
-					"item_code": fg.item_code,
-					"qty": per_fg_qty,   # ✅ CALCULATED VALUE
-					"target_warehouse": fg.warehouse,
-					"batch_no": fg.batch if fg.batch else None,
-					"uom": self._get_stock_uom(fg.item_code),
-					"is_finished_item": 1,
-					"is_scrap_item": 0
-				})
+		# for fg in self.get("fg_item") or []:
+		# 	if not (fg.item_code and fg.qty):
+		# 		continue
+		# 	for i in range(int(flt(fg.qty))):
+		# 		self.append("item", {
+		# 			"item_code": fg.item_code,
+		# 			"qty": per_fg_qty,   # ✅ CALCULATED VALUE
+		# 			"target_warehouse": fg.warehouse,
+		# 			"batch_no": fg.batch if fg.batch else None,
+		# 			"uom": self._get_stock_uom(fg.item_code),
+		# 			"is_finished_item": 1,
+		# 			"is_scrap_item": 0
+		# 		})
 
-		for ws in self.get("wastage") or []:
-			if not (ws.item_code and ws.qty):
-				continue
-			self.append("item", {
-				"item_code": ws.item_code,
-				"qty": flt(ws.qty),
-				"target_warehouse": ws.warehouse,
-				"batch_no": ws.batch if ws.batch else None,
-				"uom": self._get_stock_uom(ws.item_code),
-				"is_finished_item": 0,
-				"is_scrap_item": 1
-			})
+		# for ws in self.get("wastage") or []:
+		# 	if not (ws.item_code and ws.qty):
+		# 		continue
+		# 	self.append("item", {
+		# 		"item_code": ws.item_code,
+		# 		"qty": flt(ws.qty),
+		# 		"target_warehouse": ws.warehouse,
+		# 		"batch_no": ws.batch if ws.batch else None,
+		# 		"uom": self._get_stock_uom(ws.item_code),
+		# 		"is_finished_item": 0,
+		# 		"is_scrap_item": 1
+		# 	})
 
-		return self
+		# return self
 
 	@frappe.whitelist()
 	def calculate_amount(self):
@@ -127,7 +127,10 @@ class Reprocess(Document):
 				"t_warehouse": row.target_warehouse,
 				"uom": row.uom,
 				"batch_no": row.batch_no,
-				"basic_rate": row.basic_rate_as_per_stock_uom
+				"basic_rate": row.basic_rate_as_per_stock_uom,
+				"is_finished_item": row.is_finished_item,  
+				"is_scrap_item": row.is_scrap_item,
+				
 			})
 
 		se.insert(ignore_permissions=True)

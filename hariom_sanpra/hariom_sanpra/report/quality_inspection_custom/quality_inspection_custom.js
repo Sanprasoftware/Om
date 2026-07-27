@@ -49,6 +49,31 @@ frappe.query_reports["Quality Inspection Custom"] = {
 			fieldtype: "Link",
 			options: "Quality Inspection",
 			width: 220
-		}
+		},
+		{
+			fieldname: "party_type",
+			label: __("Party Type"),
+			fieldtype: "Select",
+			options: "\nSupplier\nCustomer",
+			on_change: function(report) {
+				report.set_filter_value("party", "");
+			},
+		},
+		{
+			fieldname: "party",
+			label: __("Party"),
+			fieldtype: "Dynamic Link",
+			options: "party_type",
+			get_options() {
+				return frappe.query_report.get_filter_value("party_type");
+			}
+		},
+		{
+			fieldname: "parameter",
+			label: __("Parameter"),
+			fieldtype: "Link",
+			options: "Quality Inspection Parameter",
+			width: 220
+		},
 	],
 };

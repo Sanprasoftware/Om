@@ -1,0 +1,145 @@
+// Copyright (c) 2026, Sanpra Software Solution and contributors
+// For license information, please see license.txt
+
+frappe.query_reports["Production Report"] = {
+	filters: [
+		{
+			fieldname: "from_date",
+			label: __("From Date"),
+			fieldtype: "Date",
+		},
+		{
+			fieldname: "to_date",
+			label: __("To Date"),
+			fieldtype: "Date",
+		},
+		{
+			fieldname: "id",
+			label: __("Id"),
+			fieldtype: "Link",
+			options: "Stock Entry",
+		},
+		{
+			fieldname: "operator_name",
+			label: __("Operator Name"),
+			fieldtype: "Link",
+			options: "Operator Name",
+		},
+		{
+			fieldname: "machine_name",
+			label: __("Machine Name"),
+			fieldtype: "Link",
+			options: "Machine Name",
+		},
+		{
+			fieldname: "custom_shift",
+			label: __("Shift"),
+			fieldtype: "Link",
+			options: "Shift",
+		},
+		{
+			fieldname: "custom_batch_no",
+			label: __("Batch No"),
+			fieldtype: "Data",
+		},
+		{
+			fieldname: "item",
+			label: __("Item"),
+			fieldtype: "Link",
+			options: "Item",
+		},
+		{
+			fieldname: "report_based_on",
+			label: __("Report Based On"),
+			fieldtype: "Select",
+			options: "\nBOM Wise",
+			default: "",
+		},
+	],
+
+	formatter(value, row, column, data, default_formatter) {
+		const formatted = default_formatter(value, row, column, data);
+		if (!data) return formatted;
+
+			if (column.fieldname === "item_code" || column.fieldname === "item_name") {
+				if (data.item_type === "Scrap") {
+					return `<span style="color: #1e40af; font-weight: 600;">${formatted}</span>`;
+				}
+			if (data.item_type === "Finished") {
+				return `<span style="color: #1a7f37; font-weight: 600;">${formatted}</span>`;
+			}
+			if (data.item_type === "Raw") {
+				return `<span style="color: #c62828; font-weight: 600;">${formatted}</span>`;
+			}
+		}
+		if (column.fieldname === "variation_percentage") {
+			if (data.variation_percentage > 0) {
+				return `<span style="color: red; font-weight: bold;">${formatted}</span>`;
+			}
+		}
+		return formatted;
+	},
+
+	after_datatable_render(datatable) {
+		if (!datatable.options.showTotalRow || datatable.__average_row_enabled) {
+			return;
+		}
+
+		datatable.__average_row_enabled = true;
+		const render_standard_footer = datatable.bodyRenderer.renderFooter.bind(
+			datatable.bodyRenderer
+		);
+
+		datatable.bodyRenderer.renderFooter = function () {
+			render_standard_footer();
+
+			const rows = this.visibleRows || [];
+			if (!rows.length) return;
+
+			const columns = this.datamanager.getColumns();
+			const first_data_column = this.datamanager.getStandardColumnCount();
+			const average_row = columns.map((column, index) => {
+				let content = "";
+
+				if (index === first_data_column) {
+					content = __("Average");
+				} else if (frappe.model.is_numeric_field(column.fieldtype)) {
+					const values = rows
+						.map((row) => row[index]?.content)
+						.filter(
+							(value) =>
+								value !== null &&
+								value !== undefined &&
+								value !== "" &&
+								Number.isFinite(Number(value))
+						)
+						.map(Number);
+
+					if (values.length) {
+						content =
+							values.reduce((total, value) => total + value, 0) /
+							values.length;
+					}
+				}
+
+				return {
+					content,
+					isTotalRow: 1,
+					colIndex: column.colIndex,
+					column,
+				};
+			});
+
+			this.footer.insertAdjacentHTML(
+				"beforeend",
+				this.rowmanager.getRowHTML(average_row, {
+					isTotalRow: 1,
+					rowIndex: "averageRow",
+				})
+			);
+		};
+
+		datatable.bodyRenderer.renderFooter();
+	},
+};
+

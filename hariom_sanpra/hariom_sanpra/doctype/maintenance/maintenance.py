@@ -19,7 +19,13 @@ class Maintenance(Document):
 	def create_stock_entry(self):
 		se = frappe.new_doc("Stock Entry")
 		se.stock_entry_type = "Maintenance"
-		se.custom_operator_name = self.operator_name
+		se.custom_reference_doc = self.doctype
+		se.custom_reference_id = self.name
+		se.flags.maintenance_basic_rates = [flt(row.basic_rate) for row in self.items]
+		for operator_row in self.operator_name:
+			se.append("custom_operator_name", {
+				"operator_name": operator_row.operator_name,
+			})
 		se.custom_machine_name = self.machine_name
 		se.custom_shift = ""
 		se.custom_batch_no = ""
@@ -41,32 +47,10 @@ class Maintenance(Document):
 			})
 
 		se.insert(ignore_permissions=True)
-		# self.set_manual_stock_entry_rates(se)
-		# se.flags.ignore_validate = True
+		preserve_maintenance_basic_rates(se)
+		se.flags.ignore_validate = True
 		se.submit()
 
-	# def set_manual_stock_entry_rates(self, stock_entry):
-	# 	stock_entry.reload()
-
-	# 	for se_item, maintenance_item in zip(stock_entry.items, self.items):
-	# 		basic_rate = flt(maintenance_item.basic_rate)
-	# 		transfer_qty = flt(se_item.transfer_qty) or flt(se_item.qty)
-
-	# 		se_item.set_basic_rate_manually = 1
-	# 		se_item.basic_rate = basic_rate
-	# 		se_item.basic_amount = flt(transfer_qty * basic_rate, se_item.precision("basic_amount"))
-	# 		se_item.amount = flt(
-	# 			se_item.basic_amount
-	# 			+ flt(se_item.additional_cost)
-	# 			+ flt(se_item.landed_cost_voucher_amount),
-	# 			se_item.precision("amount"),
-	# 		)
-	# 		se_item.valuation_rate = flt(se_item.amount / transfer_qty) if transfer_qty else basic_rate
-	# 		se_item.db_update()
-
-	# 	stock_entry.set_total_incoming_outgoing_value()
-	# 	stock_entry.set_total_amount()
-	# 	stock_entry.db_update()
 
 	def cancel_stock_entry(self):
 		stock_entries = frappe.get_all(
@@ -112,3 +96,46 @@ class Maintenance(Document):
 
 				row.basic_rate = rate or 0
 				row.actual_qty = act_qty or 0
+    
+#**********************************************************************************
+	def on_trash(self):
+		self.delete_stock_entry()
+	
+	def delete_stock_entry(self):
+		stock_entries = frappe.get_all(
+			"Stock Entry",
+			filters={
+				"stock_entry_type": "Maintenance",
+				"remarks": f"Created from Maintenance {self.name}",
+			},
+			pluck="name"
+		)
+
+		for name in stock_entries:
+			doc = frappe.get_doc("Stock Entry", name)
+
+			if doc.docstatus == 1:
+				doc.cancel()
+
+			doc.delete(ignore_permissions=True)
+    
+
+
+def preserve_maintenance_basic_rates(doc, method=None):
+	"""Keep Maintenance rates after ERPNext calculates outgoing stock rates."""
+	basic_rates = doc.flags.get("maintenance_basic_rates")
+	if basic_rates is None:
+		return
+
+	if len(basic_rates) != len(doc.items):
+		frappe.throw("Could not apply Maintenance rates to Stock Entry items.")
+
+	for row, basic_rate in zip(doc.items, basic_rates):
+		row.set_basic_rate_manually = 1
+		row.basic_rate = flt(basic_rate)
+
+	doc.calculate_rate_and_amount(reset_outgoing_rate=False)
+
+
+
+

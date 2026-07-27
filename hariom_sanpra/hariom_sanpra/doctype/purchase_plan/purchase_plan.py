@@ -20,10 +20,16 @@ def get_purchase_plan_materials(doc):
 
 	material_map = {}
 	skipped_rows = []
+	manufacturing_rows = get_manufacturing_rows(doc)
 
-	for index, row in enumerate(doc.get("marketing_order") or [], start=1):
+	for index, row in enumerate(manufacturing_rows, start=1):
 		item_code = row.get("item_code")
 		if not item_code:
+			continue
+
+		required_fg_qty = get_required_fg_qty(row)
+		if not required_fg_qty:
+			skipped_rows.append(_("Row {0}: QTY (KG) is missing for item {1}.").format(index, item_code))
 			continue
 
 		default_bom = get_default_bom(item_code)
@@ -31,43 +37,12 @@ def get_purchase_plan_materials(doc):
 			skipped_rows.append(_("Row {0}: Default BOM not found for item {1}.").format(index, item_code))
 			continue
 
-		bom_qty = flt(frappe.db.get_value("BOM", default_bom, "quantity"))
-		if not bom_qty:
-			skipped_rows.append(_("Row {0}: BOM quantity is zero for item {1}.").format(index, item_code))
-			continue
-
-		bom_items = frappe.get_all(
-			"BOM Item",
-			filters={"parent": default_bom, "parenttype": "BOM", "parentfield": "items"},
-			fields=["item_code", "qty", "stock_qty"],
-			order_by="idx asc",
-		)
-		required_fg_qty = flt(row.get("qty_kg"))
-		if flt(row.get("wastage")):
-			required_fg_qty += required_fg_qty * flt(row.get("wastage")) / 100
-
-		for bom_item in bom_items:
-			if not bom_item.item_code:
-				continue
-
-			material_map.setdefault(bom_item.item_code, 0)
-			material_map[bom_item.item_code] += (flt(bom_item.stock_qty) or flt(bom_item.qty)) * required_fg_qty / bom_qty
+		add_bom_materials(material_map, default_bom, required_fg_qty, item_code, index, skipped_rows)
 
 	if skipped_rows:
 		frappe.msgprint("<br>".join(skipped_rows), title=_("Skipped Purchase Plan Rows"), indicator="orange")
 
-	stock_map = get_actual_stock(material_map.keys())
-
-	items = [
-		{
-			"item_code": item_code,
-			"stock_kg": stock_map.get(item_code, 0),
-			"required_stock": required_stock,
-			"shortage_qty": max(required_stock - stock_map.get(item_code, 0), 0),
-			"purchase": "YES" if required_stock > stock_map.get(item_code, 0) else "NO",
-		}
-		for item_code, required_stock in material_map.items()
-	]
+	items = build_purchase_plan_items(material_map)
 
 	return {
 		"items": items,
@@ -83,6 +58,59 @@ def get_purchase_plan_item_stock(item_code):
 	return get_actual_stock([item_code]).get(item_code, 0)
 
 
+def get_manufacturing_rows(doc):
+	rows = doc.get("marketing_order") or []
+	if rows:
+		return rows
+
+	return doc.get("purchase_plan_item") or []
+
+
+# def get_required_fg_qty(row):
+# 	required_fg_qty = flt(row.get("qty_kg")) or flt(row.get("required_stock"))
+# 	if flt(row.get("wastage")):
+# 		required_fg_qty += required_fg_qty * flt(row.get("wastage")) / 100
+
+# 	return required_fg_qty
+
+def get_required_fg_qty(row):
+    return flt(row.get("qty_kg")) or flt(row.get("required_stock"))
+
+def add_bom_materials(material_map, bom, required_fg_qty, item_code, row_index, skipped_rows):
+	bom_qty = flt(frappe.db.get_value("BOM", bom, "quantity"))
+	if not bom_qty:
+		skipped_rows.append(_("Row {0}: BOM quantity is zero for item {1}.").format(row_index, item_code))
+		return
+
+	for bom_item in frappe.get_all(
+		"BOM Item",
+		filters={"parent": bom, "parenttype": "BOM", "parentfield": "items"},
+		fields=["item_code", "qty", "stock_qty"],
+		order_by="idx asc",
+	):
+		if not bom_item.item_code:
+			continue
+
+		bom_item_qty = flt(bom_item.stock_qty) or flt(bom_item.qty)
+		add_sub_item(material_map, bom_item.item_code, bom_item_qty * required_fg_qty / bom_qty)
+
+
+def build_purchase_plan_items(material_map):
+	stock_map = get_actual_stock(material_map.keys())
+
+	return [
+		{
+			"item_code": item_code,
+			"item_name": frappe.db.get_value("Item", item_code, "item_name"),
+			"stock_kg": stock_map.get(item_code, 0),
+			"required_stock": required_stock,
+			"shortage_qty": max(required_stock - stock_map.get(item_code, 0), 0),
+			"purchase": "YES" if required_stock > stock_map.get(item_code, 0) else "NO",
+		}
+		for item_code, required_stock in material_map.items()
+	]
+
+
 def get_purchase_plan_sub_items(items):
 	required_map = {}
 
@@ -94,19 +122,7 @@ def get_purchase_plan_sub_items(items):
 
 		add_exploded_sub_item(required_map, item_code, required_qty)
 
-	stock_map = get_actual_stock(required_map.keys())
-
-	return [
-		{
-			"item_code": item_code,
-			"item_name": frappe.db.get_value("Item", item_code, "item_name"),
-			"stock_kg": stock_map.get(item_code, 0),
-			"required_stock": required_stock,
-			"shortage_qty": max(required_stock - stock_map.get(item_code, 0), 0),
-			"purchase": "YES" if required_stock > stock_map.get(item_code, 0) else "NO",
-		}
-		for item_code, required_stock in required_map.items()
-	]
+	return build_purchase_plan_items(required_map)
 
 
 def add_exploded_sub_item(required_map, item_code, required_qty, visited=None):

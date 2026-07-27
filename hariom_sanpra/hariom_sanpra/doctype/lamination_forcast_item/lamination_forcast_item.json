@@ -58,7 +58,7 @@
    "fieldname": "fg_output_ton",
    "fieldtype": "Int",
    "in_list_view": 1,
-   "label": "FG Output TON"
+   "label": "FG Output KG"
   },
   {
    "fieldname": "column_break_otug",
@@ -88,7 +88,8 @@
    "fieldtype": "Float",
    "in_list_view": 1,
    "label": "Program Pending",
-   "precision": "2"
+   "precision": "2",
+   "read_only": 1
   },
   {
    "fieldname": "section_break_ekzm",
@@ -105,7 +106,8 @@
    "fieldtype": "Float",
    "in_list_view": 1,
    "label": "Pending Days",
-   "precision": "2"
+   "precision": "2",
+   "read_only": 1
   },
   {
    "fieldname": "per_day_production",
@@ -118,7 +120,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-05-21 11:09:02.455482",
+ "modified": "2026-07-11 10:17:26.470921",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Lamination Forcast Item",

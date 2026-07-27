@@ -28,36 +28,36 @@ frappe.ui.form.on("Reprocess", {
 				}
 			};
 		};
-		frm.fields_dict["scrap_item"].grid.get_field("batch").get_query = function(doc, cdt, cdn) {
-			let row = locals[cdt][cdn];
+		// frm.fields_dict["scrap_item"].grid.get_field("batch").get_query = function(doc, cdt, cdn) {
+		// 	let row = locals[cdt][cdn];
 
-			return {
-				filters: {
-					item: row.item_code,
-                    docstatus: 1
-				}
-			};
-		};
-		frm.fields_dict["fg_item"].grid.get_field("batch").get_query = function(doc, cdt, cdn) {
-			let row = locals[cdt][cdn];
+		// 	return {
+		// 		filters: {
+		// 			item: row.item_code,
+        //             docstatus: 1
+		// 		}
+		// 	};
+		// };
+		// frm.fields_dict["fg_item"].grid.get_field("batch").get_query = function(doc, cdt, cdn) {
+		// 	let row = locals[cdt][cdn];
 
-			return {
-				filters: {
-					item: row.item_code,
-                    docstatus: 1
-				}
-			};
-		};
-		frm.fields_dict["wastage"].grid.get_field("batch").get_query = function(doc, cdt, cdn) {
-			let row = locals[cdt][cdn];
+		// 	return {
+		// 		filters: {
+		// 			item: row.item_code,
+        //             docstatus: 1
+		// 		}
+		// 	};
+		// };
+		// frm.fields_dict["wastage"].grid.get_field("batch").get_query = function(doc, cdt, cdn) {
+		// 	let row = locals[cdt][cdn];
 
-			return {
-				filters: { 
-					item: row.item_code,
-                    docstatus: 1
-				}
-			};
-		};
+		// 	return {
+		// 		filters: { 
+		// 			item: row.item_code,
+        //             docstatus: 1
+		// 		}
+		// 	};
+		// };
 	},
 
     setup(frm) {
@@ -80,7 +80,7 @@ frappe.ui.form.on("Reprocess", {
         return {
           filters: {
             item: row.item_code,
-            docstatus: 1
+            // docstatus: 1
 
           }
         };

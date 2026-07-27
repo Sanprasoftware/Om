@@ -456,3 +456,34 @@ def set_job_name(doc, method=None):
     if finished_items:
         doc.custom_job_name = ", ".join(finished_items)
 
+@frappe.whitelist()
+def get_previous_stock_entry_items(stock_entry):
+    st = frappe.get_value(
+        "Stock Entry",
+        stock_entry,
+        [
+            "stock_entry_type",
+            "custom_machine_name",
+            "custom_manpower",
+            "custom_manufacture_type",
+            "posting_date",
+            "custom_shift",
+            "custom_batch_no",
+            "custom_operator_name"
+        ],
+        as_dict=True
+    )
+
+    operators = frappe.get_all(
+        "Operator Name Items",
+        filters={
+            "parent": stock_entry,
+            "parenttype": "Stock Entry",
+            "parentfield": "custom_operator_name"
+        },
+        fields=["operator_name"]   # Replace with your actual Link field if different
+    )
+
+    st["custom_operator_name"] = operators
+
+    return st

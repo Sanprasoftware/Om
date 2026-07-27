@@ -15,18 +15,18 @@ class Forcast(Document):
 	def validate(self):
 		self._set_program_pending(self.forcast_item)
 		self._set_program_pending(self.lamination)
-		self.total_plan_fg = self._get_rows_total(self.forcast_item, "fg_output_ton") + self._get_rows_total(
-			self.lamination, "fg_output_ton"
-		)
-		self.total_fg = self._get_rows_total(self.forcast_item, "program_complete") + self._get_rows_total(
-			self.lamination, "program_complete"
-		)
-		self.plan_working_days = self._get_rows_total(
-			self.forcast_item, "work_days"
-		) + self._get_rows_total(self.lamination, "work_days")
-		self.total_working_days = self._get_rows_total(
-			self.forcast_item, "pending_days"
-		) + self._get_rows_total(self.lamination, "pending_days")
+		# self.total_plan_fg = self._get_rows_total(self.forcast_item, "fg_output_ton") + self._get_rows_total(
+		# 	self.lamination, "fg_output_ton"
+		# )
+		# self.total_fg = self._get_rows_total(self.forcast_item, "program_complete") + self._get_rows_total(
+		# 	self.lamination, "program_complete"
+		# )
+		# self.plan_working_days = self._get_rows_total(
+		# 	self.forcast_item, "work_days"
+		# ) + self._get_rows_total(self.lamination, "work_days")
+		# self.total_working_days = self._get_rows_total(
+		# 	self.forcast_item, "pending_days"
+		# ) + self._get_rows_total(self.lamination, "pending_days")
 		
 
 

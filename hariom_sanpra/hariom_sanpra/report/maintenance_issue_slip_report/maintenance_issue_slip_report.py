@@ -194,6 +194,9 @@ def get_conditions(filters: dict) -> dict:
 
 	if filters.get("machine_name"):
 		conditions["machine_name"] = filters["machine_name"]
+  
+	if filters.get("department"):
+		conditions["department"] = filters["department"]
 
 	if filters.get("operator_name"):
 		maintenance_names = frappe.get_all(

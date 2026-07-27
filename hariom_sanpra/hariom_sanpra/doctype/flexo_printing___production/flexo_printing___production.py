@@ -78,7 +78,7 @@ class FlexoPrintingProduction(Document):
 
 	def create_stock_entry(self):
 		se = frappe.new_doc("Stock Entry")
-		se.stock_entry_type = "NAVRANG-REWINDING M/C"
+		se.stock_entry_type = "PP EXPORT FLEXO-PRINTING M/C"
 		se.custom_operator_name = self.operator_name
 		se.custom_machine_name = self.machine_name
 		se.custom_shift = self.shift
@@ -92,7 +92,9 @@ class FlexoPrintingProduction(Document):
 				"s_warehouse": row.source_warehouse,
 				"t_warehouse": row.target_warehouse,
 				"uom": row.uom,
-				"batch_no": row.batch_no,
+				"batch_no": row.batch,
+				"is_finished_item": row.is_finished_item,  
+				"is_scrap_item": row.is_scrap_item,
 			})
 
 		se.insert(ignore_permissions=True)
@@ -103,7 +105,7 @@ class FlexoPrintingProduction(Document):
 		stock_entries = frappe.get_all(
 			"Stock Entry",
 			filters={
-				"stock_entry_type": "NAVRANG-REWINDING M/C",
+				"stock_entry_type": "PP EXPORT FLEXO-PRINTING M/C",
 				"docstatus": 1
 			},
 			pluck="name"

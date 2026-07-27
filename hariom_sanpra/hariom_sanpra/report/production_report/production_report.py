@@ -73,8 +73,16 @@ def get_columns() -> list[dict]:
 		{
 			"label": _("Item Code"),
 			"fieldname": "item_code",
-			"fieldtype": "Data",
+			"fieldtype": "Link",
+			"options": "Item",
 			"width": 170,
+		},
+		{
+			"label": _("Feet"),
+			"fieldname": "feet",
+			"fieldtype": "Link",
+			"options": "FEET",
+			"width": 100,
 		},
 		{
 			"label": _("Item Name"),
@@ -89,33 +97,51 @@ def get_columns() -> list[dict]:
 			"width": 100,
 		},
 		{
-			"label": _("GSM"),
-			"fieldname": "gsm",
-			"fieldtype": "Link",
-			"options": "GSM",
+			"label": _("Work Order Qty"),
+			"fieldname": "work_order_qty",
+			"fieldtype": "Float",
 			"width": 100,
 		},
 		{
-			"label": _("METER"),
-			"fieldname": "meter",
-			"fieldtype": "Link",
-			"options": "Meter",
+			"label": _("Variation"),
+			"fieldname": "variation",
+			"fieldtype": "Float",
 			"width": 100,
 		},
 		{
-			"label": _("ROLL"),
-			"fieldname": "roll",
-			"fieldtype": "Link",
-			"options": "Roll",
-			"width": 100,
+			"label": _("Variation %"),
+			"fieldname": "variation_percentage",
+			"fieldtype": "Percent",
+			"width": 120,
 		},
-		{
-			"label": _("COLOUR"),
-			"fieldname": "colour",
-			"fieldtype": "Link",
-			"options": "Colour",
-			"width": 100,
-		},
+		# {
+		# 	"label": _("GSM"),
+		# 	"fieldname": "gsm",
+		# 	"fieldtype": "Link",
+		# 	"options": "GSM",
+		# 	"width": 100,
+		# },
+		# {
+		# 	"label": _("METER"),
+		# 	"fieldname": "meter",
+		# 	"fieldtype": "Link",
+		# 	"options": "Meter",
+		# 	"width": 100,
+		# },
+		# {
+		# 	"label": _("ROLL"),
+		# 	"fieldname": "roll",
+		# 	"fieldtype": "Link",
+		# 	"options": "Roll",
+		# 	"width": 100,
+		# },
+		# {
+		# 	"label": _("COLOUR"),
+		# 	"fieldname": "colour",
+		# 	"fieldtype": "Link",
+		# 	"options": "Colour",
+		# 	"width": 100,
+		# },
 		{
 			"label": _("Warehouse"),
 			"fieldname": "warehouse",
@@ -133,7 +159,7 @@ def get_columns() -> list[dict]:
 
 
 def get_data(filters: frappe._dict) -> list[dict]:
-	conditions = ["se.docstatus in (0, 1)"]
+	conditions = ["se.docstatus in (1)"]
 	sql_filters: dict[str, str] = {}
 
 	if filters.get("from_date"):
@@ -169,6 +195,7 @@ def get_data(filters: frappe._dict) -> list[dict]:
 	if filters.get("custom_shift"):
 		conditions.append("se.custom_shift = %(custom_shift)s")
 		sql_filters["custom_shift"] = filters.custom_shift
+  
 
 	if filters.get("custom_batch_no"):
 		conditions.append("se.custom_batch_no = %(custom_batch_no)s")
@@ -177,6 +204,37 @@ def get_data(filters: frappe._dict) -> list[dict]:
 	if filters.get("item"):
 		conditions.append("sed.item_code = %(item)s")
 		sql_filters["item"] = filters.item
+	
+	if filters.get("feet"):
+		conditions.append("item.custom_feet = %(feet)s")
+		sql_filters["feet"] = filters.feet
+
+	if filters.get("report_based_on") == "BOM Wise":
+		conditions.append("""
+			EXISTS (
+				SELECT 1
+				FROM `tabStock Entry Type` setype
+				WHERE setype.name = se.stock_entry_type
+				AND setype.purpose = 'Manufacture'
+			)
+		""")
+	
+	warehouse_expression = """
+	case
+		when ifnull(sed.is_finished_item, 0) = 1
+			then ifnull(sed.t_warehouse, sed.s_warehouse)
+		else
+			ifnull(sed.s_warehouse, sed.t_warehouse)
+	end
+	"""
+
+	if filters.get("warehouse"):
+		conditions.append(f"{warehouse_expression} = %(warehouse)s")
+		sql_filters["warehouse"] = filters.warehouse
+  
+	if filters.get("manufacturing_type"):
+			conditions.append("se.custom_manufacture_type = %(manufacturing_type)s")
+			sql_filters["manufacturing_type"] = filters.manufacturing_type
 
 	rows = frappe.db.sql(
 		f"""
@@ -201,13 +259,54 @@ def get_data(filters: frappe._dict) -> list[dict]:
 			se.custom_batch_no,
 			se.custom_qty,
 			se.custom_shift,
-			sed.gsm,
-			sed.meter,
-			sed.roll,
-			sed.colour,
+			# sed.gsm,
+			# sed.meter,
+			# sed.roll,
+			# sed.colour,
 			sed.item_code,
+			item.custom_feet as feet,
 			sed.item_name,
 			sed.qty,
+			se.work_order,
+			CASE
+				WHEN EXISTS (
+					SELECT 1
+					FROM `tabStock Entry Type` setype
+					WHERE setype.name = se.stock_entry_type
+					AND setype.purpose = 'Manufacture'
+				)
+				THEN COALESCE(
+					(
+						SELECT woi.required_qty
+						FROM `tabWork Order Item` woi
+						WHERE woi.parent = se.work_order
+						AND woi.item_code = sed.item_code
+						LIMIT 1
+					),
+					sed.qty
+				)
+				ELSE NULL
+			END AS work_order_qty,
+
+			CASE
+				WHEN EXISTS (
+					SELECT 1
+					FROM `tabStock Entry Type` setype
+					WHERE setype.name = se.stock_entry_type
+					AND setype.purpose = 'Manufacture'
+				)
+				THEN sed.qty - COALESCE(
+					(
+						SELECT woi.required_qty
+						FROM `tabWork Order Item` woi
+						WHERE woi.parent = se.work_order
+						AND woi.item_code = sed.item_code
+						LIMIT 1
+					),
+					sed.qty
+				)
+				ELSE NULL
+			END AS variation,
 			case
 				when ifnull(sed.is_finished_item, 0) = 1 then ifnull(sed.t_warehouse, sed.s_warehouse)
 				else ifnull(sed.s_warehouse, sed.t_warehouse)
@@ -219,6 +318,7 @@ def get_data(filters: frappe._dict) -> list[dict]:
 			end as item_type
 		from `tabStock Entry` se
 		inner join `tabStock Entry Detail` sed on sed.parent = se.name
+		left join `tabItem` item on item.name = sed.item_code
 		where {" and ".join(conditions)}
 		order by
 			se.posting_date desc,
@@ -229,6 +329,14 @@ def get_data(filters: frappe._dict) -> list[dict]:
 		sql_filters,
 		as_dict=True,
 	)
+	for row in rows:
+		if row.get("work_order_qty"):
+			row["variation_percentage"] = round(
+				(row["variation"] / row["work_order_qty"]) * 100,
+				2
+			)
+		else:
+			row["variation_percentage"] = None
 
 	last_stock_entry_id = None
 	for row in rows:

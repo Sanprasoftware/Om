@@ -10,8 +10,20 @@ frappe.ui.form.on("First Sheet Approval", {
     },
     b_total_qty: function(frm) {
         calculate_percent(frm);
-    }
+    },
+    mc_type(frm) {
+        if (!frm.doc.mc_type) return;
 
+        (frm.doc.extruder || []).forEach(row => {
+            frappe.model.set_value(
+                row.doctype,
+                row.name,
+                "mc_type",
+                frm.doc.mc_type
+            );
+        });
+		
+    },
 });
 frappe.ui.form.on("Extruder", {
     a_qty(frm) {
@@ -34,6 +46,18 @@ frappe.ui.form.on("Extruder", {
 
         frm.refresh_field("a_total_qty");
         frm.refresh_field("extruder");
+    },
+    extruder_add(frm, cdt, cdn) {
+        let row = locals[cdt][cdn];
+
+        if (frm.doc.mc_type) {
+            frappe.model.set_value(
+                cdt,
+                cdn,
+                "mc_type",
+                frm.doc.mc_type
+            );
+        }
     }
 });
 // 8******************************************************************************

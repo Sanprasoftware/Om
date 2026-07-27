@@ -27,6 +27,7 @@
   "fg_items",
   "wastage_items",
   "add_data",
+  "section_break_khft",
   "items",
   "amended_from"
  ],
@@ -111,7 +112,8 @@
   },
   {
    "fieldname": "raw_items_section",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "hidden": 1
   },
   {
    "fieldname": "fg_items",
@@ -174,13 +176,17 @@
    "fieldname": "mc_end",
    "fieldtype": "Time",
    "label": "M/C End"
+  },
+  {
+   "fieldname": "section_break_khft",
+   "fieldtype": "Section Break"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-05-08 18:09:07.894321",
+ "modified": "2026-07-14 12:22:09.697905",
  "modified_by": "rutuja@sanpra.co.in",
  "module": "Hariom Sanpra",
  "name": "Navrang Rewinding Machine",

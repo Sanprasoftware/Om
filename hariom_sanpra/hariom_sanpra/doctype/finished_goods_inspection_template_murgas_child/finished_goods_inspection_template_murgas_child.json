@@ -1,0 +1,266 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-07-16 10:42:35.527915",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "colour_one_side_colour",
+  "colour_second_side_colour",
+  "fabric_grade",
+  "layer",
+  "fabric_gsm_no_1_gsm",
+  "fabric_gsm_no_2_gsm",
+  "one_side_coating_np_gsm",
+  "one_side_coating_p_gsm",
+  "final_sandwich_coating_gsm_gsm",
+  "mass_gsm_gsm",
+  "tensile_md_minimum_n",
+  "tensile_cd_minimum_n",
+  "elongation_md_",
+  "elongation_cd_",
+  "tear_resistance_md_minimum_n",
+  "tear_resistance_cd_minimum_n",
+  "fillar_",
+  "bond_pass",
+  "column_break_iwyf",
+  "colour_one_side_colour_actual",
+  "colour_second_side_colour_actual",
+  "fabric_grade_actual",
+  "layer_actual",
+  "fabric_gsm_no_1_gsm_actual",
+  "fabric_gsm_no_2_gsm_actual",
+  "one_side_coating_np_gsm_actual",
+  "one_side_coating_p_gsm_actual",
+  "final_sandwich_coating_gsm_gsm_actual",
+  "mass_gsm_gsm_actual",
+  "tensile_md_minimum_n_actual",
+  "tensile_cd_minimum_n_actual",
+  "elongation_md__actual",
+  "elongation_cd__actual",
+  "tear_resistance_md_minimum_n_actual",
+  "tear_resistance_cd_minimum_n_actual",
+  "fillar__actual",
+  "bond_pass_actual"
+ ],
+ "fields": [
+  {
+   "fieldname": "colour_second_side_colour",
+   "fieldtype": "Data",
+   "label": "Colour Second Side (Colour)"
+  },
+  {
+   "fieldname": "colour_one_side_colour",
+   "fieldtype": "Data",
+   "label": "Colour One Side (Colour)"
+  },
+  {
+   "fieldname": "column_break_iwyf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "colour_one_side_colour_actual",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Colour One Side (Colour) Actual"
+  },
+  {
+   "fieldname": "colour_second_side_colour_actual",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Colour Second Side (Colour) Actual"
+  },
+  {
+   "fieldname": "fabric_grade",
+   "fieldtype": "Data",
+   "label": "Fabric Grade"
+  },
+  {
+   "fieldname": "layer",
+   "fieldtype": "Data",
+   "label": "Layer"
+  },
+  {
+   "fieldname": "fabric_gsm_no_1_gsm",
+   "fieldtype": "Data",
+   "label": "Fabric GSM No. 1 (GSM)"
+  },
+  {
+   "fieldname": "fabric_grade_actual",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Fabric Grade Actual"
+  },
+  {
+   "fieldname": "layer_actual",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Layer Actual"
+  },
+  {
+   "fieldname": "fabric_gsm_no_1_gsm_actual",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Fabric GSM No. 1 (GSM) Actual"
+  },
+  {
+   "fieldname": "fabric_gsm_no_2_gsm",
+   "fieldtype": "Data",
+   "label": "Fabric GSM No. 2 (GSM)"
+  },
+  {
+   "fieldname": "one_side_coating_np_gsm",
+   "fieldtype": "Data",
+   "label": "One Side Coating NP (GSM)"
+  },
+  {
+   "fieldname": "one_side_coating_p_gsm",
+   "fieldtype": "Data",
+   "label": "One Side Coating P (GSM)"
+  },
+  {
+   "fieldname": "fabric_gsm_no_2_gsm_actual",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Fabric GSM No. 2 (GSM) Actual"
+  },
+  {
+   "fieldname": "one_side_coating_np_gsm_actual",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "One Side Coating NP (GSM) Actual"
+  },
+  {
+   "fieldname": "one_side_coating_p_gsm_actual",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "One Side Coating P (GSM) Actual"
+  },
+  {
+   "fieldname": "final_sandwich_coating_gsm_gsm",
+   "fieldtype": "Data",
+   "label": "Final Sandwich Coating GSM (GSM)"
+  },
+  {
+   "fieldname": "final_sandwich_coating_gsm_gsm_actual",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Final Sandwich Coating GSM (GSM) Actual"
+  },
+  {
+   "fieldname": "mass_gsm_gsm",
+   "fieldtype": "Data",
+   "label": "Mass GSM (GSM)"
+  },
+  {
+   "fieldname": "mass_gsm_gsm_actual",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Mass GSM (GSM) Actual"
+  },
+  {
+   "fieldname": "tensile_md_minimum_n",
+   "fieldtype": "Data",
+   "label": "Tensile MD ,Minimum (N)"
+  },
+  {
+   "fieldname": "tensile_md_minimum_n_actual",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Tensile MD ,Minimum (N) Actual"
+  },
+  {
+   "fieldname": "tensile_cd_minimum_n",
+   "fieldtype": "Data",
+   "label": "Tensile CD ,Minimum (N)"
+  },
+  {
+   "fieldname": "tensile_cd_minimum_n_actual",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Tensile CD ,Minimum (N) Actual"
+  },
+  {
+   "fieldname": "elongation_md_",
+   "fieldtype": "Data",
+   "label": "Elongation MD (%)"
+  },
+  {
+   "fieldname": "elongation_cd_",
+   "fieldtype": "Data",
+   "label": "Elongation CD (%)"
+  },
+  {
+   "fieldname": "elongation_md__actual",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Elongation MD (%) Actual"
+  },
+  {
+   "fieldname": "elongation_cd__actual",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Elongation CD (%) Actual"
+  },
+  {
+   "fieldname": "tear_resistance_md_minimum_n",
+   "fieldtype": "Data",
+   "label": "Tear Resistance MD ,Minimum (N)"
+  },
+  {
+   "fieldname": "tear_resistance_cd_minimum_n",
+   "fieldtype": "Data",
+   "label": "Tear Resistance CD ,Minimum (N)"
+  },
+  {
+   "fieldname": "tear_resistance_md_minimum_n_actual",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Tear Resistance MD ,Minimum (N) Actual"
+  },
+  {
+   "fieldname": "tear_resistance_cd_minimum_n_actual",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Tear Resistance CD ,Minimum (N) Actual"
+  },
+  {
+   "fieldname": "fillar_",
+   "fieldtype": "Data",
+   "label": "Fillar (%)"
+  },
+  {
+   "fieldname": "bond_pass",
+   "fieldtype": "Data",
+   "label": "Bond (Pass)"
+  },
+  {
+   "fieldname": "fillar__actual",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Fillar (%) Actual"
+  },
+  {
+   "fieldname": "bond_pass_actual",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Bond (Pass) Actual"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-07-16 11:01:16.868967",
+ "modified_by": "Administrator",
+ "module": "Hariom Sanpra",
+ "name": "Finished Goods Inspection Template Murgas Child",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

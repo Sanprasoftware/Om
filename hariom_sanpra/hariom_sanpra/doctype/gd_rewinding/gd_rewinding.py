@@ -108,7 +108,9 @@ class GDRewinding(Document):
 				"t_warehouse": row.target_warehouse,
 				"uom": row.uom,
 				"batch_no": row.batch,
-				"basic_rate":row.basic_rate
+				"basic_rate":row.basic_rate,
+				"is_finished_item": row.is_finished_item,  
+				"is_scrap_item": row.is_scrap_item,
 			})
 
 		se.insert(ignore_permissions=True)

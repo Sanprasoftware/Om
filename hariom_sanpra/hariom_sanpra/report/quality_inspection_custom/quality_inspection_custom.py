@@ -170,6 +170,13 @@ def get_columns():
 			"width": 100
 		},
 		{
+			"label": _("Reading Avg"),
+			"fieldname": "custom_reading_avg",
+			"fieldtype": "Float",
+			"precision": 2,
+			"width": 100
+		},
+		{
 			"label": _("Acceptance Criteria"),
 			"fieldname": "value",
 			"fieldtype": "Data",
@@ -239,7 +246,20 @@ def get_data(filters):
 	if filters.get("qi_id"):
 		conditions += f" AND qi.name = '{filters.get('qi_id')}' "
 
+	if filters.get("party_type") == "Supplier" and filters.get("party"):
+		conditions += f"""
+			AND qi.custom_supplier_name = '{filters.get("party")}'
+		"""
 
+	if filters.get("party_type") == "Customer" and filters.get("party"):
+		conditions += f"""
+			AND qi.custom_customer_name = '{filters.get("party")}'
+		"""
+
+	if filters.get("parameter"):
+		conditions += f"""
+			AND qir.specification = '{filters.get("parameter")}'
+    """
 	raw_data = frappe.db.sql(f"""
 
 		SELECT
@@ -253,6 +273,8 @@ def get_data(filters):
 			qi.quality_inspection_template,
 			qi.item_code,
 			qi.item_name,
+   			qi.custom_supplier_name,
+			qi.custom_customer_name,
 
 			qir.specification,
 			qir.parameter_group,
@@ -269,6 +291,7 @@ def get_data(filters):
 			qir.reading_8,
 			qir.reading_9,
 			qir.reading_10,
+            qir.custom_reading_avg,
 			qir.value,
 			qir.manual_inspection,
 			qir.min_value,
@@ -322,6 +345,7 @@ def get_data(filters):
 				"reading_8": row.reading_8,
 				"reading_9": row.reading_9,
 				"reading_10": row.reading_10,
+				"custom_reading_avg":row.custom_reading_avg,
 				"value": row.value,
 				"manual_inspection": row.manual_inspection,
 				"min_value": row.min_value,
@@ -361,6 +385,7 @@ def get_data(filters):
 				"reading_8": row.reading_8,
 				"reading_9": row.reading_9,
 				"reading_10": row.reading_10,
+				"custom_reading_avg":row.custom_reading_avg,
 				"value": row.value,
 				"manual_inspection": row.manual_inspection,
 				"min_value": row.min_value,

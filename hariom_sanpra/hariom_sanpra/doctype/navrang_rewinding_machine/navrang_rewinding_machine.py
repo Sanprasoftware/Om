@@ -11,65 +11,65 @@ class NavrangRewindingMachine(Document):
 			return None
 		return frappe.db.get_value("Item", item_code, "stock_uom")
 
-	@frappe.whitelist()
-	def add_items(self):
-		self.set("items", [])
-		total_raw = sum(flt(row.qty) for row in self.get("raw_items") or [])
-		total_wst = sum(flt(row.qty) for row in self.get("wastage_items") or [])
-		total_fg  = sum(flt(row.qty) for row in self.get("fg_items") or [])
-		if total_fg <= 0:
-			frappe.throw("FG Qty must be greater than 0")
-		net_qty = total_raw - total_wst
-		if net_qty <= 0:
-			frappe.throw("Net Qty must be greater than 0")
-		per_fg_qty = net_qty / total_fg 
+	# @frappe.whitelist()
+	# def add_items(self):
+	# 	self.set("items", [])
+	# 	total_raw = sum(flt(row.qty) for row in self.get("raw_items") or [])
+	# 	total_wst = sum(flt(row.qty) for row in self.get("wastage_items") or [])
+	# 	total_fg  = sum(flt(row.qty) for row in self.get("fg_items") or [])
+	# 	if total_fg <= 0:
+	# 		frappe.throw("FG Qty must be greater than 0")
+	# 	net_qty = total_raw - total_wst
+	# 	if net_qty <= 0:
+	# 		frappe.throw("Net Qty must be greater than 0")
+	# 	per_fg_qty = net_qty / total_fg 
 
-		for row in self.get("raw_items") or []:
-			if not (row.item and row.qty):
-				continue
-			self.append("items", {
-				"item_code": row.item,
-				"qty": flt(row.qty),
-				"source_warehouse": row.warehouse,
-				"batch": row.batch,
-				# "gsm" : row.gsm,
-				# "grade" : row.grade,
-				# "roll_qty" : row.roll_qty,
-				"uom": self._get_stock_uom(row.item),
-				"is_finished_item": 0,
-				"is_scrap_item": 0
-			})
+	# 	for row in self.get("raw_items") or []:
+	# 		if not (row.item and row.qty):
+	# 			continue
+	# 		self.append("items", {
+	# 			"item_code": row.item,
+	# 			"qty": flt(row.qty),
+	# 			"source_warehouse": row.warehouse,
+	# 			"batch": row.batch,
+	# 			# "gsm" : row.gsm,
+	# 			# "grade" : row.grade,
+	# 			# "roll_qty" : row.roll_qty,
+	# 			"uom": self._get_stock_uom(row.item),
+	# 			"is_finished_item": 0,
+	# 			"is_scrap_item": 0
+	# 		})
 
-		for fg in self.get("fg_items") or []:
-			if not (fg.item and fg.qty):
-				continue
-			for i in range(int(flt(fg.qty))):
-				self.append("items", {
-					"item_code": fg.item,
-					"qty": per_fg_qty,   # ✅ CALCULATED VALUE
-					"target_warehouse": fg.warehouse,
-					"batch_no": row.batch if row.batch else None,
-					# "batch": fg.batch,
-					"uom": self._get_stock_uom(fg.item),
-					"is_finished_item": 1,
-					"is_scrap_item": 0
-				})
+	# 	for fg in self.get("fg_items") or []:
+	# 		if not (fg.item and fg.qty):
+	# 			continue
+	# 		for i in range(int(flt(fg.qty))):
+	# 			self.append("items", {
+	# 				"item_code": fg.item,
+	# 				"qty": per_fg_qty,   # ✅ CALCULATED VALUE
+	# 				"target_warehouse": fg.warehouse,
+	# 				"batch_no": row.batch if row.batch else None,
+	# 				# "batch": fg.batch,
+	# 				"uom": self._get_stock_uom(fg.item),
+	# 				"is_finished_item": 1,
+	# 				"is_scrap_item": 0
+	# 			})
 
-		for ws in self.get("wastage_items") or []:
-			if not (ws.item and ws.qty):
-				continue
-			self.append("items", {
-				"item_code": ws.item,
-				"qty": flt(ws.qty),
-				"target_warehouse": ws.warehouse,
-				"batch_no": row.batch if row.batch else None,
-				# "batch": ws.batch,
-				"uom": self._get_stock_uom(ws.item),
-				"is_finished_item": 0,
-				"is_scrap_item": 1
-			})
+	# 	for ws in self.get("wastage_items") or []:
+	# 		if not (ws.item and ws.qty):
+	# 			continue
+	# 		self.append("items", {
+	# 			"item_code": ws.item,
+	# 			"qty": flt(ws.qty),
+	# 			"target_warehouse": ws.warehouse,
+	# 			"batch_no": row.batch if row.batch else None,
+	# 			# "batch": ws.batch,
+	# 			"uom": self._get_stock_uom(ws.item),
+	# 			"is_finished_item": 0,
+	# 			"is_scrap_item": 1
+	# 		})
 
-		return self
+	# 	return self
 
 #************************************************************************		
 	def on_submit(self):

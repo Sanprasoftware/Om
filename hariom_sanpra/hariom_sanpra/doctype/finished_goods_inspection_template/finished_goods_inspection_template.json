@@ -6,8 +6,14 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "type",
+  "column_break_xuxh",
   "finished_goods_inspection_template_name",
-  "inspection_parameter"
+  "section_break_zwuh",
+  "inspection_parameter",
+  "inspection_parameter_pipe",
+  "inspection_parameter_murgas",
+  "inspection_parameter_pp_export"
  ],
  "fields": [
   {
@@ -17,16 +23,52 @@
    "unique": 1
   },
   {
+   "depends_on": "eval:doc.type ==\"Pondline\"",
    "fieldname": "inspection_parameter",
    "fieldtype": "Table",
-   "label": "Inspection Parameter",
+   "label": "Inspection Parameter (Pondline)",
    "options": "Finished Goods Inspection Template Child"
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "label": "Type",
+   "options": "Pondline\nPipe\nMurgas\nPP Export"
+  },
+  {
+   "fieldname": "section_break_zwuh",
+   "fieldtype": "Section Break"
+  },
+  {
+   "depends_on": "eval:doc.type ==\"Murgas\"",
+   "fieldname": "inspection_parameter_murgas",
+   "fieldtype": "Table",
+   "label": "Inspection Parameter (Murgas)",
+   "options": "Finished Goods Inspection Template Murgas Child"
+  },
+  {
+   "depends_on": "eval:doc.type ==\"Pipe\"",
+   "fieldname": "inspection_parameter_pipe",
+   "fieldtype": "Table",
+   "label": "Inspection Parameter (Pipe)",
+   "options": "Finished Goods Inspection Template Pipe Child"
+  },
+  {
+   "depends_on": "eval:doc.type ==\"PP Export\"",
+   "fieldname": "inspection_parameter_pp_export",
+   "fieldtype": "Table",
+   "label": "Inspection Parameter (PP Export)",
+   "options": "Finished Goods Inspection Template PP Export Child"
+  },
+  {
+   "fieldname": "column_break_xuxh",
+   "fieldtype": "Column Break"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-06-05 14:31:57.378539",
+ "modified": "2026-07-16 13:19:03.815546",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Finished Goods Inspection Template",

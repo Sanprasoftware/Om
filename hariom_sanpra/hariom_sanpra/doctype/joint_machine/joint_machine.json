@@ -13,6 +13,7 @@
   "operator_name",
   "batch",
   "machine_name",
+  "no_of_pices",
   "column_break_nuct",
   "machine_no",
   "machine_start",
@@ -158,13 +159,18 @@
    "fieldtype": "Time",
    "in_list_view": 1,
    "label": "Machine End"
+  },
+  {
+   "fieldname": "no_of_pices",
+   "fieldtype": "Int",
+   "label": "No. Of Pices"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-05-08 18:07:23.912987",
+ "modified": "2026-07-11 16:15:28.766760",
  "modified_by": "rutuja@sanpra.co.in",
  "module": "Hariom Sanpra",
  "name": "Joint Machine",

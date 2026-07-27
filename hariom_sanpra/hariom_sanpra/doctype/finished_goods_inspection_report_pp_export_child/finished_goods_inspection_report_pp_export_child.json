@@ -1,0 +1,305 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-07-16 14:31:40.891038",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "fabric_gsm",
+  "non_woven_gsm",
+  "fabric_plus_non_woven_sandwich_coating_gsm",
+  "bottom_coating_gsm",
+  "width_inch",
+  "lamination_bonding_self_method",
+  "thikness_astm_d5261_mil",
+  "weight_astm_d3776_gsm",
+  "linear_dimensional_change__at_85c",
+  "liquid_water_transmission",
+  "te",
+  "tensile_strength_cd_astm_d5035_ibs",
+  "elongation_md_astm_d5035_",
+  "elongation_cd_astm_d5035_",
+  "tear_strength_md_astm_d4533_ibs",
+  "tear_strength_cd_astm_d4533_ibs",
+  "fastner_pull_through_resistance_lbs",
+  "hydrostatic_resistance_astm_d751__procedure_a",
+  "accelereted_weathering_astm_d4798_cycle_a_1",
+  "coefficient_of_friction_bottom_md__astm_d1894",
+  "coefficient_of_friction_bottom_cd__astm_d1894",
+  "column_break_labb",
+  "fabric_gsm_actual",
+  "non_woven_gsm_actual",
+  "fabric_plus_non_woven_sandwich_coating_gsm__actual",
+  "bottom_coating_gsm_actual",
+  "width_inch__actual",
+  "lamination_bonding_self_method__actual",
+  "thikness_astm_d5261_mil__actual",
+  "weight_astm_d3776_gsm__actual",
+  "linear_dimensional_change__at_85c_astm_d_1204__actual",
+  "liquid_water_transmission_astm_d5035_ibs_actual",
+  "tensile_strength_md_astm_d5035_ibs_actual",
+  "tensile_strength_cd_astm_d5035_ibs_actual",
+  "elongation_md_astm_d5035___actual",
+  "elongation_cd_astm_d5035__actual",
+  "tear_strength_md_astm_d4533_ibs_actual",
+  "tear_strength_cd_astm_d4533_ibs_actual",
+  "fastner_pull_through_resistance_lbs_astm_d228_ibs_actual",
+  "hydrostatic_resistance_astm_d751__procedure_a_actual",
+  "accelereted_weathering_astm_d4798_cycle_a_1_actual",
+  "coefficient_of_friction_bottom_md__astm_d1894_actual",
+  "coefficient_of_friction_bottom_cd__astm_d1894_actual"
+ ],
+ "fields": [
+  {
+   "fieldname": "fabric_gsm",
+   "fieldtype": "Data",
+   "label": "Fabric (GSM)"
+  },
+  {
+   "fieldname": "non_woven_gsm",
+   "fieldtype": "Data",
+   "label": "Non Woven (GSM)"
+  },
+  {
+   "fieldname": "fabric_plus_non_woven_sandwich_coating_gsm",
+   "fieldtype": "Data",
+   "label": "Fabric + Non Woven Sandwich Coating (GSM)"
+  },
+  {
+   "fieldname": "bottom_coating_gsm",
+   "fieldtype": "Data",
+   "label": "Bottom Coating (GSM)"
+  },
+  {
+   "fieldname": "width_inch",
+   "fieldtype": "Float",
+   "label": "Width (INCH)"
+  },
+  {
+   "fieldname": "lamination_bonding_self_method",
+   "fieldtype": "Data",
+   "label": "Lamination Bonding Self Method"
+  },
+  {
+   "fieldname": "thikness_astm_d5261_mil",
+   "fieldtype": "Float",
+   "label": "Thikness ASTM D5261 (Mil)"
+  },
+  {
+   "fieldname": "weight_astm_d3776_gsm",
+   "fieldtype": "Float",
+   "label": "Weight ASTM D3776 (GSM)"
+  },
+  {
+   "fieldname": "linear_dimensional_change__at_85c",
+   "fieldtype": "Data",
+   "label": "Linear Dimensional Change % at 85\u00b0C ASTM D 1204 (%) "
+  },
+  {
+   "fieldname": "liquid_water_transmission",
+   "fieldtype": "Data",
+   "label": "Liquid Water Transmission ASTM D4869 (Ibs)"
+  },
+  {
+   "fieldname": "te",
+   "fieldtype": "Data",
+   "label": "Tensile Strength (MD) ASTM D5035 (Ibs)"
+  },
+  {
+   "fieldname": "tensile_strength_cd_astm_d5035_ibs",
+   "fieldtype": "Data",
+   "label": "Tensile Strength (CD) ASTM D5035 (Ibs)"
+  },
+  {
+   "fieldname": "elongation_md_astm_d5035_",
+   "fieldtype": "Data",
+   "label": "Elongation (MD) ASTM D5035 (%) "
+  },
+  {
+   "fieldname": "elongation_cd_astm_d5035_",
+   "fieldtype": "Data",
+   "label": "Elongation (CD) ASTM D5035 (%)"
+  },
+  {
+   "fieldname": "tear_strength_md_astm_d4533_ibs",
+   "fieldtype": "Data",
+   "label": "Tear Strength (MD) ASTM D4533 (Ibs)"
+  },
+  {
+   "fieldname": "tear_strength_cd_astm_d4533_ibs",
+   "fieldtype": "Data",
+   "label": "Tear Strength (CD) ASTM D4533 (Ibs)"
+  },
+  {
+   "fieldname": "fastner_pull_through_resistance_lbs",
+   "fieldtype": "Data",
+   "label": "Fastner Pull Through Resistance (LBS) ASTM D228 (Ibs) "
+  },
+  {
+   "fieldname": "hydrostatic_resistance_astm_d751__procedure_a",
+   "fieldtype": "Data",
+   "label": "Hydrostatic Resistance ASTM D751 ( Procedure A)"
+  },
+  {
+   "fieldname": "accelereted_weathering_astm_d4798_cycle_a_1",
+   "fieldtype": "Data",
+   "label": "Accelereted weathering ASTM D4798, CYCLE A-1"
+  },
+  {
+   "fieldname": "coefficient_of_friction_bottom_md__astm_d1894",
+   "fieldtype": "Data",
+   "label": "Coefficient of Friction Bottom MD  ASTM D1894"
+  },
+  {
+   "fieldname": "coefficient_of_friction_bottom_cd__astm_d1894",
+   "fieldtype": "Data",
+   "label": "Coefficient of Friction Bottom CD  ASTM D1894"
+  },
+  {
+   "fieldname": "column_break_labb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "fabric_gsm_actual",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Fabric (GSM) Actual"
+  },
+  {
+   "fieldname": "non_woven_gsm_actual",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Non Woven (GSM) Actual"
+  },
+  {
+   "fieldname": "fabric_plus_non_woven_sandwich_coating_gsm__actual",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Fabric + Non Woven Sandwich Coating (GSM)  Actual"
+  },
+  {
+   "fieldname": "bottom_coating_gsm_actual",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Bottom Coating (GSM) Actual"
+  },
+  {
+   "fieldname": "width_inch__actual",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Width (INCH)  Actual"
+  },
+  {
+   "fieldname": "lamination_bonding_self_method__actual",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Lamination Bonding Self Method  Actual"
+  },
+  {
+   "fieldname": "thikness_astm_d5261_mil__actual",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Thikness ASTM D5261 (Mil)  Actual"
+  },
+  {
+   "fieldname": "weight_astm_d3776_gsm__actual",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Weight ASTM D3776 (GSM)  Actual"
+  },
+  {
+   "fieldname": "linear_dimensional_change__at_85c_astm_d_1204__actual",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Linear Dimensional Change % at 85\u00b0C ASTM D 1204 (%) Actual"
+  },
+  {
+   "fieldname": "liquid_water_transmission_astm_d5035_ibs_actual",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Liquid Water Transmission ASTM D4869(Ibs) Actual"
+  },
+  {
+   "fieldname": "tensile_strength_md_astm_d5035_ibs_actual",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Tensile Strength (MD) ASTM D5035 (Ibs) Actual"
+  },
+  {
+   "fieldname": "tensile_strength_cd_astm_d5035_ibs_actual",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Tensile Strength (CD) ASTM D5035 (Ibs) Actual"
+  },
+  {
+   "fieldname": "elongation_md_astm_d5035___actual",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Elongation (MD) ASTM D5035 (%)  Actual"
+  },
+  {
+   "fieldname": "elongation_cd_astm_d5035__actual",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Elongation (CD) ASTM D5035 (%) Actual"
+  },
+  {
+   "fieldname": "tear_strength_md_astm_d4533_ibs_actual",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Tear Strength (MD) ASTM D4533 (Ibs) Actual"
+  },
+  {
+   "fieldname": "tear_strength_cd_astm_d4533_ibs_actual",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Tear Strength (CD) ASTM D4533 (Ibs) Actual"
+  },
+  {
+   "fieldname": "fastner_pull_through_resistance_lbs_astm_d228_ibs_actual",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Fastner Pull Through Resistance (LBS) ASTM D228 (Ibs) Actual"
+  },
+  {
+   "fieldname": "hydrostatic_resistance_astm_d751__procedure_a_actual",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Hydrostatic Resistance ASTM D751 ( Procedure A) Actual"
+  },
+  {
+   "fieldname": "accelereted_weathering_astm_d4798_cycle_a_1_actual",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Accelereted weathering ASTM D4798, CYCLE A-1 Actual"
+  },
+  {
+   "fieldname": "coefficient_of_friction_bottom_md__astm_d1894_actual",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Coefficient of Friction Bottom MD  ASTM D1894 Actual"
+  },
+  {
+   "fieldname": "coefficient_of_friction_bottom_cd__astm_d1894_actual",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Coefficient of Friction Bottom CD  ASTM D1894 Actual"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-07-16 14:31:40.891038",
+ "modified_by": "Administrator",
+ "module": "Hariom Sanpra",
+ "name": "Finished Goods Inspection Report PP Export Child",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

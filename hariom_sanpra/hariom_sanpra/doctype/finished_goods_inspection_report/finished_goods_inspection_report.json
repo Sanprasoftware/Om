@@ -10,12 +10,16 @@
   "column_break_mfax",
   "ref_doc",
   "batch_no",
+  "type",
   "column_break_taha",
   "shift",
   "naming_series",
   "finished_goods_inspection_template",
   "section_break_ruld",
   "finished_goods_inspection",
+  "inspection_parameter_pipe",
+  "inspection_parameter_murgas",
+  "inspection_parameter_pp_export",
   "section_break_vfaw",
   "remark",
   "section_break_surd",
@@ -74,9 +78,10 @@
    "fieldtype": "Section Break"
   },
   {
+   "depends_on": "eval:doc.type ==\"Pondline\"",
    "fieldname": "finished_goods_inspection",
    "fieldtype": "Table",
-   "label": "Finished Goods Inspection",
+   "label": "Inspection Parameter (Pondline)",
    "options": "Finished Goods Inspection"
   },
   {
@@ -123,13 +128,40 @@
    "fieldtype": "Link",
    "label": "Finished Goods Inspection Template",
    "options": "Finished Goods Inspection Template"
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "label": "Type",
+   "options": "\nPondline\nPipe\nMurgas\nPP Export"
+  },
+  {
+   "depends_on": "eval:doc.type ==\"Pipe\"",
+   "fieldname": "inspection_parameter_pipe",
+   "fieldtype": "Table",
+   "label": "Inspection Parameter (Pipe)",
+   "options": "Finished Goods Inspection Report Pipe Child"
+  },
+  {
+   "depends_on": "eval:doc.type ==\"Murgas\"",
+   "fieldname": "inspection_parameter_murgas",
+   "fieldtype": "Table",
+   "label": "Inspection Parameter (Murgas)",
+   "options": "Finished Goods Inspection Report Murgas Child"
+  },
+  {
+   "depends_on": "eval:doc.type ==\"PP Export\"",
+   "fieldname": "inspection_parameter_pp_export",
+   "fieldtype": "Table",
+   "label": "Inspection Parameter (PP Export)",
+   "options": "Finished Goods Inspection Report PP Export Child"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-06-05 14:37:54.203059",
+ "modified": "2026-07-16 14:49:12.585034",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Finished Goods Inspection Report",

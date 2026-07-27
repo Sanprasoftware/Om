@@ -11,6 +11,8 @@
   "shift",
   "column_break_gjny",
   "batch_no",
+  "column_break_sboi",
+  "mc_type",
   "section_break_riev",
   "job_name",
   "structure",
@@ -262,14 +264,24 @@
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "fieldname": "mc_type",
+   "fieldtype": "Select",
+   "label": "M/C Type",
+   "options": "\nJP\nSRI"
+  },
+  {
+   "fieldname": "column_break_sboi",
+   "fieldtype": "Column Break"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-05-08 16:55:18.955456",
- "modified_by": "rutuja@sanpra.co.in",
+ "modified": "2026-07-10 17:23:51.052233",
+ "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "First Sheet Approval",
  "naming_rule": "By \"Naming Series\" field",

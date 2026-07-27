@@ -117,6 +117,8 @@ class deliverychallan(Document):
 				"qty": row.qty,
 				"s_warehouse": row.source_warehouse,
 				"t_warehouse": row.target_warehouse,
+				"is_finished_item": row.is_finished_item,  
+				"is_scrap_item": row.is_scrap_item,
 			})
 		se.save()
 		# se.insert(ignore_permissions=True)

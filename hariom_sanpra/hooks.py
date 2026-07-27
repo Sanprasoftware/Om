@@ -51,6 +51,7 @@ doctype_js = {
 	"Delivery Note": "public/js/delivery_note.js",
 	"Item": "public/js/item.js",
 	"Purchase Order": "public/js/purchase_order.js",
+	"Purchase Receipt": "public/js/purchase_receipt.js",
 	"Quality Inspection": "public/js/quality_inspection.js",
 }
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
@@ -169,9 +170,9 @@ doc_events = {
 		"on_update_after_submit": "hariom_sanpra.public.py.bom.set_bom"
 	},
     "Quality Inspection": {
-        "on_update": "hariom_sanpra.public.py.quality_inspection.update_purchase_receipt_qc_status",
-        "on_submit": "hariom_sanpra.public.py.quality_inspection.update_purchase_receipt_qc_status",
-        "on_cancel": "hariom_sanpra.public.py.quality_inspection.update_purchase_receipt_qc_status",
+        "on_update": "hariom_sanpra.public.py.quality_inspection.update_reference_qc_status",
+        "on_submit": "hariom_sanpra.public.py.quality_inspection.update_reference_qc_status",
+        "on_cancel": "hariom_sanpra.public.py.quality_inspection.update_reference_qc_status",
         "before_save": "hariom_sanpra.public.py.quality_inspection.set_readings_status",
     },
     "ToDo": {

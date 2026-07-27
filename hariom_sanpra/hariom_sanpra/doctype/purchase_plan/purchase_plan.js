@@ -7,14 +7,8 @@ frappe.ui.form.on("Purchase Plan", {
 		apply_purchase_plan_formula_for_table(frm, "purchase_plan_sub_item");
 	},
 	onload(frm) {
-        frm.set_query("item_code", "marketing_order", function(doc, cdt, cdn) {
-            return {
-                filters: {
-                    default_bom: ["!=", ""]  // Only items where default_bom is not empty
-                }
-            };
-        });
-    },
+		set_finished_item_query(frm, "marketing_order");
+	},
 	check_material(frm) {
 		frappe.call({
 			method: "hariom_sanpra.hariom_sanpra.doctype.purchase_plan.purchase_plan.get_purchase_plan_materials",
@@ -78,6 +72,16 @@ frappe.ui.form.on("Purchase Plan Sub item", {
 		apply_purchase_plan_item_formula(frm, cdt, cdn);
 	},
 });
+
+function set_finished_item_query(frm, table_field) {
+	frm.set_query("item_code", table_field, () => {
+		return {
+			filters: {
+				default_bom: ["!=", ""],
+			},
+		};
+	});
+}
 
 function apply_purchase_plan_formula_for_table(frm, table_field) {
 	(frm.doc[table_field] || []).forEach((row) => {

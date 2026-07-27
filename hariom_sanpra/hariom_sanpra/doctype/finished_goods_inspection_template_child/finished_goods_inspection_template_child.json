@@ -6,6 +6,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "pondline_section",
   "fabric_gradebis",
   "layer_bis",
   "fabric_no_1_bis",
@@ -542,14 +543,19 @@
    "fieldtype": "Float",
    "label": "Impact Failure Load (1524 MM Drop) (C01)",
    "precision": "2"
+  },
+  {
+   "fieldname": "pondline_section",
+   "fieldtype": "Section Break",
+   "label": "Pondline"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-06-13 13:06:23.534530",
- "modified_by": "rutuja@sanpra.co.in",
+ "modified": "2026-07-16 13:17:52.196612",
+ "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Finished Goods Inspection Template Child",
  "owner": "Administrator",

@@ -25,12 +25,6 @@ def get_columns():
             "width": 120,
         },
         {
-            "label": _("Time"),
-            "fieldname": "time",
-            "fieldtype": "Time",
-            "width": 120,
-        },
-        {
             "label": _("Party Name"),
             "fieldname": "party_name",
             "fieldtype": "Data",
@@ -47,24 +41,6 @@ def get_columns():
             "fieldname": "employee_name",
             "fieldtype": "Data",
             "width": 200,
-        },
-        {
-            "label": _("Ref Doc"),
-            "fieldname": "ref_doc",
-            "fieldtype": "Data",
-            "width": 180,
-        },
-        {
-            "label": _("Source Warehouse"),
-            "fieldname": "source_warehouse",
-            "fieldtype": "Data",
-            "width": 180,
-        },
-        {
-            "label": _("Target Warehouse"),
-            "fieldname": "target_warehouse",
-            "fieldtype": "Data",
-            "width": 180,
         },
         {
             "label": _("Item Code"),
@@ -86,29 +62,53 @@ def get_columns():
             "width": 100,
         },
         {
-            "label": _("Remaining Qty"),
-            "fieldname": "remaining_qty",
-            "fieldtype": "Float",
-            "width": 130,
-        },
-        {
             "label": _("Status"),
             "fieldname": "status",
             "fieldtype": "Data",
             "width": 120,
         },
-        {
-            "label": _("Rate"),
-            "fieldname": "rate",
-            "fieldtype": "Currency",
-            "width": 120,
-        },
-        {
-            "label": _("Amount"),
-            "fieldname": "amount",
-            "fieldtype": "Currency",
-            "width": 120,
-        },
+        # {
+        #     "label": _("Time"),
+        #     "fieldname": "time",
+        #     "fieldtype": "Time",
+        #     "width": 120,
+        # },
+        # {
+        #     "label": _("Ref Doc"),
+        #     "fieldname": "ref_doc",
+        #     "fieldtype": "Data",
+        #     "width": 180,
+        # },
+        # {
+        #     "label": _("Source Warehouse"),
+        #     "fieldname": "source_warehouse",
+        #     "fieldtype": "Data",
+        #     "width": 180,
+        # },
+        # {
+        #     "label": _("Target Warehouse"),
+        #     "fieldname": "target_warehouse",
+        #     "fieldtype": "Data",
+        #     "width": 180,
+        # },
+        # {
+        #     "label": _("Remaining Qty"),
+        #     "fieldname": "remaining_qty",
+        #     "fieldtype": "Float",
+        #     "width": 130,
+        # },
+        # {
+        #     "label": _("Rate"),
+        #     "fieldname": "rate",
+        #     "fieldtype": "Currency",
+        #     "width": 120,
+        # },
+        # {
+        #     "label": _("Amount"),
+        #     "fieldname": "amount",
+        #     "fieldtype": "Currency",
+        #     "width": 120,
+        # },
     ]
 
 
@@ -128,10 +128,10 @@ def get_data(filters):
 		fields=[
 			"name as delivery_challan",
 			"date",
-			"time",
+			# "time",
 			"party_name",
 			"delivery_type",
-			"ref_doc"
+			# "ref_doc"
 		]
 	)
 
@@ -165,15 +165,15 @@ def get_data(filters):
 			"delivery challan Items",
 			filters={"parent": dc.delivery_challan},
 			fields=[
-				"source_warehouse",
-				"target_warehouse",
+				# "source_warehouse",
+				# "target_warehouse",
 				"item_code",
 				"qty",
 				"uom",
-				"remaining_qty",
+				# "remaining_qty",
 				"status",
-				"rate",
-				"amount"
+				# "rate",
+				# "amount"
 			]
 		)
 
@@ -182,20 +182,20 @@ def get_data(filters):
 			final_data.append({
 				"delivery_challan": dc.delivery_challan,
 				"date": dc.date,
-				"time": dc.time,
+				# "time": dc.time,
 				"party_name": dc.party_name,
 				"delivery_type": dc.delivery_type,
 				"employee_name": employee_name,
-				"ref_doc": dc.ref_doc,
-				"source_warehouse": item.get("source_warehouse", ""),
-				"target_warehouse": item.get("target_warehouse", ""),
+				# "ref_doc": dc.ref_doc,
+				# "source_warehouse": item.get("source_warehouse", ""),
+				# "target_warehouse": item.get("target_warehouse", ""),
 				"item_code": item.get("item_code", ""),
 				"qty": item.get("qty", 0),
 				"uom": item.get("uom", ""),
-				"remaining_qty": item.get("remaining_qty", 0),
+				# "remaining_qty": item.get("remaining_qty", 0),
 				"status": item.get("status", ""),
-				"rate": item.get("rate", 0),
-				"amount": item.get("amount", 0),
+				# "rate": item.get("rate", 0),
+				# "amount": item.get("amount", 0),
 			})
 
 	return final_data

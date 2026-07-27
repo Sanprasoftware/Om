@@ -49,40 +49,9 @@ def get_columns() -> list[dict]:
 			"width": 100,
 		},
 		{
-			"label": _("M/c Start"),
-			"fieldname": "mc__start",
-			"fieldtype": "Data",
-			"width": 100,
-		},
-		{
-			"label": _("M/c Stop"),
-			"fieldname": "mc_stop",
-			"fieldtype": "Data",
-			"width": 100,
-		},
-		{
 			"label": _("Downtime"),
 			"fieldname": "downtime",
 			"fieldtype": "Float",
-			"width": 100,
-		},
-		{
-			"label": _("Downtime Reason"),
-			"fieldname": "downtime_reason",
-			"fieldtype": "Data",
-			"width": 100,
-		},
-		{
-			"label": _("Other Abnormality"),
-			"fieldname": "other_abrnormality",
-			"fieldtype": "Data",
-			"width": 100,
-		},
-		{
-			"label": _("Stock Entry Type"),
-			"fieldname": "stock_entry_type",
-			"fieldtype": "Link",
-			"options": "Stock Entry Type",
 			"width": 100,
 		},
 		{
@@ -91,14 +60,25 @@ def get_columns() -> list[dict]:
 			"fieldtype": "Data",
 			"width": 100,
 		},
-		{
-			"label": _("Batch"),
-			"fieldname": "batch",
-			"fieldtype": "Link",
-			"options": "Batch No",
+  		{
+			"label": _("Mesh Change"),
+			"fieldname": "mesh_change",
+			"fieldtype": "Int",
 			"width": 100,
 		},
-		# --- Finished Item Child Table Fields ---
+		{
+			"label": _("Reprocess Type"),
+			"fieldname": "reprocess_type",
+			"fieldtype": "Select",
+			"width": 100,
+		},
+		{
+			"label": _("M/C Name"),
+			"fieldname": "mc_name",
+			"fieldtype": "Link",
+			"options": "Stock Entry Type",
+			"width": 120,
+		},
 		{
 			"label": _("Item Code"),
 			"fieldname": "item_code",
@@ -107,10 +87,21 @@ def get_columns() -> list[dict]:
 			"width": 150,
 		},
 		{
-			"label": _("UOM"),
-			"fieldname": "uom",
-			"fieldtype": "Link",
-			"options": "UOM",
+			"label": _("Mesh Use"),
+			"fieldname": "mesh_use",
+			"fieldtype": "Data",
+			"width": 100,
+		},
+		{
+			"label": _("Qty Bags"),
+			"fieldname": "qty_bags",
+			"fieldtype": "Float",
+			"width": 100,
+		},
+		{
+			"label": _("Qty"),
+			"fieldname": "qty",
+			"fieldtype": "Float",
 			"width": 100,
 		},
 		{
@@ -121,21 +112,10 @@ def get_columns() -> list[dict]:
 			"width": 150,
 		},
 		{
-			"label": _("Qty Bags"),
-			"fieldname": "qty_bags",
-			"fieldtype": "Float",
-			"width": 100,
-		},
-		{
-			"label": _("Mesh Use"),
-			"fieldname": "mesh_use",
-			"fieldtype": "Data",
-			"width": 100,
-		},
-		{
-			"label": _("Std Pkg"),
-			"fieldname": "std_pkg",
-			"fieldtype": "Data",
+			"label": _("UOM"),
+			"fieldname": "uom",
+			"fieldtype": "Link",
+			"options": "UOM",
 			"width": 100,
 		},
 		{
@@ -145,18 +125,53 @@ def get_columns() -> list[dict]:
 			"options": "Batch",
 			"width": 120,
 		},
-		{
-			"label": _("Qty"),
-			"fieldname": "qty",
-			"fieldtype": "Float",
-			"width": 100,
-		},
-		{
-			"label": _("Reprocess Type"),
-			"fieldname": "reprocess_type",
-			"fieldtype": "Select",
-			"width": 100,
-		},
+		# {
+		# 	"label": _("M/c Start"),
+		# 	"fieldname": "mc__start",
+		# 	"fieldtype": "Data",
+		# 	"width": 100,
+		# },
+		# {
+		# 	"label": _("M/c Stop"),
+		# 	"fieldname": "mc_stop",
+		# 	"fieldtype": "Data",
+		# 	"width": 100,
+		# },
+		# {
+		# 	"label": _("Downtime Reason"),
+		# 	"fieldname": "downtime_reason",
+		# 	"fieldtype": "Data",
+		# 	"width": 100,
+		# },
+		# {
+		# 	"label": _("Other Abnormality"),
+		# 	"fieldname": "other_abrnormality",
+		# 	"fieldtype": "Data",
+		# 	"width": 100,
+		# },
+		# {
+		# 	"label": _("Stock Entry Type"),
+		# 	"fieldname": "stock_entry_type",
+		# 	"fieldtype": "Link",
+		# 	"options": "Stock Entry Type",
+		# 	"width": 100,
+		# },
+		# {
+		# 	"label": _("Batch"),
+		# 	"fieldname": "batch",
+		# 	"fieldtype": "Link",
+		# 	"options": "Batch No",
+		# 	"width": 100,
+		# },
+  
+		# --- Finished Item Child Table Fields ---
+		# {
+		# 	"label": _("Std Pkg"),
+		# 	"fieldname": "std_pkg",
+		# 	"fieldtype": "Data",
+		# 	"width": 100,
+		# },
+  
 	]
 
 
@@ -184,6 +199,9 @@ def get_data(filters) -> list[list]:
 	
 	if filters.get("reprocess_type"):
 		conditions["reprocess_type"] = filters.get("reprocess_type")
+	
+	if filters.get("mc_name"):
+		conditions["stock_entry_type"] = filters.get("mc_name")
 
 	if filters.get("operator"):
 		reprocess_names = frappe.get_all(
@@ -204,22 +222,24 @@ def get_data(filters) -> list[list]:
 			"date",
 			"shift",
 			"manpower",
-			"mc__start",
-			"mc_stop",
+			# "mc__start",
+			# "mc_stop",
 			"downtime",
-			"downtime_reason",
-			"other_abrnormality",
-			"stock_entry_type",
+			# "downtime_reason",
+			# "other_abrnormality",
+			# "stock_entry_type",
 			"mesh_used",
-			"batch",
-			"reprocess_type"
+			"mesh_change",
+			# "batch",
+			"reprocess_type",
+			"stock_entry_type",
 		],
 		filters=conditions
 	)
 
 	for row in all_data:
 		operator_name = get_operator_names(row.name)
-		downtime_reason = get_downtime_reasons(row.name, row.downtime_reason)
+		# downtime_reason = get_downtime_reasons(row.name, row.downtime_reason)
 
 		# Fetch child table items where is_finished_item = 1
 		child_filters = {
@@ -242,7 +262,7 @@ def get_data(filters) -> list[list]:
 				"target_warehouse",
 				"qty_bags",
 				"mesh_use",
-				"std_pkg",
+				# "std_pkg",
 				"batch_no",
 				"qty"
 			]
@@ -261,20 +281,22 @@ def get_data(filters) -> list[list]:
 				"shift": row.shift,
 				"manpower": row.manpower,
 				"operator_name": operator_name,
-				"mc__start": row.mc__start,
-				"mc_stop": row.mc_stop,
+				# "mc__start": row.mc__start,
+				# "mc_stop": row.mc_stop,
 				"downtime": row.downtime,
-				"downtime_reason": downtime_reason,
-				"other_abrnormality": row.other_abrnormality,
-				"stock_entry_type": row.stock_entry_type,
+				# "downtime_reason": downtime_reason,
+				# "other_abrnormality": row.other_abrnormality,
+				# "stock_entry_type": row.stock_entry_type,
 				"mesh_used": row.mesh_used,
-				"batch": row.batch,
+				"mesh_change" : row.mesh_change,
+				"mc_name": row.stock_entry_type,
+				# "batch": row.batch,
 				"item_code": None,
 				"uom": None,
 				"target_warehouse": None,
 				"qty_bags": None,
 				"mesh_use": None,
-				"std_pkg": None,
+				# "std_pkg": None,
 				"batch_no": None,
 				"qty": None,
 				"reprocess_type": row.reprocess_type,
@@ -291,20 +313,22 @@ def get_data(filters) -> list[list]:
 						"shift": row.shift,
 						"manpower": row.manpower,
 						"operator_name": operator_name,
-						"mc__start": row.mc__start,
-						"mc_stop": row.mc_stop,
+						# "mc__start": row.mc__start,
+						# "mc_stop": row.mc_stop,
 						"downtime": row.downtime,
-						"downtime_reason": downtime_reason,
-						"other_abrnormality": row.other_abrnormality,
-						"stock_entry_type": row.stock_entry_type,
+						# "downtime_reason": downtime_reason,
+						# "other_abrnormality": row.other_abrnormality,
+						# "stock_entry_type": row.stock_entry_type,
 						"mesh_used": row.mesh_used,
-						"batch": row.batch,
+						"mesh_change" : row.mesh_change,
+						"mc_name": row.stock_entry_type,
+						# "batch": row.batch,
 						"item_code": item.item_code,
 						"uom": item.uom,
 						"target_warehouse": item.target_warehouse,
 						"qty_bags": item.qty_bags,
 						"mesh_use": item.mesh_use,
-						"std_pkg": item.std_pkg,
+						# "std_pkg": item.std_pkg,
 						"batch_no": item.batch_no,
 						"qty": item.qty,
 						"reprocess_type": row.reprocess_type,
@@ -317,20 +341,22 @@ def get_data(filters) -> list[list]:
 						"shift": None,
 						"manpower": None,
 						"operator_name": None,
-						"mc__start": None,
-						"mc_stop": None,
+						# "mc__start": None,
+						# "mc_stop": None,
 						"downtime": None,
-						"downtime_reason": None,
-						"other_abrnormality": None,
-						"stock_entry_type": None,
+						# "downtime_reason": None,
+						# "other_abrnormality": None,
+						# "stock_entry_type": None,
 						"mesh_used": None,
-						"batch": None,
+						"mesh_change":None,
+						"mc_name": row.stock_entry_type,
+						# "batch": None,
 						"item_code": item.item_code,
 						"uom": item.uom,
 						"target_warehouse": item.target_warehouse,
 						"qty_bags": item.qty_bags,
 						"mesh_use": item.mesh_use,
-						"std_pkg": item.std_pkg,
+						# "std_pkg": item.std_pkg,
 						"batch_no": item.batch_no,
 						"qty": item.qty,
 						"reprocess_type": None,
@@ -363,20 +389,20 @@ def get_operator_names(parent: str) -> str:
 	return ", ".join(operator_names)
 
 
-def get_downtime_reasons(parent: str, fallback: str | None = None) -> str | None:
-	reasons = frappe.get_all(
-		"Down Time Reason Items",
-		filters={
-			"parent": parent,
-			"parenttype": "Reprocess",
-			"parentfield": "downtime_reason",
-		},
-		fields=["down_time_reason"],
-		order_by="idx",
-	)
+# def get_downtime_reasons(parent: str, fallback: str | None = None) -> str | None:
+# 	reasons = frappe.get_all(
+# 		"Down Time Reason Items",
+# 		filters={
+# 			"parent": parent,
+# 			"parenttype": "Reprocess",
+# 			"parentfield": "downtime_reason",
+# 		},
+# 		fields=["down_time_reason"],
+# 		order_by="idx",
+# 	)
 
-	formatted_reasons = [
-		row.get("down_time_reason") for row in reasons if row.get("down_time_reason")
-	]
+# 	formatted_reasons = [
+# 		row.get("down_time_reason") for row in reasons if row.get("down_time_reason")
+# 	]
 
-	return ", ".join(formatted_reasons) or fallback
+# 	return ", ".join(formatted_reasons) or fallback

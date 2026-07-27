@@ -160,15 +160,6 @@ frappe.ui.form.on("Stock Entry", {
                 frm.doc.stock_entry_type
             );
         });
-
-		// (frm.doc.custom_raw_items || []).forEach(row => {
-        //     frappe.model.set_value(
-        //         row.doctype,
-        //         row.name,
-        //         "stock_entry_type",
-        //         frm.doc.stock_entry_type
-        //     );
-        // });
 		
     },
 	onload(frm) {
@@ -246,8 +237,38 @@ frappe.ui.form.on("Stock Entry", {
 			}
 		})
 	},
-	
+	custom_previous_stock_entry_ref_id(frm) {
+		frm.call({
+			method: "hariom_sanpra.public.py.stock_entry.get_previous_stock_entry_items",
+			args: {
+				stock_entry: frm.doc.custom_previous_stock_entry_ref_id
+			},
+			callback: function(r) {
+				if (r.message) {
+					frm.set_value({
+						set_posting_time: 1,
+						stock_entry_type: r.message.stock_entry_type,
+						custom_machine_name: r.message.custom_machine_name,
+						custom_manpower: r.message.custom_manpower,
+						custom_manufacture_type: r.message.custom_manufacture_type,
+						posting_date: r.message.posting_date,
+						custom_batch_no: r.message.custom_batch_no,
+						custom_shift: r.message.custom_shift
+					});
 
+					// Copy Table MultiSelect
+					frm.clear_table("custom_operator_name");
+
+					(r.message.custom_operator_name || []).forEach(function(row) {
+						let d = frm.add_child("custom_operator_name");
+						d.operator_name = row.operator_name; // child fieldname
+					});
+
+					frm.refresh_field("custom_operator_name");
+				}
+			}
+		});
+	}
 });
 // ***************************************************************************
 function calc(frm) {

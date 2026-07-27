@@ -52,5 +52,23 @@ frappe.query_reports["Daily-Cumulative Production Report"] = {
 			options: "\nPONDLINE\nPIPE\nPP EXPORT",
 		},
 	],
+	formatter(value, row, column, data, default_formatter) {
+		const formatted_value = default_formatter(value, row, column, data);
+		if (!data?.is_total_row) return formatted_value;
+
+		const color = AVERAGE_FIELDS.has(column.fieldname) ? "blue" : "inherit";
+		return `<span style="font-weight: 700; color: ${color}">${formatted_value}</span>`;
+	},
 };
- 
+
+const AVERAGE_FIELDS = new Set([
+	"mc_run",
+	"prod_percent",
+	"d_time_percent",
+	"wastage_percent",
+	"ld_percent",
+	"trim_percent",
+	"other_percent",
+	"std_gsm",
+	"act_gsm",
+]);

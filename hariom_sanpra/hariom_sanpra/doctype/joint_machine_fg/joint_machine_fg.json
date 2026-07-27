@@ -52,6 +52,7 @@
    "label": "Width"
   },
   {
+   "default": "JOINT MACHINE Ready To Dispatch\t\t\t\t\t\t\t - OM",
    "fieldname": "warehouse",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -63,8 +64,8 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-04-17 14:14:07.603801",
- "modified_by": "Administrator",
+ "modified": "2026-07-14 12:53:44.416003",
+ "modified_by": "rutuja@sanpra.co.in",
  "module": "Hariom Sanpra",
  "name": "Joint Machine FG",
  "owner": "Administrator",
