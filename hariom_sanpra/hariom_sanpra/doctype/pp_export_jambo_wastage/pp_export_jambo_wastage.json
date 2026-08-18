@@ -54,6 +54,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "default": "Scrap - OM",
    "fieldname": "warehouse",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -65,7 +66,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-04-22 12:41:52.707549",
+ "modified": "2026-08-13 18:13:03.020490",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "PP Export jambo Wastage",

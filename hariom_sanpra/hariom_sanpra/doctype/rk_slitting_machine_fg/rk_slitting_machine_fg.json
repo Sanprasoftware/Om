@@ -9,8 +9,6 @@
   "item",
   "column_break_iult",
   "qty",
-  "column_break_umic",
-  "batch",
   "column_break_ejmz",
   "warehouse"
  ],
@@ -33,21 +31,11 @@
    "label": "Qty"
   },
   {
-   "fieldname": "column_break_umic",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "batch",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Batch",
-   "options": "Batch"
-  },
-  {
    "fieldname": "column_break_ejmz",
    "fieldtype": "Column Break"
   },
   {
+   "default": "RK M/C WAREHOUSE - OM",
    "fieldname": "warehouse",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -59,7 +47,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-04-20 18:07:00.537522",
+ "modified": "2026-08-13 17:20:16.778511",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "RK Slitting Machine FG",

@@ -11,6 +11,7 @@
   "column_break_lnha",
   "target_warehouse",
   "item_name",
+  "is_packaging_material",
   "section_break_bknm",
   "qty",
   "remaining_qty",
@@ -114,14 +115,21 @@
    "in_list_view": 1,
    "label": "Status",
    "options": "Pending\nPartially\nCompleted"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_packaging_material",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Is Packaging Material"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-06-12 17:21:14.066718",
- "modified_by": "rutuja@sanpra.co.in",
+ "modified": "2026-07-29 18:08:29.383273",
+ "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "delivery challan Items",
  "owner": "Administrator",

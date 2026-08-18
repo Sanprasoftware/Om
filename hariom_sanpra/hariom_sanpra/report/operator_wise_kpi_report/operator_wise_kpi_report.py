@@ -155,14 +155,31 @@ def get_columns() -> list[dict]:
 			"fieldtype": "Data",
 			"hidden": 1,
 		},
+		{
+			"label": _("Wastage"),
+			"fieldname": "wastage",
+			"fieldtype": "Float",
+			"width": 100,
+		},
 	]
 
 
 def get_data(filters: frappe._dict) -> list[dict]:
 	conditions = [
 		"se.docstatus in (0, 1)",
-		"(ifnull(sed.is_finished_item, 0) = 1 OR ifnull(sed.is_scrap_item, 0) = 1)",
+		# "(ifnull(sed.is_finished_item, 0) = 1 OR ifnull(sed.is_scrap_item, 0) = 1)",
 	]
+	if filters.get("is_finished_item") and not filters.get("is_scrap_item"):
+		conditions.append("ifnull(sed.is_finished_item, 0) = 1")
+
+	elif filters.get("is_scrap_item") and not filters.get("is_finished_item"):
+		conditions.append("ifnull(sed.is_scrap_item, 0) = 1")
+
+	else:
+		# Dono unchecked ya dono checked -> existing behavior
+		conditions.append(
+			"(ifnull(sed.is_finished_item, 0) = 1 OR ifnull(sed.is_scrap_item, 0) = 1)"
+		)
 	sql_filters: dict[str, str] = {}
 
 	if filters.get("from_date"):
@@ -266,6 +283,7 @@ def get_data(filters: frappe._dict) -> list[dict]:
 			# sed.meter,
 			# sed.roll,
 			# sed.colour,
+			se.custom_wastage as wastage,
 			sed.item_code,
 			item.custom_feet as feet,
 			sed.item_name,

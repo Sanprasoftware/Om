@@ -57,8 +57,27 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "Quality Inspection",
+   "link_count": 1,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Seam Strength",
+   "link_count": 0,
+   "link_to": "Seam Strength",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Reports",
-   "link_count": 3,
+   "link_count": 7,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -97,26 +116,47 @@
   },
   {
    "hidden": 0,
-   "is_query_report": 0,
-   "label": "Quality Inspection",
-   "link_count": 1,
-   "link_type": "DocType",
+   "is_query_report": 1,
+   "label": "Stock Balance",
+   "link_count": 0,
+   "link_to": "Stock Balance",
+   "link_type": "Report",
    "onboard": 0,
-   "type": "Card Break"
+   "type": "Link"
   },
   {
    "hidden": 0,
-   "is_query_report": 0,
-   "label": "Seam Strength",
+   "is_query_report": 1,
+   "label": "Stock Balance Hariom",
    "link_count": 0,
-   "link_to": "Seam Strength",
-   "link_type": "DocType",
+   "link_to": "Stock Balance Hariom",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Stock Ledger",
+   "link_count": 0,
+   "link_to": "Stock Ledger",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Stock Ledger Hariom",
+   "link_count": 0,
+   "link_to": "Stock Ledger Hariom",
+   "link_type": "Report",
    "onboard": 0,
    "type": "Link"
   }
  ],
- "modified": "2026-06-12 15:31:15.954861",
- "modified_by": "rutuja@sanpra.co.in",
+ "modified": "2026-08-14 15:42:40.207171",
+ "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Pipe",
  "number_cards": [],

@@ -11,7 +11,7 @@ class Reprocess(Document):
 	def on_submit(self):
 		self.create_stock_entry()
 		self.validate_is_finish_item()
-	
+
 	def on_cancel(self):
 		self.cancel_stock_entry()
 
@@ -31,13 +31,13 @@ class Reprocess(Document):
 	# 	total_raw = sum(flt(row.qty) for row in self.get("scrap_item") or [])
 	# 	total_wst = sum(flt(row.qty) for row in self.get("wastage") or [])
 	# 	total_fg  = sum(flt(row.qty) for row in self.get("fg_item") or [])
-		
+
 	# 	if total_fg <= 0:
 	# 		frappe.throw("FG Qty must be greater than 0")
 	# 	net_qty = total_raw - total_wst
 	# 	if net_qty <= 0:
 	# 		frappe.throw("Net Qty must be greater than 0")
-	# 	per_fg_qty = net_qty / total_fg 
+	# 	per_fg_qty = net_qty / total_fg
 
 		# for row in self.get("scrap_item") or []:
 		# 	if not (row.item_code and row.qty):
@@ -84,39 +84,27 @@ class Reprocess(Document):
 	@frappe.whitelist()
 	def calculate_amount(self):
 		for row in self.get("item") or []:
-			if row.item_code and row.qty:				
+			if row.item_code and row.qty:
 				row.basic_amount = flt(row.qty) * flt(row.basic_rate_as_per_stock_uom)
 			else:
 				row.basic_amount = 0
-	
 
 
+
+#***************************create stock entry ***************************************
 	def create_stock_entry(self):
 
 		se = frappe.new_doc("Stock Entry")
-
 		se.stock_entry_type = self.stock_entry_type
 		se.custom_shift = self.shift
-
-		# OPTIONAL:
-		# If custom_operator_names is a Text/Data field
-		# then convert operators into comma-separated string
-
-		operator_list = []
-
-		for op in self.operator_names:
-			operator_name = frappe.db.get_value(
-				"Employee",
-				op.operator_name,
-				"employee_name"
-			) or op.operator_name
-
-			operator_list.append(operator_name)
-
-		se.custom_operator_names = ", ".join(operator_list)
-
-		# LINK REPROCESS DOC
-		# se.custom_reprocess_reference = self.name
+		se.set_posting_time = 1
+		se.posting_date = self.date
+		se.custom_reference_doc = self.doctype
+		se.custom_reference_id = self.name
+		for operator in self.operator_names:
+			se.append("custom_operator_name", {
+				"operator_name": operator.operator_name,
+			})
 
 		for row in self.item:
 
@@ -128,29 +116,50 @@ class Reprocess(Document):
 				"uom": row.uom,
 				"batch_no": row.batch_no,
 				"basic_rate": row.basic_rate_as_per_stock_uom,
-				"is_finished_item": row.is_finished_item,  
+				"is_finished_item": row.is_finished_item,
 				"is_scrap_item": row.is_scrap_item,
-				
+
 			})
 
 		se.insert(ignore_permissions=True)
 		se.submit()
 
-
+#***************************cancel doc***************************************
 	def cancel_stock_entry(self):
 
 		stock_entries = frappe.get_all(
 			"Stock Entry",
 			filters={
-				"custom_reprocess_reference": self.name,
+				"custom_reference_doc": self.doctype,
+				"custom_reference_id": self.name,
 				"docstatus": 1
 			},
 			pluck="name"
 		)
 
 		for name in stock_entries:
-
 			se = frappe.get_doc("Stock Entry", name)
+			se.flags.ignore_links = True
+			se.cancel()
 
-			if se.docstatus == 1:
-				se.cancel()
+#****************************delete doc**********************************
+	def on_trash(self):
+		self.delete_stock_entry()
+
+	def delete_stock_entry(self):
+		stock_entries = frappe.get_all(
+			"Stock Entry",
+			filters={
+				"custom_reference_doc": self.doctype,
+				"custom_reference_id": self.name,
+			},
+			pluck="name"
+		)
+
+		for name in stock_entries:
+			doc = frappe.get_doc("Stock Entry", name)
+
+			if doc.docstatus == 1:
+				doc.cancel()
+
+			doc.delete(ignore_permissions=True)

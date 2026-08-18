@@ -126,7 +126,7 @@
    "hidden": 0,
    "is_query_report": 0,
    "label": "Reports",
-   "link_count": 6,
+   "link_count": 10,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -190,10 +190,50 @@
    "link_type": "Report",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Raw Material BOM Variants Report",
+   "link_count": 0,
+   "link_to": "Raw Material BOM Variants Report",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Operator Wise KPI Report",
+   "link_count": 0,
+   "link_to": "Operator Wise KPI Report",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Production Report",
+   "link_count": 0,
+   "link_to": "Production Report",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Raw Wastage BOM Variants Report",
+   "link_count": 0,
+   "link_to": "Raw Wastage BOM Variants Report",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2026-06-18 13:30:00.456198",
- "modified_by": "rutuja@sanpra.co.in",
+ "modified": "2026-08-12 13:45:01.152557",
+ "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "JP Machine",
  "number_cards": [],

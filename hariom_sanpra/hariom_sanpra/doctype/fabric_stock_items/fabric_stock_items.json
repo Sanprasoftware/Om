@@ -1,0 +1,102 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-07-29 12:11:42.138851",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "gsm",
+  "6ft_kg",
+  "10_ft_kg",
+  "column_break_pfuk",
+  "11_ft_kg",
+  "12_ft_kg",
+  "totalkg",
+  "f_goutput_kg",
+  "remark"
+ ],
+ "fields": [
+  {
+   "fieldname": "gsm",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "GSM",
+   "options": "GSM"
+  },
+  {
+   "fieldname": "6ft_kg",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "6FT (KG)",
+   "precision": "2"
+  },
+  {
+   "fieldname": "10_ft_kg",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "10 FT (KG)",
+   "precision": "2"
+  },
+  {
+   "fieldname": "11_ft_kg",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "11 FT (KG)",
+   "precision": "2"
+  },
+  {
+   "fieldname": "12_ft_kg",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "12 FT (KG)",
+   "precision": "2"
+  },
+  {
+   "fieldname": "totalkg",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "TOTAL(KG)",
+   "precision": "2"
+  },
+  {
+   "fieldname": "f_goutput_kg",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": " F G.OUTPUT (KG)",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_pfuk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "remark",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "REMARK"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-08-04 18:05:19.089229",
+ "modified_by": "Administrator",
+ "module": "Hariom Sanpra",
+ "name": "FABRIC STOCK Items",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

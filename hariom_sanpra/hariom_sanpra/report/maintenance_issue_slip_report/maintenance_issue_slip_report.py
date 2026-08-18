@@ -157,11 +157,19 @@ def get_data(filters: dict) -> list[dict]:
 				report_row["basic_rate"] = item_row.get("basic_rate")
 				report_row["basic_amount"] = item_row.get("basic_amount")
 				report_row["warehouse"] = item_row.get("source_warehouse")
-				if index:
+				if index > 0:
 					report_row["name"] = ""
 					report_row["issue_date"] = ""
+					report_row["operator_name"] = ""
+					report_row["stock_entry_type"] = ""
+					report_row["machine_name"] = ""
+					report_row["maintains_oper"] = ""
+					report_row["department"] = ""
 					report_row["total_amount"] = ""
-					report_row["remark"] = ""
+					report_row["warehouse"] = ""
+					report_row["req_given_by"] = ""
+					report_row["issued_by"] = ""
+
 				for df in table_fields:
 					child_rows = [item_row] if df.fieldname == "items" else (doc.get(df.fieldname) or [])
 					report_row[f"{df.fieldname}_summary"] = format_child_table(child_rows)

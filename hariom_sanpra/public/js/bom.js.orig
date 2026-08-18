@@ -1,0 +1,26 @@
+frappe.ui.form.on("BOM", {
+	quantity(frm) {
+		calculate_bom_percent(frm);
+	},
+});
+
+frappe.ui.form.on("BOM Item", {
+	qty(frm, cdt, cdn) {
+		calculate_bom_percent(frm);
+	},
+});
+
+function calculate_bom_percent(frm) {
+	let bom_qty = flt(frm.doc.quantity);
+
+	(frm.doc.items || []).forEach(row => {
+		let percent = bom_qty ? (flt(row.qty) / bom_qty) * 100 : 0;
+
+		frappe.model.set_value(
+			row.doctype,
+			row.name,
+			"custom_bom_percent_rm",
+			percent
+		);
+	});
+}

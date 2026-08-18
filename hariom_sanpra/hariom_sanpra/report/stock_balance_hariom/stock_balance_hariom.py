@@ -25,6 +25,8 @@ class StockBalanceFilter(TypedDict):
 	from_date: str
 	to_date: str
 	item_group: str | None
+	gsm: str | None
+	feet: str | None
 	item: list[str] | None
 	warehouse: list[str] | None
 	warehouse_type: str | None 
@@ -129,6 +131,10 @@ class StockBalanceReport:
 		opening_entries = stk_cl_obj.get_stock_closing_balance(query_filters)
 		if not opening_entries:
 			return []
+
+		if self.filters.get("gsm") or self.filters.get("feet"):
+			allowed_items = set(self.get_attribute_filtered_item_codes())
+			opening_entries = [entry for entry in opening_entries if entry.item_code in allowed_items]
 
 		return opening_entries
 
@@ -385,7 +391,22 @@ class StockBalanceReport:
 		if brand := self.filters.get("brand"):
 			query = query.where(item_table.brand == brand)
 
+		if gsm := self.filters.get("gsm"):
+			query = query.where(item_table.custom_gsm1 == gsm)
+
+		if feet := self.filters.get("feet"):
+			query = query.where(item_table.custom_feet == feet)
+
 		return query
+
+	def get_attribute_filtered_item_codes(self) -> list[str]:
+		filters = {}
+		if gsm := self.filters.get("gsm"):
+			filters["custom_gsm1"] = gsm
+		if feet := self.filters.get("feet"):
+			filters["custom_feet"] = feet
+
+		return frappe.get_all("Item", filters=filters, pluck="name")
 
 	def apply_date_filters(self, query, sle) -> str:
 		if not self.filters.ignore_closing_balance and self.start_from:

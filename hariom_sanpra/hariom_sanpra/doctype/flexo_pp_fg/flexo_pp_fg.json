@@ -54,6 +54,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "default": "Flexo printing - OM",
    "fieldname": "warehouse",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -65,7 +66,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-04-21 17:48:31.872530",
+ "modified": "2026-08-13 18:14:38.159875",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Flexo PP FG",

@@ -44,7 +44,7 @@
    "fieldname": "downtime",
    "fieldtype": "Float",
    "in_list_view": 1,
-   "label": "Downtime"
+   "label": "Downtime(Min)"
   },
   {
    "fieldname": "stock_entry_type",
@@ -178,7 +178,7 @@
    "fieldname": "reprocess_type",
    "fieldtype": "Select",
    "label": "Wastage/Reprocess Type",
-   "options": "\nPONDLINE\nPIPE\nPP EXPORT",
+   "options": "\nPONDLINE\nPIPE\nPP EXPORT\nMURGHAS",
    "reqd": 1
   },
   {
@@ -191,8 +191,8 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-06-20 12:17:52.195551",
- "modified_by": "rutuja@sanpra.co.in",
+ "modified": "2026-08-14 12:30:04.041515",
+ "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Reprocess",
  "naming_rule": "By \"Naming Series\" field",

@@ -48,8 +48,6 @@ class GDRewinding(Document):
 					"item_code": fg.item_code,
 					"qty": per_fg_qty,   # ✅ CALCULATED VALUE
 					"target_warehouse": fg.warehouse,
-					"batch": fg.batch,
-					"batch_no": row.batch if row.batch else None,
 					"uom": self._get_stock_uom(fg.item_code),
 					"is_finished_item": 1,
 					"is_scrap_item": 0
@@ -63,7 +61,7 @@ class GDRewinding(Document):
 				"qty": flt(ws.qty),
 				"target_warehouse": ws.warehouse,
 				"batch": ws.batch,
-				"batch_no": row.batch if row.batch else None,
+				# "batch_no": row.batch if row.batch else None,
 				"uom": self._get_stock_uom(ws.item_code),
 				"is_finished_item": 0,
 				"is_scrap_item": 1
@@ -95,7 +93,14 @@ class GDRewinding(Document):
 	def create_stock_entry(self):
 		se = frappe.new_doc("Stock Entry")
 		se.stock_entry_type = "GD Rewinding"
-		se.custom_operator_name = self.operator_name
+		se.set_posting_time = 1
+		se.custom_reference_doc = self.doctype
+		se.custom_reference_id = self.name
+		se.posting_date = self.date
+		for operator in self.operator_name:
+					se.append("custom_operator_name", {
+						"operator_name": operator.operator_name,
+					})
 		se.custom_machine_name = self.machine_name
 		se.custom_shift = self.shift
 		se.custom_batch_no = self.batch
@@ -117,15 +122,48 @@ class GDRewinding(Document):
 		se.submit()
 
 
+#***************************cancel doc***************************************
 	def cancel_stock_entry(self):
+
 		stock_entries = frappe.get_all(
 			"Stock Entry",
 			filters={
-				"stock_entry_type": "GD Rewinding",
+				"custom_reference_doc": self.doctype,
+				"custom_reference_id": self.name,
 				"docstatus": 1
 			},
 			pluck="name"
 		)
 
 		for name in stock_entries:
-			frappe.get_doc("Stock Entry", name).cancel()
+			se = frappe.get_doc("Stock Entry", name)
+			se.flags.ignore_links = True
+			se.cancel()
+
+
+#****************************delete doc**********************************
+	def on_trash(self):
+		self.delete_stock_entry()
+
+	def delete_stock_entry(self):
+		# Remove the reverse link before deleting the linked Stock Entry.
+		# Otherwise Frappe blocks deletion because this GD Rewinding still references it.
+		if self.stock_entry_id:
+			self.db_set("stock_entry_id", None, update_modified=False)
+
+		stock_entries = frappe.get_all(
+			"Stock Entry",
+			filters={
+				"custom_reference_doc": self.doctype,
+				"custom_reference_id": self.name,
+			},
+			pluck="name"
+		)
+
+		for name in stock_entries:
+			doc = frappe.get_doc("Stock Entry", name)
+
+			if doc.docstatus == 1:
+				doc.cancel()
+
+			doc.delete(ignore_permissions=True)

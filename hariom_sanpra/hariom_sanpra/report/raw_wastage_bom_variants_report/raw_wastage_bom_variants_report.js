@@ -23,7 +23,7 @@ frappe.query_reports["Raw Wastage BOM Variants Report"] = {
 			fieldname: "operator_name",
 			label: __("Operator Name"),
 			fieldtype: "Link",
-			options: "Operator Name",
+			options: "Employee",
 		},
 		{
 			fieldname: "machine_name",
@@ -66,7 +66,7 @@ frappe.query_reports["Raw Wastage BOM Variants Report"] = {
 			fieldname: "manufacturing_type",
 			label: __("Manufacturing Type"),
 			fieldtype: "Select",
-			options: "\nPONDLINE\nPIPE\nPP EXPORT",
+			options: "\nPONDLINE\nPIPE\nPP EXPORT\nMURGHAS",
 		},
 		{
 			fieldname: "feet",
@@ -122,11 +122,11 @@ frappe.query_reports["Raw Wastage BOM Variants Report"] = {
 	},
 
 	after_datatable_render(datatable) {
-		if (!datatable.options.showTotalRow || datatable.__average_row_enabled) {
+		if (!datatable.options.showTotalRow || datatable.__variation_total_enabled) {
 			return;
 		}
 
-		datatable.__average_row_enabled = true;
+		datatable.__variation_total_enabled = true;
 		const render_standard_footer = datatable.bodyRenderer.renderFooter.bind(
 			datatable.bodyRenderer
 		);
@@ -135,66 +135,44 @@ frappe.query_reports["Raw Wastage BOM Variants Report"] = {
 			render_standard_footer();
 
 			const rows = this.visibleRows || [];
-			if (!rows.length) return;
-
 			const columns = this.datamanager.getColumns();
-			const first_data_column = this.datamanager.getStandardColumnCount();
-			const average_row = columns.map((column, index) => {
-				let content = "";
-				let cell_column = column;
+			const get_column_index = (fieldname) =>
+				columns.findIndex(
+					(column) => column.id === fieldname || column.fieldname === fieldname
+				);
+			const work_order_index = get_column_index("work_order_qty");
+			const variation_index = get_column_index("variation");
+			const percentage_index = get_column_index("variation_percentage");
 
-				if (index === first_data_column) {
-					content = __("Average");
-					cell_column = { ...column, fieldtype: "Data" };
-				} else if (frappe.model.is_numeric_field(column.fieldtype)) {
-					const values = rows
-						.map((row) => row[index]?.content)
-						.filter(
-							(value) =>
-								value !== null &&
-								value !== undefined &&
-								value !== "" &&
-								Number.isFinite(Number(value))
-						)
-						.map(Number);
+			if (
+				!rows.length ||
+				work_order_index < 0 ||
+				variation_index < 0 ||
+				percentage_index < 0
+			) {
+				return;
+			}
 
-					if (values.length) {
-						content =
-							values.reduce((total, value) => total + value, 0) /
-							values.length;
-					}
-				}
-
-				return {
-					content,
-					isTotalRow: 1,
-					colIndex: column.colIndex,
-					column: cell_column,
-				};
-			});
-
-			this.footer.insertAdjacentHTML(
-				"beforeend",
-				this.rowmanager.getRowHTML(average_row, {
-					isTotalRow: 1,
-					rowIndex: "averageRow",
-				})
+			const sum_column = (column_index) =>
+				rows.reduce((total, row) => {
+					const value = Number(row[column_index]?.content);
+					return total + (Number.isFinite(value) ? value : 0);
+				}, 0);
+			const work_order_total = sum_column(work_order_index);
+			const variation_total = sum_column(variation_index);
+			const percentage = work_order_total
+				? flt((variation_total / work_order_total) * 100, 2)
+				: 0;
+			const percentage_col_index = columns[percentage_index].colIndex;
+			const percentage_cell = this.footer.querySelector(
+				".dt-row:last-child .dt-cell--col-" +
+					percentage_col_index +
+					" .dt-cell__content"
 			);
 
-			const average_row_element = this.footer.lastElementChild;
-			average_row_element.style.fontWeight = "bold";
-
-			average_row.forEach((cell, index) => {
-				if (
-					cell.content !== "" &&
-					frappe.model.is_numeric_field(cell.column.fieldtype)
-				) {
-					const value_element = average_row_element.children[index]?.querySelector(
-						".dt-cell__content"
-					);
-					if (value_element) value_element.style.color = "#1e40af";
-				}
-			});
+			if (percentage_cell) {
+				percentage_cell.innerHTML = frappe.format(percentage, { fieldtype: "Percent" });
+			}
 		};
 
 		datatable.bodyRenderer.renderFooter();

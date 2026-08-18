@@ -19,6 +19,8 @@
   "type",
   "status",
   "supplier_challan_no",
+  "department",
+  "is_packaging_material",
   "section_break_trsv",
   "items",
   "section_break_iqga",
@@ -65,7 +67,6 @@
    "default": "Material Transfer",
    "fieldname": "stock_entry_type",
    "fieldtype": "Link",
-   "hidden": 1,
    "label": "Stock Entry Type",
    "options": "Stock Entry Type"
   },
@@ -158,13 +159,26 @@
    "fieldname": "supplier_challan_no",
    "fieldtype": "Data",
    "label": "Supplier Challan No"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.department == \"Sales\"",
+   "fieldname": "is_packaging_material",
+   "fieldtype": "Check",
+   "label": "is_packaging_material"
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "Department",
+   "options": "Department"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-05-28 16:53:27.375410",
+ "modified": "2026-07-29 18:22:55.755637",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "delivery challan",

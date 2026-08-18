@@ -7,29 +7,34 @@ frappe.query_reports["Daily-Cumulative Production Report"] = {
 			fieldname: "from_date",
 			label: __("From Date"),
 			fieldtype: "Date",
+			on_change: refresh_report,
 		},
 		{
 			fieldname: "to_date", 
 			label: __("To Date"),
 			fieldtype: "Date",
+			on_change: refresh_report,
 		},
 		{
 			fieldname: "item",
 			label: __("Item"),
 			fieldtype: "Link",
 			options: "Item",
+			on_change: refresh_report,
 		},
 		{
 			fieldname: "machine_name",
 			label: __("Machine Name"),
 			fieldtype: "Link",
 			options: "Machine Name",
+			on_change: refresh_report,
 		},
 		{
 			fieldname: "warehouse",
 			label: __("Warehouse"),
 			fieldtype: "Link",
 			options: "Warehouse",
+			on_change: refresh_report,
 		},
 		{
 			fieldname: "report_based_on",
@@ -37,6 +42,7 @@ frappe.query_reports["Daily-Cumulative Production Report"] = {
 			fieldtype: "Select",
 			options: "\nItem Wise\nEntry Wise",
 			default: "Item Wise",
+			on_change: refresh_report,
 		},
 		{ 
 			fieldname: "id",
@@ -44,12 +50,14 @@ frappe.query_reports["Daily-Cumulative Production Report"] = {
 			fieldtype: "Link",
 			options: "Stock Entry",
 			depends_on: "eval:doc.report_based_on == 'Entry Wise'",
+			on_change: refresh_report,
 		},
 		{
 			fieldname: "manufacturing_type",
 			label: __("Manufacturing Type"),
 			fieldtype: "Select",
-			options: "\nPONDLINE\nPIPE\nPP EXPORT",
+			options: "\nPONDLINE\nPIPE\nPP EXPORT\nMURGHAS",
+			on_change: refresh_report,
 		},
 	],
 	formatter(value, row, column, data, default_formatter) {
@@ -61,8 +69,12 @@ frappe.query_reports["Daily-Cumulative Production Report"] = {
 	},
 };
 
+function refresh_report() {
+	frappe.query_report.refresh();
+}
+
 const AVERAGE_FIELDS = new Set([
-	"mc_run",
+	// "mc_run",
 	"prod_percent",
 	"d_time_percent",
 	"wastage_percent",

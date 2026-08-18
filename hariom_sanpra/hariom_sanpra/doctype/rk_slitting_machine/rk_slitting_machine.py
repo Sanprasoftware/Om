@@ -48,8 +48,8 @@ class RKSlittingMachine(Document):
 					"item": fg.item,
 					"qty": per_fg_qty,   # ✅ CALCULATED VALUE
 					"target_warehouse": fg.warehouse,
-					"batch": fg.batch,
-					"batch_no": fg.batch if fg.batch else None,
+					# "batch": fg.batch,
+					# "batch_no": fg.batch if fg.batch else None,
 					"uom": self._get_stock_uom(fg.item),
 					"is_finished_item": 1,
 					"is_scrap_item": 0
@@ -83,7 +83,14 @@ class RKSlittingMachine(Document):
 	def create_stock_entry(self):
 		se = frappe.new_doc("Stock Entry")
 		se.stock_entry_type = "RK - PIPE"
-		se.custom_operator_name = self.operator_name
+		se.set_posting_time = 1
+		se.posting_date = self.date
+		se.custom_reference_doc = self.doctype
+		se.custom_reference_id = self.name
+		for operator in self.operator_name:
+			se.append("custom_operator_name", {
+				"operator_name": operator.operator_name,
+			})
 		se.custom_machine_name = self.machine_name
 		se.custom_shift = self.shift
 		se.custom_batch_no = self.batch
@@ -103,19 +110,46 @@ class RKSlittingMachine(Document):
 
 		se.insert(ignore_permissions=True)
 		se.submit()
+		
 
+#***************************cancel doc***************************************
 	def cancel_stock_entry(self):
+
 		stock_entries = frappe.get_all(
 			"Stock Entry",
 			filters={
-				"stock_entry_type": "RK - PIPE",
+				"custom_reference_doc": self.doctype,
+				"custom_reference_id": self.name,
 				"docstatus": 1
 			},
 			pluck="name"
 		)
 
 		for name in stock_entries:
-			frappe.get_doc("Stock Entry", name).cancel()
+			se = frappe.get_doc("Stock Entry", name)
+			se.flags.ignore_links = True
+			se.cancel()
 
 
+#****************************delete doc**********************************
+	def on_trash(self):
+		self.delete_stock_entry()
+
+	def delete_stock_entry(self):
+		stock_entries = frappe.get_all(
+			"Stock Entry",
+			filters={
+				"custom_reference_doc": self.doctype,
+				"custom_reference_id": self.name,
+			},
+			pluck="name"
+		)
+
+		for name in stock_entries:
+			doc = frappe.get_doc("Stock Entry", name)
+
+			if doc.docstatus == 1:
+				doc.cancel()
+
+			doc.delete(ignore_permissions=True)
 	

@@ -51,6 +51,20 @@ frappe.query_reports["Stock Balance Hariom"] = {
 			options: "Item Group",
 		},
 		{
+			fieldname: "gsm",
+			label: __("GSM"),
+			fieldtype: "Link",
+			width: "80",
+			options: "GSM",
+		},
+		{
+			fieldname: "feet",
+			label: __("Feet"),
+			fieldtype: "Link",
+			width: "80",
+			options: "FEET",
+		},
+		{
 			fieldname: "item_code",
 			label: __("Items"),
 			fieldtype: "MultiSelectList",

@@ -429,7 +429,7 @@
    "hidden": 0,
    "is_query_report": 0,
    "label": "Reports",
-   "link_count": 2,
+   "link_count": 6,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -454,10 +454,50 @@
    "onboard": 0,
    "report_ref_doctype": "Joint Machine",
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Stock Balance",
+   "link_count": 0,
+   "link_to": "Stock Balance",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Stock Balance Hariom",
+   "link_count": 0,
+   "link_to": "Stock Balance Hariom",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Stock Ledger",
+   "link_count": 0,
+   "link_to": "Stock Ledger",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Stock Ledger Hariom",
+   "link_count": 0,
+   "link_to": "Stock Ledger Hariom",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2026-06-12 15:30:30.668658",
- "modified_by": "rutuja@sanpra.co.in",
+ "modified": "2026-08-14 15:40:23.776862",
+ "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Pondline",
  "number_cards": [],

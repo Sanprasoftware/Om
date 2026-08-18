@@ -126,6 +126,11 @@ frappe.ui.form.on("Reprocess Item", {
 
     item_code(frm, cdt, cdn) {
         update_qty(frm, cdt, cdn);
+        get_stock(frm, cdt, cdn);
+    },
+
+    source_warehouse(frm, cdt, cdn) {
+        get_stock(frm, cdt, cdn);
     }
 });
 function update_qty(frm, cdt, cdn) {
@@ -134,5 +139,20 @@ function update_qty(frm, cdt, cdn) {
     if (row.item_code && row.qty_bags && row.std_pkg && row.is_finished_item == 1) {
         row.qty = row.qty_bags * row.std_pkg;
         frm.refresh_field("item");
+    }
+}
+
+function get_stock(frm, cdt, cdn) {
+    let row = locals[cdt][cdn];
+
+    if (row.item_code && row.source_warehouse) {
+        frappe.db.get_value("Bin", { item_code: row.item_code, warehouse: row.source_warehouse }, "actual_qty")
+            .then(r => {
+                if (r.message) {
+                    console.log(r.message);
+                    row.available_stock = r.message.actual_qty;
+                    frm.refresh_field("item");
+                }
+            });
     }
 }

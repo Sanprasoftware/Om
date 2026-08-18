@@ -23,7 +23,7 @@ frappe.query_reports["Operator Wise KPI Report"] = {
 			fieldname: "operator_name",
 			label: __("Operator Name"),
 			fieldtype: "Link",
-			options: "Operator Name",
+			options: "Employee",
 		},
 		{
 			fieldname: "machine_name",
@@ -66,13 +66,25 @@ frappe.query_reports["Operator Wise KPI Report"] = {
 			fieldname: "manufacturing_type",
 			label: __("Manufacturing Type"),
 			fieldtype: "Select",
-			options: "\nPONDLINE\nPIPE\nPP EXPORT",
+			options: "\nPONDLINE\nPIPE\nPP EXPORT\nMURGHAS",
 		},
 		{
 			fieldname: "feet",
 			label: __("Feet"),
 			fieldtype: "Link",
 			options: "FEET",
+		},
+		{
+			fieldname: "is_finished_item",
+			label: __("Finished Item"),
+			fieldtype: "Check",
+			default: 0,
+		},
+		{
+			fieldname: "is_scrap_item",
+			label: __("Scrap Item"),
+			fieldtype: "Check",
+			default: 0,
 		},
 	],
 

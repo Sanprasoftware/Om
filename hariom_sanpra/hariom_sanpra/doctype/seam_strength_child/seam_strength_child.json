@@ -232,7 +232,7 @@
   {
    "fieldname": "plate_tube",
    "fieldtype": "Data",
-   "label": "Plate Tube"
+   "label": "Flat Tube"
   },
   {
    "fieldname": "section_break_vlgr",
@@ -266,8 +266,8 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-07-10 16:35:29.501721",
- "modified_by": "rutuja@sanpra.co.in",
+ "modified": "2026-08-14 11:01:28.101051",
+ "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Seam Strength Child",
  "owner": "Administrator",

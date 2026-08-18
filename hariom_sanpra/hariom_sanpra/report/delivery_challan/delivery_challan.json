@@ -10,7 +10,7 @@
  "idx": 0,
  "is_standard": "Yes",
  "letter_head": null,
- "modified": "2026-05-27 16:05:12.553515",
+ "modified": "2026-08-11 15:46:01.223145",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Delivery Challan",
@@ -22,6 +22,12 @@
  "roles": [
   {
    "role": "System Manager"
+  },
+  {
+   "role": "Maintenance Manager"
+  },
+  {
+   "role": "Maintenance User"
   }
  ],
  "timeout": 0

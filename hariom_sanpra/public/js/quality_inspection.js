@@ -11,6 +11,9 @@ frappe.ui.form.on("Quality Inspection", {
 	reference_type(frm) {
 		set_reference_details(frm);
 	},
+	item_code(frm) {
+		set_reference_item_qty(frm);
+	},
 });
 
 function set_reference_details(frm) {
@@ -39,11 +42,13 @@ function set_reference_details(frm) {
 function clear_purchase_receipt_details(frm) {
 	set_value_if_changed(frm, "custom_supplier_name", "");
 	set_value_if_changed(frm, "custom_pr_date", "");
+	set_value_if_changed(frm, "custom_total_qty", "");
 }
 
 function clear_delivery_note_details(frm) {
 	set_value_if_changed(frm, "custom_customer_name", "");
 	set_value_if_changed(frm, "custom_delivery_date", "");
+	set_value_if_changed(frm, "custom_total_qty", "");
 }
 
 function set_value_if_changed(frm, fieldname, value) {
@@ -66,6 +71,7 @@ function set_purchase_receipt_details(frm) {
 			set_value_if_changed(frm, "custom_pr_date", r.posting_date);
 		}
 	);
+	set_reference_item_qty(frm);
 }
 
 function set_delivery_note_details(frm) {
@@ -82,6 +88,33 @@ function set_delivery_note_details(frm) {
 			set_value_if_changed(frm, "custom_delivery_date", r.posting_date);
 		}
 	);
+	set_reference_item_qty(frm);
+}
+
+function set_reference_item_qty(frm) {
+	if (!["Purchase Receipt", "Delivery Note"].includes(frm.doc.reference_type) ||
+		!frm.doc.reference_name || !frm.doc.item_code) {
+		set_value_if_changed(frm, "custom_total_qty", "");
+		return;
+	}
+
+	const args = {
+		reference_type: frm.doc.reference_type,
+		reference_name: frm.doc.reference_name,
+		item_code: frm.doc.item_code,
+	};
+
+	frappe.call({
+		method: "hariom_sanpra.public.py.quality_inspection.get_reference_item_qty",
+		args: args,
+		callback: (r) => {
+			if (frm.doc.reference_type === args.reference_type &&
+				frm.doc.reference_name === args.reference_name &&
+				frm.doc.item_code === args.item_code) {
+				set_value_if_changed(frm, "custom_total_qty", r.message);
+			}
+		},
+	});
 }
 
 

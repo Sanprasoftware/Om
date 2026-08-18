@@ -99,7 +99,7 @@ def get_data(filters):
     if filters.get("supplier"):
         pr_filters["supplier"] = filters.get("supplier")
 
-    purchase_receipts = frappe.get_all(
+    purchase_receipts = frappe.get_list(
         "Purchase Receipt",
         filters=pr_filters,
         fields=["name", "posting_date", "supplier"]

@@ -143,7 +143,7 @@
    "fieldname": "wastage_items",
    "fieldtype": "Table",
    "label": "Wastage Items",
-   "options": "Small Pipe FG"
+   "options": "Small Pipe wastage"
   },
   {
    "fieldname": "items",
@@ -186,8 +186,8 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-05-08 18:07:59.448738",
- "modified_by": "rutuja@sanpra.co.in",
+ "modified": "2026-08-13 17:28:39.886507",
+ "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Small Pipe mc",
  "naming_rule": "By \"Naming Series\" field",

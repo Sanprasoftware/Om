@@ -10,6 +10,7 @@
   "operator_name",
   "machine_name",
   "column_break_wrjt",
+  "stock_entry_id",
   "shift",
   "machine_start",
   "machine_end",
@@ -151,13 +152,20 @@
    "label": "FT Type",
    "options": "\n10\n12\n6",
    "reqd": 1
+  },
+  {
+   "fieldname": "stock_entry_id",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Stock Entry Id",
+   "options": "Stock Entry"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-07-09 10:44:54.872275",
+ "modified": "2026-08-14 14:31:29.659336",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "GD Rewinding",

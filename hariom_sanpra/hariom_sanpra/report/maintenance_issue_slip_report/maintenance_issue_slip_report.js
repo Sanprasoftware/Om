@@ -23,7 +23,17 @@ frappe.query_reports["Maintenance Issue Slip Report"] = {
 			fieldname: "maintains_oper",
 			label: __("Maintenance Oper."),
 			fieldtype: "Select",
-			options: ["", "General Maintains", "Preventive Maintains", "R&D", "Breakdown", "KCR", "Other"],
+			options: [
+						"", 
+						"General maintenance - mechanical",
+						"General maintenance - Electrical",
+						"Consumable",
+						"Office expenses",
+						"Preventive Maintenance",
+						"R&D",
+						"Breakdown",
+						"Other"
+					],
 		},
 		{
 			fieldname: "machine_name",

@@ -66,7 +66,7 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Maintenance Operation",
-   "options": "\nGeneral maintenance - mechanical\nGeneral maintenance - Electrical\nConsumable\nOffice expenses\nGeneral Maintenance\nPreventive Maintenance\nR&D\nBreakdown\nKCR\nOther"
+   "options": "\nGeneral maintenance - mechanical\nGeneral maintenance - Electrical\nConsumable\nOffice expenses\nPreventive Maintenance\nR&D\nBreakdown\nOther"
   },
   {
    "fieldname": "naming_series",
@@ -165,8 +165,8 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-07-18 10:49:24.485986",
- "modified_by": "rutuja@sanpra.co.in",
+ "modified": "2026-08-11 14:23:10.785693",
+ "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Maintenance",
  "naming_rule": "By \"Naming Series\" field",

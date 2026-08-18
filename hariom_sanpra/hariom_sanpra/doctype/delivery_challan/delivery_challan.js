@@ -23,6 +23,32 @@ frappe.ui.form.on("delivery challan", {
 				});
 			}, __("Create"));
 		}
+	},
+	is_packaging_material(frm) {
+		(frm.doc.items || []).forEach(row => {
+			frappe.model.set_value(
+				row.doctype,
+				row.name,
+				"is_packaging_material",
+				frm.doc.is_packaging_material ? 1 : 0
+			);
+		});
+	},
+	setup(frm) {
+		frm.set_query("department", function () {
+			return {
+				filters: {
+					name: ["in", ["Maintenance - OM", "Sales"]]
+				}
+			};
+		});
+	},
+	department(frm) {
+		if (frm.doc.department === "Sales") {
+			frm.set_value("is_packaging_material", 1);
+		} else {
+			frm.set_value("is_packaging_material", 0);
+		}
 	}
 });
 frappe.ui.form.on("delivery challan Items", {
@@ -35,7 +61,34 @@ frappe.ui.form.on("delivery challan Items", {
     // Jab Rate change ho  
     rate: function(frm, cdt, cdn) {
         calculate_amount(frm, cdt, cdn);
-    }
+    },
+	is_packaging_material(frm, cdt, cdn) {
+		let row = locals[cdt][cdn];
+		
+		// Default warehouse ek hi baar save karo
+		if (!row.default_source_warehouse) {
+			row.default_source_warehouse = row.source_warehouse;
+		}
+		if (!row.default_target_warehouse) {
+			row.default_target_warehouse = row.target_warehouse;
+		}
+		
+		if (row.is_packaging_material) {
+			frappe.model.set_value(cdt, cdn, "source_warehouse", "Packaging Material - OM");
+			frappe.model.set_value(cdt, cdn, "target_warehouse", "Packaging Material Issue - OM");
+		} else {
+			frappe.model.set_value(cdt, cdn, "source_warehouse", row.default_source_warehouse);
+			frappe.model.set_value(cdt, cdn, "target_warehouse", row.default_target_warehouse);
+		}
+	},
+	items_add(frm, cdt, cdn) {
+		frappe.model.set_value(
+			cdt,
+			cdn,
+			"is_packaging_material",
+			frm.doc.is_packaging_material ? 1 : 0
+		);
+	},
 });
 
 // Amount calculate karne ka function

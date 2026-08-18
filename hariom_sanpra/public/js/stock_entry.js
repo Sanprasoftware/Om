@@ -305,7 +305,7 @@ function calc(frm) {
 		frm.set_value("custom_actmtr",mtr);
 	}
 	if(cw && cwbw){
-		let wd = (cw - cwbw);
+		let wd = (cwbw - cw);
 		frm.set_value("custom_wastage_difference",wd)
 	}
 	if(M && mpm){

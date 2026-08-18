@@ -16,7 +16,7 @@ def get_columns() -> list[dict]:
 		{
 			"label": _("Date"),
 			"fieldname": "date",
-			"fieldtype": "Data",
+			"fieldtype": "Date",
 		},
 		{
 			"label": _("ID"),
@@ -56,13 +56,12 @@ def get_columns() -> list[dict]:
 			"label": _("Employee Name"),
 			"fieldname": "emp_name",
 			"fieldtype": "Link",
-			"options" : "Employee Name"
+			"options" : "Employee"
 		},
         {
 			"label": _("Machine Code"),
 			"fieldname": "machine_code",
 			"fieldtype": "Data",
-			"options" : "Machine Code"
 		},
         {
 			"label": _("Total Down Time"),
@@ -73,13 +72,13 @@ def get_columns() -> list[dict]:
 			"label": _("Received By"),
 			"fieldname": "received_by",
 			"fieldtype": "Link",
-			"options" : "Received By"
+			"options" : "Employee"
 		},
         {
 			"label": _("Attended By"),
 			"fieldname": "attended_by",
 			"fieldtype": "Link",
-			"options" : "Attended By"
+			"options" : "Employee"
 		},
         {
 			"label": _("Details of Repair work"),

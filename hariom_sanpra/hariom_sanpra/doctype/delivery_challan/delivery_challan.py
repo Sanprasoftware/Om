@@ -4,6 +4,7 @@
 import frappe
 from frappe import _
 from frappe.model.document import Document
+from frappe.utils import flt
 
 class deliverychallan(Document):
 
@@ -23,7 +24,7 @@ class deliverychallan(Document):
 			self.set_pending_status()
 		else:
 			self.status = ""
-	
+
 	def calculate_amounts(self):
 		for item in self.items:
 			if item.qty and item.rate:
@@ -53,7 +54,7 @@ class deliverychallan(Document):
 		ref_doc = frappe.get_doc("delivery challan", self.ref_doc)
 		is_partially = False
 		is_completed = True
-		
+
 		for in_row in self.items:
 			found = False
 			for ref_row in ref_doc.items:
@@ -110,16 +111,85 @@ class deliverychallan(Document):
 	def create_stock_entry(self):
 		se = frappe.new_doc("Stock Entry")
 		se.stock_entry_type = "Material Transfer"
+		se.set_posting_time = 1
+		se.posting_date = self.date
+		se.custom_reference_doc = self.doctype
+		se.custom_reference_id = self.name
+		se.flags.delivery_challan_basic_rates = [flt(row.rate) for row in self.items]
+		se.remarks = f"Created from Material Transfer {self.name}"
 		# se.company = self.company
 		for row in self.items:
 			se.append("items", {
 				"item_code": row.item_code,
+				"set_basic_rate_manually": 1,
 				"qty": row.qty,
 				"s_warehouse": row.source_warehouse,
 				"t_warehouse": row.target_warehouse,
-				"is_finished_item": row.is_finished_item,  
-				"is_scrap_item": row.is_scrap_item,
+				"basic_rate": row.rate,
+				# "is_finished_item": row.is_finished_item,
+				# "is_scrap_item": row.is_scrap_item,
 			})
 		se.save()
+		preserve_delivery_challan_basic_rates(se)
+		se.flags.ignore_validate = True
+		se.submit()
 		# se.insert(ignore_permissions=True)
 		# se.submit()
+
+#***************************cancel doc **********************************
+	def on_cancel(self):
+		self.cancel_stock_entry()
+
+	def cancel_stock_entry(self):
+		stock_entries = frappe.get_all(
+			"Stock Entry",
+			filters={
+				"custom_reference_doc": self.doctype,
+				"custom_reference_id": self.name,
+				"docstatus": 1,
+			},
+			pluck="name"
+		)
+
+		for name in stock_entries:
+			frappe.get_doc("Stock Entry", name).cancel()
+
+
+
+#****************************delete doc**********************************
+	def on_trash(self):
+		self.delete_stock_entry()
+
+	def delete_stock_entry(self):
+		stock_entries = frappe.get_all(
+			"Stock Entry",
+			filters={
+				"custom_reference_doc": self.doctype,
+				"custom_reference_id": self.name,
+			},
+			pluck="name"
+		)
+
+		for name in stock_entries:
+			doc = frappe.get_doc("Stock Entry", name)
+
+			if doc.docstatus == 1:
+				doc.cancel()
+
+			doc.delete(ignore_permissions=True)
+#***********************************************************************
+
+def preserve_delivery_challan_basic_rates(stock_entry):
+	"""Keep submitted Delivery Challan rates after Stock Entry calculates valuation rates."""
+	basic_rates = stock_entry.flags.get("delivery_challan_basic_rates")
+	if basic_rates is None:
+		return
+
+	if len(basic_rates) != len(stock_entry.items):
+		frappe.throw(_("Could not apply Delivery Challan rates to Stock Entry items."))
+
+	for row, basic_rate in zip(stock_entry.items, basic_rates):
+		row.set_basic_rate_manually = 1
+		row.basic_rate = basic_rate
+
+	stock_entry.calculate_rate_and_amount(reset_outgoing_rate=False)

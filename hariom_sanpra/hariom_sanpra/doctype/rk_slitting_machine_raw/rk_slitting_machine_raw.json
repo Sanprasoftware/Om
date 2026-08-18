@@ -47,6 +47,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "default": "Pipe Jambo - OM",
    "fieldname": "warehouse",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -58,7 +59,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-04-20 18:00:25.499078",
+ "modified": "2026-08-13 17:19:34.327952",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "RK Slitting Machine Raw",

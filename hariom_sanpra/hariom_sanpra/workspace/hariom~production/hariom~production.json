@@ -3,7 +3,9 @@
  "charts": [],
  "content": "[]",
  "creation": "2026-05-19 10:55:33.030949",
- "custom_blocks": [],
+ "custom_blocks": [
+  {}
+ ],
  "docstatus": 0,
  "doctype": "Workspace",
  "hide_custom": 0,
@@ -13,7 +15,7 @@
  "label": "Hariom~Production",
  "link_type": "DocType",
  "links": [],
- "modified": "2026-05-19 12:28:01.884311",
+ "modified": "2026-08-06 16:18:41.609322",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Hariom~Production",

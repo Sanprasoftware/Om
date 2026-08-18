@@ -22,6 +22,7 @@
   "column_break_spay",
   "is_scrap_item",
   "is_finished_item",
+  "available_stock",
   "quantity_section",
   "qty",
   "column_break_vrlf",
@@ -172,13 +173,18 @@
    "fieldtype": "Float",
    "in_list_view": 1,
    "label": "Basic Amount"
+  },
+  {
+   "fieldname": "available_stock",
+   "fieldtype": "Float",
+   "label": "Available Stock"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-07-03 12:00:51.399426",
+ "modified": "2026-08-14 12:38:31.221488",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Reprocess Item",

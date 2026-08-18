@@ -1,0 +1,515 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-07-29 13:16:24.529787",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_2myy",
+  "date",
+  "amended_from",
+  "column_break_srzn",
+  "naming_series",
+  "grand_total_fgoutput_kg",
+  "section_break_gcli",
+  "fabric_stock_items",
+  "section_break_vhkp",
+  "total_6ft_kg",
+  "column_break_cmzp",
+  "total_10_ft_kg",
+  "column_break_yzxi",
+  "total_11_ft_kg",
+  "column_break_oqmb",
+  "total_12_ft_kg",
+  "column_break_hosa",
+  "totalkg",
+  "column_break_cpcb",
+  "total_fgoutput_kg",
+  "section_break_zoum",
+  "unlam_sulzer_fabric_items",
+  "section_break_oocl",
+  "total_6ft_kg_2",
+  "column_break_jbcl",
+  "total_10_ft_kg_2",
+  "column_break_pzqh",
+  "total_12_ft_kg_2",
+  "column_break_ojzv",
+  "totalkg_2",
+  "column_break_kock",
+  "total_fgoutput_kg_2",
+  "section_break_zwov",
+  "unlam__other_pond_fabric_items",
+  "section_break_nvxg",
+  "total_6ft_kg_3",
+  "column_break_ilfo",
+  "total_10_ft_kg_3",
+  "column_break_bhwm",
+  "total_11_ft_kg_3",
+  "column_break_gpex",
+  "total_12_ft_kg_3",
+  "column_break_cmjf",
+  "totalkg_3",
+  "column_break_lfba",
+  "total_fgoutput_kg_3",
+  "section_break_ilvc",
+  "unlam_pipe_stock_items",
+  "section_break_sizr",
+  "total_6ft_kg_4",
+  "column_break_lpsj",
+  "total_83_ft_kg_4",
+  "column_break_pwvn",
+  "total_75_ft_kg_4",
+  "column_break_nchb",
+  "totalkg_4",
+  "column_break_xvik",
+  "total_fgoutput_kg_4",
+  "section_break_gqvz",
+  "pp_export_unlam__fab_stock_items",
+  "section_break_tuha",
+  "column_break_ytpp",
+  "total_12_ft_kg_5",
+  "column_break_cbcu",
+  "total_83_ft_5",
+  "column_break_acuc",
+  "totalkg_5",
+  "column_break_scnq",
+  "total_fgoutput_kg_5",
+  "section_break_nsta",
+  "pp_export_non_stock_items",
+  "section_break_kxnl",
+  "column_break_qini",
+  "total_qty_kg_6",
+  "column_break_gbqx",
+  "totalkg_6",
+  "column_break_snwe",
+  "total_fgoutput_kg_6"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_2myy",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Fabric Report",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "section_break_nsta",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "fabric_stock_items",
+   "fieldtype": "Table",
+   "label": "POND FABRIC STOCK Items",
+   "options": "FABRIC STOCK Items"
+  },
+  {
+   "fieldname": "unlam_sulzer_fabric_items",
+   "fieldtype": "Table",
+   "label": "UNLAM SULZER FABRIC Items",
+   "options": "UNLAM SULZER FABRIC Items"
+  },
+  {
+   "fieldname": "unlam__other_pond_fabric_items",
+   "fieldtype": "Table",
+   "label": "UNLAM  OTHER POND FABRIC Items",
+   "options": "UNLAM  OTHER POND FABRIC Items"
+  },
+  {
+   "fieldname": "unlam_pipe_stock_items",
+   "fieldtype": "Table",
+   "label": "UNLAM PIPE STOCK Items",
+   "options": "UNLAM PIPE STOCK Items"
+  },
+  {
+   "fieldname": "pp_export_unlam__fab_stock_items",
+   "fieldtype": "Table",
+   "label": "PP EXPORT UNLAM  FAB STOCK Items",
+   "options": "PP EXPORT UNLAM  FAB STOCK"
+  },
+  {
+   "fieldname": "pp_export_non_stock_items",
+   "fieldtype": "Table",
+   "label": "PP EXPORT NON STOCK Items",
+   "options": "PP EXPORT NON STOCK Items"
+  },
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Naming Series"
+  },
+  {
+   "fieldname": "column_break_srzn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_gcli",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_vhkp",
+   "fieldtype": "Section Break",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_6ft_kg",
+   "fieldtype": "Float",
+   "label": "Total 6FT (KG)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_10_ft_kg",
+   "fieldtype": "Float",
+   "label": "Total 10 FT (KG)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_11_ft_kg",
+   "fieldtype": "Float",
+   "label": "Total 11 FT (KG)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_12_ft_kg",
+   "fieldtype": "Float",
+   "label": "Total 12 FT (KG)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "totalkg",
+   "fieldtype": "Float",
+   "label": "TOTAL(KG)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_fgoutput_kg",
+   "fieldtype": "Float",
+   "label": " Total FG.OUTPUT (KG)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_cmzp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_yzxi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_oqmb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_hosa",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_cpcb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_6ft_kg_2",
+   "fieldtype": "Float",
+   "label": "Total 6FT (KG)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_10_ft_kg_2",
+   "fieldtype": "Float",
+   "label": "Total 10 FT (KG)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_12_ft_kg_2",
+   "fieldtype": "Float",
+   "label": "Total 12 FT (KG)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "totalkg_2",
+   "fieldtype": "Float",
+   "label": "TOTAL(KG)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_fgoutput_kg_2",
+   "fieldtype": "Float",
+   "label": " Total FG.OUTPUT (KG)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_zoum",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_oocl",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_jbcl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_pzqh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_ojzv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_kock",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_nvxg",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "total_6ft_kg_3",
+   "fieldtype": "Float",
+   "label": "Total 6FT (KG)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_ilfo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_10_ft_kg_3",
+   "fieldtype": "Float",
+   "label": "Total 10 FT (KG)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_bhwm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_11_ft_kg_3",
+   "fieldtype": "Float",
+   "label": "Total 11 FT (KG)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_gpex",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_12_ft_kg_3",
+   "fieldtype": "Float",
+   "label": "Total 12 FT (KG)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_cmjf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "totalkg_3",
+   "fieldtype": "Float",
+   "label": "TOTAL(KG)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_lfba",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_fgoutput_kg_3",
+   "fieldtype": "Float",
+   "label": " Total FG.OUTPUT (KG)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_zwov",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "total_6ft_kg_4",
+   "fieldtype": "Float",
+   "label": "Total 6FT (KG)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "totalkg_4",
+   "fieldtype": "Float",
+   "label": "TOTAL(KG)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_fgoutput_kg_4",
+   "fieldtype": "Float",
+   "label": " Total FG.OUTPUT (KG)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_sizr",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_lpsj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_pwvn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_nchb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_xvik",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_ilvc",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "total_12_ft_kg_5",
+   "fieldtype": "Float",
+   "label": "Total 12 FT (KG)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "totalkg_5",
+   "fieldtype": "Float",
+   "label": "TOTAL(KG)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_fgoutput_kg_5",
+   "fieldtype": "Float",
+   "label": " Total FG.OUTPUT (KG)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_tuha",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_cbcu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_ytpp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_acuc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_scnq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "totalkg_6",
+   "fieldtype": "Float",
+   "label": "TOTAL(KG)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_fgoutput_kg_6",
+   "fieldtype": "Float",
+   "label": " Total FG.OUTPUT (KG)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_kxnl",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_qini",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_gbqx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_snwe",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_gqvz",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "total_83_ft_kg_4",
+   "fieldtype": "Float",
+   "label": "Total 8.3 FT (KG)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_75_ft_kg_4",
+   "fieldtype": "Float",
+   "label": "Total 7.5 FT (KG)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_83_ft_5",
+   "fieldtype": "Float",
+   "label": "Total 8.3 FT 5",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_qty_kg_6",
+   "fieldtype": "Float",
+   "label": "Total QTY (KG)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "grand_total_fgoutput_kg",
+   "fieldtype": "Float",
+   "label": "Grand Total FG Output KG",
+   "read_only": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-08-06 13:30:41.395579",
+ "modified_by": "Administrator",
+ "module": "Hariom Sanpra",
+ "name": "Fabric Report",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

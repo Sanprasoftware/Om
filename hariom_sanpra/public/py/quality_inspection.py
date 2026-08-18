@@ -1,5 +1,5 @@
 import frappe
-from frappe.utils import cint, cstr
+from frappe.utils import cint, cstr, flt
 
 
 REFERENCE_STATUS_FIELDS = {
@@ -15,11 +15,36 @@ def update_reference_qc_status(doc, method=None):
 
     status = "Cancelled" if method == "on_cancel" else doc.status
     frappe.db.set_value(doc.reference_type, doc.reference_name, status_field, status)
+    update_reference_item_qc_status(doc, method)
 
 def set_readings_status(doc, method=None):
     if doc.readings and doc.status:
         for row in doc.readings:
             row.status = doc.status
+
+
+@frappe.whitelist()
+def get_reference_item_qty(reference_type, reference_name, item_code):
+    item_doctype = {
+        "Purchase Receipt": "Purchase Receipt Item",
+        "Delivery Note": "Delivery Note Item",
+    }.get(reference_type)
+
+    if not item_doctype or not reference_name or not item_code:
+        return 0
+
+    if not frappe.has_permission(reference_type, "read", reference_name):
+        frappe.throw(
+            frappe._("Insufficient Permission for {0}").format(frappe.bold(reference_type)),
+            frappe.PermissionError,
+        )
+
+    quantities = frappe.get_all(
+        item_doctype,
+        filters={"parent": reference_name, "item_code": item_code, "docstatus": ["<", 2]},
+        pluck="qty",
+    )
+    return sum(flt(qty) for qty in quantities)
 
 
 @frappe.whitelist()
@@ -55,3 +80,30 @@ def item_query(doctype, txt, searchfield, start, page_len, filters):
         """,
         {"parent": parent, "txt": f"%{txt}%"},
     )
+    
+    
+#**********************************************************
+def update_reference_item_qc_status(doc, method=None):
+    if doc.reference_type != "Purchase Receipt" or not doc.reference_name or not doc.item_code:
+        return
+
+    status = "Cancelled" if method == "on_cancel" else doc.status
+
+    items = frappe.get_all(
+        "Purchase Receipt Item",
+        filters={
+            "parent": doc.reference_name,
+            "item_code": doc.item_code,
+        },
+        pluck="name",
+    )
+
+    for item in items:
+        frappe.db.set_value(
+            "Purchase Receipt Item",
+            item,
+            "custom_quality_status",
+            status,
+        )
+
+

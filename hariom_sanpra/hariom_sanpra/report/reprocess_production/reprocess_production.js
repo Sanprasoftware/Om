@@ -45,7 +45,7 @@ frappe.query_reports["Reprocess Production"] = {
 			fieldname: "reprocess_type",
 			label: __("Reprocess Type"),
 			fieldtype: "Select",
-			options: "\nPONDLINE\nPIPE\nPP EXPORT",
+			options: "\nPONDLINE\nPIPE\nPP EXPORT\nMURGHAS",
 		},
 		{
 			fieldname: "mc_name",

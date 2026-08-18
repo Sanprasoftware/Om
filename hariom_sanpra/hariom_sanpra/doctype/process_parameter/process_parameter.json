@@ -267,30 +267,35 @@
   {
    "fieldname": "target_mtr",
    "fieldtype": "Float",
+   "hidden": 1,
    "label": "Target MTR",
    "precision": "2"
   },
   {
    "fieldname": "act_mtr",
    "fieldtype": "Float",
+   "hidden": 1,
    "label": "ACT MTR",
    "precision": "2"
   },
   {
    "fieldname": "pro",
    "fieldtype": "Float",
+   "hidden": 1,
    "label": "Pro.%",
    "precision": "2"
   },
   {
    "fieldname": "wastage",
    "fieldtype": "Float",
+   "hidden": 1,
    "label": "Wastage",
    "precision": "2"
   },
   {
    "fieldname": "wast",
    "fieldtype": "Float",
+   "hidden": 1,
    "label": "%WAST",
    "precision": "2"
   }
@@ -299,7 +304,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-06-06 12:41:24.116643",
+ "modified": "2026-08-13 18:18:25.518078",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Process Parameter",

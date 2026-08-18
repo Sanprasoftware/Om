@@ -10,6 +10,7 @@
   "man_power",
   "stock_entry_type",
   "column_break_gvjh",
+  "stock_entry_id",
   "operator_name",
   "batch",
   "machine_name",
@@ -164,14 +165,20 @@
    "fieldname": "no_of_pices",
    "fieldtype": "Int",
    "label": "No. Of Pices"
+  },
+  {
+   "fieldname": "stock_entry_id",
+   "fieldtype": "Link",
+   "label": "Stock Entry Id",
+   "options": "Stock Entry"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-07-11 16:15:28.766760",
- "modified_by": "rutuja@sanpra.co.in",
+ "modified": "2026-08-05 15:20:45.272903",
+ "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Joint Machine",
  "naming_rule": "By \"Naming Series\" field",

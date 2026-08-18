@@ -7,6 +7,8 @@ from frappe.utils import flt
 
 
 PRODUCTION_FIELD_SPECS = [
+	# {"label": _("Purpose"),"fieldname": "purpose","fieldtype": "Data","source": "purpose", "aggregate": "text",},
+	# {"label": _("manufacturing type"),"fieldname": "manufacture_type","source": "custom_manufacture_type","aggregate": "text",},
 	{"label": "Total Qty", "fieldname": "total_qty", "source": "custom_total_qty", "aggregate": "sum", "qty_field": True},
 	{"label": "M/C Run", "fieldname": "mc_run", "source": "custom_mc_run", "aggregate": "sum"},
 	{"label": "MTR", "fieldname": "mtr", "source": "custom_mtr", "aggregate": "sum" , "hidden": 1},
@@ -61,10 +63,10 @@ TOTAL_SUM_FIELDS = {
 	"trim",
 	"other",
 	"size",
+	"mc_run",
 }
 
 TOTAL_AVERAGE_FIELDS = {
-	"mc_run",
 	"prod_percent",
 	"d_time_percent",
 	"wastage_percent",
@@ -81,7 +83,7 @@ def execute(filters: dict | None = None):
 	report_fields = get_report_fields()
 	columns = get_columns(filters, report_fields)
 	data = get_data(filters, report_fields)
-	add_combined_total_row(data)
+	add_combined_total_row(data, filters)
 	return columns, data, None, None, None, True
 
 
@@ -169,14 +171,19 @@ def get_columns(filters: frappe._dict, report_fields: list[dict]) -> list[dict]:
 			"width": get_column_width(field),
 		}
 		if column["fieldtype"] in NUMERIC_FIELDTYPES:
-			column["precision"] = 2
+			column["precision"] = 6 if field["fieldname"] == "wastage_percent" else 2
 		columns.append(column)
 
 	return columns
 
 
 def get_data(filters: frappe._dict, report_fields: list[dict]) -> list[dict]:
-	conditions = ["se.docstatus in (0, 1)", "ifnull(sed.is_finished_item, 0) = 1"]
+	conditions = [
+		"se.docstatus = 1",
+		"ifnull(sed.is_finished_item, 0) = 1",
+		"se.purpose = 'Manufacture'",
+
+	]
 	sql_filters = {}
 
 	if filters.get("from_date"):
@@ -245,6 +252,9 @@ def get_data(filters: frappe._dict, report_fields: list[dict]) -> list[dict]:
 			ifnull(sed.item_name, sed.item_code) as item_name,
 			se.custom_machine_name as machine_name,
 			{warehouse_expression} as warehouse,
+			se.purpose as purpose,
+			se.custom_manufacture_type as manufacture_type,
+
 			se.posting_date as date,
 			sum(ifnull(sed.qty, 0)) as total_qty
 			{doc_fields}
@@ -272,6 +282,13 @@ def get_data(filters: frappe._dict, report_fields: list[dict]) -> list[dict]:
 			fieldname = field["fieldname"]
 			aggregate = field["aggregate"]
 
+			if fieldname == "size":
+				item["size_values"].extend(get_numeric_values(row.get(fieldname)))
+
+			if fieldname in TOTAL_AVERAGE_FIELDS:
+				item["total_average_totals"][fieldname] += flt(row.get(fieldname))
+				item["total_average_counts"][fieldname] += 1
+
 			if aggregate in ("sum", "calc"):
 				item[fieldname] += flt(row.get(fieldname))
 			elif aggregate == "average":
@@ -282,14 +299,28 @@ def get_data(filters: frappe._dict, report_fields: list[dict]) -> list[dict]:
 			elif aggregate == "text":
 				add_text_value(item["text_values"][fieldname], row.get(fieldname))
 
-	data = [] 
+	data = []
 	for item in grouped.values():
 		apply_calculations(item, report_fields)
+
+		if not is_entry_wise(filters):
+			for fieldname in TOTAL_AVERAGE_FIELDS:
+				# STD GSM is already averaged by apply_calculations() across the
+				# filtered item's Stock Entries. Do not replace it with the sum.
+				if fieldname in ("prod_percent", "std_gsm", "act_gsm"):
+					continue
+				if item["total_average_counts"].get(fieldname):
+					item[fieldname] = item["total_average_totals"][fieldname]
+
+			# Item Wise wastage percentage is based on the aggregated values shown
+			# in the row, rather than the stored percentage from each Stock Entry.
+			item["wastage_percent"] = calculate_item_wise_wastage_percent(item)
 
 		item.pop("posting_dates", None)
 		item.pop("average_totals", None)
 		item.pop("average_counts", None)
 		item.pop("text_values", None)
+		item.pop("size_values", None)
 		data.append(item)
 
 	data = sorted(
@@ -308,7 +339,7 @@ def get_data(filters: frappe._dict, report_fields: list[dict]) -> list[dict]:
 
 
 
-def add_combined_total_row(data: list[dict]) -> None:
+def add_combined_total_row(data: list[dict], filters: frappe._dict) -> None:
 	if not data:
 		return
 
@@ -317,10 +348,46 @@ def add_combined_total_row(data: list[dict]) -> None:
 		total_row[fieldname] = round(sum(flt(row.get(fieldname)) for row in data), 2)
 
 	for fieldname in TOTAL_AVERAGE_FIELDS:
-		values = [flt(row.get(fieldname)) for row in data]
-		total_row[fieldname] = round(sum(values) / len(values), 2) if values else 0
+		if fieldname == "act_gsm":
+			values = [flt(row.get(fieldname)) for row in data if flt(row.get(fieldname))]
+			total_row[fieldname] = round(sum(values) / len(values), 2) if values else 0
+			continue
+		total = sum(flt(row.get("total_average_totals", {}).get(fieldname)) for row in data)
+		count = sum(flt(row.get("total_average_counts", {}).get(fieldname)) for row in data)
+		total_row[fieldname] = round(total / count, 2) if count else 0
+
+	total_row["wastage_difference"] = round(
+		flt(total_row.get("weight_bridge_wastage")) - flt(total_row.get("wastage")), 2
+	)
+	if not is_entry_wise(filters):
+		total_row["wastage_percent"] = calculate_item_wise_wastage_percent(total_row)
+
+	for amount_field, percent_field in (
+		("ld", "ld_percent"),
+		("trim", "trim_percent"),
+		("other", "other_percent"),
+	):
+		total_row[percent_field] = round(
+			(flt(total_row.get(amount_field)) / flt(total_row.get("total_qty"))) * 100, 2
+		) if flt(total_row.get("total_qty")) else 0
+
+	total_row["prod_percent"] = round(
+		(flt(total_row.get("act_mtr")) / flt(total_row.get("target_mtr"))) * 100, 2
+	) if flt(total_row.get("target_mtr")) else 0
+	total_row["d_time_percent"] = round(
+		(flt(total_row.get("d_time")) / flt(total_row.get("mc_run"))) * 100, 2
+	) if flt(total_row.get("mc_run")) else 0
+
+	for row in data:
+		row.pop("total_average_totals", None)
+		row.pop("total_average_counts", None)
 
 	data.append(total_row)
+
+
+def calculate_item_wise_wastage_percent(row: dict) -> float:
+	total_qty = flt(row.get("total_qty"))
+	return round((flt(row.get("weight_bridge_wastage")) / total_qty) * 100, 6) if total_qty else 0
 
 def get_empty_group(row: frappe._dict, report_fields: list[dict], filters: frappe._dict) -> dict:
 	item = {
@@ -329,10 +396,14 @@ def get_empty_group(row: frappe._dict, report_fields: list[dict], filters: frapp
 		"item_name": row.item_name,
 		"machine_name": row.machine_name,
 		"warehouse": row.warehouse,
+		# "purpose": row.purpose,
 		"posting_dates": set(),
 		"average_totals": {},
 		"average_counts": {},
+		"total_average_totals": {fieldname: 0 for fieldname in TOTAL_AVERAGE_FIELDS},
+		"total_average_counts": {fieldname: 0 for fieldname in TOTAL_AVERAGE_FIELDS},
 		"text_values": {},
+		"size_values": [],
 	}
 
 	if is_entry_wise(filters):
@@ -393,6 +464,13 @@ def apply_calculations(item: dict, report_fields: list[dict]) -> None:
 		item["other_percent"] = (
 			(flt(item.get("other")) / flt(item.get("total_qty"))) * 100
 			if flt(item.get("total_qty"))
+			else 0
+		)
+	if "act_gsm" in fieldnames:
+		average_size = get_average(item.get("size_values", []))
+		item["act_gsm"] = (
+			((flt(item.get("total_qty")) / flt(item.get("act_mtr"))) * 39.37 * 1000) / average_size
+			if flt(item.get("act_mtr")) and average_size
 			else 0
 		)
 	# if "total_wastage" in fieldnames:
@@ -471,6 +549,22 @@ def add_text_value(values: list[str], value: str | None) -> None:
 	for val in parts:
 		if val not in values:
 			values.append(val)
+
+
+def get_numeric_values(value) -> list[float]:
+	if value is None:
+		return []
+
+	values = []
+	for part in str(value).replace("\n", ",").split(","):
+		number = flt(part.strip())
+		if number:
+			values.append(number)
+	return values
+
+
+def get_average(values: list[float]) -> float:
+	return sum(values) / len(values) if values else 0
 
 
 def get_doc_field_sql(field: dict) -> str:

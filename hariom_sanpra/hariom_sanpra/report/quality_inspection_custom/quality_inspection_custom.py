@@ -76,6 +76,12 @@ def get_columns():
 			"fieldtype": "Data",
 			"width": 250
 		},
+		{
+			"label": _("Total Qty"),
+			"fieldname": "total_qty",
+			"fieldtype": "Float",
+			"width": 100
+		},
 
 		# ---------------- Reading Fields ----------------
 
@@ -212,6 +218,7 @@ def get_columns():
 			"fieldtype": "Data",
 			"width": 200
 		},
+
 	]
 
 
@@ -273,6 +280,7 @@ def get_data(filters):
 			qi.quality_inspection_template,
 			qi.item_code,
 			qi.item_name,
+			qi.custom_total_qty as total_qty,	
    			qi.custom_supplier_name,
 			qi.custom_customer_name,
 
@@ -328,6 +336,7 @@ def get_data(filters):
 				"status": row.status,
 				"quality_inspection_template": row.quality_inspection_template,
 				"item_code": row.item_code,
+				"total_qty": row.total_qty,
 				"item_name": row.item_name,
 
 				"specification": row.specification,
@@ -369,6 +378,7 @@ def get_data(filters):
 				"quality_inspection_template": "",
 				"item_code": "",
 				"item_name": "",
+				"total_qty": row.total_qty,
 
 				"specification": row.specification,
 				"parameter_group": row.parameter_group,

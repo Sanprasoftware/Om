@@ -33,7 +33,7 @@ frappe.query_reports["Quality Inspection Custom"] = {
 			fieldname: "status",
 			label: __("Status"),
 			fieldtype: "Select",
-			options: "\nAccepted\nRejected",
+			options: "\nAccepted\nRejected\nCancelled\nHold\nRelease",
 			width: 120
 		},
 		{

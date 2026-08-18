@@ -163,6 +163,7 @@ def get_data(filters: frappe._dict) -> list[dict]:
 		"se.docstatus in (0, 1)",
 		"ifnull(sed.is_finished_item, 0) = 0",
 		"ifnull(sed.is_scrap_item, 0) = 0",
+		# "item.custom_variation_type = 'RP'",
 	]
 	sql_filters: dict[str, str] = {}
 
@@ -222,7 +223,9 @@ def get_data(filters: frappe._dict) -> list[dict]:
 				AND setype.purpose = 'Manufacture'
 			)
 		""")
-	
+	if filters.get("variation_type"):
+		conditions.append("item.custom_variation_type = %(variation_type)s")
+		sql_filters["variation_type"] = filters.variation_type
 	warehouse_expression = """
 	case
 		when ifnull(sed.is_finished_item, 0) = 1	

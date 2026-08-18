@@ -51,9 +51,11 @@ def execute(filters=None):
 							[
 								item,
 								item_map[item]["item_group"],
-								# item_map[item]["item_name"],
 								wh,
 								batch,
+								item_map[item]["custom_feet"],
+								item_map[item]["custom_gsm1"],
+								# item_map[item]["item_name"],
 								flt(qty_dict.opening_qty, float_precision),
 								flt(qty_dict.in_qty, float_precision),
 								flt(qty_dict.out_qty, float_precision),
@@ -98,6 +100,18 @@ def get_columns(filters):
 			"fieldtype": "Link",
 			"options": "Batch",
 			"width": 120,
+		},
+		{
+			"label": _("Feet"),
+			"fieldname": "custom_feet",
+			"fieldtype": "Data",
+			"width": 100,
+		},
+		{
+			"label": _("GSM"),
+			"fieldname": "custom_gsm1",
+			"fieldtype": "Data",
+			"width": 150,
 		},
 		{
 			"label": _("Opening Qty"),
@@ -308,7 +322,8 @@ def get_item_warehouse_batch_map(filters, float_precision):
 
 def get_item_details(filters):
 	item_map = {}
-	for d in (frappe.qb.from_("Item").select("name", "item_name", "item_group", "stock_uom")).run(as_dict=1):
+	for d in (frappe.qb.from_("Item").select("name", "item_name", "item_group", "stock_uom","custom_feet",
+    "custom_gsm1",)).run(as_dict=1):
 		item_map.setdefault(d.name, d)
 
 	return item_map

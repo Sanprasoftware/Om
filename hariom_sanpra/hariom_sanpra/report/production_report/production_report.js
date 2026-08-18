@@ -30,7 +30,7 @@ frappe.query_reports["Production Report"] = {
 			fieldname: "operator_name",
 			label: __("Operator Name"),
 			fieldtype: "Link",
-			options: "Operator Name",
+			options: "Employee",
 		},
 		{
 			fieldname: "machine_name",
@@ -73,7 +73,7 @@ frappe.query_reports["Production Report"] = {
 			fieldname: "manufacturing_type",
 			label: __("Manufacturing Type"),
 			fieldtype: "Select",
-			options: "\nPONDLINE\nPIPE\nPP EXPORT",
+			options: "\nPONDLINE\nPIPE\nPP EXPORT\nMURGHAS",
 		},
 		{
 			fieldname: "feet",

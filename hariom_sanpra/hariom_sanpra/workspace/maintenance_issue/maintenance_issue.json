@@ -428,6 +428,16 @@
   {
    "hidden": 0,
    "is_query_report": 1,
+   "label": "Maintenance Issue Slip Report",
+   "link_count": 0,
+   "link_to": "Maintenance Issue Slip Report",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
    "label": "Maintenance History Card Report",
    "link_count": 0,
    "link_to": "Maintenance History Card Report",
@@ -441,16 +451,6 @@
    "label": "Maintenance Breakdown Intimation Slip Report",
    "link_count": 0,
    "link_to": "Maintenance Breakdown Intimation Slip Report",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Maintenance Issue Slip Report",
-   "link_count": 0,
-   "link_to": "Maintenance Issue Slip Report",
    "link_type": "Report",
    "onboard": 0,
    "type": "Link"
@@ -486,8 +486,8 @@
    "type": "Link"
   }
  ],
- "modified": "2026-06-12 17:06:02.247710",
- "modified_by": "rutuja@sanpra.co.in",
+ "modified": "2026-08-05 12:04:01.223251",
+ "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Maintenance Issue",
  "number_cards": [],
