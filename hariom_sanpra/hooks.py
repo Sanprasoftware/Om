@@ -174,11 +174,17 @@ doc_events = {
         "on_update": "hariom_sanpra.public.py.quality_inspection.update_reference_qc_status",
         "on_submit": "hariom_sanpra.public.py.quality_inspection.update_reference_qc_status",
         "on_cancel": "hariom_sanpra.public.py.quality_inspection.update_reference_qc_status",
+        "on_trash": "hariom_sanpra.public.py.quality_inspection.clear_reference_qc_status_on_delete",
+        "before_validate": "hariom_sanpra.public.py.quality_inspection.preserve_selected_status",
         "before_save": "hariom_sanpra.public.py.quality_inspection.set_readings_status",
+        "before_submit": "hariom_sanpra.public.py.quality_inspection.set_readings_status",
     },
     "ToDo": {
         "after_insert": "hariom_sanpra.public.py.todo.notify_assigned_user"
-    }
+    },
+    "Purchase Receipt": {
+		"before_validate": "hariom_sanpra.public.py.purchase_receipt.set_rejected_warehouse"
+	},
 
 }
 # /home/hariom/bench-uat/apps/hariom_sanpra/hariom_sanpra/hariom_sanpra.doctype.navrang_rewinding_machine.navrang_rewinding_machine.py
@@ -291,5 +297,4 @@ extend_doctype_class = {
 # ------------
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
-
 

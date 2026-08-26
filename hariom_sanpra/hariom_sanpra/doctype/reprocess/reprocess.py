@@ -114,6 +114,7 @@ class Reprocess(Document):
 				"s_warehouse": row.source_warehouse,
 				"t_warehouse": row.target_warehouse,
 				"uom": row.uom,
+    			"use_serial_batch_fields" : row.use_serial_no__batch_fields,
 				"batch_no": row.batch_no,
 				"basic_rate": row.basic_rate_as_per_stock_uom,
 				"is_finished_item": row.is_finished_item,

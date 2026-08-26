@@ -12,12 +12,12 @@ frappe.ui.form.on("Seam Strength", {
 		});
     },
     seam_strength_type: function(frm) {
-        if (frm.doc.seam_strength_type === "Joint M/C") {
-            frm.set_value("overlap_req", "50 MM");
-        }
-        if (frm.doc.seam_strength_type === "Pipe") {
-            frm.set_value("overlap_req", "20 MM");
-        }
+        // if (frm.doc.seam_strength_type === "Joint M/C") {
+        //     frm.set_value("overlap_req", "50 MM");
+        // }
+        // if (frm.doc.seam_strength_type === "Pipe") {
+        //     frm.set_value("overlap_req", "20 MM");
+        // }
         if (frm.doc.seam_strength_reading) {
             frm.doc.seam_strength_reading.forEach(row => {
                 row.seam_strength_type = frm.doc.seam_strength_type;
@@ -41,15 +41,23 @@ frappe.ui.form.on("Seam Strength Child", {
 
         if (row.jm_brand_type === "300 MIC") {
             frappe.model.set_value(cdt, cdn, "sample_target_strength_req", "15 N / MM");
+            frappe.model.set_value(cdt, cdn, "overlap_req", "50 MM");
         }
         if (row.jm_brand_type === "400 MIC") {
             frappe.model.set_value(cdt, cdn, "sample_target_strength_req", "25 N / MM");
+            frappe.model.set_value(cdt, cdn, "overlap_req", "50 MM");
         }
         if (row.jm_brand_type === "500 MIC") {
             frappe.model.set_value(cdt, cdn, "sample_target_strength_req", "37 N / MM");
+            frappe.model.set_value(cdt, cdn, "overlap_req", "50 MM");
         }
         if (row.jm_brand_type === "750 MIC") {
             frappe.model.set_value(cdt, cdn, "sample_target_strength_req", "40 N / MM");
+            frappe.model.set_value(cdt, cdn, "overlap_req", "50 MM");
+        }
+        if (row.jm_brand_type === "1000 MIC") {
+            frappe.model.set_value(cdt, cdn, "sample_target_strength_req", "");
+            frappe.model.set_value(cdt, cdn, "overlap_req", "50 MM");
         }
     },
     pipe_brand_type: function(frm, cdt, cdn) {
@@ -58,26 +66,32 @@ frappe.ui.form.on("Seam Strength Child", {
         if (row.pipe_brand_type === "220 GSM") {
             frappe.model.set_value(cdt, cdn, "sample_target_strength_req", "13 N / MM");
             frappe.model.set_value(cdt, cdn, "hidrostatic", 1.5);
+            frappe.model.set_value(cdt, cdn, "overlap_req", "20 MM");
         }
         if (row.pipe_brand_type === "250 GSM") {
             frappe.model.set_value(cdt, cdn, "sample_target_strength_req", "13 N / MM");
             frappe.model.set_value(cdt, cdn, "hidrostatic", 1.5);
+            frappe.model.set_value(cdt, cdn, "overlap_req", "20 MM");
         }
         if (row.pipe_brand_type === "190 GSM") {
             frappe.model.set_value(cdt, cdn, "sample_target_strength_req", "10 N / MM");
             frappe.model.set_value(cdt, cdn, "hidrostatic", 1.5);
+            frappe.model.set_value(cdt, cdn, "overlap_req", "20 MM");
         }
         if (row.pipe_brand_type === "170 GSM") {
             frappe.model.set_value(cdt, cdn, "sample_target_strength_req", "10 N / MM");
             frappe.model.set_value(cdt, cdn, "hidrostatic", 1.5);
+            frappe.model.set_value(cdt, cdn, "overlap_req", "20 MM");
         }
         if (row.pipe_brand_type === "105 GSM") {
             frappe.model.set_value(cdt, cdn, "sample_target_strength_req", "7 N / MM");
-            frappe.model.set_value(cdt, cdn, "hidrostatic", 1.5);
+            frappe.model.set_value(cdt, cdn, "hidrostatic", "");
+            frappe.model.set_value(cdt, cdn, "overlap_req", "12 MM");
         }
         if (row.pipe_brand_type === "400 GSM") {
             frappe.model.set_value(cdt, cdn, "sample_target_strength_req", "23 N / MM");
             frappe.model.set_value(cdt, cdn, "hidrostatic", 3.8);
+            frappe.model.set_value(cdt, cdn, "overlap_req", "20 MM");
         }
         
     },

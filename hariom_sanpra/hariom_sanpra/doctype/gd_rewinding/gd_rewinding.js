@@ -65,7 +65,7 @@ frappe.ui.form.on("GD Rewinding", {
 	refresh(frm) {
 		add_stock_ledger_button(frm);
 
-		frm.fields_dict["items"].grid.get_field("batch").get_query = function(doc, cdt, cdn) {
+		frm.fields_dict["items"].grid.get_field("batch_no").get_query = function(doc, cdt, cdn) {
 			let row = locals[cdt][cdn];
 
 			return {

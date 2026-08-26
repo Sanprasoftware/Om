@@ -11,9 +11,11 @@
   "layer_bis",
   "fabric_no_1_bis",
   "fabric_no_2_bis",
+  "fabric_no_3_bis",
   "coating_np_bis",
   "coating_p_bis",
   "final_coating_bis",
+  "final_coating_2_bis",
   "bond_strength_bis",
   "gsm_test_bis",
   "tensile_strengthwarf_bis1",
@@ -37,9 +39,11 @@
   "layer_hfi",
   "fabric_no_1__hfi",
   "fabric_no_2_hfi",
+  "fabric_no_3_hfi",
   "coating_np_hfi",
   "coating_p_hfi",
   "final_coating_hfi",
+  "final_coating_2_hfi",
   "bond_strength_hfi",
   "gsm_test_hfi",
   "tensile_strengthwarf_hfi",
@@ -63,9 +67,11 @@
   "layer_c01",
   "fabric_no_1__c01",
   "fabric_no_2_c01",
+  "fabric_no_3_c01",
   "coating_np_c01",
   "coating_p_c01",
   "final_coating_c01",
+  "final_coating_2_c01",
   "bond_strength_c01",
   "gsm_test_c01",
   "tensile_strengthwarf_c01",
@@ -126,7 +132,7 @@
    "default": "66",
    "fieldname": "final_coating_bis",
    "fieldtype": "Int",
-   "label": "Final Coating (BIS)"
+   "label": "Final Coating 1 (BIS)"
   },
   {
    "default": "BOND OK",
@@ -281,7 +287,7 @@
    "default": "45",
    "fieldname": "final_coating_hfi",
    "fieldtype": "Int",
-   "label": "Final Coating (HFI)"
+   "label": "Final Coating 1 (HFI)"
   },
   {
    "default": "BOND OK",
@@ -434,7 +440,7 @@
   {
    "fieldname": "final_coating_c01",
    "fieldtype": "Float",
-   "label": "Final Coating (C01)",
+   "label": "Final Coating 1 (C01)",
    "precision": "2"
   },
   {
@@ -548,13 +554,45 @@
    "fieldname": "pondline_section",
    "fieldtype": "Section Break",
    "label": "Pondline"
+  },
+  {
+   "fieldname": "fabric_no_3_bis",
+   "fieldtype": "Int",
+   "label": "Fabric No 3 (BIS)"
+  },
+  {
+   "fieldname": "fabric_no_3_hfi",
+   "fieldtype": "Int",
+   "label": "Fabric No 3 (HFI)"
+  },
+  {
+   "fieldname": "fabric_no_3_c01",
+   "fieldtype": "Float",
+   "label": "Fabric No 3 (C01)",
+   "precision": "2"
+  },
+  {
+   "fieldname": "final_coating_2_bis",
+   "fieldtype": "Int",
+   "label": "Final Coating 2 (BIS)"
+  },
+  {
+   "fieldname": "final_coating_2_hfi",
+   "fieldtype": "Int",
+   "label": "Final Coating 2 (HFI)"
+  },
+  {
+   "fieldname": "final_coating_2_c01",
+   "fieldtype": "Float",
+   "label": "Final Coating 2 (C01)",
+   "precision": "2"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-07-16 13:17:52.196612",
+ "modified": "2026-08-18 16:20:52.705241",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Finished Goods Inspection Template Child",

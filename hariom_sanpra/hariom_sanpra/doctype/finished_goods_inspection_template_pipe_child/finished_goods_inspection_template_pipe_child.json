@@ -295,13 +295,13 @@
   {
    "fieldname": "hidrostatic_resistance",
    "fieldtype": "Data",
-   "label": "Hidrostatic Resistance, Minimum (Shall Be No. Leakage At 15 KG/CM\u00b2 2.5 Air Pressure Set)"
+   "label": "Hidrostatic Resistance"
   },
   {
    "fieldname": "hidrostatic_resistance_actual",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Hidrostatic Resistance, Minimum (Shall Be No. Leakage At 15 KG/CM\u00b2 2.5 Air Pressure Set) Actual"
+   "label": "Hidrostatic Resistance Actual"
   },
   {
    "fieldname": "filler_",
@@ -330,7 +330,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-07-16 12:01:26.845184",
+ "modified": "2026-08-18 16:15:26.578302",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Finished Goods Inspection Template Pipe Child",

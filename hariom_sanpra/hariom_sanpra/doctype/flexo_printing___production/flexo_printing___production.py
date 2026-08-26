@@ -34,7 +34,7 @@ class FlexoPrintingProduction(Document):
 				# "gsm" : row.gsm,
 				# "grade" : row.grade,
 				# "roll_qty" : row.roll_qty,
-				"batch": row.batch,
+				"batch_no": row.batch,
 				"uom": self._get_stock_uom(row.item),
 				"is_finished_item": 0,
 				"is_scrap_item": 0
@@ -48,7 +48,7 @@ class FlexoPrintingProduction(Document):
 					"item_code": fg.item,
 					"qty": per_fg_qty,   # ✅ CALCULATED VALUE
 					"target_warehouse": fg.warehouse,
-					"batch": fg.batch,
+					"batch_no": fg.batch,
 					"uom": self._get_stock_uom(fg.item),
 					"is_finished_item": 1,
 					"is_scrap_item": 0
@@ -61,15 +61,29 @@ class FlexoPrintingProduction(Document):
 				"item_code": ws.item,
 				"qty": flt(ws.qty),
 				"target_warehouse": ws.warehouse,
-				"batch": ws.batch,
+				"batch_no": ws.batch,
 				"uom": self._get_stock_uom(ws.item),
 				"is_finished_item": 0,
 				"is_scrap_item": 1
 			})
-
+		for row in self.items:
+			row.use_serial_no__batch_fields = 1
 		return self
 
-#************************************************************************		
+#************************************************************************	
+	def before_save(self):
+		for row in self.raw_items:
+			if not row.batch:
+				frappe.throw(f"Please select Batch for Item {row.item}")
+		for row in self.fg_items:
+			if not row.batch:
+				frappe.throw(f"Please select Batch for Item {row.item}")
+		for row in self.wastage_items:
+			if not row.batch:
+				frappe.throw(f"Please select Batch for Item {row.item}")
+		for row in self.items:
+			if row.use_serial_no__batch_fields == 1 and not row.batch_no:
+				frappe.throw(f"Please select Batch for Item {row.item_code}")	
 	def on_submit(self):
 		self.create_stock_entry()
 
@@ -99,7 +113,8 @@ class FlexoPrintingProduction(Document):
 				"s_warehouse": row.source_warehouse,
 				"t_warehouse": row.target_warehouse,
 				"uom": row.uom,
-				"batch_no": row.batch,
+				"use_serial_batch_fields" : row.use_serial_no__batch_fields,
+				"batch_no": row.batch_no,
 				"is_finished_item": row.is_finished_item,  
 				"is_scrap_item": row.is_scrap_item,
 			})

@@ -9,6 +9,9 @@
   "operator_name",
   "machine_name",
   "stock_entry_type",
+  "job_name",
+  "naming_series",
+  "wastage_",
   "column_break_kwyk",
   "shift",
   "tag_in",
@@ -21,7 +24,8 @@
   "batch",
   "machine_no",
   "target_wastage__per_shift",
-  "naming_series",
+  "total_ok_rolls",
+  "total_joint_roll_out_of_ok_rolls",
   "raw_items_section",
   "raw_items",
   "fg_items",
@@ -180,14 +184,36 @@
   {
    "fieldname": "section_break_khft",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "job_name",
+   "fieldtype": "Link",
+   "label": "Job Name",
+   "options": "Item"
+  },
+  {
+   "fieldname": "total_ok_rolls",
+   "fieldtype": "Int",
+   "label": "Total Ok Rolls"
+  },
+  {
+   "fieldname": "total_joint_roll_out_of_ok_rolls",
+   "fieldtype": "Int",
+   "label": "Total Joint Roll Out of Ok Rolls"
+  },
+  {
+   "fieldname": "wastage_",
+   "fieldtype": "Float",
+   "label": "Wastage %",
+   "precision": "2"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-07-14 12:22:09.697905",
- "modified_by": "rutuja@sanpra.co.in",
+ "modified": "2026-08-18 16:45:57.334972",
+ "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Navrang Rewinding Machine",
  "naming_rule": "By \"Naming Series\" field",

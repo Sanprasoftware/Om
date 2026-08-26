@@ -18,16 +18,17 @@ frappe.ui.form.on("Reprocess", {
     refresh(frm) {
 		show_reprocess_entry_fields(frm);
 
-		frm.fields_dict["item"].grid.get_field("batch").get_query = function(doc, cdt, cdn) {
+		frm.fields_dict["item"].grid.get_field("batch_no").get_query = function(doc, cdt, cdn) {
 			let row = locals[cdt][cdn];
 
 			return {
 				filters: {
 					item: row.item_code,
-                    docstatus: 1
+                    // docstatus: 1
 				}
 			};
 		};
+
 		// frm.fields_dict["scrap_item"].grid.get_field("batch").get_query = function(doc, cdt, cdn) {
 		// 	let row = locals[cdt][cdn];
 
@@ -38,6 +39,7 @@ frappe.ui.form.on("Reprocess", {
 		// 		}
 		// 	};
 		// };
+        
 		// frm.fields_dict["fg_item"].grid.get_field("batch").get_query = function(doc, cdt, cdn) {
 		// 	let row = locals[cdt][cdn];
 
@@ -71,21 +73,21 @@ frappe.ui.form.on("Reprocess", {
         });
     },
 
-    onload(frm) {
-      frm.set_query("batch_no", "item", function(doc, cdt, cdn) {
-        const row = locals[cdt][cdn];
-        if (!row.item_code) {
-          return { filters: { name: "" } }; // no item selected
-        }
-        return {
-          filters: {
-            item: row.item_code,
-            // docstatus: 1
+    // onload(frm) {
+    //   frm.set_query("batch_no", "item", function(doc, cdt, cdn) {
+    //     const row = locals[cdt][cdn];
+    //     if (!row.item_code) {
+    //       return { filters: { name: "" } }; // no item selected
+    //     }
+    //     return {
+    //       filters: {
+    //         item: row.item_code,
+    //         // docstatus: 1
 
-          }
-        };
-      }); 
-    }
+    //       }
+    //     };
+    //   }); 
+    // }
 });
 
 const reprocess_entry_fields = [
@@ -131,7 +133,8 @@ frappe.ui.form.on("Reprocess Item", {
 
     source_warehouse(frm, cdt, cdn) {
         get_stock(frm, cdt, cdn);
-    }
+    },
+    
 });
 function update_qty(frm, cdt, cdn) {
     let row = locals[cdt][cdn];

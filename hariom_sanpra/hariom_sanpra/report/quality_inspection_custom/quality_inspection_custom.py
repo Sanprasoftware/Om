@@ -51,6 +51,12 @@ def get_columns():
 			"width": 180
 		},
 		{
+			"label": _("Party Name"),
+			"fieldname": "party_name",
+			"fieldtype": "Data",
+			"width": 180
+		},
+		{
 			"label": _("Status"),
 			"fieldname": "status",
 			"fieldtype": "Data",
@@ -333,12 +339,12 @@ def get_data(filters):
 				"inspection_type": row.inspection_type,
 				"reference_type": row.reference_type,
 				"reference_name": row.reference_name,
+				"party_name": row.custom_supplier_name or row.custom_customer_name,
 				"status": row.status,
 				"quality_inspection_template": row.quality_inspection_template,
 				"item_code": row.item_code,
 				"total_qty": row.total_qty,
 				"item_name": row.item_name,
-
 				"specification": row.specification,
 				"parameter_group": row.parameter_group,
 				"reading_status": row.reading_status,
@@ -374,6 +380,7 @@ def get_data(filters):
 				"inspection_type": "",
 				"reference_type": "",
 				"reference_name": "",
+				"party_name": "",
 				"status": "",
 				"quality_inspection_template": "",
 				"item_code": "",

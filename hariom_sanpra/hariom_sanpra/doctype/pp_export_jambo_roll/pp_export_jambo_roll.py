@@ -16,14 +16,14 @@ class PPEXportJamboRoll(Document):
 		# frappe.throw("hi")
 		self.set("items", [])
 		total_raw = sum(flt(row.qty) for row in self.get("raw_items") or [])
-		total_wst = sum(flt(row.qty) for row in self.get("wastage_items") or [])
+		# total_wst = sum(flt(row.qty) for row in self.get("wastage_items") or [])
 		total_fg  = sum(flt(row.qty) for row in self.get("fg_items") or [])
 		if total_fg <= 0:
 			frappe.throw("FG Qty must be greater than 0")
-		net_qty = total_raw - total_wst
-		if net_qty <= 0:
-			frappe.throw("Net Qty must be greater than 0")
-		per_fg_qty = net_qty / total_fg 
+		# net_qty = total_raw - total_wst
+		# if net_qty <= 0:
+		# 	frappe.throw("Net Qty must be greater than 0")
+		per_fg_qty = total_raw / total_fg
 
 		for row in self.get("raw_items") or []:
 			if not (row.item and row.qty):
@@ -53,21 +53,32 @@ class PPEXportJamboRoll(Document):
 					
 				})
 
-		for ws in self.get("wastage") or []:
-			if not (ws.item and ws.qty):
-				continue
-			self.append("items", {
-				"item_code": ws.item,
-				"qty": flt(ws.qty),
-				"target_warehouse": ws.warehouse,
-				"batch": ws.batch,
-				"uom": self._get_stock_uom(ws.item),
-				"is_finished_item": 0,
-				"is_scrap_item": 1
-			})
-
+		# for ws in self.get("wastage") or []:
+		# 	if not (ws.item and ws.qty):
+		# 		continue
+		# 	self.append("items", {
+		# 		"item_code": ws.item,
+		# 		"qty": flt(ws.qty),
+		# 		"target_warehouse": ws.warehouse,
+		# 		"batch": ws.batch,
+		# 		"uom": self._get_stock_uom(ws.item),
+		# 		"is_finished_item": 0,
+		# 		"is_scrap_item": 1
+		# 	})
+		for row in self.items:
+			row.use_serial_no__batch_fields = 1
 		return self
-#********************************create_stock_entry****************************************		
+#********************************create_stock_entry****************************************	
+	def before_save(self):
+		for row in self.raw_items:
+			if not row.batch:
+				frappe.throw(f"Please select Batch for Item {row.item}")
+		for row in self.fg_items:
+			if not row.batch:
+				frappe.throw(f"Please select Batch for Item {row.item}")
+		for row in self.items:
+			if row.use_serial_no__batch_fields == 1 and not row.batch:
+				frappe.throw(f"Please select Batchs for Item {row.item_code}")	
 	def on_submit(self):
 		self.create_stock_entry()
 
@@ -77,7 +88,7 @@ class PPEXportJamboRoll(Document):
 
 	def create_stock_entry(self):
 		se = frappe.new_doc("Stock Entry")
-		se.stock_entry_type = "PP EXport Jambo Roll"
+		se.stock_entry_type = self.stock_entry_type1
 		se.set_posting_time = 1
 		se.posting_date = self.date
 		se.custom_reference_doc = self.doctype
@@ -98,6 +109,7 @@ class PPEXportJamboRoll(Document):
 				"s_warehouse": row.source_warehouse,
 				"t_warehouse": row.target_warehouse,
 				"uom": row.uom,
+				"use_serial_batch_fields" : row.use_serial_no__batch_fields,
 				"batch_no": row.batch,
 				"is_finished_item": row.is_finished_item,  
 				"is_scrap_item": row.is_scrap_item,

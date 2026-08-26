@@ -42,15 +42,15 @@ frappe.ui.form.on("PP EXport Jambo Roll", {
 				}
 			};
 		};
-		frm.fields_dict["wastage"].grid.get_field("batch").get_query = function(doc, cdt, cdn) {
-			let row = locals[cdt][cdn];
+		// frm.fields_dict["wastage"].grid.get_field("batch").get_query = function(doc, cdt, cdn) {
+		// 	let row = locals[cdt][cdn];
 
-			return {
-				filters: {
-					item: row.item
-				}
-			};
-		};
+		// 	return {
+		// 		filters: {
+		// 			item: row.item
+		// 		}
+		// 	};
+		// };
 	},
 });
 

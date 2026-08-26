@@ -24,15 +24,15 @@ frappe.ui.form.on("Small Pipe mc", {
 				}
 			};
 		};
-		frm.fields_dict["raw_items"].grid.get_field("batch").get_query = function(doc, cdt, cdn) {
-			let row = locals[cdt][cdn];
+		// frm.fields_dict["raw_items"].grid.get_field("batch").get_query = function(doc, cdt, cdn) {
+		// 	let row = locals[cdt][cdn];
 
-			return {
-				filters: {
-					item: row.item
-				}
-			};
-		};
+		// 	return {
+		// 		filters: {
+		// 			item: row.item
+		// 		}
+		// 	};
+		// };
 		// frm.fields_dict["fg_items"].grid.get_field("batch").get_query = function(doc, cdt, cdn) {
 		// 	let row = locals[cdt][cdn];
 

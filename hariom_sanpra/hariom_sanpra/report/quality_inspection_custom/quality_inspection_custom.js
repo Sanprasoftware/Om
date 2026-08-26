@@ -19,7 +19,7 @@ frappe.query_reports["Quality Inspection Custom"] = {
 			fieldname: "inspection_type",
 			label: __("Inspection Type"),
 			fieldtype: "Select",
-			options: "\nIncoming\nOutgoing\nIn Process",
+			options: "\nIncoming\nOutgoing\nIn Process\nMarket Sample",
 			width: 120
 		},
 		{

@@ -68,10 +68,23 @@ class PipeJamboMachine(Document):
 				"is_finished_item": 0,
 				"is_scrap_item": 1
 			})
-
+		for row in self.items:
+			row.use_serial_no__batch_fields = 1
+			
 		return self
 
-#************************************************************************		
+#************************************************************************	
+	def before_save(self):
+		for row in self.raw_items:
+			if not row.batch:
+				frappe.throw(f"Please select Batch for Item {row.item}")
+		for row in self.fg_items:
+			if not row.batch:
+				frappe.throw(f"Please select Batch for Item {row.item}")
+		for row in self.wastage_items:
+			if not row.batch:
+				frappe.throw(f"Please select Batch for Item {row.item}")	
+    
 	def on_submit(self):
 		self.create_stock_entry()
 
@@ -102,6 +115,7 @@ class PipeJamboMachine(Document):
 				"s_warehouse": row.source_warehouse,
 				"t_warehouse": row.target_warehouse,
 				"uom": row.uom,
+				"use_serial_batch_fields" : row.use_serial_no__batch_fields,
 				"batch_no": row.batch,
 				"is_finished_item": row.is_finished_item,  
 				"is_scrap_item": row.is_scrap_item,

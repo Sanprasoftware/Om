@@ -76,10 +76,26 @@ class JointMachine(Document):
 				"is_scrap_item": 1,
 				# "use_serial_no__batch_fields": existing.get(key, 0) 
 			})
+
+		for row in self.items:
+			if row.is_finished_item == 1:
+				row.use_serial_no__batch_fields = 0
+			else:
+				row.use_serial_no__batch_fields = 1
 	
 		return self
 
 	def before_save(self):
+		for row in self.raw_item:
+			if not row.batch:
+				frappe.throw(f"Please select Batch for Item {row.item_code}")
+    
+		for row in self.wastage_item:
+			if not row.batch:
+				frappe.throw(f"Please select Batch for Item {row.item_code}")
+		for row in self.items:
+			if row.use_serial_no__batch_fields == 1 and not row.batch_no:
+				frappe.throw(f"Please select Batch for Item {row.item_code}")
 		# self.add_items()
 		self.calculation()
 
@@ -126,9 +142,9 @@ class JointMachine(Document):
 				"item_code": row.item_code,
 				"qty": row.qty,
 				"uom": row.uom,
+				"use_serial_batch_fields" : row.use_serial_no__batch_fields,
 				"batch_no": row.batch_no,
 				"set_basic_rate_manually": 1,
-
 				"s_warehouse": row.source_warehouse,
 				"t_warehouse": row.target_warehouse,
 				"custom_size_1": row.length,

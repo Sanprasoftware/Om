@@ -10,8 +10,6 @@
   "item",
   "column_break_tmak",
   "qty",
-  "column_break_pekx",
-  "batch",
   "column_break_ggka",
   "warehouse",
   "column_break_wxhq",
@@ -41,17 +39,6 @@
    "fieldtype": "Float",
    "in_list_view": 1,
    "label": "Qty"
-  },
-  {
-   "fieldname": "column_break_pekx",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "batch",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Batch ",
-   "options": "Batch"
   },
   {
    "fieldname": "column_break_ggka",
@@ -90,7 +77,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-08-13 17:22:25.275848",
+ "modified": "2026-08-21 18:21:12.788844",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "small pipe Raw",

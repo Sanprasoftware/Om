@@ -14,7 +14,7 @@
   "shift",
   "machine_start",
   "machine_end",
-  "ft_type",
+  "feet_type",
   "column_break_mpum",
   "manpower",
   "batch",
@@ -147,25 +147,24 @@
    "label": "Machine End"
   },
   {
-   "fieldname": "ft_type",
-   "fieldtype": "Select",
-   "label": "FT Type",
-   "options": "\n10\n12\n6",
-   "reqd": 1
-  },
-  {
    "fieldname": "stock_entry_id",
    "fieldtype": "Link",
    "hidden": 1,
    "label": "Stock Entry Id",
    "options": "Stock Entry"
+  },
+  {
+   "fieldname": "feet_type",
+   "fieldtype": "Link",
+   "label": "Feet Type",
+   "options": "FEET"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-08-14 14:31:29.659336",
+ "modified": "2026-08-18 11:33:25.487991",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "GD Rewinding",

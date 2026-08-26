@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_rename": 1,
  "autoname": "naming_series:",
  "creation": "2026-04-21 17:57:14.487373",
  "doctype": "DocType",
@@ -16,7 +17,7 @@
   "column_break_unat",
   "man_power",
   "batch",
-  "stock_entry_type",
+  "stock_entry_type1",
   "machine_no",
   "section_break_ubxb",
   "raw_items",
@@ -99,6 +100,7 @@
   {
    "fieldname": "wastage",
    "fieldtype": "Table",
+   "hidden": 1,
    "label": "Wastage",
    "options": "PP Export jambo Wastage"
   },
@@ -107,13 +109,6 @@
    "fieldtype": "Table",
    "label": "Items",
    "options": "PP Export Jambo Items"
-  },
-  {
-   "default": "PP EXPORT JAMBO ROLL",
-   "fieldname": "stock_entry_type",
-   "fieldtype": "Select",
-   "label": "Stock Entry Type",
-   "options": "PP EXPORT JAMBO ROLL"
   },
   {
    "fieldname": "naming_series",
@@ -146,14 +141,22 @@
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "default": "PP EXPORT JUMBO ROLL",
+   "fieldname": "stock_entry_type1",
+   "fieldtype": "Link",
+   "label": "Stock Entry Type",
+   "options": "Stock Entry Type",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-05-08 18:09:57.101879",
- "modified_by": "rutuja@sanpra.co.in",
+ "modified": "2026-08-22 12:30:59.619821",
+ "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "PP EXport Jambo Roll",
  "naming_rule": "By \"Naming Series\" field",

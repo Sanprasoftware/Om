@@ -17,20 +17,10 @@ def update_reference_qc_status(doc, method=None):
     frappe.db.set_value(doc.reference_type, doc.reference_name, status_field, status)
     update_reference_item_qc_status(doc, method)
 
-# ==========================================================
-# PRESERVE SELECTED QUALITY STATUS DURING SAVE AND SUBMIT
-# ==========================================================
-def preserve_selected_status(doc, method=None):
-    doc.flags.selected_quality_status = doc.status
-
-
 def set_readings_status(doc, method=None):
-    selected_status = doc.flags.get("selected_quality_status") or doc.status
-    if selected_status:
-        doc.status = selected_status
-
+    if doc.readings and doc.status:
         for row in doc.readings:
-            row.status = selected_status
+            row.status = doc.status
 
 
 @frappe.whitelist()

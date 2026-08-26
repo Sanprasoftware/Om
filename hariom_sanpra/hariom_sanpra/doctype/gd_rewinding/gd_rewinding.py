@@ -34,7 +34,7 @@ class GDRewinding(Document):
 				"gsm" : row.gsm,
 				"grade" : row.grade,
 				"roll_qty" : row.roll_qty,
-				"batch": row.batch,
+				"batch_no": row.batch,
 				"uom": self._get_stock_uom(row.item_code),
 				"is_finished_item": 0,
 				"is_scrap_item": 0
@@ -60,16 +60,30 @@ class GDRewinding(Document):
 				"item_code": ws.item_code,
 				"qty": flt(ws.qty),
 				"target_warehouse": ws.warehouse,
-				"batch": ws.batch,
+				"batch_no": ws.batch,
 				# "batch_no": row.batch if row.batch else None,
 				"uom": self._get_stock_uom(ws.item_code),
 				"is_finished_item": 0,
 				"is_scrap_item": 1
 			})
-
+		for row in self.items:
+			if row.is_finished_item == 1:
+				row.use_serial_no__batch_fields = 0
+			else:
+				row.use_serial_no__batch_fields = 1
 		return self
 
 	def before_save(self):
+		for row in self.raw_items:
+			if not row.batch:
+				frappe.throw(f"Please select Batch for Item {row.item_code}")
+		for row in self.wastage_items:
+			if not row.batch:
+				frappe.throw(f"Please select Batch for Item {row.item_code}")
+		for row in self.items:
+			if row.use_serial_no__batch_fields == 1 and not row.batch_no:
+				frappe.throw(f"Please select Batch for Item {row.item_code}")
+
 		self.cal_net_weight()
 
 	def cal_net_weight(self):
@@ -77,6 +91,10 @@ class GDRewinding(Document):
 			if row.source_warehouse:
 				continue
 			row.net_weight = row.gross_weight - row.core_weight
+   
+			if row.is_finished_item == 1:
+				row.qty = row.net_weight
+
 			row.roll_sqr_meter = (row.roll_actual_size / 39.37) * row.roll_meter
 			if row.roll_sqr_meter:
 				row.roll_actual_gsm = (row.net_weight / row.roll_sqr_meter) * 1000
@@ -112,7 +130,8 @@ class GDRewinding(Document):
 				"s_warehouse": row.source_warehouse,
 				"t_warehouse": row.target_warehouse,
 				"uom": row.uom,
-				"batch_no": row.batch,
+				"use_serial_batch_fields" : row.use_serial_no__batch_fields,
+				"batch_no": row.batch_no,
 				"basic_rate":row.basic_rate,
 				"is_finished_item": row.is_finished_item,  
 				"is_scrap_item": row.is_scrap_item,

@@ -8,14 +8,14 @@
   "job_name",
   "first_pass_colour",
   "second_pass_colour",
-  "naming_series",
   "column_break_bfkl",
   "date",
   "stock_entry",
   "batch_no",
+  "naming_series",
+  "column_break_iptn",
   "m__c",
   "mc_type",
-  "column_break_iptn",
   "target_mtr",
   "act_mtr",
   "pro",
@@ -99,6 +99,7 @@
   {
    "fieldname": "naming_series",
    "fieldtype": "Select",
+   "hidden": 1,
    "label": "Naming Series",
    "options": "HFI/QC/F/.##"
   },
@@ -236,11 +237,13 @@
   {
    "fieldname": "total_roll_sand",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Total Roll Sand"
   },
   {
    "fieldname": "total_roll_ssc",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Total Roll SSC"
   },
   {
@@ -304,7 +307,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-08-13 18:18:25.518078",
+ "modified": "2026-08-18 15:04:09.602297",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Process Parameter",

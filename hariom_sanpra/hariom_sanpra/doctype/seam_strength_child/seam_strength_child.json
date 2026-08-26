@@ -18,6 +18,7 @@
   "jm_brand_type",
   "pipe_brand_type",
   "temp",
+  "overlap_req",
   "section_break_hzpf",
   "pressure",
   "supervisor",
@@ -260,13 +261,19 @@
    "fieldtype": "Int",
    "label": "Sample Overlap Target",
    "read_only": 1
+  },
+  {
+   "fieldname": "overlap_req",
+   "fieldtype": "Data",
+   "label": "Overlap REQ",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-08-14 11:01:28.101051",
+ "modified": "2026-08-18 15:25:44.507636",
  "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Seam Strength Child",

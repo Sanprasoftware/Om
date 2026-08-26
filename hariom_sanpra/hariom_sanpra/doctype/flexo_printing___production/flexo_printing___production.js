@@ -12,7 +12,7 @@ frappe.ui.form.on("Flexo Printing - Production", {
 		});
 	},
 	refresh(frm) {
-		frm.fields_dict["items"].grid.get_field("batch").get_query = function(doc, cdt, cdn) {
+		frm.fields_dict["items"].grid.get_field("batch_no").get_query = function(doc, cdt, cdn) {
 			let row = locals[cdt][cdn];
 
 			return {

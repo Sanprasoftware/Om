@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Production Material Dashboard Documentation</title>
+  <style>
+    @page { size: A4; margin: 18mm 16mm; }
+    * { box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; color: #1f2937; font-size: 10.5pt; line-height: 1.45; margin: 0; }
+    h1 { color: #174a7e; font-size: 24pt; margin: 0 0 4px; }
+    h2 { color: #174a7e; font-size: 15pt; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px; margin: 22px 0 9px; }
+    h3 { color: #334155; font-size: 12pt; margin: 15px 0 6px; }
+    p { margin: 5px 0 9px; }
+    ul, ol { margin: 5px 0 10px 20px; padding: 0; }
+    li { margin-bottom: 3px; }
+    table { width: 100%; border-collapse: collapse; margin: 8px 0 14px; page-break-inside: avoid; }
+    th, td { border: 1px solid #cbd5e1; padding: 7px 8px; text-align: left; vertical-align: top; }
+    th { background: #eaf2f8; color: #174a7e; font-weight: 700; }
+    code, pre { font-family: "DejaVu Sans Mono", monospace; font-size: 9pt; }
+    code { background: #f1f5f9; padding: 1px 4px; border-radius: 3px; }
+    pre { background: #f8fafc; border: 1px solid #dbe3ea; padding: 10px; white-space: pre-wrap; page-break-inside: avoid; }
+    .subtitle { color: #64748b; font-size: 11pt; margin-bottom: 20px; }
+    .callout { background: #f0f7ff; border-left: 4px solid #3478b8; padding: 9px 12px; margin: 10px 0; }
+    .footer-note { color: #64748b; font-size: 9pt; margin-top: 18px; }
+  </style>
+</head>
+<body>
+  <h1>Production Material Dashboard</h1>
+  <div class="subtitle">Technical and functional documentation &mdash; generated 20 August 2026</div>
+
+  <h2>1. Purpose</h2>
+  <p>The dashboard provides a current production overview for four product categories. Each product card shows estimated raw-material days remaining, semi-ready stock, ready stock, and current-month wastage.</p>
+
+  <h2>2. Source Files</h2>
+  <table>
+    <tr><th>File</th><th>Responsibility</th></tr>
+    <tr><td><code>production_material_dashboard.py</code></td><td>Loads stock, consumption, and wastage data and exposes the whitelisted dashboard API.</td></tr>
+    <tr><td><code>production_material_dashboard.js</code></td><td>Creates the Frappe page, calls the API, renders product cards, styles status indicators, and handles refresh/errors.</td></tr>
+  </table>
+
+  <h2>3. Product Configuration</h2>
+  <table>
+    <tr><th>Label</th><th>Manufacturing Type</th><th>Semi-ready Warehouse</th><th>Ready-stock Warehouse(s)</th></tr>
+    <tr><td>PONDLINE</td><td>PONDLINE</td><td>PONDLINE FG - OM</td><td>GD REWINDING Ready To Dispatch - OM<br>JOINT MACHINE Ready To Dispatch - OM</td></tr>
+    <tr><td>PIPE</td><td>PIPE</td><td>PIPE FG - OM</td><td>SMALL PIPE M/C Ready to dispatch - OM</td></tr>
+    <tr><td>PP EXPORT</td><td>PP EXPORT</td><td>PP EXPORT FG - OM</td><td>NAVRANG-REWINDING M/C Ready To Dispatch - OM</td></tr>
+    <tr><td>MURGHAS</td><td>JP M/C MURGHAS</td><td>MURGHAS FG - OM</td><td>Not configured</td></tr>
+  </table>
+
+  <h2>4. API and Response</h2>
+  <p>The browser calls the whitelisted method:</p>
+  <pre>hariom_sanpra.hariom_sanpra.page.production_material_dashboard.production_material_dashboard.get_dashboard_data</pre>
+  <p>The method returns one object per configured product:</p>
+  <pre>{
+  "label": "PONDLINE",
+  "icon": "drop",
+  "raw_material_days": 8.4,
+  "semi_ready": 12.325,
+  "ready_stock": 6.150,
+  "wastage_percent": 2.45
+}</pre>
+
+  <h2>5. Calculations</h2>
+  <h3>5.1 Raw-material days remaining</h3>
+  <ol>
+    <li>Find the boundaries of the <code>Raw Material</code> item-group tree.</li>
+    <li>Read submitted Stock Entries for the default company covering the last 30 calendar days, including today.</li>
+    <li>Include source-warehouse rows that are not finished items and whose items belong to Raw Material or a child group.</li>
+    <li>Group consumption by manufacturing type and item.</li>
+    <li>Retrieve current stock through the custom Stock Balance Hariom report.</li>
+  </ol>
+  <pre>Days remaining = Available raw-material quantity
+                 / (Quantity consumed during 30 days / 30)</pre>
+  <ul>
+    <li>The backend result is rounded to one decimal place.</li>
+    <li>Negative stock is treated as zero.</li>
+    <li>Items without recorded consumption are excluded.</li>
+    <li>No applicable data produces a dash in the UI.</li>
+  </ul>
+
+  <h3>5.2 Semi-ready and ready stock</h3>
+  <p>Balances from the configured warehouses are obtained through Stock Balance Hariom.</p>
+  <pre>Displayed tons = Sum of warehouse balance quantities / 1000</pre>
+  <p>The result is rounded to three decimal places. Warehouse matching ignores case and normalizes repeated spaces or tabs. MURGHAS has no ready-stock warehouse, so the dashboard displays a dash.</p>
+
+  <h3>5.3 Monthly wastage</h3>
+  <p>The backend runs the Daily Cumulative Production Report from the first day of the current month through today, with the relevant manufacturing type and <code>Item Wise</code> basis. It reads <code>wastage_percent</code> from the final total row. Missing data produces <code>0%</code>.</p>
+
+  <h2>6. Frontend Behavior</h2>
+  <ol>
+    <li>Create the Frappe page titled <strong>Production Material Dashboard</strong>.</li>
+    <li>Show a loading message.</li>
+    <li>Call the backend method and render one card for each result.</li>
+    <li>Allow manual reload using the primary <strong>Refresh</strong> action.</li>
+  </ol>
+  <table>
+    <tr><th>Displayed Days</th><th>Status</th><th>Color</th></tr>
+    <tr><td>0&ndash;3</td><td>Danger</td><td>Red</td></tr>
+    <tr><td>4&ndash;10</td><td>Warning</td><td>Orange</td></tr>
+    <tr><td>More than 10</td><td>Safe</td><td>Green</td></tr>
+    <tr><td>No value</td><td>Unknown</td><td>Neutral, with a dash</td></tr>
+  </table>
+  <div class="callout">For display and status selection, fractional days are rounded down to a non-negative whole number.</div>
+  <p>The layout uses two cards per row on desktop, one card per row below 900 px, and vertically stacked metrics below 520 px.</p>
+
+  <h2>7. Error Handling</h2>
+  <p>If the API request fails, the loading content is cleared and Frappe shows an <strong>Unable to load dashboard</strong> message. Partial or cached cards are not retained.</p>
+
+  <h2>8. Extension</h2>
+  <p>Add a product by appending an entry to the Python <code>PRODUCTS</code> tuple:</p>
+  <pre>{
+  "label": "PRODUCT NAME",
+  "icon": "box",
+  "manufacturing_type": "MANUFACTURING TYPE",
+  "semi_ready": ("WAREHOUSE - OM",),
+  "ready_stock": ("READY WAREHOUSE - OM",),
+}</pre>
+  <p>Supported icons are <code>drop</code>, <code>pipe</code>, <code>box</code>, and <code>layers</code>. Unknown values use the box icon.</p>
+
+  <h2>9. Operational Assumptions</h2>
+  <ul>
+    <li>A default company is configured.</li>
+    <li><code>custom_manufacture_type</code> is populated on relevant Stock Entries.</li>
+    <li>Raw materials belong to Raw Material or one of its descendant groups.</li>
+    <li>Dividing stock quantity by 1,000 correctly converts the relevant stock unit into tons.</li>
+    <li>Raw-material quantities added together use compatible units of measure.</li>
+    <li>Users have permission to open the page and access the underlying reports and records.</li>
+  </ul>
+
+  <div class="footer-note">Prepared from the current Python and JavaScript implementation in the hariom_sanpra application.</div>
+</body>
+</html>

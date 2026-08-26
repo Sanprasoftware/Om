@@ -9,7 +9,6 @@
   "shift",
   "doctype_hariom",
   "column_break_sqtb",
-  "overlap_req",
   "operator_name",
   "machine_name",
   "machine_no",
@@ -31,12 +30,6 @@
   {
    "fieldname": "column_break_sqtb",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "overlap_req",
-   "fieldtype": "Data",
-   "label": "Overlap REQ",
-   "read_only": 1
   },
   {
    "fieldname": "column_break_cffr",
@@ -120,8 +113,8 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-07-10 16:31:29.133744",
- "modified_by": "rutuja@sanpra.co.in",
+ "modified": "2026-08-18 15:06:35.387512",
+ "modified_by": "Administrator",
  "module": "Hariom Sanpra",
  "name": "Seam Strength",
  "naming_rule": "By \"Naming Series\" field",
